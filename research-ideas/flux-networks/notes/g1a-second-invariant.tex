@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+
+\title{G1a.2: The Second-Invariant Scale Theorem\\
+\large Conserved twist flux closes the two-parameter runaway}
+\author{}
+\date{2026-08-07 07:45 CST (UTC+8)}
+
+\begin{document}
+\maketitle
+
+\section{Outcome}
+
+The first two-parameter G1a model failed because frozen axial flux penalized small
+radius but did not penalize the simultaneous deformation $r\to\infty$, $L\to0$.
+Adding a second conserved magnetic structure with energy $K/L$ removes that runaway.
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Result.} If axial tube flux is frozen ($B>0$), a twist/poloidal-flux
+invariant supplies $K/L$ with $K>0$, and either surface or core energy grows with
+radius ($D>0$ or $F>0$), then the common-radius/common-length scale model has exactly
+one finite equilibrium. It is the strict global energy minimum, and its physical
+$2\times2$ Hessian is positive definite.
+}}
+\end{center}
+
+This licenses finite scale in the idealized model. It does not yet prove a physical
+theta-network equilibrium or branch stability.
+
+\section{Why fixed twist flux gives \texorpdfstring{$K/L$}{K/L}}
+
+For a tube of radius $r$ and length $L$, let $\Psi_\theta$ denote flux associated
+with an azimuthal or twist field through a longitudinal surface. At the scaling
+level,
+\[
+\Psi_\theta\sim B_\theta rL,
+\qquad
+E_\theta\sim\frac{B_\theta^2}{2\mu_0}r^2L
+\sim\frac{\Psi_\theta^2}{2\mu_0L}
+\equiv\frac{K}{L}.
+\]
+For two independent graph cycles, collect the conserved fluxes into
+$\boldsymbol\Psi\in\mathbb R^2$. If the inductance operator scales as
+$\mathsf M(L)=L\mathsf M_0$ with $\mathsf M_0$ symmetric positive definite, then
+\[
+E_{\rm cycle}
+=\frac12\boldsymbol\Psi^{\mathsf T}\mathsf M(L)^{-1}\boldsymbol\Psi
+=\frac{1}{2L}
+\boldsymbol\Psi^{\mathsf T}\mathsf M_0^{-1}\boldsymbol\Psi
+\equiv\frac{K}{L},
+\qquad K>0.
+\]
+Thus mutual coupling between the theta graph's two cycles changes the positive
+coefficient $K$ but not the scale exponent in this idealization.
+
+The assumption that $\mathsf M_0$ is independent of the aspect ratio $L/r$ is a
+declared limitation. Aspect-dependent and junction inductances are the next
+refinement.
+
+\section{Energy}
+
+Retain the terms of the failed G1a model and add the second invariant:
+\begin{equation}
+E(r,L)=
+AL+DrL+Fr^2L+B\frac{L}{r^2}
++\frac{K}{L}
++C(r^2L)^{-2/3}.
+\label{eq:E}
+\end{equation}
+Here $r,L>0$; $A,C\ge0$; $B,K>0$; and at least one of $D,F$ is positive. The plasma
+term uses fixed content and $\gamma=5/3$.
+
+\section{Strict convexity in logarithmic scales}
+
+Set $x=\log r$ and $y=\log L$. Equation~\eqref{eq:E} becomes
+\[
+\mathcal E(x,y)=
+Ae^y+De^{x+y}+Fe^{2x+y}+Be^{-2x+y}
++Ke^{-y}+Ce^{-4x/3-2y/3}.
+\]
+Every term has the form $c_i e^{\mathbf v_i\cdot\mathbf z}$ with $c_i>0$ and
+$\mathbf z=(x,y)$. Therefore
+\[
+\nabla^2_{\mathbf z}\mathcal E
+=\sum_i c_ie^{\mathbf v_i\cdot\mathbf z}
+\mathbf v_i\mathbf v_i^{\mathsf T}.
+\]
+The exponent vectors for the axial-flux and twist-flux terms,
+$(-2,1)$ and $(0,-1)$, already span $\mathbb R^2$. Their positive outer-product
+sum makes the logarithmic Hessian positive definite everywhere. Hence
+$\mathcal E$ is strictly convex and can have at most one critical point.
+
+\section{Existence and global minimality}
+
+\begin{prop}[Second-invariant scale theorem]
+Let $B,K>0$, $A,C\ge0$, and suppose $D>0$ or $F>0$. Then the energy in
+Eq.~\eqref{eq:E} is coercive in $(x,y)=(\log r,\log L)$ and strictly convex.
+Consequently it possesses exactly one critical point on $(r,L)\in(0,\infty)^2$,
+and that point is the strict global minimum.
+\end{prop}
+
+\begin{proof}
+Strict convexity was proved above. For coercivity, use the three exponent vectors
+\[
+\mathbf v_B=(-2,1),\qquad
+\mathbf v_K=(0,-1),\qquad
+\mathbf v_Q=(q,1),
+\]
+where $q=1$ if $D>0$ and $q=2$ if $F>0$. The origin is a strict convex combination
+of these vectors: taking weights proportional to
+\[
+1,\qquad 1+\frac{2}{q},\qquad \frac{2}{q}
+\]
+gives zero, and all weights are positive. Thus the origin lies in the interior of
+their convex hull. Along every unbounded direction in $(x,y)$ at least one of the
+three corresponding exponentials diverges. Therefore $\mathcal E\to\infty$ as
+$\|(x,y)\|\to\infty$.
+
+A continuous coercive function attains a minimum. Strict convexity makes it unique.
+Because the domain in logarithmic variables is all of $\mathbb R^2$, the minimizer
+is a critical point.
+\end{proof}
+
+\begin{cor}
+The Hessian with respect to physical scales $(r,L)$ is positive definite at the
+critical point.
+\end{cor}
+
+\begin{proof}
+At a critical point, the logarithmic and physical Hessians obey
+\[
+H_{\log}=
+\begin{pmatrix}r&0\\0&L\end{pmatrix}
+H_{\rm phys}
+\begin{pmatrix}r&0\\0&L\end{pmatrix}.
+\]
+This is a congruence by a nonsingular positive diagonal matrix. Since $H_{\log}$ is
+positive definite, so is $H_{\rm phys}$.
+\end{proof}
+
+\section{Closed-form control case}
+
+When $C=0$, minimization over length gives
+\[
+L_*(r)=\sqrt{\frac{K}{g(r)}},
+\qquad
+E_*(r)=2\sqrt{Kg(r)},
+\qquad
+g(r)=A+Dr+Fr^2+\frac{B}{r^2}.
+\]
+The unique radius is the positive root of
+\[
+g'(r)=D+2Fr-\frac{2B}{r^3}=0,
+\qquad
+2Fr^4+Dr^3-2B=0.
+\]
+The left side is strictly increasing from $-2B$ to $+\infty$, proving existence and
+uniqueness directly.
+
+\section{Interpretation}
+
+The two conserved structures do complementary work:
+\[
+\frac{BL}{r^2}\quad\text{punishes radial collapse},\qquad
+\frac{K}{L}\quad\text{punishes longitudinal collapse}.
+\]
+Surface or core energy prevents unlimited radial expansion. Together they close the
+two-dimensional scale plane.
+
+This makes the second invariant a mathematical requirement of the current scale
+model, not decorative reactor complexity. The theta graph's two independent cycles
+are therefore potentially functional: their flux content can help select the
+network scale.
+
+\section{What this does not prove}
+
+\begin{itemize}
+\item It does not derive an order-parameter medium realizing the two fluxes.
+\item It assumes common branch radius and a fixed dimensionless graph shape.
+\item It compresses the cycle inductance matrix into a scale-independent positive
+coefficient $K$; realistic aspect dependence may shift or remove the minimum.
+\item It does not test junction algebra, zipping, kink/sausage modes, reconnection,
+transport, or fusion benefit.
+\item It is an existence theorem for an effective energy, not a reactor design.
+\end{itemize}
+
+\section{Verification}
+
+Exact derivatives, exponent-vector convexity, the $C=0$ control solution, a
+$C>0$ numerical example, and the physical Hessian are checked in
+\path{../code/g1a_second_invariant_checks.py}.
+
+
+
+\end{document}

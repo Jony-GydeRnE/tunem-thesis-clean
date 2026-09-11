@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+
+\title{G1a: Two-Parameter Scale Existence\\
+\large Radius and length cannot be stabilized by the naive positive-energy model}
+\author{}
+\date{2026-08-07 07:32 CST (UTC+8)}
+
+\begin{document}
+\maketitle
+
+\section{Question and verdict}
+
+The one-parameter restriction establishes that conserved axial tube flux and
+adiabatic plasma content prevent collapse under an \emph{isotropic} rescaling. G1a
+asks the stronger question: does the same energy possess a finite stationary point
+when tube radius and total network length can change independently?
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Verdict.} No. In the stated thin-tube model, every point that minimizes the
+length direction has a strictly downhill radius direction. The isotropic minimum is
+a constrained minimum, not a two-parameter equilibrium. Axial flux and adiabatic
+plasma content prevent point collapse but do not fix the network's aspect or tube
+radius. A second invariant or geometric/field-energy term is required.
+}}
+\end{center}
+
+This is a model-level falsification, not a no-go theorem for all graph reactors.
+
+\section{Model and scaling assumptions}
+
+Let $r>0$ scale the common branch radius and $L>0$ scale every branch length of a
+fixed theta-graph shape. Absorb reference geometry and sums over edges into positive
+coefficients. The energy proposed for the first G1a test is
+\begin{equation}
+E(r,L)=
+AL+DrL+Fr^2L+B\frac{L}{r^2}
++C(r^2L)^{-2/3},
+\label{eq:energy}
+\end{equation}
+where:
+\begin{itemize}
+\item $AL$ is an effective line-tension cost;
+\item $DrL$ is tube interface or surface energy;
+\item $Fr^2L$ is a core or condensate volume cost;
+\item $BL/r^2$ is axial magnetic energy with tube flux frozen; and
+\item $C(r^2L)^{-2/3}$ is the internal energy of a fixed-content adiabatic plasma
+with $\gamma=5/3$ and volume proportional to $r^2L$.
+\end{itemize}
+
+All coefficients are nonnegative; for the strict result below, axial flux gives
+$B>0$. The model assumes slender tubes, a common radius scaling, fixed graph shape,
+and no separate poloidal/twist flux, external pressure, bending energy, mutual
+inductance, or hard geometric constraint.
+
+\section{Exact reduction}
+
+Define
+\[
+g(r)=A+Dr+Fr^2+\frac{B}{r^2},
+\qquad
+E(r,L)=Lg(r)+Cr^{-4/3}L^{-2/3}.
+\]
+For each fixed $r$, $E\to\infty$ as $L\to0$ and $L\to\infty$, and the unique
+length minimizer follows from $\partial_LE=0$:
+\begin{equation}
+L_*(r)=
+\left[
+\frac{2C}{3g(r)}r^{-4/3}
+\right]^{3/5}.
+\label{eq:Lstar}
+\end{equation}
+At this point the plasma energy is $3/2$ times $L_*g$, so the exactly reduced energy
+is
+\begin{equation}
+E_*(r)=\frac52\left(\frac{2C}{3}\right)^{3/5}
+\left[\frac{g(r)}{r^2}\right]^{2/5}.
+\label{eq:Ered}
+\end{equation}
+
+\begin{prop}[Two-parameter G1a no-stationary-point result]
+If $A,D,B>0$ and $F\ge0$, the energy in Eq.~\eqref{eq:energy} has no stationary
+point at finite $(r,L)\in(0,\infty)^2$.
+\end{prop}
+
+\begin{proof}
+The only radius-dependent factor in Eq.~\eqref{eq:Ered} is
+\[
+H(r)=\frac{g(r)}{r^2}
+=F+\frac{D}{r}+\frac{A}{r^2}+\frac{B}{r^4}.
+\]
+Its derivative is
+\[
+H'(r)=-\frac{D}{r^2}-\frac{2A}{r^3}-\frac{4B}{r^5}<0
+\]
+for every finite $r>0$. Therefore $E_*(r)$ is strictly decreasing and cannot
+possess a finite-radius stationary point. Since every full stationary point would
+also be stationary after exact minimization in $L$, none exists.
+\end{proof}
+
+The same obstruction appears directly. At $\partial_LE=0$, write the plasma term
+$P=C(r^2L)^{-2/3}$; then $P=\tfrac32Lg(r)$. Substitution into
+$r\partial_rE$ gives
+\[
+r\partial_rE
+=-L\left(2A+Dr+\frac{4B}{r^2}\right)<0.
+\]
+The core-volume coefficient $F$ cancels: a positive energy depending only on total
+volume cannot choose the aspect of that volume.
+
+\section{Why the isotropic pass was insufficient}
+
+Under the restricted deformation $r=\lambda r_0$, $L=\lambda L_0$, the energy has
+positive powers and negative powers of $\lambda$ and can possess the unique minimum
+of the restricted energy. But the full plane contains an anisotropic direction in which $r$
+increases while $L$ decreases. If $F>0$, the minimizing trajectory approaches
+constant volume ($L_*\sim r^{-2}$) while line, surface, and axial-flux costs fall;
+the infimum is reached only at $r\to\infty$, $L\to0$. This runaway eventually
+violates the slender-tube approximation, which is precisely the signal that the
+minimal model does not close its own scale problem.
+
+\section{Scientific consequence}
+
+G1a has failed for the naive energy but succeeded as a gate: it found the missing
+physics. A viable model needs at least one independent shape-sensitive contribution.
+Candidates include:
+\begin{itemize}
+\item conserved poloidal or twist flux, whose magnetic energy can scale as $1/L$;
+\item helicity and the full cycle-flux/mutual-inductance matrix of the theta graph;
+\item bending or curvature energy and junction-core energy;
+\item an external-pressure or vessel constraint, stated rather than hidden; or
+\item a relaxed-MHD spectral constraint in a genus-2 domain.
+\end{itemize}
+
+The next G1a calculation should add the least speculative of these---conserved axial
+and poloidal fluxes---and determine whether the resulting finite critical point has a
+positive $2\times2$ Hessian without relying on the boundary of the thin-tube regime.
+
+\section{Verification and scope}
+
+Every identity above is independently checked in
+\path{../code/g1a_two_parameter_checks.py}. The script also displays the isotropic
+restriction and verifies the direct stationarity contradiction symbolically.
+
+This result does not address junction topology, branch kink/sausage stability,
+reconnection, transport, fusion gain, or engineering. It disproves only finite-scale
+equilibrium for Eq.~\eqref{eq:energy} under the declared independent scalings.
+
+
+
+\end{document}
