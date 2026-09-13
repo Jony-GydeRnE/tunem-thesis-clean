@@ -3,6 +3,7 @@
 % The machine is not presented in advance. Each component appears only
 % after a physical failure makes it necessary.
 % Build from the repository root: python3 thesis/code/build.py thesis
+%   (or: cd thesis && latexmk -pdf thesis-draft.tex)
 % =====================================================================
 \documentclass[11pt]{article}
 \usepackage[letterpaper,margin=0.82in]{geometry}
@@ -11,6 +12,11 @@
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{
+  pdftitle={Let the Machine Reveal Itself: From Fusion Physics to the Spherical-Tokamak Centre Stack (working thesis draft)},
+  pdfauthor={Jony (TUNEM)},
+  pdfsubject={Master's thesis working draft, Tsinghua Nuclear Engineering and Management},
+  pdfkeywords={tokamak, spherical tokamak, fusion, centre stack, Freidberg, TUNEM}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \setlength{\fboxsep}{8pt}
@@ -23,9 +29,9 @@
   \textbf{Audit note.} #1}}\end{center}}
 \newcommand{\supportingquantity}[2]{%
   \noindent\textit{Supporting quantity --- #1.} #2\par}
-\newcommand{\friedbergvariable}[2]{%
+\newcommand{\freidbergvariable}[2]{%
   \begin{center}\fcolorbox{blue!60!black}{blue!5}{\parbox{0.90\textwidth}{%
-  \textbf{Primary Friedberg parameter --- #1.} #2}}\end{center}}
+  \textbf{Primary Freidberg parameter --- #1.} #2}}\end{center}}
 \newcommand{\imagebrief}[2]{%
   \begin{center}\fcolorbox{orange!80!black}{yellow!12}{\parbox{0.90\textwidth}{%
   \textbf{PLACE IMAGE HERE --- #1.} {\footnotesize #2}}}\end{center}}
@@ -228,7 +234,7 @@ cross-section is the major radius $R_0$:
 These parameters have appeared because the design has acquired two geometrically
 different lengths, not because a tokamak diagram handed them to us.
 
-\friedbergvariable{$a$ (minor radius) and $R_0$ (major radius)}{Closing the
+\freidbergvariable{$a$ (minor radius) and $R_0$ (major radius)}{Closing the
 straight corridor makes these two dimensions unavoidable: $a$ measures the
 cross-sectional reach available to the plasma, while $R_0$ measures the radius of
 the closed path that removes end loss. Their ratio $A=R_0/a$ is useful, but is a
@@ -704,7 +710,7 @@ Grad--Shafranov equation (2010), \href{https://www.researchgate.net/publication/
 \newpage
 
 % ============================== PAGE 11 ==============================
-\section*{Eleven. The transformer has a clock}
+\section*{11. The transformer has a clock}
 
 The central solenoid was introduced to drive the toroidal current. Faraday's law now
 reveals a price. Around a toroidal loop,
@@ -867,7 +873,7 @@ Thus, at fixed $R_0$ and $a$, elongation buys volume linearly. More volume can h
 fuel and more fusion power; later we will state exactly which other quantities must be
 held fixed before making that comparison.
 
-\friedbergvariable{$\kappa$ (elongation)}{Equation~\eqref{eq:kappa} changes the plasma
+\freidbergvariable{$\kappa$ (elongation)}{Equation~\eqref{eq:kappa} changes the plasma
 volume in Eq.~\eqref{eq:elongated-volume} and enters the shaped safety-factor and current
 limits derived below. It is not decorative geometry: it is a design lever with a
 stability cost.}
@@ -1002,7 +1008,7 @@ cross-section, or more elongation permits more current under this particular lim
 larger major radius $R_0$ lowers the permitted current when the other variables are held
 fixed.
 
-\friedbergvariable{$q_*$ and $I_p$}{Equation~\eqref{eq:qstar} is the shaped global
+\freidbergvariable{$q_*$ and $I_p$}{Equation~\eqref{eq:qstar} is the shaped global
 safety factor used by Freidberg's reactor model. Equation~\eqref{eq:ip-kink-limit}
 turns its stability requirement into a quantitative current constraint. Together they
 couple geometry ($R_0,a,\kappa$), field ($B_0$), and the plasma current ($I_p$).}
@@ -1095,10 +1101,10 @@ same percentage appears to have at first glance. That is a motivation, not permi
 to choose an arbitrarily large field: coils, stresses, superconductors, plasma limits,
 and the central stack will later impose the corresponding prices.
 
-\friedbergvariable{$B_0$ and $\beta$}{Equation~\eqref{eq:pfus-scaling}
+\freidbergvariable{$B_0$ and $\beta$}{Equation~\eqref{eq:pfus-scaling}
 is the first bridge from plasma equilibrium to reactor output. It explains why the
 toroidal field $B_0$, normalized pressure $\beta$, and shaped volume
-$2\pi^2R_0a^2\kappa$ recur throughout Friedberg's design closure. The equation is a
+$2\pi^2R_0a^2\kappa$ recur throughout Freidberg's design closure. The equation is a
 conditional scaling law; temperature, confinement, and stability have not been
 eliminated.}
 
@@ -1170,7 +1176,7 @@ spherical-tokamak geometry: those have not yet earned their place.}
 
 
 \supportingquantity{first coupled ledger}{The variables in this ledger are the
-minimum state carried forward into the Friedberg-style closure problem. A proposed
+minimum state carried forward into the Freidberg-style closure problem. A proposed
 parameter set is acceptable only when the equations that constrain \emph{all} of them
 are checked together.}
 
@@ -1586,7 +1592,7 @@ Combining Eqs.~\eqref{eq:pfus-5050} and \eqref{eq:plasma-pressure} explains the
 scaling chain on page 17, but with its factors visible: at fixed $T$,
 $n_i=p/(2T)$ and hence $p_{\rm fus}\propto p^2$.
 
-\friedbergvariable{$T$, $n$, and $p$}{For the equal 50--50 mixture used here,
+\freidbergvariable{$T$, $n$, and $p$}{For the equal 50--50 mixture used here,
 $n_i$ is the primary fuel-density variable $n$, and $p=2nT$. A claimed gain in
 density at fixed magnetic field must therefore be checked against the pressure and
 density limits separately.}
@@ -1686,8 +1692,8 @@ Using Eq.~\eqref{eq:plasma-pressure}, Eq.~\eqref{eq:stored-energy} can also be
 written $W=(3/2)pV$. Thus a high-pressure plasma stores more energy at a given
 volume, but it also demands proportionally more heating power if $\tau_E$ is fixed.
 
-\friedbergvariable{$\tau_E$}{Energy-confinement time is the variable that converts
-the plasma state $(n,T,V)$ into an energy-loss power. It is a core Friedberg input,
+\freidbergvariable{$\tau_E$}{Energy-confinement time is the variable that converts
+the plasma state $(n,T,V)$ into an energy-loss power. It is a core Freidberg input,
 but unlike geometry it is not obtained from equilibrium alone.}
 
 \designconsequence{The reactor must satisfy two equations simultaneously: fusion
@@ -1785,7 +1791,7 @@ would make that claim meaningful.
 
 \supportingquantity{$Q_{\rm plasma}$}{This ratio records how much fusion power is
 obtained per unit of auxiliary power delivered to the plasma. It enters the later
-Friedberg power ledger but cannot by itself establish net electricity.}
+Freidberg power ledger but cannot by itself establish net electricity.}
 
 \designconsequence{The current ordinary-tokamak drawing has now earned auxiliary
 heating but not yet a power plant. The next physical obstacle is that $\tau_E$ is
@@ -1869,12 +1875,12 @@ a proof of impossibility, but it is an explicit research risk rather than hidden
 optimism.
 
 \supportingquantity{$H$}{The confinement multiplier $H$ makes the
-assumption behind an empirical $\tau_E$ explicit. Friedberg-style closure cannot
+assumption behind an empirical $\tau_E$ explicit. Freidberg-style closure cannot
 treat it as a harmless fitted detail, because Eq.~\eqref{eq:lawson} makes
 confinement directly load-bearing.}
 
 \model{No universal first-principles turbulence calculation is used in this thesis
-opening. When a particular confinement regression is introduced in the Friedberg
+opening. When a particular confinement regression is introduced in the Freidberg
 reconstruction, its published coefficient, units, database, and fit range will be
 quoted alongside the calculation.}
 
@@ -2122,13 +2128,13 @@ A later kinetic model can supply a coefficient and a profile-dependent predictio
 $f_{\rm bs}$. At this stage, the variable is already essential because it reduces the
 current that must be supplied by a transformer or external current drive.
 
-\friedbergvariable{$f_B$ (bootstrap fraction)}{Here $f_B$ is written
+\freidbergvariable{$f_B$ (bootstrap fraction)}{Here $f_B$ is written
 $f_{\rm bs}=I_{\rm bs}/I_p$ in Eq.~\eqref{eq:bootstrap-fraction}. It is the
 self-generated share of the required plasma current. Its numerical value must come
 from a cited kinetic model or experiment, not from the proportionality sign alone.}
 
 \model{Equation~\eqref{eq:bootstrap-structure} is a mechanism and sign statement,
-not a complete bootstrap-current formula. The later Friedberg reconstruction will
+not a complete bootstrap-current formula. The later Freidberg reconstruction will
 identify exactly which neoclassical coefficient it uses and will keep its profile
 assumptions visible.}
 
@@ -2225,7 +2231,7 @@ not a claim that either architecture is automatically preferable.}
 
 \designconsequence{The central solenoid has earned a place in the ordinary tokamak,
 but it also creates a choice between pulse duration, stored flux, and non-inductive
-current-drive burden. That choice will become an explicit Friedberg assumption.}
+current-drive burden. That choice will become an explicit Freidberg assumption.}
 
 % ============================= PAGE 40 ==============================
 \newpage
@@ -2307,7 +2313,7 @@ until a named confinement scaling, stability model, and profile model are suppli
 
 
 \designconsequence{The next stage is not to add more variables randomly. It is to
-take the exact set just derived and reconstruct, line by line, how Friedberg's 2015
+take the exact set just derived and reconstruct, line by line, how Freidberg's 2015
 reference design attempts to close it.}
 
 % ============================= PAGE 42 ==============================
@@ -2321,7 +2327,7 @@ PF coils, and shaped equilibrium; transformer limits and power balance forced he
 current drive, and the distinction between pulsed and non-inductive operation. Shape
 was added only after its geometric and control price was visible.
 
-The canonical target is Friedberg's Table-1 set,
+The canonical target is Freidberg's Table-1 set,
 \[
  a,\ R_0,\ \kappa,\ b,\ c,\ T,\ n,\ p,\ \tau_E,\ B_0,\ \beta,\ I,\ q_*,\ f_B.
 \]
@@ -2329,9 +2335,9 @@ This draft has derived the physical role of $a,R_0,\kappa,T,n,p,\tau_E,B_0,\beta
 $I$, $q_*$, and $f_B$. It has deliberately also introduced supporting quantities---
 for example $A,\delta,q(r),\beta_N,H,I_{\rm CD}$, and $Q_{\rm plasma}$---because
 they make the causal argument intelligible. They are not additional primary
-Friedberg parameters or automatically independent design knobs. The two missing
+Freidberg parameters or automatically independent design knobs. The two missing
 Table-1 hardware parameters are $b$ (blanket-region thickness) and $c$
-(TF-magnet thickness). They must earn their place before numerical Friedberg closure
+(TF-magnet thickness). They must earn their place before numerical Freidberg closure
 begins.
 
 \supportingquantity{remaining Part-I task}{The next physical chain is neutron escape
@@ -2357,7 +2363,7 @@ them as completed components yet. Exclude spherical-tokamak geometry.}
 
 \designconsequence{Before calculating a reactor, the next pages must derive the
 nuclear island and the toroidal-field-magnet thickness. Only after $b$ and $c$ have
-joined the same causal parameter set can the thesis begin Friedberg's numerical
+joined the same causal parameter set can the thesis begin Freidberg's numerical
 engineering-and-nuclear-physics closure.}
 % ============================= PAGE 43 ==============================
 \newpage
@@ -2380,7 +2386,7 @@ protect the magnets and vacuum boundary from the remaining radiation. These jobs
 force a radial region between plasma and TF coil. We call its total inboard/outboard
 thickness $b$.
 
-\friedbergvariable{$b$ (blanket-region thickness)}{The D--T neutron is neutral, so
+\freidbergvariable{$b$ (blanket-region thickness)}{The D--T neutron is neutral, so
 magnetic confinement cannot retain it. A reactor must reserve radial space for a first
 wall, neutron multiplier or moderator where used, tritium-breeding material, shielding,
 and a vacuum boundary. The parameter $b$ records the total required radial build of
@@ -2472,7 +2478,7 @@ Eqs.~\eqref{eq:bslow}--\eqref{eq:bbreed} derive a physical requirement, not a
 material-independent numerical answer.
 
 \supportingquantity{neutron mean free path}{The quantities $\lambda_s$ and
-$\lambda_B$ are supporting transport lengths, not Primary Friedberg parameters. They
+$\lambda_B$ are supporting transport lengths, not Primary Freidberg parameters. They
 explain why the primary radial-build parameter $b$ cannot be taken arbitrarily small.}
 
 % ============================= PAGE 45 ==============================
@@ -2679,7 +2685,7 @@ design margin. Their values must come from an explicit technology model. The fir
 terms, Eqs.~\eqref{eq:cstructure-scaling} and \eqref{eq:winding-thickness}, are the
 two irreducible physical demands: survive the field and produce the field.
 
-\friedbergvariable{$c$ (TF-magnet thickness)}{The toroidal-field magnet needs radial
+\freidbergvariable{$c$ (TF-magnet thickness)}{The toroidal-field magnet needs radial
 space both for structure that carries magnetic stress and for a winding pack that
 carries the ampere-turns required by Amp\`ere's law. Its total radial build $c$
 therefore couples mechanical strength and current density to $B_{\max}$, $B_0$,
@@ -3974,9 +3980,9 @@ a distinct engineering remedy, with its cost and stress penalties kept visible.}
 
 % ============================= PAGE 81 ==============================
 \newpage
-\section*{81. Friedberg's second remedy: raise the field ceiling, not the confinement claim}
+\section*{81. Freidberg's second remedy: raise the field ceiling, not the confinement claim}
 
-The preceding remedy changed the empirical confinement multiplier $H$. Friedberg's
+The preceding remedy changed the empirical confinement multiplier $H$. Freidberg's
 second remedy holds $H=1$ and changes an engineering input instead: the maximum
 magnetic field allowed at the inboard TF coil, $B_{\max}$. This is a clean
 counterfactual. It asks what the already-derived conventional machine would demand if
@@ -4015,7 +4021,7 @@ one must not use a coefficient calibrated at $13\,\mathrm T$ unchanged in a
 high-field scan.
 
 \supportingquantity{raised field ceiling $B_{\max}$}{This is an engineering input,
-not a new primary Friedberg parameter. It changes the primary central field $B_0$ and
+not a new primary Freidberg parameter. It changes the primary central field $B_0$ and
 the coil build $c$, then indirectly changes the current, stability, and
 current-drive calculations.}
 
@@ -4109,7 +4115,7 @@ at higher field. Launch geometry, accessibility, damping, parasitic absorption,
 current profile, and the power plant's recirculating-power budget all require a
 separate calculation.
 
-\model{For Section 6.2 we keep Friedberg's $40\,\mathrm{MW}$ wave-power allocation,
+\model{For Section 6.2 we keep Freidberg's $40\,\mathrm{MW}$ wave-power allocation,
 its lower-hybrid accessibility model, its profiles, and $H=1$. We change only
 $B_{\max}$ and then repeat the whole coupled calculation. This isolates what the
 high-field proposal actually claims.}
@@ -4237,7 +4243,7 @@ $B_{\max}$ window; it does not repeal Eq.~\eqref{eq:high-field-stress}. A fusion
 magnet program must still close stress and strain, quench detection and energy
 extraction, radiation tolerance, joint resistance where demountability is desired,
 manufacturing yield, cryogenic power, inspection, and replacement. The next sections
-remain in Friedberg's conventional design space; only after its closure problem is
+remain in Freidberg's conventional design space; only after its closure problem is
 fully mapped will the thesis ask whether a changed aspect ratio can solve a different
 geometric problem.
 
@@ -4259,7 +4265,7 @@ or a divertor.}
 
 % ============================= PAGE 87 ==============================
 \newpage
-\section*{87. Friedberg's third remedy: change the plant scale}
+\section*{87. Freidberg's third remedy: change the plant scale}
 
 The high-field route changed a magnet limit. The next route changes a mission input:
 the requested electric output $P_E$. The reference case chose
@@ -4281,7 +4287,7 @@ wall. This is the physical content behind the familiar phrase economy of scale. 
 is not an accounting trick and it is not free: the absolute amount of plant,
 inventory, construction, and grid-connected power also grows.
 
-For this test Friedberg holds the original plasma and magnet assumptions:
+For this test Freidberg holds the original plasma and magnet assumptions:
 \[
  H=1,\qquad B_{\max}=13\,\mathrm T,\qquad W_n=4\,\mathrm{MW\,m^{-2}},
 \]
@@ -4422,7 +4428,7 @@ $P_E$ (MW) & $a$ (m) & $R_0$ (m) & $B_0$ (T) & $\mathcal R_G$
 \end{center}
 
 The kink and Troyon ratios are the last two to close. The script's first all-pass
-point is $P_E=1556\,\mathrm{MW}$ on its displayed grids; Friedberg reports
+point is $P_E=1556\,\mathrm{MW}$ on its displayed grids; Freidberg reports
 $1550\,\mathrm{MW}$, an agreement appropriate to a simplified model and discrete
 scan. Greenwald remains below one with appreciable margin.
 
@@ -4462,7 +4468,7 @@ is not complete merely because one family of plasma ratios reaches one.}
 
 % ============================= PAGE 92 ==============================
 \newpage
-\section*{92. Friedberg's fourth remedy: lower the permitted wall loading}
+\section*{92. Freidberg's fourth remedy: lower the permitted wall loading}
 
 The last single-knob remedy changes the allowed average neutron wall loading $W_n$.
 The reference value was $4\,\mathrm{MW\,m^{-2}}$. Lowering it means demanding a
@@ -4480,7 +4486,7 @@ square metre, so more square metres must be built.
 The immediate trade is visible before any plasma fit is used. At fixed $a$,
 $R_0\propto W_n^{-1}$ and $V\propto R_0a^2\propto W_n^{-1}$. The same fusion output
 is produced in a larger volume. That lowers the required power density, pressure, and
-density, but it makes the reactor physically larger. Friedberg holds
+density, but it makes the reactor physically larger. Freidberg holds
 \[
  P_E=1000\,\mathrm{MW_e},\qquad H=1,\qquad B_{\max}=13\,\mathrm T,
 \]
@@ -4636,7 +4642,7 @@ response.
 currencies: empirical confinement margin, magnet field and structure, plant output,
 and neutron-wall area. Each can close the selected plasma ledger under stated
 assumptions; each exports difficulty into another part of the reactor. The next task
-is to compare the remedies on one honest ledger before moving beyond Friedberg's
+is to compare the remedies on one honest ledger before moving beyond Freidberg's
 conventional baseline.}
 
 % ============================= PAGE 97 ==============================
@@ -4724,20 +4730,18 @@ predictions.}
 
 % ============================= PAGE 99 ==============================
 \newpage
-\section*{99. What Friedberg's calculation has rigorously established}
+\section*{99. What Freidberg's calculation has rigorously established}
 
 The word rigorously must be used carefully. The following implication has been
 established by transparent substitution and numerical quadrature:
 \[
-\begin{array}{c}
+\begin{gathered}
 \text{2015 mission, geometry, coil, profile, confinement, current-drive,}\\
-\text{bootstrap, and four-limit assumptions}
-\end{array}
-\quad\Longrightarrow\quad
-\begin{array}{c}
+\text{bootstrap, and four-limit assumptions}\\[3pt]
+\Downarrow\\[3pt]
 \text{the reference conventional state fails kink and}\\
 \text{steady-state bootstrap closure simultaneously.}
-\end{array}
+\end{gathered}
 \]
 The size scan shows that merely choosing another minor radius within that baseline
 does not make all four tests pass. The remedy scans then identify which changed
@@ -4796,7 +4800,7 @@ and the field required a finite inboard magnet build. The primary parameter set
 \]
 has acquired physical meaning before it was used as engineering input.
 
-Friedberg's reference calculation then exposed the conventional current closure:
+Freidberg's reference calculation then exposed the conventional current closure:
 under its declared assumptions, an ordinary reference machine needs too much current
 for both its adopted kink margin and its available steady-state bootstrap share. The
 high-field result gives HTS its correct causal position: it is a technology that can
@@ -4933,7 +4937,7 @@ Equation~\eqref{eq:aspect-ratio-q-beta} is a geometric insight, not a stability
 limit. At fixed $\beta$, $\beta_N$, and shape, lower $A$ raises $q_*$. Equivalently,
 at a required $q_*$ it permits a larger normalized beta within this relation. This
 is the first-principles reason low aspect ratio is a plausible response to the
-Friedberg kink--beta coupling: it changes the geometry of the current that produces
+Freidberg kink--beta coupling: it changes the geometry of the current that produces
 the stabilizing poloidal field.
 
 \auditnote{The equation does \emph{not} prove that an ST is stable at a chosen
@@ -4943,7 +4947,7 @@ the conventional Troyon coefficient $2.8$ cannot simply be reused as an ST theor
 
 % ============================= PAGE 105 ==============================
 \newpage
-\section*{105. What an ST can plausibly relieve in the Friedberg closure}
+\section*{105. What an ST can plausibly relieve in the Freidberg closure}
 
 The conventional reference failed because its required current simultaneously made
 $q_*$ too small and made steady-state replacement too demanding. Low aspect ratio
@@ -4964,11 +4968,11 @@ and power-exhaust geometry; none may be held fixed without calculation.
 
 This is enough to formulate a responsible test, not to announce its result. The
 question immediately next is narrow and mathematical: does a finite-aspect-ratio ST
-calculation satisfy the two ratios that failed in Friedberg's conventional baseline,
+calculation satisfy the two ratios that failed in Freidberg's conventional baseline,
 namely the kink ratio and the non-inductive current ratio? We will use a published
 low-$A$ equilibrium and current-drive model, state every replacement assumption, and
 evaluate those two ratios. The centre-stack problem is \emph{not} a premise of that
-test; it is the separate engineering problem revealed only after the two Friedberg
+test; it is the separate engineering problem revealed only after the two Freidberg
 constraints have been answered.
 
 Integrated ST studies make the same methodological point. Menard \emph{et al.}
@@ -4982,9 +4986,9 @@ facilities and pilot plants based on the spherical tokamak, \emph{Nuclear Fusion
 
 % ============================= PAGE 106 ==============================
 \newpage
-\section*{106. The ST question is exactly Friedberg's two failed ratios}
+\section*{106. The ST question is exactly Freidberg's two failed ratios}
 
-Friedberg's conventional reference failed two current-centred tests:
+Freidberg's conventional reference failed two current-centred tests:
 \[
  {\cal R}_{K}=\frac{q_K}{q_*}>1,
  \qquad
@@ -5008,7 +5012,7 @@ Here $q_{K,\rm ST}$ is an ST-specific kink boundary, $f_{\rm BS,ST}$ is obtained
 from an ST finite-aspect-ratio bootstrap model, and $I_{\rm CD,allow}$ is the
 external current that the plant can afford to supply under an independently stated
 power and efficiency constraint. The logic has not changed. A candidate closes
-Friedberg's bootstrap obstruction only when those two inputs are independently
+Freidberg's bootstrap obstruction only when those two inputs are independently
 obtained and the ratio is at most one.
 
 \designconsequence{The centre-stack question is not included in
@@ -5050,18 +5054,18 @@ The definition of poloidal beta makes the physical content visible:
 It increases when thermal pressure rises relative to the poloidal magnetic field.
 Equation~\eqref{eq:menard-bootstrap-scaling} then combines the pressure-gradient
 source of bootstrap current with the low-$A$ orbit geometry through
-$\sqrt{\epsilon}$. This is the finite-$A$ replacement for Friedberg's
+$\sqrt{\epsilon}$. This is the finite-$A$ replacement for Freidberg's
 large-aspect-ratio local integral on pages 67--70.
 
 \model{The new coefficient and the equilibrium-derived poloidal beta make
 Eq.~\eqref{eq:menard-bootstrap-scaling} a model closure. That is acceptable and
-necessary: Friedberg's own numerical bootstrap result also required a declared
+necessary: Freidberg's own numerical bootstrap result also required a declared
 neoclassical closure. What would be unacceptable is to use the conventional
 large-$A$ coefficient at $A\simeq1.7$ and call the extrapolation a proof.}
 
 % ============================= PAGE 108 ==============================
 \newpage
-\section*{108. A published finite-$A$ candidate supplies every quantity the two tests need}
+\section*{108. A published finite-$A$ candidate supplies the kink test and current split}
 
 The following is not a generic ST slogan. It is a specified low-aspect-ratio systems
 calculation from Menard \emph{et al.}: $A=1.7$, $\kappa=2.75$,
@@ -5084,7 +5088,7 @@ at the same operating point. They demonstrate that the authors can construct a
 fully non-inductive scenario in their model. They do \emph{not}, by themselves,
 state the independently derived current-drive allowance required in the numerator of
 Eq.~\eqref{eq:st-friedberg-ratios}. That distinction is the difference between
-constructing a current balance and testing Friedberg's economic current-drive
+constructing a current balance and testing Freidberg's economic current-drive
 constraint.
 
 \auditnote{The displayed $\beta_N=4.0$--$4.7$ range characterizes this candidate,
@@ -5093,20 +5097,20 @@ comparison. Menard \emph{et al.} provide a separate normalized-beta/stability
 assessment for their ST equilibria. That analysis must be evaluated explicitly
 before this thesis makes any broader high-$\beta_N$ stability claim.}
 
-\imagebrief{Friedberg two-constraint closure: published low-A ST operating point}
+\imagebrief{Freidberg two-constraint closure: published low-A ST operating point}
 {Use a two-column, deliberately non-engineering graphic. Left: the conventional
-Friedberg reference with $q_*=1.56<2$ and required/calculated bootstrap
+Freidberg reference with $q_*=1.56<2$ and required/calculated bootstrap
 $0.84/0.44$. Right: the specified $A=1.7$ ST model with $q_*\ge3$ against
 $q_{K,\rm ST}=2.8$, and current fractions $f_{\rm BS}\simeq0.76$ plus
 $f_{\rm NBI}\simeq0.24$. Label the right-hand current sum as an identity imposed by
-a fully non-inductive scenario, not as an independently passed Friedberg ratio.
+a fully non-inductive scenario, not as an independently passed Freidberg ratio.
 State the resulting required external current explicitly. Do not draw magnets,
 centre stacks, HTS, or reactor hardware; this image separates the resolved kink
 result from the still-conditional bootstrap question.}
 
 \begin{figure}[htbp]\centering
   \includegraphics[width=1.0\textwidth]{figures/final/figS_st_closure.pdf}
-\caption{Friedberg's two obstructions, read with their required logical inputs visible. The ST kink comparison is an actual threshold test. The ST $0.76/0.24$ current split is an identity of Menard's fully non-inductive scenario, not an independent bootstrap-ratio pass: it identifies the external current the scenario must provide. Both columns are declared model results, not properties of tokamaks or of STs.}
+\caption{Freidberg's two obstructions, read with their required logical inputs visible. The ST kink comparison is an actual threshold test. The ST $0.76/0.24$ current split is an identity of Menard's fully non-inductive scenario, not an independent bootstrap-ratio pass: it identifies the external current the scenario must provide. Both columns are declared model results, not properties of tokamaks or of STs.}
   \label{fig:figS_st_closure}
 \end{figure}
 
@@ -5116,7 +5120,7 @@ result from the still-conditional bootstrap question.}
 \section*{109. First answer: the ST candidate closes the kink obstruction}
 
 The relevant ST disruption evidence used by Menard \emph{et al.} is more demanding
-than Friedberg's conventional reference threshold: NSTX disruption data show a marked
+than Freidberg's conventional reference threshold: NSTX disruption data show a marked
 increase in disruptivity below $q_*\simeq2.8$. Their stated ST design requirement is
 therefore
 \[
@@ -5132,7 +5136,7 @@ The same candidate scan gives $q_*\ge3$. Substitute these published values:
  \label{eq:st-kink-closure}
 \end{equation}
 
-This is an affirmative answer to Friedberg's kink obstruction within the declared
+This is an affirmative answer to Freidberg's kink obstruction within the declared
 finite-$A$ model. It does not claim that every ST is kink stable; it demonstrates
 that the low-$A$ candidate can satisfy a stricter ST-specific safety-factor criterion
 than the $q_K=2$ criterion that the conventional reference failed. The geometrical
@@ -5140,7 +5144,7 @@ reason anticipated on page 104 is now joined to an explicit operating-point test
 
 % ============================= PAGE 110 ==============================
 \newpage
-\section*{110. The bootstrap result identifies the price; it does not yet test Friedberg's constraint}
+\section*{110. The bootstrap result identifies the price; it does not yet test Freidberg's constraint}
 
 The current ledger does not change with aspect ratio:
 \[
@@ -5161,19 +5165,21 @@ by its current-accounting definition. Dividing its own complement by its own
 bootstrap fraction produces $1$ identically; it could not reveal a failure.
 
 What the published point does give us is the physical and engineering burden that
-an independent Friedberg test must meet:
+an independent Freidberg test must meet:
 \begin{equation}
  I_{\rm CD,needed}=(1-f_{\rm BS})I\simeq0.24I
- =2.6\text{--}2.9\,\mathrm{MA}.
+ \simeq(0.24)(10.8\,\mathrm{MA})\simeq2.6\,\mathrm{MA}.
  \label{eq:st-current-drive-needed}
 \end{equation}
-The scenario assumes $80\,\mathrm{MW}$ of $0.5\,\mathrm{MeV}$ neutral-beam
+Here $I\simeq10.8\,\mathrm{MA}$ is paired with $f_{\rm BS}\simeq0.76$ at
+normalized density near $0.8$; the full scan's current extrema are not combined
+with this selected fraction. The scenario assumes $80\,\mathrm{MW}$ of $0.5\,\mathrm{MeV}$ neutral-beam
 heating/current-drive power to obtain this fully non-inductive balance. It therefore
-demonstrates a substantial finite-$A$ bootstrap fraction and states the associated
+predicts a substantial bootstrap fraction in its equilibrium-informed model and states the associated
 external-drive burden; it does not independently establish that a plant can afford
 that burden.
 
-The proper Friedberg test remains conditional until an economic/recirculating-power
+The proper Freidberg test remains conditional until an economic/recirculating-power
 analysis supplies $I_{\rm CD,allow}$ independently:
 \begin{equation}
  {\cal R}_{B,\rm ST}=
@@ -5185,29 +5191,46 @@ analysis supplies $I_{\rm CD,allow}$ independently:
 This is the question the next research pass must answer. It is more rigorous than
 calling the identity $0.76/0.76=1$ a measured closure.
 
+The condition can be priced with published scalars alone. Freidberg's allowance was
+$100\,\mathrm{MW}$ of wall electricity for current drive, of which $40\,\mathrm{MW}$
+reaches the plasma (a $50\%$ wall-to-klystron and $80\%$ absorption chain); Menard's
+FNSF systems analysis assumes a neutral-beam wall-plug efficiency of
+$0.4$.\footnote{Freidberg \emph{et al.}, Sec.~4.6; Menard \emph{et al.}, Sec.~2.1.6, where
+$\eta_{\rm aux}=0.4$ is described as higher than presently achievable. The arithmetic is reproduced in
+\texttt{thesis/code/calculations/st\_drive\_affordability.py}.} Keeping the published
+$80\,\mathrm{MW}$ beam state would therefore draw $80/0.4=200\,\mathrm{MW_e}$, twice
+that allowance; fitting under it would need a wall-plug efficiency of $0.8$, or, if only
+the allowance's $40\,\mathrm{MW}$ were injected, a drive efficacy of about
+$2.6\,\mathrm{MA}/40\,\mathrm{MW}\simeq65\,\mathrm{kA/MW}$ at that state. These are
+bounds on the published state, not on a redesigned ST: lowering the beam power changes
+heating, fast-ion pressure, fusion power, current, and bootstrap fraction together, and
+the FNSF point is a $Q_{\rm DT}\simeq2$ neutron-source mission rather than a
+$1\,\mathrm{GW_e}$ plant. The affordability question can only be settled on a
+power-plant-mission ST scan carrying its own recirculating-power budget.
+
 % ============================= PAGE 111 ==============================
 \newpage
 \section*{111. Verdict: ST closes the kink obstruction; bootstrap closure has a stated condition}
 
-The published finite-aspect-ratio ST model answers one of Friedberg's two
+The published finite-aspect-ratio ST model answers one of Freidberg's two
 current-centred obstructions affirmatively:
 \[
  {\cal R}_{K,\rm ST}\le0.93<1.
 \]
-It also demonstrates a large bootstrap fraction, $f_{\rm BS}\simeq0.76$, and makes
+It also predicts a large bootstrap fraction, $f_{\rm BS}\simeq0.76$, and makes
 the missing condition quantitative: the operating point needs approximately
-$2.6$--$2.9\,\mathrm{MA}$ of independently affordable current drive.
+$2.6\,\mathrm{MA}$ of independently affordable current drive.
 
 We must not call that second result closure until its current-drive allowance has
-been obtained independently. Friedberg's conventional comparison was meaningful
+been obtained independently. Freidberg's conventional comparison was meaningful
 because the permitted drive came from a separate recirculating-power calculation
 while the bootstrap fraction came from a neoclassical calculation. Reusing the
 complement of a fully non-inductive ST current balance would erase that distinction.
 
 \designconsequence{Low aspect ratio has now been shown to close the kink obstruction
 in a published finite-$A$ model and to raise the bootstrap fraction to a quantified,
-promising level. Whether it closes Friedberg's bootstrap obstruction depends on the
-separate question $I_{\rm CD,allow}\ge2.6$--$2.9\,\mathrm{MA}$.}
+promising level. Whether it closes Freidberg's bootstrap obstruction depends on the
+separate question $I_{\rm CD,allow}\gtrsim2.6\,\mathrm{MA}$.}
 
 % ============================= PAGE 112 ==============================
 \newpage
@@ -5303,10 +5326,13 @@ ST, but it cannot by itself close the centre-stack equation.}
 
 % ============================= PAGE 115 ==============================
 \newpage
-\section*{115. What remains after an ST closes Friedberg's two constraints}
+\section*{115. What remains after the ST answers Freidberg's two questions}
 
-The narrowly posed Friedberg result is now established on page 111. It does not
-settle every physical or engineering demand placed on a reactor. The following
+The narrowly posed Freidberg result is now established on page 111: the kink
+obstruction is closed within the declared finite-$A$ model, and the bootstrap
+obstruction has been reduced to an explicit current-drive condition that still awaits
+an independent affordability calculation. That result does not settle every physical
+or engineering demand placed on a reactor. The following
 questions are separate and still require an integrated calculation:
 
 \begin{enumerate}
@@ -5319,11 +5345,12 @@ with explicit profiles and collisionality;
 Eq.~\eqref{eq:centre-stack-field} positive with credible stress, current density,
 shielding, cooling, protection, and maintenance margins;
 \item a divertor, first-wall, blanket, and tritium-breeding calculation. This includes
-the exhaust problem Friedberg's four ratios intentionally did not close.
+the exhaust problem Freidberg's four ratios intentionally did not close.
 \end{enumerate}
 
 The centre-stack calculation begins next. Its task is not to reopen the two
-Friedberg ratios; those have already been tested. Its task is to measure the exact
+Freidberg ratios; one has been passed and the other has been reduced to a stated
+condition. Its task is to measure the exact
 geometric and mechanical debt created by the low-$A$ solution. Only then can HTS,
 reduced shielding, larger radius, alternative current initiation, or modular
 maintenance be discussed as quantified responses rather than wishful labels.
@@ -5448,7 +5475,7 @@ and ramp plasma current. Since $R_{\rm sol}$ must fit inside the same central co
 $R_{\rm sol}<R_{\rm cs}$, the available inductive flux falls at least quadratically
 as the column becomes narrow.
 
-This fact connects directly to the Friedberg current ledger. A pulsed ST cannot
+This fact connects directly to the Freidberg current ledger. A pulsed ST cannot
 claim steady operation simply because it can make an initial plasma current; it needs
 enough flux swing for its chosen pulse or a non-inductive start-up and sustainment
 route. Conversely, a steady-state ST with high bootstrap fraction has a second
@@ -5470,10 +5497,10 @@ questions:
 \item What $B_0$, $R_0$, and $A$ are demanded by the plasma mission?
 \item Does Eq.~\eqref{eq:centre-stack-field} leave positive inboard radius after
 the required nuclear build $b$?
-\item Does the available $\pi R_{\rm cs}^2$ exceed the full area ledger in
+\item Is $\pi R_{\rm cs}^2$ sufficient for the full area ledger in
 Eq.~\eqref{eq:centre-stack-area-ledger}?
-\item Can the structural allocation carry the field-dependent load without exceeding
-stress or superconducting-strain limits?
+\item Can the structural allocation withstand the field load within stress and
+superconducting strain limits?
 \item If solenoid area is reduced, what explicit non-inductive start-up and current
 maintenance system replaces its flux swing?
 \end{enumerate}
@@ -5542,11 +5569,13 @@ claim radial space before the magnet is sized.}
 
 This gives the radial order of operations:
 \[
-\boxed{\text{plasma mission}}
-\ \longrightarrow\
-\boxed{\text{neutron, heat, and tritium functions}}
-\ \longrightarrow\
+\begin{gathered}
+\boxed{\text{plasma mission}}\\[3pt]
+\downarrow\\[3pt]
+\boxed{\text{neutron, heat, and tritium functions}}\\[3pt]
+\downarrow\\[3pt]
 \boxed{\text{space left for TF conductor, support, and start-up}}.
+\end{gathered}
 \]
 Reversing that order---choosing a desired tiny centre column first and assigning
 the nuclear functions whatever space survives---would be the same category error
@@ -5613,10 +5642,11 @@ and start-up ledger at the chosen $R_0$, $A$, and $B_0$.}
 
 % ============================= PAGE 124 ==============================
 \newpage
-\section*{124. What remains after the Friedberg answer}
+\section*{124. What remains after the Freidberg answer}
 
 The causal argument has reached a useful, deliberately narrow conclusion. The
-finite-$A$ calculation on pages 106--111 answered Friedberg's two current questions.
+finite-$A$ analysis in Sections 106--111 passed the stated kink screen and
+identified the independent condition still required for bootstrap closure.
 The earlier first-principles geometry explains why that answer was possible:
 \begin{enumerate}
 \item Eq.~\eqref{eq:aspect-ratio-q-beta} changes the current--safety-factor geometry
@@ -5629,8 +5659,11 @@ winding-area problem created by the same geometry. Published integrated ST studi
 show that these ingredients can be put into a serious systems calculation.
 
 That establishes the result relevant here: a specified finite-$A$ ST model closes the
-two current-centred constraints that failed in Friedberg's conventional baseline,
-whereas merely raising $H$ in that baseline did not. It does not establish a theorem
+kink constraint that failed in Freidberg's conventional baseline and reduces the
+bootstrap constraint to an explicit, quantified current-drive condition
+($I_{\rm CD,allow}\gtrsim2.6\,\mathrm{MA}$, Section 111). Raising $H$ in
+Freidberg's conventional family could close the kink and bootstrap tests but
+still violated the Troyon bound; it did not close all four screens. It does not establish a theorem
 that every ST or every other reactor constraint is closed; exhaust, blanket, tritium,
 radiation, maintenance, and cost remain their own questions.
 
@@ -5647,7 +5680,7 @@ b,\ R_{\rm cs},\ A_{\rm wp},\ A_{\rm str}\\
 \end{array}
 \]
 The next section makes the centre-stack ledger into an explicit, auditable parameter
-scan. It does not relabel that separate engineering question as a failed Friedberg
+scan. It does not relabel that separate engineering question as a failed Freidberg
 plasma constraint.
 
 % ============================= PAGE 125 ==============================

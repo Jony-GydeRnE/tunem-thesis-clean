@@ -1,0 +1,183 @@
+% =====================================================================
+% SHORT RESEARCH PROSPECTUS — Where Does the Solenoid Burden Go?
+% Build: cd research-ideas/centre-stack && latexmk -pdf research-prospectus.tex
+% =====================================================================
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.85in,top=0.75in,bottom=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=navy,urlcolor=navy]{hyperref}
+
+\hypersetup{
+  pdftitle={Where Does the Solenoid Burden Go?},
+  pdfauthor={Jony (TUNEM)},
+  pdfsubject={Six-week feasibility study of merging-compression startup and NI-HTS centre-stack compatibility},
+  pdfkeywords={spherical tokamak, NI-HTS, centre stack, startup, research prospectus}}
+
+% ---- house palette (shared with the illustrated guide and excerpt)
+\definecolor{navy}{HTML}{1B3A5C}
+\definecolor{gold}{HTML}{D4A028}
+\definecolor{teal}{HTML}{1F7A8C}
+\definecolor{cream}{HTML}{FFF8E7}
+\definecolor{mist}{HTML}{EEF3F7}
+\definecolor{ink}{HTML}{222222}
+\definecolor{mute}{HTML}{666666}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\color{ink}
+
+% ---- running header (pages 2–3) and footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{mute}Research prospectus \,|\, discussion draft}
+\fancyfoot[R]{\footnotesize\color{mute}\thepage}
+\newcommand{\runninghead}[1]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[navy] (current page.north west) rectangle ([yshift=-0.62in]current page.north east);
+    \node[anchor=west, text=white, font=\footnotesize\bfseries] at ([xshift=0.85in, yshift=-0.33in]current page.north west) {WHERE DOES THE SOLENOID BURDEN GO?};
+    \node[anchor=east, text=white, font=\footnotesize] at ([xshift=-0.85in, yshift=-0.33in]current page.north east) {#1};
+  \end{tikzpicture}\par\vspace*{0.45in}}
+
+% ---- building blocks
+\newcommand{\kicker}[1]{\noindent{\footnotesize\bfseries\color{gold}\MakeUppercase{#1}}\par\vspace{4pt}}
+\newcommand{\kickerteal}[1]{\noindent{\footnotesize\bfseries\color{teal}\MakeUppercase{#1}}\par\vspace{4pt}}
+\newcommand{\bigtitle}[1]{{\fontsize{26}{30}\selectfont\bfseries\color{white}#1\par}}
+\newcommand{\subtitle}[1]{{\normalsize\color{white}#1}\par}
+\newcommand{\pagetitle}[1]{{\fontsize{20}{24}\selectfont\bfseries\color{navy}#1\par}\vspace{6pt}}
+\newcommand{\heading}[1]{\vspace{8pt}{\large\bfseries\color{navy}#1}\par\vspace{2pt}}
+\newcommand{\subheading}[1]{\vspace{6pt}{\normalsize\bfseries\color{navy}#1}\par\vspace{1pt}}
+
+\newtcolorbox{goldbox}[1]{enhanced, colback=cream, colframe=gold, boxrule=0.8pt,
+  arc=3pt, left=8pt, right=8pt, top=6pt, bottom=6pt, fonttitle=\bfseries,
+  coltitle=navy, title=#1, attach title to upper={\par\vspace{2pt}}, before skip=8pt, after skip=8pt}
+\newtcolorbox{mistbox}[1]{enhanced, colback=mist, colframe=mist, boxrule=0pt,
+  arc=3pt, left=8pt, right=8pt, top=6pt, bottom=6pt, fonttitle=\bfseries,
+  coltitle=navy, title=#1, attach title to upper={\par\vspace{2pt}}, before skip=8pt, after skip=8pt}
+
+\setlist[itemize]{label=\textcolor{teal}{\textbullet}, leftmargin=1.4em, itemsep=2pt, topsep=3pt}
+\setlist[description]{font=\bfseries\color{teal}, labelwidth=4.2em, leftmargin=5.2em, itemsep=2pt, topsep=3pt, style=sameline}
+
+\begin{document}
+
+% ======================================================= PAGE 1
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[navy] (current page.north west) rectangle ([yshift=-2.05in]current page.north east);
+  \fill[gold] ([yshift=-2.05in]current page.north west) rectangle ([yshift=-2.12in]current page.north east);
+\end{tikzpicture}%
+\vspace*{-0.15in}
+\kicker{Short research prospectus \,|\, September 2026}
+\bigtitle{Where Does the Solenoid Burden Go?}
+\vspace{4pt}
+\subtitle{A six-week feasibility study of merging-compression startup and NI-HTS centre-stack compatibility}
+\vspace{1.15in}
+
+\kickerteal{Primary question}
+{\Large\bfseries\color{navy}How much central-solenoid burden can merging-compression genuinely remove, and where does that burden reappear?\par}
+\vspace{4pt}
+
+The proposed first project connects two existing research streams: (1) sharp-D no-insulation
+high-temperature-superconducting toroidal-field windings, and (2) merging-compression and repetitive startup
+in spherical tokamaks. The initial task is not a complete reactor optimization. It is a bounded test of whether
+one representative startup transient creates a consequential magnet and recovery penalty.
+
+\begin{goldbox}{Burden-transfer hypothesis}
+Reducing solenoid flux does not automatically remove startup cost. The burden may reappear as induced current,
+HTS hysteresis, structural eddy loss, TF field error, cryogenic recovery time, actuator power, failed formation
+shots, cyclic damage, or reduced plant duty.
+\end{goldbox}
+
+\heading{Proposed first deliverable}
+\begin{itemize}
+  \item Reproduce one published charging/discharging response of the sharp-D NI-HTS winding.
+  \item Apply one representative or sanitized CS/PF/merging startup waveform.
+  \item Calculate the field seen by the winding, the field error, and the loss-channel decomposition.
+  \item Issue a one-page verdict: signal, obstruction, indeterminate, or irrelevant.
+\end{itemize}
+
+\begin{mistbox}{Scope discipline}
+One primary proposal, with later branches activated only by the first result. No claim of novelty is made until
+the literature and group-internal work are checked.
+\end{mistbox}
+
+\clearpage
+
+% ======================================================= PAGE 2
+\runninghead{Method and kill tests}
+\kickerteal{A bounded first calculation}
+\pagetitle{Six-week feasibility sprint}
+
+\begin{description}
+  \item[Week 1] Reproduce a published NI-HTS charging/discharging case and document model boundaries.
+  \item[Week 2] Define one startup cycle and compute the time-dependent field at the winding.
+  \item[Week 3] Add minimal vessel/casing/passive-current paths and check energy conservation.
+  \item[Week 4] Decompose cold energy by HTS hysteresis, structure/casing eddy, contact, coupling, and joints.
+  \item[Week 5] Sweep only the parameters that move the dominant channel and the useful plasma-field transfer.
+  \item[Week 6] Report the verdict, uncertainty, missing data, and whether a paper-scale model is earned.
+\end{description}
+
+\heading{Quantities to report}
+\begin{itemize}
+  \item Useful startup field at the plasma and unwanted TF-field perturbation.
+  \item Cold joules per event, local temperature-rise proxy, and recovery time.
+  \item Dominant loss channel and its sensitivity to waveform, contact, geometry, and passive structures.
+  \item The central-solenoid flux or radial space actually saved at the same post-startup plasma target.
+\end{itemize}
+
+\begin{goldbox}{Kill tests and honest pivots}
+\begin{itemize}
+  \item Forcing at the winding is negligible: stop the magnet-coupling paper.
+  \item HTS hysteresis dominates: study tape orientation, field angle, actuator placement, or slew.
+  \item Casing/structure eddy loss dominates: study segmentation and field penetration.
+  \item Contact-controlled response is material: test a small number of manufacturable resistance zones.
+  \item Plasma startup uncertainty dominates: pivot to formation reliability and equivalent flux saved.
+\end{itemize}
+\end{goldbox}
+
+\clearpage
+
+% ======================================================= PAGE 3
+\runninghead{Collaboration and paper path}
+\kickerteal{Conditional extensions}
+\pagetitle{What the first result could unlock}
+
+\subheading{If the coupling is consequential}
+Compare CS-heavy, hybrid, and merge-heavy architectures at one fixed plasma mission. Parameterize startup
+allocation by $x_{\mathrm{CS}} = \Phi_{\mathrm{CS}}/\Phi_{\mathrm{required}}$ and map feasibility in
+$(x_{\mathrm{CS}},\ \text{repetition rate})$. Report millimetres recovered, cold energy, field error, recovery,
+duty, and the active constraint.
+
+\subheading{If selective transmission appears possible}
+Test whether actuator placement, casing segmentation, tape orientation, winding topology/contact architecture,
+and waveform co-design can increase useful plasma field per unit cold-mass loss and TF-field distortion.
+
+\subheading{If a robust obstruction appears}
+Ask whether passivity or reciprocity imposes a quantitative limit on transmitting the startup band while
+suppressing loss and field error. This theory branch activates only after the numerical model displays the
+obstruction.
+
+\begin{mistbox}{Inputs requested from Professor Tan}
+\begin{itemize}
+  \item The intended operating cycle: what repeats, what remains energized, and what sets dwell.
+  \item One representative or normalized startup waveform and approximate actuator geometry.
+  \item The metric that actually limits the NI-HTS winding or plasma scenario.
+  \item Whether external mutual forcing can be added to the existing equivalent-circuit model.
+  \item What work is already complete internally, and the publication/IP boundary.
+\end{itemize}
+\end{mistbox}
+
+\heading{Evidence base to reproduce first}
+{\small
+Yin, Tan et al., \emph{Fusion Engineering and Design} 220, 115338 (2025);
+Yin et al., \emph{IEEE Transactions on Applied Superconductivity} 36, 4200305 (2026);
+Tan, Gao et al., IAEA FEC 2025 (SUNIST-2);
+Yang et al., \emph{Superconductor Science and Technology} 38, 055008 (2025).\par}
+
+\end{document}

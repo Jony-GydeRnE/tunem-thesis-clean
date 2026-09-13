@@ -8,7 +8,7 @@
 2. **Solenoid-equivalent benefit:** measure the CS flux genuinely saved at the same achieved plasma state.
 3. **Hybrid startup allocation:** compare CS-heavy, hybrid and merge-heavy designs after counting recovered space, heat and recovery time.
 
-These are proposed projects, not claims of novelty. Begin with available data and a reproducible baseline. [Three-page prospectus](centre-stack/research-prospectus.pdf).
+These are proposed projects, not claims of novelty. Begin with available data and a reproducible baseline. [Three-page prospectus](centre-stack/research-prospectus.pdf) ([source](centre-stack/research-prospectus.tex)).
 
 ## Higher-risk directions
 

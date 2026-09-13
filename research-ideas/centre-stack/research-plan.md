@@ -2,7 +2,7 @@
 
 **Question:** for one fixed spherical-tokamak plasma mission, how much central-solenoid burden can merging-compression remove, and where does that burden reappear?
 
-This is a proposed research programme, not an established optimum or a demonstration of reactor closure. The immediate deliverable is the bounded feasibility study in the [prospectus](research-prospectus.pdf). The broader options are indexed in [ideas.md](ideas.md).
+This is a proposed research programme, not an established optimum or a demonstration of reactor closure. The immediate deliverable is the bounded feasibility study in the [prospectus](research-prospectus.pdf) ([source](research-prospectus.tex)). The broader options are indexed in [ideas.md](ideas.md).
 
 ## Common mission, different startup allocations
 
@@ -71,4 +71,4 @@ Start the feasibility map in \((x_{\rm CS},f_{\rm rep})\); add aspect ratio only
 
 What actually repeats and what stays energized? Which waveform and approximate geometry can be shared? What limits the winding or plasma scenario? Can external mutual forcing be added to the available model? What work already exists, and what are the publication/IP boundaries?
 
-The prospectus identifies the initial literature to reproduce. A publication requires a consequential, credible and sufficiently new result; neither a positive nor a negative outcome is automatically publishable.
+The prospectus identifies the initial literature to reproduce. For the separate bootstrap-affordability condition of thesis §§110–111, the decisive next input is a power-plant-mission ST equilibrium with its own recirculating-power budget; Menard's archived FNSF/pilot-plant dataset (DOI 10.11578/1366722) is the natural first source to check. A publication requires a consequential, credible and sufficiently new result; neither a positive nor a negative outcome is automatically publishable.

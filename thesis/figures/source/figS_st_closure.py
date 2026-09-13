@@ -2,7 +2,7 @@
 """Brief at v1_fresh l.4787 — the two-constraint closure, conventional vs ST.
 
 Deliberately non-engineering, as the brief demands: no magnets, no centre stack,
-no HTS, no reactor hardware anywhere.  This figure answers Friedberg's PLASMA
+no HTS, no reactor hardware anywhere.  This figure answers Freidberg's PLASMA
 question and nothing else.
 
 The four ratios are computed here from the declared model inputs, not quoted:
@@ -54,7 +54,7 @@ W, H = TEXTWIDTH_IN, 6.70
 fig, ax = canvas(W, H)
 
 ax.text(W / 2, H - 0.14,
-        "FRIEDBERG'S TWO OBSTRUCTIONS — one model set each side, "
+        "FREIDBERG'S TWO OBSTRUCTIONS — one model set each side, "
         "read the same way",
         fontsize=10.4, ha="center", va="top", color=PALETTE["vessel"])
 ax.text(W / 2, H - 0.38,

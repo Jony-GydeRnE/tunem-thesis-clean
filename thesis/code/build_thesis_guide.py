@@ -11,7 +11,10 @@ import re
 import importlib.util
 from pathlib import Path
 
-import fitz
+try:
+    import pymupdf as fitz
+except ImportError:
+    import fitz  # Compatibility with PyMuPDF releases before the renamed import.
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -32,9 +35,15 @@ RULE = HexColor('#CDDADE')
 
 def register_fonts():
     # Read installed fonts only; never copy licensed system fonts into a repo.
+    # Liberation Sans is metric-compatible with Arial, so the page layout is
+    # identical on Linux; DejaVu Sans is wider and is a last resort only.
     roots = [Path('/System/Library/Fonts/Supplemental'),
+             Path('/usr/share/fonts/truetype/liberation'),
+             Path('/usr/share/fonts/truetype/liberation2'),
              Path('/usr/share/fonts/truetype/dejavu')]
     choices = [('Arial.ttf', 'Arial Bold.ttf', 'Arial Italic.ttf'),
+               ('LiberationSans-Regular.ttf', 'LiberationSans-Bold.ttf', 'LiberationSans-Italic.ttf'),
+               ('LiberationSans-Regular.ttf', 'LiberationSans-Bold.ttf', 'LiberationSans-Italic.ttf'),
                ('DejaVuSans.ttf', 'DejaVuSans-Bold.ttf', 'DejaVuSans-Oblique.ttf')]
     for root, files in zip(roots, choices):
         if all((root / f).exists() for f in files):
@@ -42,10 +51,10 @@ def register_fonts():
                 pdfmetrics.registerFont(TTFont(name, str(root / filename)))
             pdfmetrics.registerFontFamily('Body', normal='Body', bold='BodyBold', italic='BodyItalic')
             mpl = importlib.util.find_spec('matplotlib')
-            math_font = Path(mpl.origin).parent/'mpl-data/fonts/ttf/DejaVuSans.ttf' if mpl else roots[1]/'DejaVuSans.ttf'
+            math_font = Path(mpl.origin).parent/'mpl-data/fonts/ttf/DejaVuSans.ttf' if mpl else roots[-1]/'DejaVuSans.ttf'
             pdfmetrics.registerFont(TTFont('MathSymbols', str(math_font)))
             return
-    raise RuntimeError('Install Arial or DejaVu Sans; no unembedded font fallback.')
+    raise RuntimeError('Install Arial, Liberation Sans or DejaVu Sans; no unembedded font fallback.')
 
 
 class Guide:
@@ -223,6 +232,12 @@ class Guide:
             source=fitz.open(path)
             doc[index].show_pdf_page(rect,source,0,clip=fitz.Rect(clip) if clip else None)
         doc.set_toc([[1,title.replace('<br/>',' '),i+1] for i,title in enumerate(self.pages)])
+        doc.set_metadata({'title':'From Fusion Physics to the Centre Stack',
+                          'author':'Jony (TUNEM)',
+                          'subject':'Illustrated guide to the 166-page working thesis; September 2026',
+                          'keywords':'tokamak, spherical tokamak, fusion, centre stack, Freidberg, TUNEM',
+                          'creator':'TUNEM thesis repository, thesis/code/build_thesis_guide.py',
+                          'producer':'TUNEM thesis repository'})
         doc.save(output,garbage=4,deflate=True)
         return doc
 
