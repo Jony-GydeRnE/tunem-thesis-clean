@@ -1,0 +1,302 @@
+[
+  {
+    "part": "The question",
+    "title": "From Fusion Physics<br/>to the Centre Stack",
+    "blocks": [
+      ["p", "<b>A guide to the thesis: the argument, the results, and the open questions</b><br/>Jony (TUNEM)"],
+      ["p", "A tokamak should not arrive on the first page as a finished object. The thesis starts with a physical objective: sustain useful deuterium-tritium fusion. Each attempted solution exposes another requirement. Magnetic steering leads to a closed path; toroidal geometry leads to a second field; pressure and current require equilibrium, shaping and control. The machine and its defining parameters are introduced together."],
+      ["box", "The central question", "Once the necessary components have appeared, can one consistent set of dimensions, fields and plasma conditions satisfy the selected reactor mission? If not, which assumption must change, and what new burden follows?"],
+      ["h", "The argument in three acts"],
+      ["table", ["Act", "What it establishes"], [
+        ["Build the vocabulary", "Why the machine has its fields, geometry, heating, nuclear systems and magnets."],
+        ["Test the design", "How Freidberg's 2015 model couples these variables, and why its conventional reference fails two tests."],
+        ["Follow the consequences", "What lower aspect ratio can relieve, what its evidence does not yet prove, and why the centre stack becomes a research problem."]
+      ], [0.27, 0.73]],
+      ["small", "This is a newly written overview of the 166-page working draft, not an extract from its opening and not a reactor design certificate. It retains representative derivations and figures while pointing to the detailed calculations. The separate edited excerpt preserves the original teaching sample."]
+    ],
+    "source": "Scope: full thesis §§1–127. Guide prepared September 2026. The proposal, prologue, edited excerpt and full draft remain distinct documents."
+  },
+  {
+    "part": "Reading the argument",
+    "title": "What is derived, and what is supplied?",
+    "blocks": [
+      ["p", "<b>Minimum assumptions does not mean that every result can be proved from Maxwell's equations.</b> Geometry, force balance and energy accounting provide a framework. Nuclear reaction data, transport fits and material limits supply information that this framework cannot determine by itself."],
+      ["flow", [
+        ["A physical demand", "Name the failure first: end loss, drift, inadequate heating, excessive current, neutron damage or insufficient inboard space."],
+        ["A model with boundaries", "State the approximation and its domain: a uniform field, axisymmetry, a fluid equilibrium, a selected transport fit or a particular winding-pack allowable."],
+        ["A coupled calculation", "Derive the resulting variable and carry its consequences into the other equations. A better value in one equation need not improve the whole design."],
+        ["A qualified conclusion", "Identify what passes, what fails, what is conditional and what remains untested. Keep a model result separate from a demonstrated reactor capability."]
+      ]],
+      ["p", "The full draft's path is <b>§§1–50: components and variables; §§51–101: Freidberg's design calculation; §§102–111: the low-aspect-ratio test; §§112–127: the centre-stack consequences.</b> References in this guide use those section numbers, not PDF page numbers."],
+      ["small", "The guide uses the qualified ST verdict in §111. Some later passages of the working draft still need to be brought into agreement with it. A map of the argument should expose that boundary rather than repeat stronger, unsupported wording."]
+    ],
+    "source": "Method and evidence boundaries: thesis §§1, 21–24, 32, 57, 67, 99–101 and 111."
+  },
+  {
+    "part": "Act I / the physical demand",
+    "title": "Hot fuel needs a different kind of boundary",
+    "blocks": [
+      ["p", "A deuterium nucleus has one proton and one neutron; a tritium nucleus has one proton and two neutrons. The reaction below rearranges those nucleons into a helium-4 nucleus and a free neutron. Its final rest mass is smaller; the difference supplies kinetic energy. This is nuclear rearrangement, not chemical burning."],
+      ["eq", "D + T → <sup>4</sup>He + n + 17.6 MeV"],
+      ["p", "The two fuel nuclei are positively charged. Their electrostatic repulsion makes close approach difficult. Quantum tunnelling allows fusion below the classical barrier, but a useful thermal reaction rate still requires very hot fuel. Here the temperature symbol T denotes the energy k<sub>B</sub>T<sub>K</sub>; 10 keV corresponds to about 116 million kelvin. This is an operating scale, not a temperature threshold derived from electrostatics alone."],
+      ["p", "At these temperatures the fuel is ionized. Its ions are positive and its electrons negative; the plasma is approximately neutral overall. Individual charges nevertheless respond to the Lorentz force. In a uniform field, with no electric field,"],
+      ["eq", "m dv/dt = q(v × B),      d(mv²/2)/dt = 0."],
+      ["p", "The magnetic force is perpendicular to velocity, so it changes direction without directly adding energy. For perpendicular circular motion, equating force magnitudes gives m v<sub>⊥</sub>²/r<sub>L</sub> = |q|v<sub>⊥</sub>B. Cancelling v<sub>⊥</sub> gives"],
+      ["eq", "r<sub>L</sub> = m v<sub>⊥</sub> / (|q|B)."],
+      ["box", "Design consequence", "Magnetic fields can keep particle excursions across the field small. They do not stop streaming along it. The hot core must be separated from material surfaces, but a real reactor must still manage finite particle and heat losses at its boundary."]
+    ],
+    "source": "Thesis §§1–3 and 25–30. Nuclear context: <link href='https://www.energy.gov/science/doe-explainsfusion-reactions' color='#176F74'>DOE, Fusion Reactions</link>. The separate prologue develops the microscopic background."
+  },
+  {
+    "part": "Act I / geometry emerges",
+    "title": "Close the corridor; acquire two radii",
+    "blocks": [
+      ["p", "A long coil creates a magnetic corridor, but particles can stream out of its ends. Closing that corridor is the branch pursued here. It removes this particular end-loss path; it does not prove that every possible fusion machine must be a tokamak."],
+      ["figure", "figM1_stage1_tall", 135, "Straight corridor: blue coils make the field; red arrows show escape along it. Pink denotes plasma inside the pale vessel. Cropped thesis perspective.", [175, 100, 375, 225]],
+      ["figure", "figM2_stage2_tall", 135, "The same corridor closed into a torus. Blue TF coils remain around the pink plasma tube; purple arrows indicate the field. Cropped thesis perspective.", [175, 100, 375, 225]],
+      ["p", "Now a measures the plasma's cross-sectional size, R<sub>0</sub> measures the radius of the closed path, and A = R<sub>0</sub>/a is their aspect ratio. These dimensions are consequences of the selected geometry."],
+      ["eq", "2πR B<sub>φ</sub>(R) = μ<sub>0</sub>NI<sub>c</sub>   ⇒   B<sub>φ</sub>(R) ∝ 1/R"],
+      ["p", "Ampère's law around a circle links the total coil ampere-turns NI<sub>c</sub>. In the continuous, axisymmetric-coil approximation it gives the equation above. Closing the ends has a price: the field is stronger on the inboard side than on the outboard side."]
+    ],
+    "source": "Thesis §§3–4. Reused figures: figM1_stage1_tall and figM2_stage2_tall, perspective panels only. Schematics, not fabrication drawings."
+  },
+  {
+    "part": "Act I / a second field",
+    "title": "The current that helps also constrains",
+    "blocks": [
+      ["p", "A purely toroidal field is not enough. Field curvature and its strength gradient cause guiding-centre drifts. A poloidal field, running the short way around the plasma, gives field lines a helical path and changes how particles sample these drifts. In a tokamak the toroidal plasma current produces the principal confining poloidal field."],
+      ["figure", "figM3_stage3_tall", 175, "The green central solenoid induces plasma current, shown by the red arrow. That current adds a poloidal field to the blue TF-coil system. Cropped thesis perspective; induction is not the only possible current source.", [170, 90, 380, 235]],
+      ["p", "For a circular, large-aspect-ratio estimate, Ampère's law gives B<sub>θ</sub>(a) ≈ μ<sub>0</sub>I<sub>p</sub>/(2πa). Field-line geometry then gives the toroidal turns per poloidal turn:"],
+      ["eq", "q<sub>a</sub> ≈ aB<sub>0</sub>/(R<sub>0</sub>B<sub>θ</sub>) = 2πa²B<sub>0</sub>/(μ<sub>0</sub>R<sub>0</sub>I<sub>p</sub>)."],
+      ["p", "At fixed geometry and toroidal field, increasing plasma current lowers q. Thus any lower bound on acceptable field-line pitch becomes an upper bound on current. This is the seed of the later kink obstruction; the bound itself must still come from a stated stability model or evidence."],
+      ["box", "New variables, one relationship", "I<sub>p</sub>, B<sub>0</sub>, a, R<sub>0</sub> and field-line pitch cannot be selected independently. The current profile also matters: the same total current can produce different interior q(r) profiles."]
+    ],
+    "source": "Thesis §§5–7, 15–16 and 40. q is toroidal turns per poloidal turn; q<sub>*</sub> later denotes a shaped global current measure, not a complete stability certificate."
+  },
+  {
+    "part": "Act I / collective physics",
+    "title": "A hot plasma pushes back",
+    "blocks": [
+      ["p", "Single-particle orbits explain magnetic steering. A reactor also needs collective force balance. For a pure, quasineutral, equal-temperature D–T plasma, both ions and electrons contribute pressure: p = n<sub>i</sub>T<sub>i</sub> + n<sub>e</sub>T<sub>e</sub> ≈ 2nT. In a static fluid model with scalar pressure,"],
+      ["eq", "J × B = ∇p     ⇒     B · ∇p = 0."],
+      ["p", "The second relation follows by dotting the first with B. Pressure is constant along field lines; in the nested-surface equilibrium being constructed, it is organized by magnetic surfaces. This does not by itself prove that every field configuration has such surfaces."],
+      ["figure", "figM4_stage4_tall", 175, "Orange external poloidal-field coils add equilibrium and position control to the blue TF coils and green central solenoid. Cropped thesis perspective panel.", [165, 85, 385, 240]],
+      ["p", "Elongation κ increases cross-sectional area; in an elliptical approximation, V ≈ 2π²R<sub>0</sub>κa². But shape is not free volume. The coil arrangement must create it, and elongated plasmas require attention to vertical stability and feedback. The full text develops flux coordinates and the Grad–Shafranov equilibrium equation before returning to design calculations."],
+      ["box", "Two tasks that geometry alone cannot solve", "A changing solenoid flux cannot sustain induction indefinitely. Ohmic heating also becomes less effective as the plasma heats. Auxiliary heating, non-inductive current drive or an explicit pulsed strategy must therefore enter the design."]
+    ],
+    "source": "Thesis §§8–24 and 38–40. Static scalar-pressure MHD is an approximation; force balance does not prove stability or adequate energy confinement."
+  },
+  {
+    "part": "Act I / the vocabulary",
+    "title": "The parameters now have physical jobs",
+    "blocks": [
+      ["p", "The thesis reconstructs the variables that the 2015 design paper assumes its reader already understands. Their importance is not that they fill a table: each records a requirement that now has a physical explanation."],
+      ["table", ["Primary quantities", "What they record", "Why they are coupled"], [
+        ["a, R<sub>0</sub>, κ", "Minor radius, major radius and elongation", "Set volume, field-line geometry, surface area and the inboard interval."],
+        ["b, c", "Nuclear-region and TF-magnet radial builds", "Energy capture, shielding, current capacity and mechanical support occupy space."],
+        ["T<sub>i</sub>, T<sub>e</sub>; T", "Ion/electron temperatures; the common-temperature approximation", "Set reaction rate, pressure, stored energy and heating needs."],
+        ["n, p", "Density and pressure", "For pure equal-temperature fuel, p ≈ 2nT; profiles require consistent averages."],
+        ["τ<sub>E</sub>", "Energy-confinement time", "Converts stored plasma energy into a loss-power requirement."],
+        ["B<sub>0</sub>, β", "Plasma-centre toroidal field and pressure ratio", "β = 2μ<sub>0</sub>p/B<sub>0</sub>² compares plasma pressure with magnetic energy density."],
+        ["I, q<sub>*</sub>, f<sub>B</sub>", "Total current, normalized inverse-current measure and bootstrap share", "Link confinement demand, field-line pitch and steady-state current replacement."]
+      ], [0.20, 0.35, 0.45]],
+      ["p", "Here I and I<sub>p</sub> both denote toroidal plasma current. The guide writes f<sub>BS</sub> for a calculated bootstrap fraction and f<sub>req</sub> for the independently required share, to prevent the same symbol concealing two different tests."],
+      ["small", "Supporting quantities such as A, q(r), β<sub>N</sub>, fusion gain and the triple product are valuable, but they are not extra independent knobs. The chosen B<sub>max</sub>, wall loading and engineering allowables are design inputs, not new members of the primary solved parameter set."]
+    ],
+    "source": "Thesis §§42 and 50; <link href='https://library.psfc.mit.edu/catalog/reports/2010/15ja/15ja021/15ja021_full.pdf' color='#176F74'>Freidberg, Mangiarotti &amp; Minervini (2015), introduction and Table 1</link>."
+  },
+  {
+    "part": "Act I / one complete calculation",
+    "title": "From collisions to an ignition condition",
+    "blocks": [
+      ["p", "This representative derivation shows the level of reasoning expanded in the thesis. Assume a uniform, pure D–T plasma, equal fuel fractions, T<sub>i</sub> = T<sub>e</sub> = T, and deposited alpha energy. Let n be the total ion density and ⟨σv⟩ the reaction cross section times relative speed, averaged over the velocity distribution."],
+      ["h", "1  Count reacting pairs"],
+      ["eq", "n<sub>D</sub> = n<sub>T</sub> = n/2   ⇒   P<sub>α</sub> = (n²/4)⟨σv⟩E<sub>α</sub>V."],
+      ["p", "The factor 1/4 comes from the mixture. Only E<sub>α</sub> ≈ 3.5 MeV per reaction is credited to self-heating here; the neutron's roughly 14.1 MeV leaves the confined plasma."],
+      ["h", "2  Count stored energy and define the loss clock"],
+      ["eq", "W = (3/2)nTV + (3/2)nTV = 3nTV,<br/>τ<sub>E</sub> ≡ W/P<sub>loss</sub>."],
+      ["p", "The two terms are ions and electrons. The confinement time is a definition of energy divided by loss power, not a claim that the plasma's detailed evolution is a single exponential."],
+      ["h", "3  Require alpha heating to replace those losses"],
+      ["eq", "(n²/4)⟨σv⟩E<sub>α</sub>V ≥ 3nTV/τ<sub>E</sub><br/>⇒ nτ<sub>E</sub> ≥ 12T / (⟨σv⟩E<sub>α</sub>)."],
+      ["p", "Cancel the positive factor nV and multiply by 4τ<sub>E</sub>. The 12 is now explained: 4 from the fuel mixture and 3 from thermal energy. The temperature dependence remains in ⟨σv⟩; no universal numerical threshold has been assumed."],
+      ["box", "What this does not establish", "This is an idealized ignition condition, not net electricity. Profiles, alpha losses and consistent radiation/transport accounting modify its evaluation. Auxiliary heating permits non-ignited operation; its power must then be counted explicitly."]
+    ],
+    "source": "Full derivation and qualifications: thesis §§25–32. The triple product nTτ<sub>E</sub> repackages these quantities; it is not an additional independent design variable."
+  },
+  {
+    "part": "Act I / beyond the magnetic bottle",
+    "title": "Neutrons and magnets make thickness matter",
+    "blocks": [
+      ["p", "The neutron is electrically neutral, so the Lorentz force does not bend its path into a gyro-orbit. Most D–T fusion energy therefore crosses the magnetic boundary. Energy capture, tritium breeding, shielding and heat removal are material-system tasks. They motivate a nuclear-region thickness b; its actual allocation depends on the chosen reactor architecture."],
+      ["radial", "field"],
+      ["p", "A TF magnet also needs thickness c: enough winding area to carry ampere-turns and enough structure to withstand magnetic loads. The field convention must be specified separately from this total radial inventory. Freidberg's 2015 model places B<sub>max</sub> at the plasma-facing surface of the inboard coil, at radius R<sub>0</sub> − a − b. Across the current-free interval to the plasma centre, B<sub>φ</sub>R is constant, giving"],
+      ["eq", "B<sub>0</sub> = B<sub>max</sub>[1 − (a+b)/R<sub>0</sub>]."],
+      ["p", "In this source convention c is calculated from the magnet equations; it is not subtracted again in the field fraction. A complete layout must still fit that winding and its support. The simplified field law cannot be extended through distributed coil current as though the entire pack were vacuum."],
+      ["small", "Controlled exhaust remains necessary too: magnetic confinement is not zero transport. Passing a neutron-wall-loading test does not establish that concentrated divertor heat flux, ash removal or impurity control is acceptable."]
+    ],
+    "source": "Thesis §§27, 43–50, 54 and 100. The guide uses §54's explicit 2015 field convention; it does not import the preliminary schematic's a+b+c field formula."
+  },
+  {
+    "part": "Act II / the design calculation",
+    "title": "A mission turns the sketch into a family",
+    "blocks": [
+      ["p", "Freidberg's question is not whether all tokamaks are impossible. It is whether a specified reactor mission can be reconciled with selected engineering, nuclear and plasma models. The thesis reconstructs that calculation after deriving its vocabulary."],
+      ["table", ["Baseline input", "2015 assumption"], [
+        ["Electric output; neutron wall loading", "P<sub>E</sub> = 1000 MW; W<sub>n</sub> = 4 MW/m²"],
+        ["Thermal conversion efficiency", "η<sub>T</sub> = 0.40"],
+        ["Maximum inboard coil field", "B<sub>max</sub> = 13 T"],
+        ["Stress and winding-pack allowables", "600 MPa; 20 MA/m²"]
+      ], [0.50, 0.50]],
+      ["figure", "figS_causal_scan_in_a", 195, "Causal scan in minor radius a: the mission and component models determine the remaining quantities together. Blue boxes are primary parameters; other boxes expose the inputs and tests."],
+      ["p", "Fixed output and wall loading constrain wall area. A selected neutron model supplies b; a magnet model supplies c. The radial build then fixes B<sub>0</sub>, while fusion power fixes required pressure and energy balance fixes required confinement. Scanning a explores a coupled family, not a collection of independently adjustable knobs."],
+      ["small", "P<sub>E</sub> follows the source's electric-output accounting and must not be relabelled net delivered power without subtracting recirculating loads. These 2015 allowables define the reference case, not today's universal technology limits."]
+    ],
+    "source": "Thesis §§51–57. Primary reference: <link href='https://library.psfc.mit.edu/catalog/reports/2010/15ja/15ja021/15ja021_full.pdf' color='#176F74'>Freidberg et al. (2015), Sections 3–5 and reference-design tables</link>."
+  },
+  {
+    "part": "Act II / the pivotal bridge",
+    "title": "Confinement demand becomes current demand",
+    "blocks": [
+      ["p", "Energy balance says how slowly heat must leave. Equilibrium does not say whether turbulent plasma transport will achieve that rate. The reference design therefore uses an empirical confinement scaling, fitted to experiments, to relate confinement time to current, field, size, density, shape and heating power."],
+      ["figure", "figS_confinement_to_current", 225, "The empirical bridge: a required confinement time is inverted into a required plasma current. The diagram's numerical formula belongs only to the stated reference assumptions and units."],
+      ["p", "The mathematical operation is straightforward even though the input is empirical. If the selected fit is written τ<sub>E,fit</sub> = C I<sub>p</sub><sup>α</sup>F, with F containing the other specified quantities and α &gt; 0, then"],
+      ["eq", "τ<sub>E,req</sub> = H C I<sub>p</sub><sup>α</sup>F<br/>⇒ I<sub>req</sub> = [τ<sub>E,req</sub>/(HCF)]<sup>1/α</sup>."],
+      ["p", "H multiplies the fit and records a chosen confinement enhancement. It is not a new conservation law. The inferred current must next be checked against field-line pitch, pressure, density and current sustainment at the same operating point."],
+      ["box", "Why this bridge matters", "The current demanded by transport may exceed the current allowed by stability or economical sustainment. These are different questions, so agreement cannot be assumed merely because each equation has a solution."]
+    ],
+    "source": "Thesis §§31–32 and 58–60. The 2015 reference uses its stated empirical scaling; finite-A comparisons must declare their own transport assumptions."
+  },
+  {
+    "part": "Act II / the two obstructions",
+    "title": "One current, two independent objections",
+    "blocks": [
+      ["p", "At the conventional reference point, the reconstruction requires approximately 14.3 MA of plasma current. The shaped safety-factor measure is q<sub>*</sub> = 1.56. Against the chosen lower boundary q<sub>K</sub> = 2, the kink test fails:"],
+      ["eq", "R<sub>K</sub> = q<sub>K</sub>/q<sub>*</sub> = 2/1.56 ≈ 1.28 &gt; 1."],
+      ["p", "The second objection concerns replacing current without a continuously changing transformer flux. In a non-inductive steady state, I<sub>p</sub> = I<sub>BS</sub> + I<sub>CD</sub>. The power allowance independently caps external drive at 2.25 MA in the reference lower-hybrid model. Therefore the plasma must supply"],
+      ["eq", "f<sub>req</sub> = 1 − 2.25/14.3 ≈ 0.84."],
+      ["p", "A separate neoclassical calculation, using selected profiles and trapped-particle physics, supplies only f<sub>BS</sub> ≈ 0.44. Required share divided by calculated available share is about 1.91: a second failure."],
+      ["figure", "figS_two_closure_failures", 215, "The same confinement-driven current feeds two branches: the field-line-pitch objection and the externally affordable current-replacement objection."],
+      ["small", "The 2.25 MA allowance follows a 100 MW electrical RF budget, 40% wall-to-absorbed efficiency and a particular current-drive model. Its independence from the bootstrap calculation is what makes the comparison a genuine test."]
+    ],
+    "source": "Thesis §§60–71. Freidberg et al. (2015), reference case. Ratios use rounded reported values; the source rounds the bootstrap ratio to 1.90."
+  },
+  {
+    "part": "Act II / simultaneous feasibility",
+    "title": "A pass in one column is not a design",
+    "blocks": [
+      ["p", "The reference calculation carries four screens. Density and pressure are not optional simply because kink and bootstrap are the prominent failures. Define each ratio so that values at or below one pass its selected boundary."],
+      ["table", ["Screen", "Reference ratio", "Interpretation"], [
+        ["Greenwald density", "n/n<sub>G</sub> = 0.56", "Passes the adopted empirical density boundary."],
+        ["Troyon pressure", "β/β<sub>T</sub> = 0.94", "Passes narrowly; little pressure margin."],
+        ["Kink/current", "q<sub>K</sub>/q<sub>*</sub> = 1.28", "Fails the selected current/pitch boundary."],
+        ["Bootstrap/current drive", "f<sub>req</sub>/f<sub>BS</sub> ≈ 1.91", "Fails independent sustainment accounting."]
+      ], [0.30, 0.25, 0.45]],
+      ["figure", "figS75_four_ratio_scan", 252, "The reconstructed conventional scan: no common passing interval appears in the displayed family. The best compromise in this scan still violates the two current-related tests."],
+      ["p", "Greenwald density and normalized-beta boundaries incorporate experimental evidence; their numerical values are not derived solely from first principles. The result is conditional infeasibility of this reference family, not a theorem against conventional tokamaks."]
+    ],
+    "source": "Thesis §§35, 57, 61–76. Figure: figS75_four_ratio_scan. Passing these four screens does not test all stability, exhaust, breeding, availability or economic requirements."
+  },
+  {
+    "part": "Act II / change an assumption",
+    "title": "Four remedies, four different prices",
+    "blocks": [
+      ["p", "Once the contradiction is explicit, a remedy must change a declared assumption and repeat all the tests. The thesis follows the four branches explored by Freidberg rather than declaring one preferred technology a solution in advance."],
+      ["table", ["Changed input", "Result in the chosen model", "What becomes harder"], [
+        ["Confinement H → 1.26", "Kink and bootstrap pass; the pressure screen still fails.", "A stronger pressure/stability claim is also needed."],
+        ["Coil field ceiling → 17.6 T", "All four selected ratios pass.", "Magnet engineering and exhaust burden."],
+        ["Electric output → about 1.55 GW", "All four selected ratios pass.", "Larger absolute plant and heat exhaust."],
+        ["Wall loading → about 2.1 MW/m²", "All four selected ratios pass.", "Larger machine per unit output."]
+      ], [0.28, 0.37, 0.35]],
+      ["remedies"],
+      ["small", "These are approximate thresholds in the 2015 model and its reconstruction, not measured reactor operating points. The comparison also shows why neither low aspect ratio nor HTS is a logically necessary solution for every possible tokamak."]
+    ],
+    "source": "Thesis §§77–101; Freidberg et al. (2015), Sections 6.1–6.4 and Table 3. The H branch must not be reported as full four-screen closure."
+  },
+  {
+    "part": "Act II / the high-field route",
+    "title": "HTS expands an option; it does not erase the bill",
+    "blocks": [
+      ["p", "High-temperature superconductors enter after the high-field requirement has been motivated. REBCO conductors can support high-field magnet strategies beyond the selected conventional baseline. Their relevance is field and current capability at a specified operating state, not the word 'high-temperature' by itself."],
+      ["figure", "figS_field_two_sided", 205, "The field has two sides: it can improve the plasma design and simultaneously raise the demands on structure and radial build."],
+      ["p", "At fixed temperature, fuel composition and profiles, p ∝ n and fusion power density scales with n². Combining p = βB<sub>0</sub>²/(2μ<sub>0</sub>) with fixed β therefore gives a conditional scaling P<sub>fus</sub>/V ∝ β²B<sub>0</sub>⁴. It is not a promise that a whole reactor improves as B⁴: the supposedly fixed quantities may move."],
+      ["eq", "Magnetic pressure scale: p<sub>B</sub> = B²/(2μ<sub>0</sub>)."],
+      ["p", "At 10 T this scale is about 40 MPa; at 20 T it is about 159 MPa. Actual stresses depend on geometry and load paths, but the quadratic growth cannot be removed by superconductivity. Cryogenics, protection, joints, field angle, strain and radiation exposure still constrain usable winding-pack current density."],
+      ["box", "Evidence and boundary", "The SPARC TF model-coil programme demonstrated 20.1 T peak field on the conductor in a representative-scale REBCO coil. That is important magnet evidence, not the plasma-centre field and not qualification for decades of reactor neutron exposure or economical plant operation."]
+    ],
+    "source": "Thesis §§49, 81–86 and 123. <link href='https://arxiv.org/abs/2308.12301' color='#176F74'>Hartwig et al., The SPARC Toroidal Field Model Coil Program (open manuscript)</link>."
+  },
+  {
+    "part": "Act III / change the geometry",
+    "title": "Lower aspect ratio changes the bargain",
+    "blocks": [
+      ["p", "A spherical tokamak is still toroidal. Lowering A = R<sub>0</sub>/a makes the plasma relatively fatter. It changes magnetic geometry and particle trapping while reducing the inboard interval at fixed major radius. Neither the gain nor the cost can be discussed without stating what is held fixed."],
+      ["radial", "aspect"],
+      ["p", "At the same R<sub>0</sub> = 4 m in this computed comparison, changing A from 4 to 2 increases a from 1 to 2 m. The inboard interval R<sub>0</sub> − a falls from 3 to 2 m. Nuclear and magnet space must come out of that smaller interval. These are illustrative dimensions, not the published ST candidate."],
+      ["eq", "B<sub>in</sub>/B<sub>out</sub> = (R<sub>0</sub>+a)/(R<sub>0</sub>−a) = (A+1)/(A−1)."],
+      ["p", "In the ideal toroidal-field model, the ratio grows from 2 at A = 3 to about 3.86 at A = 1.7. Stronger variation changes the trapped-particle population. With pressure gradients and collisions, this can enhance bootstrap-current mechanisms. Shaping and aspect ratio also change the relation between normalized pressure and the q<sub>*</sub> current screen."],
+      ["small", "These are reasons to perform a finite-A calculation, not permission to extend large-aspect-ratio approximations indefinitely. A published low-A candidate changes shape, confinement assumptions and mission as well as aspect ratio."]
+    ],
+    "source": "Thesis §§102–105. B ∝ 1/R assumes axisymmetry and neglects real-coil ripple; trapping alone does not determine a numerical bootstrap fraction."
+  },
+  {
+    "part": "Act III / the actual ST verdict",
+    "title": "One pass; one independent test still owed",
+    "blocks": [
+      ["p", "The thesis examines a Menard et al. fusion nuclear science facility (FNSF) scan: R<sub>0</sub> = 1.6 m, A = 1.7, κ = 2.75, B = 3 T, H<sub>98</sub> = 1.25 relative to the chosen confinement fit, and 80 MW of 0.5 MeV neutral-beam injection. Its q<sub>*</sub> ≥ 3 passes the study's q<sub>*</sub> ≥ 2.8 screen: 2.8/3 ≈ 0.93."],
+      ["figure", "figS_st_closure", 230, "Comparison panels from the thesis graphic. The bootstrap panel is explicitly labelled IDENTITY: a prescribed fully non-inductive current sum cannot independently verify its own affordability.", [17, 53, 480, 262]],
+      ["p", "Near the selected plotted state, the thesis reads approximately 76% bootstrap and 24% beam-driven current. Across the quoted 10.8–12 MA current range, that share corresponds to roughly 2.6–2.9 MA of required external drive. The remaining question is whether an independently specified plant power budget can provide it."],
+      ["eq", "Independent test: 1 − I<sub>CD,allow</sub>/I<sub>p</sub> ≤ f<sub>BS</sub>."],
+      ["small", "The scan's fusion gain Q<sub>DT</sub> = P<sub>fusion</sub>/P<sub>beam</sub> is about 1.8–2.7: a different mission from Freidberg's ignited 1-GW electric case. The 80 MW is beam power, not wall-plug electricity. The q screen proves neither all-mode stability nor adequate normalized-beta margin. This is evidence of relief, not a controlled aspect-ratio-only reactor comparison."]
+    ],
+    "source": "Thesis §§106–111. <link href='https://scientific-publications.ukaea.uk/wp-content/uploads/Preprints/95pub.pdf' color='#176F74'>Menard et al., Nuclear Fusion 56 (2016) 106023, §§2.1.3–2.1.6, Figs. 8–9</link>."
+  },
+  {
+    "part": "Act III / the spatial consequence",
+    "title": "The centre stack inherits every obligation",
+    "blocks": [
+      ["p", "The centre-stack problem is separate from the two plasma/current tests. It exists because the same reduction of aspect ratio that changes plasma behaviour can leave less space for necessary inboard functions. It can be studied now, while the independent bootstrap affordability test remains explicitly open."],
+      ["figure", "figS_st_radial_ledger", 240, "Layout and geometry-check panels from the thesis. This separate Menard example has R<sub>0</sub> = 1.87 m and A = 2. Its dimensions must not be combined with the A = 1.7 plasma scan as one machine.", [7, 40, 477, 277]],
+      ["eq", "R<sub>0</sub> − a = 0.935 m;<br/>0.935 − 0.600 − 0.020 = 0.315 m."],
+      ["p", "The stated 0.60 m shield and 0.02 m first-wall allocations leave about 0.315 m geometrically, close to the drawing's 0.30 m centre column. The 15 mm difference is not certified spare space. This is a check of published illustrative dimensions, not a complete reactor layout."],
+      ["small", "The functions are already motivated: TF ampere-turns (§4), solenoid startup flux (§§6, 11), nuclear protection and heat removal (§§43–45), structural support (§47), and finite winding-pack area (§48). Breeding need not occupy every inboard layer; its location is architecture-dependent."]
+    ],
+    "source": "Thesis §§112–123. Menard et al. (2016), §5.1 and Figs. 46–47. Reused figure: figS_st_radial_ledger; published dimensions remain study-specific."
+  },
+  {
+    "part": "Act III / a necessary engineering test",
+    "title": "A column cannot carry current through zero area",
+    "blocks": [
+      ["p", "Define R<sub>env</sub> = R<sub>0</sub> − a − b as the outer radius available to the central column after the chosen nuclear allocation. Let f<sub>wp</sub> be the assigned fraction of its circular cross-section available to TF winding packs, and J<sub>wp</sub> their allowable current density averaged over the complete pack."],
+      ["eq", "NI<sub>c</sub> = 2πR<sub>0</sub>B<sub>0</sub>/μ<sub>0</sub>,<br/>A<sub>wp</sub> ≥ NI<sub>c</sub>/J<sub>wp</sub>,     A<sub>wp</sub> ≤ f<sub>wp</sub>πR<sub>env</sub>²."],
+      ["p", "NI<sub>c</sub> denotes linked TF-coil ampere-turns, not plasma current. Combine the two area inequalities, substitute those ampere-turns, and cancel π. A necessary test follows:"],
+      ["eq", "η<sub>wp</sub> ≡ 2R<sub>0</sub>B<sub>0</sub>/(μ<sub>0</sub>J<sub>wp</sub>R<sub>env</sub>²) ≤ f<sub>wp</sub>."],
+      ["p", "For the thesis's teaching inputs R<sub>0</sub> = 3 m, A = 2, b = 0.65 m, J<sub>wp</sub> = 70 MA/m² and f<sub>wp</sub> = 0.40, the envelope radius is 0.85 m. Changing only B<sub>0</sub> gives:"],
+      ["table", ["B<sub>0</sub>", "Required area fraction η<sub>wp</sub>", "Current-area test only"], [
+        ["4 T", "0.378", "Passes the chosen 0.40 allocation"],
+        ["6 T", "0.567", "Fails"],
+        ["8 T", "0.756", "Fails"]
+      ], [0.16,0.40,0.44]],
+      ["p", "A credible higher J<sub>wp</sub> helps; using that capability to raise B<sub>0</sub> spends it again. A shrinking solenoid also loses flux capacity, approximately ΔΨ<sub>sol</sub> ∼ πR<sub>sol</sub>²ΔB<sub>sol</sub>. Its startup role cannot disappear merely because its radial allocation is removed."],
+      ["small", "This is a necessary allocation test, not a sufficient design. Insulation, cooling and structure already counted in the pack must not be counted again as extra areas. Separate allowances cover only functions outside that pack. Mechanical, protection, nuclear and lifetime tests remain."]
+    ],
+    "source": "Thesis §§116–119 and 125–127. R<sub>env</sub> here is an outer envelope, not a residual bore after subtracting winding thickness. The numerical example is a teaching scan."
+  },
+  {
+    "part": "The research opening",
+    "title": "How much burden moves, and where?",
+    "blocks": [
+      ["box", "One focused research question", "For a fixed plasma mission, how much dependence on central-solenoid startup can merging-compression remove, and what new startup and engineering burdens appear in exchange?"],
+      ["p", "The first step is not to optimize an entire reactor. It is to select a published startup case, specify the delivered plasma current, density, temperature, pulse and reliability requirements, and determine what solenoid volt-seconds are actually saved. Raw merging-coil flux is not automatically equivalent to useful startup flux."],
+      ["p", "A reduced comparison can then ask what recovered radial space costs in actuator requirements, induced fields, losses, cooling, recovery time and hardware exposure. If coupling to an HTS centre stack proves significant, a targeted electromagnetic and thermal model becomes justified. If it is negligible, that mechanism should not consume the project."],
+      ["h", "What the thesis has, and what remains"],
+      ["table", ["In the working draft", "Still to establish or consolidate"], [
+        ["A component-by-component teaching construction and the Freidberg reference reconstruction.", "Systematic accuracy checks; source/PDF corrections; a consistent, clean final manuscript."],
+        ["Finite-A kink-screen relief and a quantified externally driven current share.", "Independent current-drive affordability and a like-for-like mission comparison; other stability screens."],
+        ["Explicit centre-stack geometry and a necessary current-area test.", "A bounded, literature-grounded result, with uncertainty checks and validation appropriate to its claimed scope."]
+      ], [0.50,0.50]],
+      ["p", "<b>The intended contribution is explanatory first, investigative next.</b> The thesis makes the design logic readable; the research project would test one consequential allocation of startup burden. Novelty, reactor viability and publication are objectives to earn, not results already claimed."],
+      ["small", "Reading options: this guide maps the whole argument; the edited 30-page excerpt shows the detailed teaching style; the full 166-page draft contains the longer derivations. The separate prologue and proposal give microscopic context and degree scope."]
+    ],
+    "source": "Research scope: research-ideas/centre-stack/research-plan.md. Documents and reading options: <link href='https://github.com/Jony-GydeRnE/tunem-thesis-clean' color='#176F74'>TUNEM thesis repository</link>."
+  }
+]

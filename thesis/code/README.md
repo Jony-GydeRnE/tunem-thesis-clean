@@ -22,3 +22,13 @@ The document builder uses cached TeX resources by default. Use `--online` only w
 All generated output goes under the repository's ignored `.build/`. Inspect PDF pages before replacing a working document. The supplied proposal and progress-report PDFs are preserved snapshots; do not overwrite them automatically. A successful build does not certify the scientific claims or establish source/PDF equivalence for preserved submissions.
 
 Figure generators reproduce the included diagrams; some also emit unused layout variants. Only promote a reviewed asset actually referenced by a document. Keep plotting inputs with their generator. No tool here uploads files.
+
+## Illustrated thesis guide
+
+The 20-page guide uses `thesis_guide_content.json` and reuses the existing thesis figure PDFs. It does not regenerate or alter the preserved edited excerpt. Requires Python with PyMuPDF, ReportLab and Matplotlib, plus installed Arial or DejaVu Sans fonts.
+
+```sh
+python3 thesis/code/build_thesis_guide.py --figures thesis/figures/final --output .build/thesis-guide/thesis-guide.pdf
+```
+
+Review the generated page previews before replacing `progress-report/thesis-guide.pdf`. Edit the JSON source, not the generated PDF; preserve the separate excerpt as a snapshot.

@@ -6,7 +6,7 @@ Derive the tokamak from physical requirements, reconstruct Freidberg's design co
 |---|---|
 | [Proposal](proposal/proposal.pdf) | Degree scope and executive summary. |
 | [Prologue](prologue/before-the-machine.pdf) | From quarks to fusion; not yet integrated. |
-| [Progress report](progress-report/progress-report-30-pages.pdf) | 30-page introduction for Professor Tan. |
+| [Illustrated thesis guide](progress-report/thesis-guide.pdf) | 20-page map of the full argument; the [edited excerpt](progress-report/edited-excerpt-30-pages.pdf) preserves the 30-page teaching sample. |
 | [Full thesis draft](thesis/thesis-draft.pdf) | Current 166-page technical draft, source, figures and calculations. |
 | [Research ideas](research-ideas/README.md) | Centre-stack projects, model results and exploratory directions. |
 
