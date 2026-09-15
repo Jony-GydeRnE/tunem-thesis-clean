@@ -71,42 +71,25 @@ Most nucleon mass is not the sum of the small up- and down-quark mass parameters
 It comes from the energy of the interacting quark--gluon system. Lattice QCD,
 which approximates the fields on a spacetime grid and controls extrapolations,
 has reproduced the light-hadron mass spectrum. Most ordinary matter's mass is
-in nucleons, and most nucleon mass is dynamical QCD energy: these are two distinct
-statements. Neither assigns a universal percentage of matter's mass to the
-geometric flux-tube picture.\refn{3}
+in nucleons, made of dynamical QCD energy: typically this makes up over 99\% of atomic mass.\refn{3}
 
-\openingfigure{figN0_atom_to_quarks}{Inside a helium atom, then a proton.
-The separate scale windows show constituent bookkeeping, not classical particle
-trajectories or a calculated density. Colored regions are schematic; the proton's
-$uud$ label specifies net valence content, not its entire quantum state.
-Original diagram; physical interpretation follows sources 1--3.}{fig:n0}
+\openingfigure{figN0_atom_to_quarks}{Inside a helium atom is the nucleus, inside the nucleus are the nucleons: protons and neutrons. Inside a nucleon such as a proton are three quarks.  Colored regions are schematic; the proton's
+$uud$ reflect two up-flavored quarks and one down quark. Neutrons follow $udd$.}{fig:n0}
 
 \heading{0.2}{Confinement, and the boundary of the explanation}
 
-QCD has an unusual scale dependence. At sufficiently high momentum transfer,
-which probes short distances, its effective coupling becomes small. This is
-\emph{asymptotic freedom}. It does not mean that a quark can leave a proton for
-free: short-distance scattering and separating a quark into an isolated outgoing
-particle are different questions. At longer distances, the weak-coupling
-expansion ceases to be reliable. Extrapolating that expansion is not a proof of
-confinement.\refn{4}
+QCD has an unusual scale dependence. Quarks are never observed isolated in nature. Nucleons are three quarks grouped together, an example of baryons. More generally, any number of quarks grouped together are called mesons.
 
-\emph{Color confinement} is the absence of isolated colored particles in the
-observable outgoing states of ordinary low-energy experiments. A useful picture
-comes from slowly separating a very heavy quark and antiquark. Over an
-intermediate range, their color-field energy concentrates in an elongated region,
-or \emph{flux tube}. In its approximately linear regime,
+When quarks are extremely close together, the strong interaction between them becomes weak, and they behave almost like free particles. This is called \emph{asymptotic freedom}. However, as quarks are pulled farther apart, their color field becomes concentrated into a narrow tube of gluon field called a \emph{flux tube}. Stretching this tube requires more and more energy. Eventually, enough energy is stored in the tube that it becomes energetically favorable to create a new quark--antiquark pair precisely when the flux tube breaks.  In conclusion, no isolated quark is produced: each separated quark instead joins with one of the newly created partners to form a new color-neutral particle. In this way, quarks are never observed in isolation. This is called \emph{quark confinement} or \emph{color confinement}.\refn{4}
+
+The flux-tube picture is supported by QCD calculations and lattice simulations, but mathematically proving color confinement analytically from four-dimensional QCD remains an open problem. The key feature is constant linear growth: once the flux tube has formed, each additional unit of separation stores approximately the same additional amount of field energy. This linear confinement seems to produce an \emph{area law}. A simple model keeps the tube's thickness, or cross section, roughly fixed as its length changes. The quark separation (r) therefore parametrizes the constant linear growth of the potential energy.
+
 \[
 V(r)\simeq V_0+\mathcal T_s r,
-\qquad F_r=-\frac{\dd V}{\dd r}\simeq-\mathcal T_s.
+\qquad
+F_r=-\frac{\dd V}{\dd r}\simeq-\mathcal T_s.
 \]
-Here $r$ is separation, $V_0$ an irrelevant reference energy, and $\mathcal T_s$
-the string tension, with units of energy per length, hence force. More separation
-requires more work; the attraction need not grow without bound. With dynamical
-quarks, sufficient energy can instead form an additional quark--antiquark pair:
-the string breaks into color-neutral hadrons, not free quarks. Lattice calculations
-resolve this process. This static-source picture is not a literal photograph of
-three rigid strings inside a moving proton.\refn{5}
+This linear potential has a deeper formulation in gauge theory called the \emph{area law}. A quark and antiquark followed through time trace the boundary of a surface in spacetime; for a confining theory, the relevant Wilson loop is controlled by the area of that surface. For a rectangular loop of spatial width \(r\) and time length \(T\), that area is \(rT\), and the area law leads directly to a potential proportional to \(r\). Thus the geometric statement ``more separation means proportionally more stored field energy'' is the intuitive face of the area law.\refn{5}
 
 \panel{An open mathematical problem, not an absence of physics}{The Yang--Mills
 existence and mass-gap problem asks for a rigorous construction of the
