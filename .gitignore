@@ -10,8 +10,9 @@
 *.fls
 *.fdb_latexmk
 **/records/
-**/archive/
-**/archives/
+# Local-only archives at every depth, regardless of capitalization. Never force-add.
+**/[Aa][Rr][Cc][Hh][Ii][Vv][Ee]/
+**/[Aa][Rr][Cc][Hh][Ii][Vv][Ee][Ss]/
 **/reviews/
 **/ledgers/
 **/idea-log*

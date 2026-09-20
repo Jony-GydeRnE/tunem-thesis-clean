@@ -1,28 +1,32 @@
-% Standalone prologue; not yet integrated into the thesis.
+% Current prologue. Previous versions are preserved locally in archive/ (Git-ignored).
 % Build from the repository root: python3 thesis/code/build.py prologue
 \documentclass[11pt]{article}
-\usepackage[letterpaper,margin=0.83in]{geometry}
+\usepackage[letterpaper,margin=0.85in,top=0.8in,bottom=0.8in]{geometry}
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{xcolor,graphicx}
-% Collect and discard draft passages while preserving them in the source.
-\NewDocumentEnvironment{comment}{+b}{}{}
 \usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
-\definecolor{ink}{HTML}{183C50}
-\definecolor{pale}{HTML}{EDF3F5}
+\hypersetup{pdftitle={Before the Machine From fundamental fields to the physical requirements of fusion},pdfauthor={Jony},pdfsubject={Merged prologue draft for review}}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{5pt}
+\setlength{\parskip}{6pt}
 \setlength{\headheight}{15pt}
 \setlength{\emergencystretch}{2em}
+\raggedbottom
 \makeatletter
 \def\ps@opening{%
-  \def\@oddhead{\small\textcolor{ink}{TUNEM | Before the Machine}\hfil Opening for review}%
+  \def\@oddhead{\small Before the Machine\hfil Merged draft 1}%
   \let\@evenhead\@oddhead
-\def\@oddfoot{\footnotesize 16 September 2026 | Not yet integrated\hfil\thepage}%
+  \def\@oddfoot{\footnotesize Separate review copy\hfil\thepage}%
   \let\@evenfoot\@oddfoot}
 \makeatother
 \pagestyle{opening}
-\newcommand{\heading}[2]{\section*{\textcolor{ink}{#1. #2}}}
+\newcommand{\heading}[2]{\phantomsection\pdfbookmark[1]{#1. #2}{section#1}\section*{#1\quad #2}}
 \newcommand{\refn}[1]{\textsuperscript{\hyperlink{src#1}{[#1]}}}
+\newcommand{\source}[3]{\par\medskip\hypertarget{src#1}{}\textbf{[#1] #2}\par\nopagebreak #3\par}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+\definecolor{ink}{HTML}{183C50}
+\definecolor{pale}{HTML}{EDF3F5}
 \newcommand{\panel}[2]{\begin{center}\setlength{\fboxsep}{8pt}\fcolorbox{ink!35}{pale}{\parbox{0.93\linewidth}{\textbf{#1}\quad #2}}\end{center}}
 \newcommand{\openingfigure}[3]{%
   \begin{figure}[!htb]\centering
@@ -33,238 +37,179 @@
 \renewcommand{\bottomfraction}{0.85}
 \renewcommand{\textfraction}{0.10}
 \setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
-\newcommand{\source}[3]{\par\medskip\hypertarget{src#1}{}\textbf{[#1] #2}\par #3\par}
 \newcommand{\ee}{\mathrm e}
-\newcommand{\dd}{\mathrm d}
 \begin{document}
 
-{\LARGE\bfseries\color{ink} Before the Machine}\par
-{\large From quarks to the physical requirements of fusion}\par
-\vspace{4pt}
-\textit{We will build the machine from its purpose. First we must understand the
-matter we intend to change, the energy available from that change, and the
-obstacle between possibility and a useful reaction rate.}
 
-\heading{0.1}{Inside a nucleon}
+{\LARGE\bfseries Before the Machine}\par
+{\large From fundamental fields to the physical requirements of fusion}\par
+\vspace{5pt}
 
-A quark is one of the elementary constituents in our present theory of matter.
-To locate it, begin with an atom: a positively charged nucleus surrounded by
-negatively charged "quantum clouds" of electrons. Electron are also elementary constituents of matter and carry charge $-e$. Chemical reactions change electron arrangements while leaving the nuclei intact. Nuclear reactions such as fission and fusion change the nuclear arrangement itself.
+In the deuterium--tritium fusion reaction we will study, matter changes its nuclear arrangement and releases energy. Before asking how to build a machine that sustains it, we will ask what that matter is, why it holds together, and how its interactions make another arrangement possible. The route begins with the electromagnetic and strong interactions and follows them toward nucleons, nuclei, and fusion.
 
-Inside the nucleus are \emph{nucleons}: Protons and neutrons are baryons-- composite particles made of three quarks. Quarks come in different flavors. Two types of quarks are up quarks and down quarks. A proton can be written as $uud$ and a neutron can be written as $udd$, where
-$u$ and $d$ denote up and down quarks. Quarks possess both electric charge and color charge.
+Our aim is an analytic explanation whose steps we can examine. We will take the specified fundamental theory and its parameters as our starting point. Where we can derive a relation, we will show the argument. Where the complete derivation is missing, we will identify the missing question and the evidence that lets physics proceed. Confinement and the mass gap enter here because they concern the very existence and properties of the objects from which the nuclear story is built.
 
-The electromagnetic force is described by rotations of a circle, called the $U(1)$ group, which transforms via a matrix representation of the groups linear map $\chi(\theta) = \exp(iq\theta)$ that satisfies a circles compactification: $\chi(\theta + 2\pi) = \chi(\theta)$, which quantizes charge into an integer multiple of the smallest charge, $q \in \mathbb{Z}$. Physics doesn't tell us exactly why the electric charge is $+2e/3$ for an up quark and $-e/3$ for a down quark, anomaly cancellations give constraints, experiments fix the number: $e/3$ is the smallest positive charge we know. Given this fact, because constituent phase factors multiply (ie $e^{iq_1\theta}e^{iq_2\theta}=e^{i(q_1+q_2)\theta}$), protons have $+e$ electric charge, and
-neutrons have \emph{zero net electric charge}:
+\heading{1}{What is inside the fuel}
+
+Begin with an atom. Its nucleus contains positively charged protons and electrically neutral neutrons, collectively called \emph{nucleons}. Electrons carry negative electric charge and occupy quantum states around the nucleus. Electromagnetism binds the atom; understanding the nucleus requires the strong interaction as well.
+
+In quantum field theory, particles are states of underlying fields. The electron is elementary in the Standard Model. A nucleon is composite: its description involves quark and gluon fields. Quarks come in different species, called \emph{flavors}; the up and down flavors are the ones needed to label the proton and neutron. Their net valence contents are
 \[
-q_p=\left(\frac23+\frac23-\frac13\right)e=e,
-\qquad
-q_n=\left(\frac23-\frac13-\frac13\right)e=0.
+ p:\ uud,\qquad n:\ udd.
 \]
+These labels specify the excess of quarks over antiquarks of each flavor. The full quantum state also contains gluonic dynamics and quark--antiquark fluctuations. They do not describe three stationary objects joined by rigid rods.\refn{1}
 
-These are \emph{quark labels}: they only specify net quark content. A nucleon is a quantum state that also contains gluon fields and quark--antiquark fluctuations.\refn{1}
-
-What binds that state? Quarks second kind of charge, called
-\emph{color}. The theory of color interactions is \emph{quantum chromodynamics} (QCD), and it describes the strong nuclear force-- one of the four fundamental forces of nature. Gluons mediate the strong force and possess color charge, leading to self-interactions amongst gluons. This is unlike photons, neutrally charged electromagnetic force carriers that have no direct electric-charge self-interaction, unlike gluons with color charge.
-
-Color is not a single number $q$ to be summed into a different state of color charge — it is a basis vector of $\mathbb{C}^3$, such as $(1,0,0)$, to be rotated via matrices whose inverse equal it's conjugate transpose and whose determinant equals to $1$, eg elements of $SU(3)$. A state is \emph{color neutral} when it is left invariant by every such rotation: for baryons this is achieved by carrying exactly one quark of each color, combined in the unique totally antisymmetric combination, $\epsilon_{ijk}q^iq^jq^k$, that $SU(3)$ leaves unchanged. This explains why three quarks can form a color-neutral state, whereas two or four quarks alone cannot: three colors demand three quarks to form this invariant, fully analogous to how a determinant vanishes unless you antisymmetrize over as many vectors as there are dimensions. Indeed $\epsilon_{ijk}U^i{}_aU^j{}_bU^k{}_c=(\det U)\,\epsilon_{abc}$, so if color rotations were allowed any determinant other than $1$, this three-quark combination would change by that factor and no longer be neutral; that is why the group is $SU(3)$.\refn{2}
-
-Most nucleon mass is not the sum of the small up- and down-quark mass parameters.
-It comes from the energy of the interacting quark--gluon system. Lattice QCD,
-which approximates the fields on a spacetime grid and controls extrapolations,
-has reproduced the light-hadron mass spectrum. Most ordinary matter's mass is
-in nucleons, predomenantkly made of dynamical QCD energy.\refn{3}
-
-\openingfigure{figN0_atom_to_quarks}{Inside a helium atom is the nucleus, inside the nucleus are the nucleons: protons and neutrons. Inside a nucleon such as a proton are three quarks.  Colored regions are schematic; the proton's
-$uud$ reflect two up-flavored quarks and one down quark. Neutrons follow $udd$.}{fig:n0}
-
-\heading{0.2}{Confinement, and the boundary of the explanation}
-
-QCD has an unusual scale dependence. Quarks are never observed isolated in nature. Nucleons are three quarks grouped together, an example of baryons. More generally, any number of quarks grouped together are called hadrons.
-
-When quarks are extremely close together, the strong interaction between them becomes weak, and they behave almost like free particles. This is called \emph{asymptotic freedom}. However, as quarks are pulled farther apart, their color field becomes concentrated into a narrow tube of gluon field called a \emph{flux tube}. Stretching this tube requires more and more energy. Eventually, enough energy is stored in the tube that it becomes energetically favorable to create a new quark--antiquark pair precisely when the flux tube breaks.  In conclusion, no isolated quark is produced: each separated quark instead joins with one of the newly created partners to form a new color-neutral particle. In this way, quarks are never observed in isolation. This is called \emph{quark confinement} or \emph{color confinement}.\refn{4}
-
-The flux-tube picture is supported by QCD calculations and lattice simulations, but mathematically proving color confinement analytically from four-dimensional QCD remains an open problem. The key feature is constant linear growth: once the flux tube has formed, each additional unit of separation stores approximately the same additional amount of field energy. This linear confinement seems to produce an
-\emph{area law}. A simple model keeps the tube's thickness, or cross section, roughly fixed as its length changes. The quark separation (r) therefore parametrizes the constant linear growth of the potential energy.
-
+An up quark has electric charge $+2e/3$ and a down quark $-e/3$, where $e>0$ is the magnitude of the electron charge. Electric charges add, so
 \[
-V(r)\simeq V_0+\mathcal T_s r,
-\qquad
-F_r=-\frac{\dd V}{\dd r}\simeq-\mathcal T_s.
+ q_p=\left(\frac23+\frac23-\frac13\right)e=e,
+ \qquad q_n=\left(\frac23-\frac13-\frac13\right)e=0.
 \]
+This addition has a simple symmetry expression. Under an electromagnetic phase rotation, a field of dimensionless charge $Q$ acquires a factor $e^{iQ\theta}$. A product acquires $e^{iQ_1\theta}e^{iQ_2\theta}=e^{i(Q_1+Q_2)\theta}$. The symmetry is called $U(1)$; the charge assignments specify how the fields transform under it.
 
-The first step in proving such a physical gap is proving a simpler mathematical formalism. Strip away the quarks and keep only the gluon field, so no tube can ever break.
-Light shows what a force field can do without a gap: a long enough
-electromagnetic wave carries arbitrarily little energy, $E=hc/\lambda$. Does the
-self-interacting gluon field allow the same, energies arbitrarily close to zero?
-Or is there a smallest positive energy $\Delta>0$, so that its lightest
-excitations are massive bundles of field rather than long waves? This possible empty interval above the vacuum is the \emph{Yang--Mills mass gap}, one of the deepest open problems in mathematical physics.
-
-\panel{A Millennium Problem}{The Yang--Mills
-existence and mass-gap problem asks for a rigorous construction of the
-four-dimensional quantum theory and a strictly positive energy gap above its
-vacuum. Writing $H$ for its energy operator and setting vacuum energy to zero,
-the gap condition is
-\[
-\operatorname{spec}(H)\cap(0,\Delta)=\varnothing
-\quad\hbox{for some }\Delta>0.
-\]}
-
-Simulations suggest that no physical excitation can have an energy strictly between zero and \(\Delta\). Providing a conceptual mathematical proof is expected to shed deep insight into the structure of the universe. Confinement is the physical mechanism that parametrizes energy by the length of flux tubes; the mass gap may be understood as a question about the spectrum \(\operatorname{spec}(H)\) of those energy levels. Mathematically, the spectrum is the set of all \(\lambda\) for which the operator \(T-\lambda I\) does not have a bounded inverse. This generalizes the concept of eigenvalues from finite-dimensional vector spaces to the infinite-dimensional \emph{Hilbert spaces} found in quantum mechanics.\refn{6}
-
-Gluons can themselves form bound states called \emph{glueballs}.
-In 2026, the BESIII experiment in China experimentally confirmed the existance of glueballs via the $X(2370)$ particle, giving experimental
-substance to the idea that the carriers of a force can organize into
-matter.\refn{20}
-
-We now have the constituents of a nucleus. The next question is what happens
-when nucleons meet. How can two color-neutral particles attract, and what
-determines whether their shared arrangement releases energy? We will follow
-that question from the interaction itself to a fusion reaction.
-
-% Author's speculative story: retained unchanged for later revision.
-\begin{comment}
-\textbf{A speculative picture.} The \emph{liquid-drop model} offers a potential bridge from confinement to nuclear binding to fusion. It pictures the nucleus
-as a self-bound liquid drop. The drop can deform, vibrate, and respond collectively, but deforming its surface costs energy.\refn{19}
-Could an analogous language of collective stiffness help us picture how the
-quark--gluon field confines its constituents and develops a spectrum of massive
-excitations?
-
-Imagine two nucleons close together. Their internal fields and fluctuations
-participate in a shared interaction 
-described through meson exchange and other effective couplings inherited from
-QCD.\refn{8} What reaches beyond each nucleon is its capacity to correlate with
-its neighbours. When the combined state has lower energy than the separated
-nucleons, the difference is nuclear binding energy. Within the resulting drop,
-surface vibrations can themselves mediate additional attraction, as developed
-in \emph{The Nuclear Cooper Pair}.\refn{19} This suggests a succession of
-organization: quark--gluon dynamics builds nucleons, interactions among nucleons
-build nuclei, and collective motion reshapes their binding. Fusion opens a path
-between nuclear arrangements; when the products are more tightly bound, the
-energy difference emerges as motion or radiation. For deuterium and tritium,
-that difference is about $17.6\,\mathrm{MeV}$.\refn{11} The question inviting
-further thought is how this sequence produces such different scales: the large
-rest energy of a nucleon, the smaller binding energy of a nucleus, and the
-collision energies at which fusion becomes appreciable.
-
-Ordinary liquids suggest a provocative electromagnetic comparison: their
-cohesion emerges from the charge structure and quantum correlations of their
-constituents. Rutherford's 1920 conjecture pictured a neutron as a proton
-tightly combined with an electron; a distinct modern pion-cloud description
-includes a virtual proton accompanied by a negatively charged pion.\refn{21}\refn{22}
-Both images prompt a question about how internal charge structure can allow a
-neutral composite to interact with its surroundings. How far could polarization
-and quantum exchange take an electromagnetic account of nuclear cohesion, and
-could collective response help us understand the barrier through which fusing
-nuclei approach? The \emph{Kondo effect} supplies a further way to think about
-how electromagnetic phenomenon can mirror nuclear phenomenon such as asymptotic freedom: an antiferromagnetic exchange interaction between a magnetic
-impurity and a metal's electrons grows strong as the energy scale decreases,
-producing collective screening below a characteristic Kondo scale.\refn{7}
-This also invites us to ask whether similar patterns of scale evolution can illuminate
-the hierarchy from color confinement to nuclear binding, and how the surrounding
-medium influences access to a fusion reaction. In the next section we focus on more standard perspectives.
-\end{comment}
-
-\openingfigure{figN1_string_breaking}{Static heavy sources $Q,\bar Q$ and
-creation of a light $q,\bar q$ pair. The final groups are color neutral; dashed
-ovals group constituents rather than marking physical walls. The qualitative
-potential sketch omits the smooth mixing near string breaking and has no
-physical scale. Original schematic based on source 5; not a proton model.}{fig:n1}
+The proton's positive charge already identifies a difficulty for fusion: two positively charged nuclei repel as they approach. Before that encounter can be understood, however, we must explain the other interaction that makes each incoming nucleus possible. Quarks also carry \emph{color}, the charge associated with the strong interaction, described by \emph{quantum chromodynamics} (QCD).
 
 \clearpage
-\heading{0.3}{How can two nucleons attract?}
+\heading{2}{What color symmetry explains}
 
-Start with one proton and one neutron, far apart. Bring them closer.
-At separations comparable to their own sizes, their quark--gluon structures
-participate in an interaction that can hold the pair together. The resulting
-bound pair is called a \emph{deuteron}: the nucleus of deuterium, one of our
-fusion fuels. Its existence gives us a concrete question to explain:
-what makes the pair energetically preferable to its separated parts?
-
-\textbf{First meet the pion.}
-QCD can organize quarks into several kinds of color-neutral particle.
-We have met the three-quark content of a proton or neutron. A quark can also
-combine with an \emph{antiquark}. An antiquark is the corresponding antimatter
-constituent: it has the same mass and opposite electric charge, and carries
-the conjugate kind of color charge. A quark--antiquark combination can be
-color neutral. Such combinations form the ordinary \emph{mesons}.
-
-The lightest mesons are \emph{pions}. Their dominant quark content involves
-the up and down flavors we already know. For example, an up quark and a
-down antiquark give the positively charged pion:
+Color names an internal quantum degree of freedom. For a quark its state space is $\mathbb C^3$, with basis vectors conventionally called red, green, and blue. These are not optical colors. The transformations are matrices
 \[
-\pi^+:\quad u\bar d,\qquad
-q_{\pi^+}=\frac{2e}{3}+\frac{e}{3}=e.
+ SU(3)=\{U\in\mathbb C^{3\times3}:U^\dagger U=1,\ \det U=1\}.
 \]
-The bar denotes an antiquark. Reversing the flavors gives $\pi^-$ with
-charge $-e$; the neutral pion, $\pi^0$, involves a quantum combination of
-$u\bar u$ and $d\bar d$. Gluon fields and further quantum fluctuations are
-part of each pion's full state, just as they are part of a nucleon's.\refn{26}
+Unitarity preserves inner products. The determinant condition gives a useful invariant: the totally antisymmetric tensor $\epsilon_{ijk}$. Indices $i,j,k$ run from 1 to 3, and repeated indices below are summed.
 
-Where do these particles come from? The quark and gluon fields can exchange
-energy and create quark--antiquark pairs. In a collision with enough available
-energy, those fields can organize into a pion that emerges as an observable
-particle. A pion is therefore another form of matter that the same QCD
-dynamics can build. Its unusually small mass has a deeper symmetry explanation,
-developed in the optional note at the end of this opening.
-
-\textbf{How does a pion connect two nucleons?}
-An interaction between nucleons transfers momentum and changes their joint
-energy. One important contribution can be calculated as one nucleon emitting
-a pion and the other absorbing it. Here the pion is an \emph{intermediate}
-part of the quantum process. This is the meaning of \emph{virtual pion
-exchange}: the calculation includes the pion internally, while the incoming
-and outgoing particles can both be nucleons.
-
-This description follows from QCD by changing the level of detail. At the
-energies relevant to nuclear binding, we use nucleons and pions as the working
-objects and let their interactions summarize the underlying quark--gluon
-dynamics. An \emph{effective field theory} makes that procedure systematic:
-QCD's symmetries constrain the allowed interactions, measurements determine
-their strengths, and successive terms improve the calculation. Single-pion
-exchange supplies the longest-reaching part of this strong interaction;
-closer in, further contributions become important.\refn{8}
-
-\textbf{Why does this interaction have such a short reach?}
-We need two units to see the scale. A femtometre is
-$1\,\mathrm{fm}=10^{-15}\,\mathrm m$. An electronvolt is the energy acquired
-by a charge of magnitude $e$ crossing one volt:
-$1\,\mathrm{eV}=1.602176634\times10^{-19}\,\mathrm J$.
-A kiloelectronvolt is $10^3\,\mathrm{eV}$ and a megaelectronvolt is
-$10^6\,\mathrm{eV}$. We write them as keV and MeV.\refn{12}
-
-The pion's mass is the key. In the simplest massive-exchange description,
-the distance dependence contains
+In the tensor product of three quark color spaces, expressed in a common color frame, consider
 \[
-\frac{e^{-r/\ell_\pi}}{r},
-\qquad
-\ell_\pi=\frac{\hbar}{m_\pi c}
-        =\frac{\hbar c}{m_\pi c^2}.
+ |C\rangle=\frac{1}{\sqrt6}\epsilon_{ijk}
+ |i\rangle\otimes|j\rangle\otimes|k\rangle.
 \]
-Here $r$ is separation, $m_\pi$ is the pion mass, $c$ is the speed of light,
-and $\hbar=h/(2\pi)$ is the reduced Planck constant. This is the
-\emph{Yukawa range}: the massive-field equation produces exponential decay.
-The full pion-exchange interaction also depends on the nucleons' spin and
-on whether they are protons or neutrons.\refn{24}
-
-The measured pion rest energy $m_\pi c^2$ is about $135$--$140\,\mathrm{MeV}$.
-Using $\hbar c\simeq197.3\,\mathrm{MeV\,fm}$, the range is therefore
+There are six nonzero terms, with alternating signs. Applying the same $U$ to the three factors gives
 \[
-\ell_\pi\simeq
-\frac{197.3\,\mathrm{MeV\,fm}}{140\,\mathrm{MeV}}
-\simeq1.4\,\mathrm{fm}.
+ \epsilon_{ijk}U^a{}_iU^b{}_jU^c{}_k
+   =(\det U)\epsilon_{abc}=\epsilon_{abc}.
 \]
-Every additional distance $\ell_\pi$ multiplies the exponential factor by
-$e^{-1}\simeq0.37$. That is a rapid fading with distance. Nuclear attraction
-can be substantial when the particles are close, while electrical repulsion
-between protons remains important much farther out. We will meet this
-competition again when we try to bring two fuel nuclei together.
+Thus $U^{\otimes3}|C\rangle=|C\rangle$: this color combination is a \emph{singlet}. For fields at different positions, a gauge connection must first transport their color indices to a common point. A quark and an antiquark can also form a singlet because the antiquark transforms in the conjugate representation. These constructions supply the color structure used for ordinary baryons and mesons.\refn{1}
 
-\heading{0.4}{Why does a nucleus have a finite size?}
+We have established something exact about representations. The calculation has not determined whether a state binds, what it weighs, or why isolated color is absent from the observed particle spectrum. Those questions require dynamics. Nor does this identity select $SU(3)$ on its own; we have used the gauge group of QCD to calculate a consequence.
 
-Attraction alone leaves something unexplained. If bringing the particles
-closer lowers their energy, what stops a nucleus from shrinking indefinitely?
-The answer brings quantum motion into the story.
+\textbf{How does the field acquire dynamics?} A local color transformation can vary with spacetime position $x$. Differentiating a transformed quark field produces both $U\partial_\mu q$ and $(\partial_\mu U)q$. A gauge field $A_\mu(x)$ supplies the connection needed to compare color at neighboring points. In the convention $D_\mu=\partial_\mu-igA_\mu$, its curvature is
+\[
+ [D_\mu,D_\nu]=-igF_{\mu\nu},\qquad
+ F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu-ig[A_\mu,A_\nu].
+\]
+Here $\mu,\nu$ label spacetime directions and $g$ is the strong coupling. The $A_\mu$ are matrices, so their commutator need not vanish. The usual gauge-field action is quadratic in $F$; this extra term therefore generates interactions among the gluon fields themselves. In the abelian electromagnetic theory the corresponding commutator vanishes.\refn{2}
+
+The field equations specify interactions. Their quantum dynamics must still explain how those interactions organize into the matter we observe.
+
+\clearpage
+\heading{3}{What it would mean to explain confinement}
+
+QCD has a calculable short-distance behavior: at sufficiently large momentum transfer its effective coupling becomes small. This is \emph{asymptotic freedom}. Perturbation theory expands observables in that small coupling. At the larger distances relevant to nucleons, the same expansion loses control. Extrapolating its growth into that regime does not establish confinement.\refn{2}
+
+To state a confinement test, first simplify the system. Keep the gluon field and introduce an external, infinitely heavy quark in the fundamental color representation and an antiquark in its conjugate, separated by $r$. The sources remain fixed while the quantum field responds. We ask how the lowest energy in their presence changes with separation. This is a diagnostic of the theory, rather than a model of a physical proton.
+
+One proposed large-distance behavior is
+\[
+ V(r)=V_0+\sigma r+\text{subleading terms},\qquad
+ F_r=-\frac{\dd V}{\dd r}\simeq-\sigma.
+\]
+The positive constant $\sigma$ is the \emph{string tension}, energy per unit length. The flux-tube picture makes this behavior visible: if field energy stays concentrated in a tube with approximately fixed energy per unit length, stretching it adds energy in proportion to length. Deriving that organization from the quantum theory is the substantive task.
+
+There is a mathematical way to express the energy test. A \emph{Wilson loop} transports color around a closed spacetime path and takes a trace, giving a gauge-invariant quantity. For a rectangle of width $r$ and Euclidean time extent $T$, ground-state projection gives, with a common source self-energy convention,
+\[
+ V(r)=-\lim_{T\to\infty}\frac1T\log\langle W(r,T)\rangle.
+\]
+Here $\hbar=c=1$; Euclidean time is the imaginary-time variable in the continued quantum calculation. If the large rectangle obeys an \emph{area law},
+\[
+ \log\langle W(r,T)\rangle\sim-\sigma rT,
+ \qquad\text{then}\qquad V(r)\sim\sigma r.
+\]
+This implication identifies what the area law would explain. It does not prove that the continuum theory has that law.\refn{3}
+
+Now restore dynamical light quarks. At sufficient separation, a state containing two color-singlet heavy--light mesons can be energetically favored over the stretched string. The configurations mix and the string breaks: its energy need not grow forever. Lattice calculations resolve this process. The outgoing objects remain color singlets.\refn{4}
+
+Confinement in physical QCD must therefore account for the allowed separated states as well as the force between idealized sources. A complete analytic explanation would establish this behavior from a well-defined quantum theory and explain the scales it produces. The observed absence of isolated color and the numerical evidence constrain that explanation; they do not complete it.
+
+\clearpage
+\heading{4}{Why the mass gap is a foundational question}
+
+The source experiment asks how energy changes when color sources are separated. A second question concerns the field with no external sources at all: what excitations can exist above its vacuum? The \emph{vacuum} is the lowest-energy quantum state, not a classical field configuration with every fluctuation switched off.
+
+For a free electromagnetic field, a photon of wavelength $\lambda$ has $E=hc/\lambda$. Arbitrarily long wavelengths permit arbitrarily small positive energies. Classical pure Yang--Mills theory likewise has no explicit gauge-boson mass term. Can its interacting quantum theory instead require a positive minimum excitation energy?
+
+Suppose the theory has been constructed on its physical Hilbert space, with a self-adjoint Hamiltonian $H$ and a unique vacuum $|\Omega\rangle$ in the sector considered. Choose the vacuum energy as zero, so $H|\Omega\rangle=0$. The \emph{mass-gap condition} is
+\[
+ \operatorname{spec}(H)\cap(0,\Delta)=\varnothing
+ \quad\text{for some }\Delta>0.
+\]
+The spectrum includes discrete eigenvalues and continuous spectral values. The condition excludes every physical excitation with energy between zero and $\Delta$. It asserts a lower bound, not a ladder of equally spaced energies. The positive gap must persist in infinite space and as any lattice spacing goes to zero; level spacing in a finite box does not establish it. A complete formulation must also construct the quantum theory itself. This is the core of the Yang--Mills existence and mass-gap problem in four spacetime dimensions.\refn{5}
+
+\textbf{What would such a gap explain?} We can derive one consequence conditionally. Let $|\chi\rangle$ be a finite-norm physical state orthogonal to the vacuum, prepared by a suitably smeared gauge-invariant observable. The spectral theorem writes its Euclidean correlation as
+\[
+ C(t)=\langle\chi|e^{-tH/\hbar}|\chi\rangle
+     =\int_{\Delta}^{\infty}e^{-Et/\hbar}\,\dd\mu_\chi(E).
+\]
+The measure is positive and has total weight $\|\chi\|^2$. Since $E\geq\Delta$,
+\[
+ 0\leq C(t)\leq e^{-\Delta t/\hbar}\|\chi\|^2\qquad(t\geq0).
+\]
+A spectral gap thus implies exponential suppression in imaginary time. The missing step is to establish the hypothesized gap for the interacting continuum theory, rather than insert it as the lower integration limit.
+
+In pure Yang--Mills theory, the expected massive color-singlet excitations are called \emph{glueballs}. The gap concerns physical field states; it is not obtained by assigning each gluon an ordinary rest mass. Nor does the spectral inequality alone establish the Wilson-loop area law of Section~3. These are related questions about quantum gauge dynamics with different mathematical targets.\refn{5}
+
+They belong together in our inquiry: why do the fields restrict which objects can separate, and why do their physical excitations have the energy scales they do?
+
+\clearpage
+\heading{5}{Returning to nucleons and the light pion}
+
+Pure Yang--Mills theory isolates the gauge-field question. To reach nucleons we restore the quark fields and their interactions. For nuclear matter we must also include electromagnetism; weak interactions matter for processes that change quark flavor. The next task is to determine the physical states of this richer theory.
+
+A nucleon's mass measures the rest energy of its interacting quantum state. It is much larger than the sum of the light-quark mass parameters associated with its valence labels. Lattice QCD has reproduced the light-hadron mass spectrum using specified quark masses and a scale-setting input, with controlled numerical extrapolations. This provides substantial evidence connecting QCD to nucleon masses. Our stronger explanatory goal is to understand analytically how that spectrum follows from the dynamics.\refn{6}
+
+The same distinction applies to size. A nucleon has no rigid material surface; its spatial structure is investigated through responses to probes, described by matrix elements called \emph{form factors}. Masses and form factors ask different questions of the same quantum state. Showing that a singlet is permitted, or that a theory has some positive gap, does not yet calculate either its detailed structure or the full spectrum.\refn{1}
+
+\textbf{Why do much lighter particles also appear?} Quarks and antiquarks can organize into mesons. The lightest are the pions, with rest energies around $135$--$140\,\mathrm{MeV}$, compared with about $939\,\mathrm{MeV}$ for a nucleon. A megaelectronvolt (MeV) is a million electronvolts; one electronvolt is the energy gained by a charge of magnitude $e$ through a potential difference of one volt. The pion's small mass brings another property of the QCD vacuum into the explanation: \emph{chiral symmetry breaking}.\refn{1}\refn{7}
+
+Set the up- and down-quark masses to zero for this argument and omit electromagnetism. The quark fields have left- and right-chiral components; QCD permits independent flavor rotations in these two sectors. In the accepted symmetry-breaking description, the vacuum retains their common rotations while breaking three relative directions. Goldstone's theorem then supplies three massless collective excitations, identified with the pions in this limit.
+
+The physical light-quark masses explicitly break that symmetry. At leading order the chiral expansion gives, in natural units,
+\[
+ m_\pi^2=B_\chi(m_u+m_d)+\text{higher-order terms}.
+\]
+Here $B_\chi$ encodes a property of the strongly interacting vacuum. The relation explains how small quark masses can give small pion masses once the symmetry-breaking pattern is supplied. It leaves the analytic derivation of that vacuum structure and its coefficients to the underlying theory.\refn{7}
+
+This is why returning from pure gauge fields to physical QCD is a substantial bridge. Quarks change the spectrum and introduce chiral dynamics. The pion will now carry part of the explanation of how two color-neutral nucleons can interact over a nuclear distance.
+
+\clearpage
+\heading{6}{From the pion to nuclear binding}
+
+Color neutrality does not require two nucleons to have zero interaction. Their composite quantum states can exchange energy and momentum. At low energies, one long-range contribution is represented by virtual pion exchange: the pion is internal to the scattering process, while the incoming and outgoing particles can be nucleons. Its coupling and spin structure are inherited from the strong dynamics.\refn{8}
+
+We can derive the spatial range in a simplified massive-field model. Away from a localized source, a static scalar field satisfies
+\[
+ (\nabla^2-\ell^{-2})\phi=0,\qquad \ell=\frac{\hbar}{mc}.
+\]
+For a spherical solution, let $u(r)=r\phi(r)$. Because $\nabla^2\phi=u''/r$ for $r>0$, the equation becomes $u''-u/\ell^2=0$. Its solutions are $u=C e^{-r/\ell}+D e^{r/\ell}$. Requiring decay at infinity sets $D=0$, giving
+\[
+ \phi(r)=C\frac{e^{-r/\ell}}r.
+\]
+This is the Yukawa range. Using $\hbar c\simeq197.3\,\mathrm{MeV\,fm}$ and $m_\pi c^2\simeq140\,\mathrm{MeV}$ gives $\ell_\pi\simeq1.4\,\mathrm{fm}$, where $1\,\mathrm{fm}=10^{-15}\,\mathrm m$. The range follows from the stated massive-field equation. The sign and strength of a nucleon interaction do not: actual pion exchange has spin and isospin operators and derivatives, with additional contributions at shorter distances.\refn{9}
+
+Chiral effective field theory organizes pion exchange, short-range interactions, and forces involving several nucleons according to QCD's symmetries and a low-energy expansion. Many coefficients are determined from data. It supplies a systematic nuclear description while keeping open the stronger task of deriving its quantitative content analytically from QCD.\refn{8}
+
+Consider the deuteron, the bound proton--neutron pair. With the separated particles at rest assigned zero relative energy, an effective nuclear Hamiltonian has the form
+\[
+ H_{\rm rel}=\frac{\mathbf p^2}{2\mu_{pn}}+V_{pn},
+ \qquad \mu_{pn}=\frac{m_pm_n}{m_p+m_n}.
+\]
+A normalizable state satisfying $H_{\rm rel}\psi=-B_D\psi$, with $B_D>0$, is bound: energy $B_D$ must be supplied to separate it. This states the binding criterion precisely within the effective description. Finding such a state and its binding energy requires the interaction $V_{pn}$; attraction alone does not determine the answer. Quantum localization costs kinetic energy, and the permitted spin and spatial states also matter.
+
+We can now distinguish the bridges we must understand: fields organize into nucleons and pions; their interactions permit nuclei; a reaction connects nuclear arrangements with different energies. Before following the reaction into D--T fusion, we will examine what sets a nucleus's spatial extent and how its binding energy is measured. The analytic gaps in the earlier steps remain part of the inquiry, including how confinement, the vacuum spectrum, and chiral dynamics produce the nuclear interaction and its scales.
+
+\clearpage
+\setlength{\parskip}{5pt}
+\heading{7}{Why does a nucleus have a finite size?}
+
+The binding criterion tells us what to look for: a normalizable state below the separated-particle energy. We now ask why such a state occupies a finite region and what sets its energy. The answer brings quantum motion into the story.
 
 A quantum particle occupies a state spread over space. We describe that state
 by a wavefunction, a function whose squared magnitude gives the probability
@@ -276,7 +221,7 @@ localizing the particle has an energy cost.
 Look along one coordinate $x$. Write $\Delta x$ for the standard deviation of
 the position distribution and $\Delta p_x$ for that of the corresponding
 momentum. These measure the spreads of possible measurement outcomes in the
-same quantum state. The uncertainty relation is\refn{23}
+same quantum state. The uncertainty relation is\refn{10}
 \[
 \Delta x\,\Delta p_x\geq\frac{\hbar}{2}.
 \]
@@ -303,7 +248,7 @@ minimum kinetic-energy cost. This one-coordinate calculation isolates the
 cost of localization; a nuclear calculation also includes the other
 coordinates, interactions, and the motion of all its constituents.
 
-To see its size, use a nucleon mass $m_Nc^2\simeq939\,\mathrm{MeV}$ and
+For a single-nucleon illustration, use a mass $m_Nc^2\simeq939\,\mathrm{MeV}$ and
 choose $L=1\,\mathrm{fm}$. Multiplying numerator and denominator by $c^2$
 lets us use the units already introduced:
 \[
@@ -313,8 +258,7 @@ lets us use the units already introduced:
 {8(939\,\mathrm{MeV})(1\,\mathrm{fm})^2}
 \simeq5.2\,\mathrm{MeV}.
 \]
-Even this lower bound is on a nuclear energy scale. At half that width it
-becomes about $21\,\mathrm{MeV}$.
+Even this lower bound is on a nuclear energy scale. At half that width it becomes about $21\,\mathrm{MeV}$. For the proton--neutron relative coordinate in Section~6, the mass is instead $\mu_{pn}\simeq m_N/2$; the same one-coordinate width then gives a bound of about $10.4\,\mathrm{MeV}$. Neither illustration predicts the deuteron binding energy without its interaction.
 
 \textbf{Binding is the outcome of competing contributions.}
 Measure the energy of a proton--neutron pair relative to the same particles
@@ -326,12 +270,11 @@ E_{\rm relative}=\langle K_{\rm internal}\rangle+\langle V_{\rm interaction}\ran
 Here $V_{\rm interaction}$ describes their nuclear interaction, and the
 averages are taken in the same two-particle state.
 
-A very extended state samples little of the attractive region. A very
-concentrated state pays a high kinetic cost; commonly used nuclear potentials
-also have a strongly repulsive short-distance core. Between those extremes,
+A very extended state samples little of the attractive region. A very concentrated state pays a high kinetic cost. Some conventional nuclear potentials represent short-distance dynamics by a strongly repulsive core; the detailed form depends on the effective description. Between those extremes,
 the pair may find a lower-energy state with a finite spatial spread. A
 calculation with the actual interaction determines whether that state is
-bound and by how much.\refn{8}\refn{24}
+bound and by how much.\refn{8}\refn{9}
+This argument identifies contributions to the balance; calculating a nuclear radius and the equilibrium density of nuclear matter still requires the many-nucleon dynamics.
 
 For the deuteron, measurements give
 $E_{\rm relative}\simeq-2.225\,\mathrm{MeV}$. It takes
@@ -347,7 +290,7 @@ the same complete one-particle state. Fermions are particles with half-integer
 spin; protons and neutrons both belong to this class. Protons obey the
 exclusion rule among themselves, as do neutrons. A state includes both its
 spatial wavefunction and its \emph{spin}, the particle's intrinsic angular
-momentum.\refn{25}
+momentum.\refn{12}
 
 For a nucleon, spin has two possible projections along any chosen axis.
 In an independent-particle description, a spatial orbital---one available
@@ -361,7 +304,7 @@ shared quantum state whose total energy lies below the separated-particle
 energy. The next step is to compare two different nuclear arrangements.
 That comparison will give us the energy available from fusion.
 
-\heading{1}{Reading the reaction before using it}
+\heading{8}{Reading the reaction before using it}
 
 Let $Z$ count protons and $N$ count neutrons; $A=Z+N$ counts nucleons. The symbol
 ${}^{A}_{Z}X$ specifies a nucleus. Changing $Z$ changes the element $X$; changing
@@ -385,15 +328,15 @@ D+T\longrightarrow\alpha+n.\label{eq:reaction}
 Its bookkeeping is $2+3=4+1$ nucleons and $1+1=2+0$ units of charge.
 The neutron on the right is not inside the helium nucleus. Energy, momentum,
 and angular momentum must also balance, but these conditions do not force an
-encounter to fuse: the nuclei can scatter without changing species.\refn{9}
+encounter to fuse: the nuclei can scatter without changing species.\refn{13}
 
 The Sun's proton--proton route includes $p+p\to D+e^++\nu_e$, where the weak
 interaction converts a proton into a neutron during formation of deuterium;
 $e^+$ is a positron and $\nu_e$ an electron neutrino.
 Our D--T reaction already has neutron-containing fuel and needs no such weak
-conversion.\refn{10}
+conversion.\refn{14}
 
-\heading{2.1}{The energy is a difference between arrangements}
+\heading{9}{The energy is a difference between arrangements}
 
 The deuteron gave us the basic idea: binding lowers the energy of a shared
 arrangement. We can measure that lowering by weighing the arrangement.
@@ -417,7 +360,7 @@ B(Z,N)=\bigl[Zm_p+Nm_n-m(Z,N)\bigr]c^2.\label{eq:binding}
 Thus a bound nucleus weighs less than its separated constituents by $B/c^2$.
 This difference is the \emph{mass defect}. Greater binding means a larger
 separation cost, and therefore a lower rest energy for that inventory of
-nucleons.\refn{9}
+nucleons.\refn{13}
 
 \textbf{Now compare the two arrangements in our reaction.}
 The energy made available by one D--T reaction, called its $Q$ value, is the
@@ -449,7 +392,7 @@ its two protons can occupy one spatial orbital with opposite spin projections,
 and its two neutrons can do the same. The exclusion rule therefore permits a
 compact four-nucleon arrangement. Its actual binding follows from the balance
 of nuclear attraction, quantum motion, and electrical repulsion; the measured
-$28.296\,\mathrm{MeV}$ tells us how favorable that balance is.\refn{9}\refn{25}
+$28.296\,\mathrm{MeV}$ tells us how favorable that balance is.\refn{13}\refn{12}
 
 \textbf{Where does the released energy go?}
 Into the motion of the alpha particle and neutron. To calculate the sharing,
@@ -477,16 +420,16 @@ Thus $K_\alpha\simeq Q/5\simeq3.5\,\mathrm{MeV}$ and
 $K_n\simeq4Q/5\simeq14.1\,\mathrm{MeV}$. This leading estimate will matter
 when we build the reactor: most of the released energy travels with a neutral
 particle. Relativistic two-body kinematics refines these values and includes
-the incoming kinetic energy.\refn{13}
+the incoming kinetic energy.\refn{16}
 
 \openingfigure{figN3_binding_recoil}{The same $2p+3n$ inventory is rearranged.
 The two final recoil arrows have equal momentum magnitude, not equal kinetic
 energy; energies use the leading nonrelativistic estimate in the text. Rest
 energies are measured relative to separated nucleons. Nucleon circles encode
 counts, not exact positions or nuclear shapes. Original diagram using sources
-11 and 13 and Eq.~\eqref{eq:q}.}{fig:n3}
+11 and 16 and Eq.~\eqref{eq:q}.}{fig:n3}
 
-\heading{2.2}{An energetic downhill route can still have a barrier}
+\heading{10}{An energetic downhill route can still have a barrier}
 
 The wider pattern is visible by plotting binding energy \emph{per nucleon},
 $B/A$, against nucleon count $A$. It rises broadly from light nuclei to the
@@ -494,7 +437,7 @@ iron--nickel region and decreases toward very heavy nuclei. Many light-nucleus
 fusion reactions and heavy-nucleus fission reactions therefore release energy:
 their products have greater \emph{total} binding energy than their reactants.
 For any proposed reaction, Eq.~\eqref{eq:q}'s method gives the decisive test:
-compare the total initial and final rest energies.\refn{9}
+compare the total initial and final rest energies.\refn{13}
 
 Why a peak? The effective nuclear attraction is short ranged: a nucleon mostly
 benefits from nearby neighbours. Small nuclei have a large surface fraction,
@@ -502,7 +445,7 @@ so many nucleons have fewer neighbours; larger nuclei initially gain more bindin
 per particle. But electric repulsion acts between every pair of protons, making
 large charged nuclei increasingly costly. This competition gives the broad
 trend. Quantum shell structure, proton--neutron imbalance, and pairing determine
-the detailed curve; this argument alone does not calculate the peak.\refn{9}
+the detailed curve; this argument alone does not calculate the peak.\refn{13}
 
 The top of the curve is a broad iron--nickel neighborhood.
 ${}^{62}\mathrm{Ni}$ has the largest measured $B/A$, about
@@ -532,9 +475,9 @@ Using $e^2/(4\pi\epsilon_0)\simeq1.440\,\mathrm{MeV\,fm}$, at
 $r=5\,\mathrm{fm}$ the cost is
 \[
 U(5\,\mathrm{fm})\simeq\frac{1.440\,\mathrm{MeV\,fm}}{5\,\mathrm{fm}}
-=0.288\,\mathrm{MeV}=288\,\mathrm{keV}.\refn{12}
+=0.288\,\mathrm{MeV}=288\,\mathrm{keV}.\refn{15}
 \]
-For comparison, a head-on encounter with only $10\,\mathrm{keV}$ of relative
+Here $1\,\mathrm{keV}=10^3\,\mathrm{eV}$. For comparison, a head-on encounter with only $10\,\mathrm{keV}$ of relative
 kinetic energy reaches its classical turning point when $U(r)=10\,\mathrm{keV}$.
 Solving gives $r\simeq1.440/0.010=144\,\mathrm{fm}$: much farther out than
 the few-femtometre scale of nuclear attraction. The incoming pair would turn
@@ -546,7 +489,7 @@ inside a barrier follows from the Schr\"odinger equation. We can see the
 mechanism with an ordinary differential equation by replacing the curved
 barrier with a constant height $U_0$ over a finite interval of width $d$.
 Write $x$ for position in this toy model, $E<U_0$ for the conserved energy,
-and $\mu$ for the particle's mass. The stationary equation is\refn{14}
+and $\mu$ for the particle's mass. The stationary equation is\refn{17}
 \[
 -\frac{\hbar^2}{2\mu}\frac{\dd^2\psi}{\dd x^2}+U_0\psi=E\psi.
 \]
@@ -573,6 +516,25 @@ physical opening: a wave can penetrate to small separations even when a
 classical trajectory would turn back. We still need the probability of
 fusion once the nuclei interact, which is our next question.
 
+\newpage
+\textbf{The Coulomb barrier gives a more revealing exponential.}
+For radial motion with zero orbital angular momentum, write $U(r)=a/r$, where $a=e^2/(4\pi\epsilon_0)$. The outer turning point is $r_t=a/E$. The semiclassical WKB approximation adds the local decay exponents across the barrier. The probability of reaching a nuclear matching radius $R<r_t$ contains
+\[
+ P_{\rm pen}(E)\sim\exp\!\left[-\frac{2}{\hbar}
+ \int_R^{a/E}\sqrt{2\mu\left(\frac ar-E\right)}\,\dd r\right].
+\]
+This treats the exterior Coulomb field as unscreened. To extract its leading energy dependence, formally send the lower limit to zero. This is an analytic idealization, not a claim that nuclei have zero radius. With $r=(a/E)\sin^2\theta$, the integral becomes
+\[
+ a\sqrt{\frac{2\mu}{E}}\int_0^{\pi/2}2\cos^2\theta\,\dd\theta
+ =\frac{\pi a}{2}\sqrt{\frac{2\mu}{E}}.
+\]
+Consequently,
+\[
+ P_{\rm pen}(E)\sim e^{-\sqrt{E_G/E}},
+ \qquad E_G=2\mu\left(\frac{\pi a}{\hbar}\right)^2.
+\]
+The \emph{Gamow energy} $E_G$ combines electromagnetic strength and reduced mass. This calculation explains the steep suppression at small collision energy. Finite nuclear size, angular momentum, screening where relevant, and the nuclear reaction amplitude still enter a quantitative cross section. Penetration alone does not determine fusion.\refn{25}
+
 \openingfigure{figN4_binding_and_barrier}{Different horizontal axes, different
 questions. (A) AME2020 entries with measured binding values and $A\leq260$;
 estimated values marked \texttt{\#} are excluded. The line is an upper envelope
@@ -581,9 +543,9 @@ energy-releasing trends, not that every channel is favorable. (B) An exact
 stationary solution of the stated constant-barrier toy model: $E/U_0=0.35$,
 width $2.2\ell$, with $\ell=\hbar/\sqrt{2\mu U_0}$. Matching $\psi$ and its
 derivative gives nonzero transmission; the lower curve is amplitude magnitude,
-not an energy curve. Original calculation; sources 11 and 14.}{fig:n4}
+not an energy curve. Original calculation; sources 11 and 17.}{fig:n4}
 
-\heading{3}{From a possible reaction to a probability}
+\heading{11}{From a possible reaction to a probability}
 
 The symbol $D+T\to\alpha+n$ identifies an outcome. To predict its frequency,
 we need a quantum amplitude. A quantum state can be represented by a vector;
@@ -600,12 +562,12 @@ state, and $a_f$ its complex coefficient. Orthogonality gives
 $\langle f|g\rangle=0$ for distinct basis states and $1$ when $f=g$;
 probability conservation then reads $\sum_f|a_f|^2=1$. Actual continuum momenta
 require integrals or finite detector bins rather than a probability for one
-exact momentum.\refn{15}
+exact momentum.\refn{18}
 
 An amplitude includes both magnitude and phase. Contributions to the same
 indistinguishable outcome add \emph{before} squaring; interference can therefore
 increase or suppress that outcome. We do not select nuclear products by counting
-nucleons alone.\refn{15}
+nucleons alone.\refn{18}
 
 \textbf{How would we measure this?} Send a narrow-energy deuteron beam toward a
 thin target containing $N_T$ tritons. Let $\Phi_D$ be the incident number flux,
@@ -620,7 +582,7 @@ collision energy $E$, not the literal cross-sectional area of a little hard
 nucleus. The thin-target assumption avoids appreciable beam depletion and
 energy loss. Connecting an $S$-matrix element to this area requires incoming
 flux normalization, outgoing phase-space integration, and appropriate spin
-sums or averages; one cannot simply set $\sigma=|a|^2$.\refn{13}
+sums or averages; one cannot simply set $\sigma=|a|^2$.\refn{16}
 
 Barrier penetration is only part of the amplitude. D--T fusion is enhanced by
 a resonance, a temporarily correlated five-nucleon configuration with the
@@ -629,16 +591,15 @@ colleagues treats incoming $D+T$ and outgoing $\alpha+n$ channels with nuclear
 interactions from effective field theory. Its high-accuracy comparison includes
 a small phenomenological resonance adjustment. This gives a concrete bridge
 from a microscopic nuclear model to measured reaction probabilities, with the
-model's assumptions still visible.\refn{16}
+model's assumptions still visible.\refn{19}
 
 \panel{Where do path integrals enter?}{An amplitude can also be built by
 adding contributions from possible histories. Each history carries a phase
 set by its action divided by $\hbar$. This gives another way to investigate
 barrier penetration: in a suitable approximation, special paths in imaginary
-time reveal the tunnelling suppression. The optional instanton note develops
-this connection after the main story.\refn{17}\refn{28}}
+time reveal the tunnelling suppression. Appendix~B develops this connection after the main story.\refn{20}\refn{21}}
 
-\heading{4}{From one encounter to hot fuel}
+\heading{12}{From one encounter to hot fuel}
 
 A reactor needs many reactions, not merely a possible one. Let $n_D$ and $n_T$
 denote numbers of deuterons and tritons per unit volume. First imagine all
@@ -668,27 +629,75 @@ $[\mathcal R]=\mathrm{m^{-3}s^{-1}}$. Multiplying by the energy per event gives
 the local \emph{nuclear} power density, $\mathcal P_{\rm fus}=Q\mathcal R$,
 not net electrical output.
 
-For near-thermal fuel, ion temperature sets the velocity distribution. We keep
-temperature in kelvin, $T_i$, distinct from its energy scale,
-$\Theta_i=k_BT_i$, where $k_B$ is Boltzmann's constant. For example,
+The distribution $g(v)$ is an input to this average. Explaining how electromagnetic forces, collisions, and collective motion establish and evolve it takes us into kinetic and plasma theory. The nuclear cross section supplies one part of that larger dynamical problem.
+
+\textbf{Deriving the thermal average.}
+Assume independent, isotropic Maxwellian ion distributions at a common temperature $T_i$, with no relative drift. Write $\Theta_i=k_BT_i$ for the temperature's energy scale. Each Cartesian velocity component is Gaussian with variance $\Theta_i/m$. The difference of the two independent components therefore has variance
+\[
+ \operatorname{Var}(v_{D,x}-v_{T,x})
+ =\frac{\Theta_i}{m_D}+\frac{\Theta_i}{m_T}
+ =\frac{\Theta_i}{\mu},\qquad \mu=\frac{m_Dm_T}{m_D+m_T}.
+\]
+The three-dimensional relative Gaussian, integrated over directions, gives
+\[
+ g(v)=4\pi\left(\frac{\mu}{2\pi\Theta_i}\right)^{3/2}
+ v^2e^{-\mu v^2/(2\Theta_i)}.
+\]
+Substitute this into Eq.~\eqref{eq:rate} and set $E=\mu v^2/2$. Since $v\,\dd v=\dd E/\mu$, we have $v^3\dd v=2E\,\dd E/\mu^2$, hence
+\[
+ \langle\sigma v\rangle
+ =\sqrt{\frac{8}{\pi\mu}}\,\Theta_i^{-3/2}
+ \int_0^\infty E\,\sigma_{DT}(E)e^{-E/\Theta_i}\,\dd E.
+\]
+This derives the averaging law from the chosen distributions. It leaves the nuclear cross section, and the conditions maintaining those distributions, to their respective dynamics.\refn{19}\refn{26}
+
+\textbf{Which collision energies contribute?}
+Define $S_{\rm ast}(E)=E\sigma(E)e^{\sqrt{E_G/E}}$, the \emph{astrophysical factor}, distinct from the scattering operator $S$. The rate integrand is then proportional to
+\[
+ S_{\rm ast}(E)\exp\!\left[-\frac{E}{\Theta_i}-\sqrt{\frac{E_G}{E}}\right].
+\]
+High energies are scarce in the thermal distribution; very low energies scarcely penetrate. If $S_{\rm ast}$ varies slowly, minimizing the exponent's positive argument gives
+\[
+ \frac1{\Theta_i}-\frac{\sqrt{E_G}}{2E^{3/2}}=0
+ \quad\Longrightarrow\quad E_*=
+ \left(\frac{E_G\Theta_i^2}{4}\right)^{1/3}.
+\]
+This estimates the peak within the \emph{Gamow window}, the range of contributing collision energies at a prescribed temperature. For resonant D--T fusion, the full measured or calculated $\sigma_{DT}(E)$ must be used: the slow-variation assumption can fail. The estimate does not select a reactor's optimum temperature.\refn{26}
+
+To express the thermal scale in familiar units, Boltzmann's constant gives
 \[
 \Theta_i=10\,\mathrm{keV}=10^4\,\mathrm{eV}
 \quad\Rightarrow\quad
 T_i=\frac{10^4}{8.617333262\times10^{-5}}\,\mathrm K
-\simeq1.16\times10^8\,\mathrm K.\refn{12}
+\simeq1.16\times10^8\,\mathrm K.\refn{15}
 \]
 This is a scale illustration, not a temperature optimum derived from the
 Coulomb barrier. Evaluated cross sections, energy distributions, and losses
 must be combined to choose an operating range. The familiar multi-keV D--T
 regime will be justified by those calculations, not assumed to follow from
-``hotter is better.''\refn{18}
+``hotter is better.''\refn{22}
+
+\heading{13}{The next bridge: collective plasma dynamics}
 
 In the hot-fuel regime used for magnetic fusion, electrons no longer remain
 bound to individual nuclei: the fuel is an ionized plasma of positive nuclei
 and negative electrons. It is not a quark--gluon plasma;
-nucleons remain confined composite particles.\refn{1}
+nucleons remain confined composite particles.\refn{23}
 Positive and negative charge can balance overall even though each constituent
 responds to electromagnetic fields.
+
+Let $f_s(\mathbf x,\mathbf v,t)\,\dd^3x\,\dd^3v$ count particles of species $s$ in a phase-space element. In a classical, nonrelativistic mean-field description, the Lorentz acceleration is $\dot{\mathbf v}=(q_s/m_s)(\mathbf E+\mathbf v\times\mathbf B)$. Its phase-space divergence is zero: $\nabla_{\mathbf x}\!\cdot\mathbf v+\nabla_{\mathbf v}\!\cdot\dot{\mathbf v}=0$. Thus the flow preserves phase-space volume. With collisions and sources omitted, particle conservation and the chain rule give
+\[
+ \frac{\dd f_s}{\dd t}=0
+ \quad\Longrightarrow\quad
+ \frac{\partial f_s}{\partial t}
+ +\mathbf v\!\cdot\!\nabla_{\mathbf x}f_s
+ +\frac{q_s}{m_s}(\mathbf E+\mathbf v\times\mathbf B)
+ \!\cdot\!\nabla_{\mathbf v}f_s=0.
+\]
+This is the Vlasov equation. Maxwell's equations couple the fields back to the charge and current obtained from the distributions. Collisions and fusion require additional terms.\refn{27}
+
+The bridge therefore has explicit assumptions: a classical distribution, a collective field description, and a treatment of correlations and collisions. Fluid models take velocity moments and need closures for higher moments. Those steps create further questions about transport and sustained confinement beyond the nuclear reaction rate.\refn{27}
 
 \panel{The first machine question}{How can we give the fuel enough energetic
 encounters, and retain that energy long enough, for fusion power to compete
@@ -703,11 +712,11 @@ energy-handling strategies. Microscopic color confinement and macroscopic
 plasma confinement are different problems; the latter does not follow from
 the former by analogy.
 
-\section*{\textcolor{ink}{Optional deeper look: why are pions so light?}}
+\clearpage
+\phantomsection\pdfbookmark[1]{A. Symmetry and the light pion}{appendixA}
+\section*{A\quad Chiral symmetry and the light pion}
 
-A pion has about one-seventh of a nucleon's mass. That small mass gave the
-nuclear interaction its longest reach in Section~0.3. The deeper explanation
-is a connection between symmetry and low-energy motion.
+Section~5 stated the chiral symmetry-breaking pattern and its consequence for the pion mass. The following picture makes the mechanism more intuitive while keeping the dynamical assumption visible.
 
 Picture an energy landscape whose lowest points form a circular trough.
 Moving radially away from the trough costs energy; moving around its bottom
@@ -723,26 +732,16 @@ exact continuous symmetry broken by the ground state produces massless
 collective excitations, called \emph{Goldstone bosons}. The circular trough
 illustrates one such direction; a theory can have several.\refn{8}
 
-What plays this role in QCD? A quark field has left- and right-chiral
-components. These are its two handed components; for a massless quark they
-correspond to spin opposed to, or aligned with, its motion. In the idealization
-of zero up- and down-quark masses, the strong-interaction equations allow
-independent rotations mixing $u$ and $d$ in each handed sector. This is
-\emph{chiral symmetry}.
+In QCD with zero up- and down-quark masses, the left- and right-chiral quark components admit independent rotations mixing $u$ and $d$. The common rotations survive in the accepted vacuum description; three relative directions are broken. The pions are the corresponding collective excitations.\refn{8}\refn{7}
 
-The vacuum---the lowest-energy state of the fields---develops correlations
-between these sectors. Its symmetry retains their common rotations while
-breaking three independent relative directions. The associated three
-collective excitations are the pions. This account describes their origin
-as low-energy excitations of the same quark--gluon fields whose particle
-content we introduced earlier.\refn{8}\refn{27}
+The analogy explains the consequence of a symmetry-breaking pattern. Deriving that vacuum structure analytically from QCD remains part of the foundational question.
 
 The physical up and down quarks have small, nonzero masses. These make the
 chiral symmetry approximate and give the pions a small restoring energy,
 like a slight tilt making one point of the trough preferable. Pions
 consequently have nonzero rest energies of about $135$--$140\,\mathrm{MeV}$.
 In the massless-quark idealization, with electromagnetism omitted, those
-pion masses vanish.\refn{26}\refn{27}
+pion masses vanish.\refn{1}\refn{7}
 
 This connects back to our question about energy gaps. Adding physical light
 quarks changes the low-energy spectrum; setting their masses exactly to zero
@@ -751,20 +750,17 @@ physics, the measured small-but-positive pion mass gives the finite
 $\ell_\pi\simeq1.4\,\mathrm{fm}$ range we used in the main story.
 
 \clearpage
-\section*{\textcolor{ink}{Optional deeper look: tunnelling and instantons}}
+\phantomsection\pdfbookmark[1]{B. Tunnelling and instantons}{appendixB}
+\section*{B\quad Tunnelling and instantons}
 
-The barrier calculation in Section~2.2 used a differential equation for a
-wavefunction. The path-integral formulation asks a complementary question:
-which histories make the important contributions to the transition amplitude?
+The barrier equation in Section~10 has a complementary path-integral description: which histories contribute to the transition amplitude?
 
 For a particle of mass $\mu$ moving in a smooth potential $U(x)$, the
 \emph{action} of a path is the time integral of kinetic minus potential energy:
 \[
 S[x]=\int\left[\frac{\mu}{2}\left(\frac{\dd x}{\dd t}\right)^2-U(x)\right]\dd t.
 \]
-The contribution of a path carries the factor $\exp(iS[x]/\hbar)$; the
-amplitude sums such contributions. Action has units of energy times time,
-so its ratio to $\hbar$ is dimensionless.\refn{17}
+The amplitude sums path contributions with phase $\exp(iS[x]/\hbar)$. Action has units of energy times time, so $S/\hbar$ is dimensionless.\refn{20}
 
 \textbf{A change of time variable reveals an energy landscape.}
 In problems where the continuation is justified, set $t=-i\tau$, with
@@ -793,224 +789,42 @@ is an \emph{instanton}. Varying $S_E$ gives
 The force has the sign of motion in the inverted potential $-U$.
 An imaginary-time path can therefore connect regions separated by the
 real-time barrier. Its action sets the leading exponential suppression of
-the tunnelling contribution.\refn{28}
+the tunnelling contribution.\refn{21}
 
-This is a useful route from elementary barrier penetration to more general
-tunnelling calculations. For fusion, the path and its boundary conditions
-must describe incoming nuclei at a specified collision energy and their
-nuclear interactions. The double well illustrates the method; the
-Coulomb-penetration problem requires its own appropriate semiclassical paths.
+For fusion, the paths and boundary conditions must describe incoming nuclei at their collision energy and their nuclear interactions. The double well illustrates the method; Coulomb penetration requires its own semiclassical paths.
 
 \textbf{An active mathematical direction: Chen's instanton density.}
 For Yang--Mills fields, instantons can connect vacuum configurations
 distinguished by a \emph{winding number}, an integer describing topological
 wrapping. An \emph{instanton density} records local contributions to the
 corresponding topological charge throughout Euclidean spacetime; integrating
-it gives the total charge under suitable boundary conditions.\refn{28}\refn{29}
+it gives the total charge under suitable boundary conditions.\refn{21}\refn{24}
 
-Jing-Yuan Chen asks how to preserve this information when the continuous
-field theory is replaced by a lattice. Sampling the usual group-valued fields
-loses topological distinctions. His construction refines the lattice variables
-using higher category theory so that a local instanton density operator can
-be defined. It provides a framework for studying correlations of this
-topological structure.\refn{29} This returns us to the opening's deeper
-question: how can a computable representation of quark--gluon physics retain
-the mathematical structure of the underlying theory?
+Jing-Yuan Chen studies how to preserve this information on a lattice. His construction refines the usual group-valued variables using higher category theory, allowing a local instanton density operator to be defined.\refn{24} This preserves specified topological information; establishing the continuum dynamics and its spectrum remains a further task. It returns us to the opening's question of how a representation of quark--gluon physics can retain the mathematical structure of the underlying theory.
 
 \clearpage
-\section*{\textcolor{ink}{Open sources and the claims they support}}
+\phantomsection\pdfbookmark[1]{Source notes}{sources}
+\section*{Source notes}
 \small
-These notes make the boundary between derivation and imported physics explicit.
-All links point to freely accessible material. The body develops its own
-bookkeeping, energy cancellation, recoil estimate, and rate-counting argument;
-the underlying physical laws and numerical inputs are not mathematical axioms
-proved by this thesis.
+These references identify the physical inputs and the limits of the arguments. The text develops the color contraction, spectral bound, massive-field range, localization estimate, reaction-energy cancellation, barrier illustration, and rate-counting argument. Each uses stated assumptions; the missing analytic derivation from the underlying quantum fields remains explicit. Section numbers in source descriptions refer to the cited work unless stated otherwise.
 
-\source{1}{Constituents and the meaning of quark--gluon plasma.}{US Department of
-Energy, \href{https://www.energy.gov/science/doe-explainsquarks-and-gluons}{``DOE
-Explains: Quarks and Gluons.''} Introductory orientation for quark content,
-gluons, and the distinction between intact nucleons and deconfined matter.
-The electron-cloud description does not assume classical orbital trajectories.}
+\source{1}{Quark content and hadronic states}{C. Amsler, V. Crede and T. DeGrand, Particle Data Group, \href{https://pdg.lbl.gov/2025/reviews/rpp2025-rev-quark-model.pdf}{\emph{Quark Model}}, 2025 update. See Sections 15.1--15.3, Table 15.1, and Section 15.5 for quark labels, electric charges, mesons, and baryons. The introductory distinction between quark-model classifications and QCD dynamics informs the opening. Charge addition and the three-color antisymmetric contraction are calculated explicitly here; they are not proofs of dynamical confinement.}
 
-\source{2}{Color charge and gluon self-interactions.}{Particle Data Group (2025),
-\href{https://pdg.lbl.gov/2025/reviews/rpp2025-rev-qcd.pdf}{``Quantum
-Chromodynamics,''} \S9.1, especially Eqs.~(9.1)--(9.2) and the discussion of
-three- and four-gluon vertices on p.~2. These specify the microscopic theory;
-we do not derive its Lagrangian or Feynman rules in the opening.}
+\source{2}{The gauge field and asymptotic freedom}{J. Huston, K. Rabbertz and G. Zanderighi, Particle Data Group, \href{https://pdg.lbl.gov/2025/reviews/rpp2025-rev-qcd.pdf}{\emph{Quantum Chromodynamics}}, 2025 update, Section 9.1, Eqs. (9.1)--(9.3). These specify the QCD Lagrangian, gluon self-interactions, and perturbative running. The opening uses the matrix convention $D_\mu=\partial_\mu-igA_\mu$ and defines $F$ by its commutator; signs in component conventions may consequently differ. The gauge-field action and quantum framework are supplied physical theory, not derived here from group theory alone.}
 
-\source{3}{Nucleon mass from dynamical QCD.}{S.~D\"urr et al.,
-\href{https://arxiv.org/abs/0906.3599}{``Ab-initio Determination of Light Hadron
-Masses,''} \emph{Science} \textbf{322}, 1224--1227 (2008), open manuscript.
-Consult the mass-spectrum results and discussion of continuum and physical-mass
-extrapolations. Quark masses and the overall physical scale are inputs; this
-does not assign all mass to a single geometric flux-tube component.}
+\source{3}{Wilson loops and the confinement diagnostic}{K. G. Wilson, \href{https://hep.physics.uoc.gr/Erasmus-IP-2013/files/lectures/Rabinovici/Wilson.pdf}{\emph{Confinement of Quarks}}, Physical Review D 10, 2445--2459 (1974), Sections II and IV. The static-source energy relation assumes a valid spectral projection and consistent treatment of source self-energies. Its elementary large-$T$ consequence is shown in the text. Wilson's strong-coupling lattice argument identifies an area law in that regime; establishing the required continuum limit remains a separate task.}
 
-\source{4}{Asymptotic freedom.}{D.~J.~Gross,
-\href{https://www.nobelprize.org/uploads/2024/10/gross-lecture-1.pdf}{``The
-Discovery of Asymptotic Freedom and the Emergence of QCD,''} Nobel lecture
-(2004), especially ``Implications of Asymptotic Freedom.'' For the precise
-running-coupling equation, see source~2, \S9.1.1, Eq.~(9.3). A weak-coupling
-result at short distance is not by itself a long-distance confinement proof.}
+\source{4}{Dynamical string breaking}{G. S. Bali et al., \href{https://arxiv.org/abs/hep-lat/0505012}{\emph{Observation of String Breaking in QCD}}, Physical Review D 71, 114513 (2005). See the abstract and the mixing of the static quark--antiquark and two static--light-meson sectors. This is numerical evidence for the behavior with dynamical light quarks. It motivates treating the unbroken flux tube and the broken-string configuration as distinct, mixing descriptions, rather than extending a linear potential indefinitely.}
 
-\source{5}{Flux tubes, a static potential, and string breaking.}{G.~S.~Bali et al.
-(SESAM), \href{https://arxiv.org/abs/hep-lat/0505012}{``Observation of String
-Breaking in QCD,''} \emph{Physical Review D} \textbf{71}, 114513 (2005).
-The system has static quark sources and dynamical light quarks. The linear
-potential is an intermediate-regime model; the final states after breaking are
-color neutral. It is not a rigid-string model of a physical proton.}
+\source{5}{Existence and the spectral gap}{A. Jaffe and E. Witten, \href{https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf}{\emph{Quantum Yang--Mills Theory}}, Sections 4--5, printed pp. 6--7. Section 4 states the existence and mass-gap problem for compact simple gauge groups in four dimensions; Section 5 discusses consequences and further questions, including confinement and additional fields. The \href{https://www.claymath.org/millennium/yang-mills-the-maths-gap/}{Clay problem page} continues to list it as unsolved. The temporal correlation bound in the opening is an application of the spectral theorem assuming a constructed theory and a gap. It is not a proof of either assumption, nor a claim that pure Yang--Mills theory already contains nucleons.}
 
-\source{6}{What the unsolved mathematical problem actually asks.}{A.~Jaffe and
-E.~Witten, \href{https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf}{
-``Quantum Yang--Mills Theory,''} \S4 (printed p.~6) for existence and the
-spectral-gap statement; \S5 distinguishes extensions including confinement.
-The full statement treats any compact simple gauge group on four-dimensional
-spacetime with specified axiomatic properties. The
-\href{https://www.claymath.org/millennium/yang-mills-the-maths-gap/}{Clay
-problem-status page} still lists the missing proof (checked 11 September 2026).
-This is not the claim that gluons acquire an ordinary particle mass.}
+\source{6}{Numerical evidence for hadron masses}{S. D\"urr et al., \href{https://arxiv.org/abs/0906.3599}{\emph{Ab-initio Determination of Light Hadron Masses}}, Science 322, 1224--1227 (2008), open manuscript. The calculation tests the light-hadron spectrum with controlled lattice extrapolations and physical input parameters. The paper's term \emph{ab initio} names its numerical QCD starting point. This opening separately states its aspiration to an analytic explanation; the terminology does not erase the distinction.}
 
-\begin{comment}
-\source{7}{A scale-dependent-coupling analogue outside nuclei.}{P.~Coleman,
-\href{https://www.physics.rutgers.edu/~coleman/articles/pwa_coleman.pdf}{
-``Phil Anderson's Magnetic Ideas in Science''} (2015), \S3.5, printed p.~10.
-The Kondo example supplies the established mechanism of scale-dependent
-antiferromagnetic exchange and collective impurity-spin screening.
-Its use as a prompt for comparing nuclear scales is the author's extrapolation.}
-\end{comment}
+\source{7}{Chiral symmetry and the pion}{H. Leutwyler, \href{https://arxiv.org/abs/hep-ph/9609465}{\emph{Light Quark Effective Theory}} (1996), especially Sections 1 and 3 and Eq. (3). The leading dependence of the pion mass on the light-quark masses is used with electromagnetism omitted and a common renormalization convention understood. See also Machleidt and Entem, source 8, Section 2.1, for the symmetry-breaking pattern. The opening explains the consequence of that pattern and leaves its full analytic derivation from QCD explicit as part of the deeper task.}
 
-\source{8}{The QCD-to-nuclear-force bridge.}{R.~Machleidt and D.~R.~Entem,
-\href{https://arxiv.org/abs/1105.2919}{``Chiral Effective Field Theory and Nuclear
-Forces,''} \emph{Physics Reports} \textbf{503}, 1--75 (2011). See the
-introductory discussion and sections on the chiral expansion, pion exchange,
-contact interactions, and many-nucleon forces. This is a systematic effective
-description with fitted inputs and quantified truncation errors.}
+\source{8}{The bridge to nuclear interactions}{R. Machleidt and D. R. Entem, \href{https://arxiv.org/abs/1105.2919}{\emph{Chiral Effective Field Theory and Nuclear Forces}}, Physics Reports 503, 1--75 (2011). See the introductory account of QCD and nuclear forces, Section 2 on chiral symmetry, and the treatment of pion exchange, contact terms, and many-nucleon forces. For a detailed account of fitted coefficients and uncertainty, see E. Epelbaum, H. Krebs and P. Reinert, \href{https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2020.00098/full}{\emph{High-Precision Nuclear Forces From Chiral EFT}}, Frontiers in Physics 8, 98 (2020), Sections 2 and 7. The effective Hamiltonian in Section~6 is a declared nuclear description; no particular potential or predicted deuteron binding energy is supplied.}
 
-\newpage
-\section*{\textcolor{ink}{Open sources, continued}}
-\small
-\source{9}{Nuclear notation and the binding-energy trend.}{P.~Cappellaro,
-\href{https://ocw.mit.edu/courses/22-02-introduction-to-applied-nuclear-physics-spring-2012/d0d046f78c917f107d925f11ac862ae4_MIT22_02S12_lec_ch1.pdf}{
-MIT 22.02, Chapter 1: Introduction to Nuclear Physics} (2012), \S1.1.1 and
-\S1.2. The liquid-drop explanation is qualitative here; no fitted mass formula
-is used to predict light-nucleus binding energies or the exact peak location.}
-
-\source{10}{The deliberately short weak-interaction detour.}{L.~E.~Marcucci,
-R.~Schiavilla, and M.~Viviani,
-\href{https://arxiv.org/abs/1303.3124}{``The Proton--Proton Weak Capture in
-Chiral Effective Field Theory''} (2013). The solar reaction is not free proton
-decay, nor the only physical route by which deuterium can form.}
-
-\source{11}{Numerical binding-energy inputs.}{Atomic Mass Evaluation 2020,
-\href{https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20.txt}{\texttt{mass\_1.mas20}}
-from the IAEA Atomic Mass Data Center. Rows $(Z,A)=(1,2),(1,3),(2,4),(26,56),
-(28,62)$ provide the relevant values; the binding column is \emph{keV per
-nucleon}, so multiply by $A$ and divide by $1000$ for total MeV. Atomic-mass
-conventions require electronic-binding corrections for high-precision bare-nucleus
-energies; they are immaterial to the $0.001\,\mathrm{MeV}$ inputs used here.}
-
-\source{12}{Units and temperature conversion.}{NIST,
-\href{https://www.nist.gov/pml/special-publication-330/sp-330-section-2}{
-SI Brochure, \S2: The International System of Units}. Exact defining values:
-$e=1.602176634\times10^{-19}\,\mathrm C$ and
-$k_B=1.380649\times10^{-23}\,\mathrm{J\,K^{-1}}$.
-Their quotient gives $k_B=8.617333262\ldots\times10^{-5}\,\mathrm{eV\,K^{-1}}$.
-Together with NIST's
-\href{https://physics.nist.gov/cuu/Constants/Table/allascii.txt}{CODATA table
-entry for vacuum electric permittivity},
-these give $e^2/(4\pi\epsilon_0)\simeq1.440\,\mathrm{MeV\,fm}$.}
-
-\source{13}{Two-body kinematics and the meaning of cross section.}{Particle
-Data Group (2025), \href{https://pdg.lbl.gov/2025/reviews/rpp2025-rev-kinematics.pdf}{
-``Kinematics,''} \S49.3 (invariant amplitudes), \S49.4.2 (two-body final states),
-and \S49.5 (cross sections). The main-text recoil result is a leading
-nonrelativistic estimate, not an exact relativistic energy partition.}
-
-\source{14}{The quantum law used in the barrier illustration.}{R.~P.~Feynman,
-R.~B.~Leighton, and M.~Sands,
-\href{https://www.feynmanlectures.caltech.edu/III_16.html}{\emph{The Feynman
-Lectures on Physics}, Vol.~III, Chapter 16}, especially the Schr\"odinger-equation
-discussion. Our constant-barrier ODE illustrates penetration only; it is not
-used as a numerical D--T cross-section model.}
-
-\source{15}{Amplitudes and interference.}{Feynman, Leighton, and Sands,
-\href{https://www.feynmanlectures.caltech.edu/III_03.html}{Vol.~III, Chapter 3:
-Probability Amplitudes}, especially the rules for combining amplitudes. The
-main text uses a normalized wave-packet basis to avoid assigning a finite
-probability to one exactly specified continuum momentum.}
-
-\source{16}{A real microscopic D--T calculation and its limits.}{G.~Hupin,
-S.~Quaglioni, and P.~Navr\'atil,
-\href{https://www.nature.com/articles/s41467-018-08052-6}{``Ab Initio Predictions
-for Polarized Deuterium--Tritium Thermonuclear Fusion,''}
-\emph{Nature Communications} \textbf{10}, 351 (2019). See Results, Fig.~1,
-and Methods: the ``NCSMC-pheno'' result includes a $-5\,\mathrm{keV}$ resonance
-centroid correction. No polarized-fuel enhancement is assumed in our opening.}
-
-\source{17}{Action and the sum over histories.}{Feynman, Leighton, and Sands,
-\href{https://www.feynmanlectures.caltech.edu/II_19.html}{Vol.~II, Chapter 19:
-The Principle of Least Action}, concluding quantum discussion. This supplies
-an accessible conceptual entry, not a construction of the QCD functional measure.}
-
-\source{18}{Later engineering connection.}{J.~P.~Freidberg, F.~J.~Mangiarotti,
-and J.~Minervini,
-\href{https://library.psfc.mit.edu/catalog/reports/2010/15ja/15ja021/15ja021_full.pdf}{
-``Designing a Tokamak Fusion Reactor---How Does Plasma Physics Fit In?''}
-(2015), MIT report PSFC/JA-15-21. This is the subsequent design target, not the
-source of a confinement proof or a universal temperature threshold.}
-
-\newpage
-\section*{\textcolor{ink}{Additional sources}}
-\small
-
-\begin{comment}
-\source{19}{The quantum liquid drop and induced nuclear interactions.}{
-G.~Potel Aguilar and R.~A.~Broglia, \emph{The Nuclear Cooper Pair:
-Structure and Reactions} (Cambridge University Press, 2022), Chapter~1,
-printed pp.~1--4 for liquid-drop cohesion and surface energy, and pp.~8--17
-for particle--vibration coupling and induced interactions. These supply the
-physical examples used in the proposed comparison across scales.}
-\end{comment}
-
-\source{20}{BESIII's 2026 glueball result.}{BESIII Collaboration,
-\href{https://arxiv.org/abs/2607.20366}{Lightest $0^{-+}$ Glueball as
-Dominant Constituent of $X(2370)$} (submitted 22 July 2026).
-The analysis combines mass, spin-parity, production, and decay evidence to
-identify a dominant pseudoscalar-glueball component in $X(2370)$.
-The result was announced at ICHEP on 5 August 2026, as reported by the
-\href{https://ihep.cas.cn/xwdt2022/rd/202608/t20260805_8259263.html}{
-Institute of High Energy Physics}.}
-
-\begin{comment}
-\source{21}{The historical proton--electron neutron conjecture.}{J.~Chadwick,
-\href{https://www.nobelprize.org/uploads/2018/06/chadwick-lecture.pdf}{
-The Neutron and Its Properties}, Nobel Lecture (12 December 1935),
-opening discussion of Rutherford's 1920 conjecture.
-H.~Yukawa, \href{https://www.nobelprize.org/uploads/2018/06/yukawa-lecture.pdf}{
-Meson Theory in Its Developments}, Nobel Lecture (12 December 1949),
-opening discussion of early attempts to explain nuclear binding through
-electron or electric-charge exchange by analogy with chemical bonding.
-These are the historical origins of the electromagnetic question posed here.}
-
-\source{22}{A modern negative-cloud picture.}{J.~Friedrich and Th.~Walcher,
-\href{https://arxiv.org/abs/hep-ph/0303054}{A Coherent Interpretation of the
-Form Factors of the Nucleon in Terms of a Pion Cloud and Constituent Quarks},
-\emph{European Physical Journal A} \textbf{17}, 607--623 (2003).
-This phenomenological account describes charge structure through constituent
-quarks and a pion cloud; the virtual proton--negative-pion component gives
-the modern image used in the comparison.}
-\end{comment}
-
-\source{23}{Localization, momentum spread, and kinetic energy.}{Feynman,
-Leighton, and Sands,
-\href{https://www.feynmanlectures.caltech.edu/III_16.html}{Vol.~III,
-Chapter 16: Dependence of Amplitudes on Position}, especially Eq.~(16.35)
-for $\Delta x\,\Delta p_x\geq\hbar/2$, and
-\href{https://www.feynmanlectures.caltech.edu/III_20.html}{Chapter 20:
-Operators}. Section~0.4 combines this uncertainty relation with the variance
-identity and nonrelativistic kinetic energy; the $5.2\,\mathrm{MeV}$ is a
-one-coordinate localization bound for the stated width.}
-
-\source{24}{Exponential range and the nuclear potential.}{R.~Machleidt,
+\source{9}{Exponential range and the nuclear potential.}{R.~Machleidt,
 \href{https://www.scholarpedia.org/article/Nuclear_Forces}{``Nuclear Forces,''}
 \emph{Scholarpedia} \textbf{9}(1), 30710 (2014), subsection ``Yukawa's idea
 of 1935,'' derives the exponential-over-distance form from the massive-field
@@ -1022,7 +836,25 @@ core, and exponentially decreasing tail. The central-potential picture is
 a useful description of the competition; detailed calculations include
 spin and other operator structure.}
 
-\source{25}{Identical nucleons, spin, and the exclusion principle.}{Feynman,
+\source{10}{Localization, momentum spread, and kinetic energy.}{Feynman,
+Leighton, and Sands,
+\href{https://www.feynmanlectures.caltech.edu/III_16.html}{Vol.~III,
+Chapter 16: Dependence of Amplitudes on Position}, especially Eq.~(16.35)
+for $\Delta x\,\Delta p_x\geq\hbar/2$, and
+\href{https://www.feynmanlectures.caltech.edu/III_20.html}{Chapter 20:
+Operators}. Section~7 combines this uncertainty relation with the variance
+identity and nonrelativistic kinetic energy; the $5.2\,\mathrm{MeV}$ is a
+one-coordinate localization bound for the stated width.}
+
+\source{11}{Numerical binding-energy inputs.}{Atomic Mass Evaluation 2020,
+\href{https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20.txt}{\texttt{mass\_1.mas20}}
+from the IAEA Atomic Mass Data Center. Rows $(Z,A)=(1,2),(1,3),(2,4),(26,56),
+(28,62)$ provide the relevant values; the binding column is \emph{keV per
+nucleon}, so multiply by $A$ and divide by $1000$ for total MeV. Atomic-mass
+conventions require electronic-binding corrections for high-precision bare-nucleus
+energies; they are immaterial to the $0.001\,\mathrm{MeV}$ inputs used here.}
+
+\source{12}{Identical nucleons, spin, and the exclusion principle.}{Feynman,
 Leighton, and Sands,
 \href{https://www.feynmanlectures.caltech.edu/III_04.html}{Vol.~III,
 Chapter 4: Identical Particles}, particularly \S4--2 on the Pauli principle
@@ -1030,32 +862,93 @@ and \S4--3 on nuclear scattering and spin. The orbital explanation in the
 opening is an independent-particle guide to allowed occupations; the
 many-body interaction sets the binding energy.}
 
-\source{26}{Mesons and pion quark content.}{Particle Data Group (2025),
-\href{https://pdg.lbl.gov/2025/reviews/rpp2025-rev-quark-model.pdf}{
-``Quark Model,''} \S15.2--15.3, especially the quark-charge table and the
-light-meson classification. Pion masses and the approximate
-$939\,\mathrm{MeV}$ nucleon rest energy are rounded experimental scales.}
+\source{13}{Nuclear notation and the binding-energy trend.}{P.~Cappellaro,
+\href{https://ocw.mit.edu/courses/22-02-introduction-to-applied-nuclear-physics-spring-2012/d0d046f78c917f107d925f11ac862ae4_MIT22_02S12_lec_ch1.pdf}{
+MIT 22.02, Chapter 1: Introduction to Nuclear Physics} (2012), \S1.1.1 and
+\S1.2. The liquid-drop explanation is qualitative here; no fitted mass formula
+is used to predict light-nucleus binding energies or the exact peak location.}
 
-\source{27}{Why the pion mass is small.}{H.~Leutwyler,
-\href{https://arxiv.org/abs/hep-ph/9609465}{``Light Quark Effective Theory''}
-(1996), \S1 and \S3, especially Eq.~(3) for the leading pion-mass dependence
-on the light-quark masses. Read alongside source~8, \S2.1.2--2.1.3, for
-explicit and spontaneous chiral-symmetry breaking. The optional note uses
-the circular-trough analogy to introduce the symmetry mechanism before its
-QCD application.}
+\source{14}{The deliberately short weak-interaction detour.}{L.~E.~Marcucci,
+R.~Schiavilla, and M.~Viviani,
+\href{https://arxiv.org/abs/1303.3124}{``The Proton--Proton Weak Capture in
+Chiral Effective Field Theory''} (2013). The solar reaction is not free proton
+decay, nor the only physical route by which deuterium can form.}
 
-\source{28}{Imaginary-time paths and quantum-mechanical instantons.}{D.~Tong,
+\source{15}{Units and temperature conversion.}{NIST,
+\href{https://www.nist.gov/pml/special-publication-330/sp-330-section-2}{
+SI Brochure, \S2: The International System of Units}. Exact defining values:
+$e=1.602176634\times10^{-19}\,\mathrm C$ and
+$k_B=1.380649\times10^{-23}\,\mathrm{J\,K^{-1}}$.
+Their quotient gives $k_B=8.617333262\ldots\times10^{-5}\,\mathrm{eV\,K^{-1}}$.
+Together with NIST's
+\href{https://physics.nist.gov/cuu/Constants/Table/allascii.txt}{CODATA table
+entry for vacuum electric permittivity},
+these give $e^2/(4\pi\epsilon_0)\simeq1.440\,\mathrm{MeV\,fm}$.}
+
+\source{16}{Two-body kinematics and the meaning of cross section.}{Particle
+Data Group (2025), \href{https://pdg.lbl.gov/2025/reviews/rpp2025-rev-kinematics.pdf}{
+``Kinematics,''} \S49.3 (invariant amplitudes), \S49.4.2 (two-body final states),
+and \S49.5 (cross sections). The main-text recoil result is a leading
+nonrelativistic estimate, not an exact relativistic energy partition.}
+
+\source{17}{The quantum law used in the barrier illustration.}{R.~P.~Feynman,
+R.~B.~Leighton, and M.~Sands,
+\href{https://www.feynmanlectures.caltech.edu/III_16.html}{\emph{The Feynman
+Lectures on Physics}, Vol.~III, Chapter 16}, especially the Schr\"odinger-equation
+discussion. Our constant-barrier ODE illustrates penetration only; it is not
+used as a numerical D--T cross-section model.}
+
+\source{18}{Amplitudes and interference.}{Feynman, Leighton, and Sands,
+\href{https://www.feynmanlectures.caltech.edu/III_03.html}{Vol.~III, Chapter 3:
+Probability Amplitudes}, especially the rules for combining amplitudes. The
+main text uses a normalized wave-packet basis to avoid assigning a finite
+probability to one exactly specified continuum momentum.}
+
+\source{19}{A real microscopic D--T calculation and its limits.}{G.~Hupin,
+S.~Quaglioni, and P.~Navr\'atil,
+\href{https://www.nature.com/articles/s41467-018-08052-6}{``Ab Initio Predictions
+for Polarized Deuterium--Tritium Thermonuclear Fusion,''}
+\emph{Nature Communications} \textbf{10}, 351 (2019). See Results, Fig.~1,
+and Methods: the ``NCSMC-pheno'' result includes a $-5\,\mathrm{keV}$ resonance
+centroid correction. No polarized-fuel enhancement is assumed in our opening.}
+
+\source{20}{Action and the sum over histories.}{Feynman, Leighton, and Sands,
+\href{https://www.feynmanlectures.caltech.edu/II_19.html}{Vol.~II, Chapter 19:
+The Principle of Least Action}, concluding quantum discussion. This supplies
+an accessible conceptual entry, not a construction of the QCD functional measure.}
+
+\source{21}{Imaginary-time paths and quantum-mechanical instantons.}{D.~Tong,
 \href{https://davidtong.org/pdfs/teaching/gauge-theory/gauge2.pdf}{
 \emph{Gauge Theory}, Chapter~2}, printed pp.~56--59 on quantum-mechanical
 tunnelling in a double well. It develops the Euclidean path integral, the
-instanton solution, and its semiclassical interpretation. Our optional note
+instanton solution, and its semiclassical interpretation. Appendix~B
 shows the time-continuation algebra; prefactors require the fluctuations
 about the stationary path.}
 
-\source{29}{Preserving instanton topology on a lattice.}{J.-Y.~Chen,
+\source{22}{Later engineering connection.}{J.~P.~Freidberg, F.~J.~Mangiarotti,
+and J.~Minervini,
+\href{https://library.psfc.mit.edu/catalog/reports/2010/15ja/15ja021/15ja021_full.pdf}{
+``Designing a Tokamak Fusion Reactor---How Does Plasma Physics Fit In?''}
+(2015), MIT report PSFC/JA-15-21. This is the subsequent design target, not the
+source of a confinement proof or a universal temperature threshold.}
+
+\source{23}{Constituents and the meaning of quark--gluon plasma.}{US Department of
+Energy, \href{https://www.energy.gov/science/doe-explainsquarks-and-gluons}{``DOE
+Explains: Quarks and Gluons.''} Introductory orientation for quark content,
+gluons, and the distinction between intact nucleons and deconfined matter.
+The electron-cloud description does not assume classical orbital trajectories.}
+
+\source{24}{Preserving instanton topology on a lattice.}{J.-Y.~Chen,
 \href{https://arxiv.org/abs/2406.06673v3}{``Instanton Density Operator in
 Lattice QCD from Higher Category Theory,''} \emph{SciPost Physics}
 \textbf{19}, 158 (2025). See \S1.1 for the topology problem and \S4.2
 for the refined lattice Yang--Mills construction.}
+
+
+\source{25}{Coulomb penetration and the Gamow exponent}{A.~I.~Chugunov, H.~E.~DeWitt and D.~G.~Yakovlev, \href{https://arxiv.org/abs/0707.3500}{\emph{Coulomb Tunneling for Fusion Reactions in Dense Matter: Path Integral Monte Carlo versus Mean Field}}, Physical Review D 76, 025028 (2007), Section IV.B, Eqs.~(16)--(17). The opening uses the unscreened limit and zero-angular-momentum radial barrier. The lower-limit idealization extracts the leading Coulomb exponent; it does not supply a nuclear transition amplitude.}
+
+\source{26}{Thermal reaction rates and the Gamow window}{T.~Rauscher, \href{https://arxiv.org/abs/1003.2802}{\emph{Relevant Energy Ranges for Astrophysical Reaction Rates}}, Physical Review C 81, 045807 (2010), Eqs.~(1)--(5), (8), and Section II.B. These distinguish the Maxwellian average, the astrophysical factor, and the limitations of the usual peak estimate. Source~19 also gives the thermal integral specifically for D--T. The Gaussian relative-velocity argument and change of integration variable are shown in Section~12 of this prologue.}
+
+\source{27}{From particle trajectories to a kinetic equation}{MIT 16.55, \href{https://ocw.mit.edu/courses/16-55-ionized-gases-fall-2014/b7c22c3d68ab558bcc3a59867b710e1a_MIT16_55F14_Lecture8.pdf}{\emph{Ionized Gases}, Lecture 8: Kinetic Theory} (2014), pp.~1--4: distribution functions, moments, phase-space conservation, and Vlasov and collision terms. Section~13 states the kinetic approximation and derives its collisionless transport equation; it does not derive a closure or confinement law.}
 
 \end{document}
