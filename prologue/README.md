@@ -2,6 +2,8 @@
 
 [Read the current prologue](before-the-machine.pdf) · [Editable source](before-the-machine.tex)
 
+**Status: complete as a standalone prologue (22 September 2026).** Future work is revision, not expansion: keep the PDF at a maximum of 20 pages, accommodating additions through edits or cuts elsewhere. Bibliography database (`.bib`) content has a separate word count. Integration into the thesis remains a separate step.
+
 The current 20-page prologue follows QCD, confinement and the mass gap through pions, nuclear binding, D–T reaction energy, barrier penetration, scattering, thermal averaging, and collective plasma dynamics. It contains 15 pages of main text, two optional mathematical notes, and three pages of sources. Assumptions, measured inputs, and incomplete analytic bridges are identified throughout. It is not yet integrated into the thesis.
 
 Only `before-the-machine.pdf` and its matching `.tex` source are current publication files. Previous versions, including the former published prologue and the separate opening draft, are preserved locally in `archive/`. This folder is excluded by the root `.gitignore`: never stage, force-add, commit, or push archive contents. See the [repository archive policy](../README.md#local-archives-stay-off-github).
