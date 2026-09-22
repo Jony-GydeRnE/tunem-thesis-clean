@@ -71,13 +71,20 @@ The proton's positive charge already identifies a difficulty for fusion: two pos
 \clearpage
 \heading{2}{What color symmetry explains}
 
-Color names an internal quantum degree of freedom. For a quark its state space is $\mathbb C^3$, with basis vectors conventionally called red, green, and blue. These are not optical colors. The transformations are matrices
+A quark’s color state is a vector in \(\mathbb C^3\). Choose the orthonormal basis
+\[ |r\rangle=\begin{pmatrix}1\\0\\0\end{pmatrix},\qquad |g\rangle=\begin{pmatrix}0\\1\\0\end{pmatrix},\qquad |b\rangle=\begin{pmatrix}0\\0\\1\end{pmatrix}, \]
+conventionally named red, green, and blue. A normalized color state has the form
+\[ |\psi\rangle=z_r|r\rangle+z_g|g\rangle+z_b|b\rangle, \qquad |z_r|^2+|z_g|^2+|z_b|^2=1, \]
+where the coefficients are complex numbers. The transformations are matrices
+
 \[
  SU(3)=\{U\in\mathbb C^{3\times3}:U^\dagger U=1,\ \det U=1\}.
 \]
-Unitarity preserves inner products. The condition $\det U=1$ preserves another useful object: the totally antisymmetric tensor $\epsilon_{ijk}$, called the Levi-Civita symbol. Its components are $+1$ when $(i,j,k)$ is an even permutation of $(1,2,3)$, $-1$ when it is an odd permutation, and $0$ whenever an index is repeated. Thus, for example, $\epsilon_{123}=\epsilon_{231}=+1$, whereas $\epsilon_{213}=-1$. Each index runs from $1$ to $3$, and repeated indices below are summed.
 
-In the tensor product of three quark color spaces, expressed in a common color frame, consider
+Unitarity preserves inner products. The condition $\det U=1$ preserves another useful object: the totally antisymmetric tensor $\epsilon_{ijk}$, called the Levi-Civita symbol. Its components are $+1$ when $(i,j,k)$ is an even permutation of $(1,2,3)$, $-1$ when it is an odd permutation, and $0$ whenever an index is repeated. Thus, for example, $\epsilon_{123}=\epsilon_{231}=+1$, whereas $\epsilon_{213}=-1$. Each index runs from $1$ to $3$, and repeated indices below are summed following Einstein's summation convention.
+
+In the tensor product of three quark color spaces, using the same basis for each quark, consider
+
 \[
  |C\rangle=\frac{1}{\sqrt6}\epsilon_{ijk}
  |i\rangle\otimes|j\rangle\otimes|k\rangle.
@@ -87,7 +94,8 @@ There are six nonzero terms, with alternating signs. Applying the same $U$ to th
  \epsilon_{ijk}U^a{}_iU^b{}_jU^c{}_k
    =(\det U)\epsilon_{abc}=\epsilon_{abc}.
 \]
-Thus $U^{\otimes3}|C\rangle=|C\rangle$: this color combination is a \emph{singlet}. For fields at different positions, a gauge connection must first transport their color indices to a common point. A quark and an antiquark can also form a singlet because the antiquark transforms in the conjugate representation. These constructions supply the color structure used for ordinary baryons and mesons.\refn{1}
+
+Thus $U^{\otimes3}|C\rangle=|C\rangle$ for every \(U\in SU(3)\): applying the same color transformation to all three quarks leaves their combined state unchanged. This is what it means for the state to be color neutral. For fields at different positions, a gauge connection must first transport their color indices to a common point. A quark and an antiquark can also form a singlet because the antiquark transforms in the conjugate representation. These constructions supply the color structure used for ordinary baryons and mesons.\refn{1}
 
 We have established something exact about representations. The calculation has not determined whether a state binds, what it weighs, or why isolated color is absent from the observed particle spectrum. Those questions require dynamics. Nor does this identity select $SU(3)$ on its own; we have used the gauge group of QCD to calculate a consequence.
 
