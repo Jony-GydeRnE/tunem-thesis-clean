@@ -20,6 +20,6 @@ The working draft is 166 pages in 127 sections. It reconstructs tokamak design f
 
 ## Known limits
 
-The proposal's commercialization and internationalization chapters remain to be written. The ST bootstrap/current-drive affordability comparison needs an independent check. Sections 110, 111, 115 and 124 retain the same conditional bootstrap verdict. Scientific limitations stay in the text rather than in a changelog.
+The proposal's commercialization and internationalization chapters remain to be written. The ST bootstrap/current-drive affordability comparison needs an independent check. Some later passages still need to be brought into agreement with the qualified §111 verdict. Scientific limitations stay in the text rather than in a changelog.
 
 Rebuild into `.build/`, inspect, then deliberately replace the working PDF.

@@ -4735,13 +4735,15 @@ predictions.}
 The word rigorously must be used carefully. The following implication has been
 established by transparent substitution and numerical quadrature:
 \[
-\begin{gathered}
+\begin{array}{c}
 \text{2015 mission, geometry, coil, profile, confinement, current-drive,}\\
-\text{bootstrap, and four-limit assumptions}\\[3pt]
-\Downarrow\\[3pt]
+\text{bootstrap, and four-limit assumptions}
+\end{array}
+\quad\Longrightarrow\quad
+\begin{array}{c}
 \text{the reference conventional state fails kink and}\\
 \text{steady-state bootstrap closure simultaneously.}
-\end{gathered}
+\end{array}
 \]
 The size scan shows that merely choosing another minor radius within that baseline
 does not make all four tests pass. The remedy scans then identify which changed
@@ -5065,7 +5067,7 @@ large-$A$ coefficient at $A\simeq1.7$ and call the extrapolation a proof.}
 
 % ============================= PAGE 108 ==============================
 \newpage
-\section*{108. A published finite-$A$ candidate supplies the kink test and current split}
+\section*{108. A published finite-$A$ candidate supplies every quantity the two tests need}
 
 The following is not a generic ST slogan. It is a specified low-aspect-ratio systems
 calculation from Menard \emph{et al.}: $A=1.7$, $\kappa=2.75$,
@@ -5168,14 +5170,12 @@ What the published point does give us is the physical and engineering burden tha
 an independent Freidberg test must meet:
 \begin{equation}
  I_{\rm CD,needed}=(1-f_{\rm BS})I\simeq0.24I
- \simeq(0.24)(10.8\,\mathrm{MA})\simeq2.6\,\mathrm{MA}.
+ =2.6\text{--}2.9\,\mathrm{MA}.
  \label{eq:st-current-drive-needed}
 \end{equation}
-Here $I\simeq10.8\,\mathrm{MA}$ is paired with $f_{\rm BS}\simeq0.76$ at
-normalized density near $0.8$; the full scan's current extrema are not combined
-with this selected fraction. The scenario assumes $80\,\mathrm{MW}$ of $0.5\,\mathrm{MeV}$ neutral-beam
+The scenario assumes $80\,\mathrm{MW}$ of $0.5\,\mathrm{MeV}$ neutral-beam
 heating/current-drive power to obtain this fully non-inductive balance. It therefore
-predicts a substantial bootstrap fraction in its equilibrium-informed model and states the associated
+demonstrates a substantial finite-$A$ bootstrap fraction and states the associated
 external-drive burden; it does not independently establish that a plant can afford
 that burden.
 
@@ -5194,9 +5194,9 @@ calling the identity $0.76/0.76=1$ a measured closure.
 The condition can be priced with published scalars alone. Freidberg's allowance was
 $100\,\mathrm{MW}$ of wall electricity for current drive, of which $40\,\mathrm{MW}$
 reaches the plasma (a $50\%$ wall-to-klystron and $80\%$ absorption chain); Menard's
-FNSF systems analysis assumes a neutral-beam wall-plug efficiency of
+pilot-plant analysis likewise assumes a neutral-beam wall-plug efficiency of
 $0.4$.\footnote{Freidberg \emph{et al.}, Sec.~4.6; Menard \emph{et al.}, Sec.~2.1.6, where
-$\eta_{\rm aux}=0.4$ is described as higher than presently achievable. The arithmetic is reproduced in
+$\eta_{\rm aux}=0.4$ is described as higher than presently achievable, and Sec.~5.3. The arithmetic is reproduced in
 \texttt{thesis/code/calculations/st\_drive\_affordability.py}.} Keeping the published
 $80\,\mathrm{MW}$ beam state would therefore draw $80/0.4=200\,\mathrm{MW_e}$, twice
 that allowance; fitting under it would need a wall-plug efficiency of $0.8$, or, if only
@@ -5217,9 +5217,9 @@ current-centred obstructions affirmatively:
 \[
  {\cal R}_{K,\rm ST}\le0.93<1.
 \]
-It also predicts a large bootstrap fraction, $f_{\rm BS}\simeq0.76$, and makes
+It also demonstrates a large bootstrap fraction, $f_{\rm BS}\simeq0.76$, and makes
 the missing condition quantitative: the operating point needs approximately
-$2.6\,\mathrm{MA}$ of independently affordable current drive.
+$2.6$--$2.9\,\mathrm{MA}$ of independently affordable current drive.
 
 We must not call that second result closure until its current-drive allowance has
 been obtained independently. Freidberg's conventional comparison was meaningful
@@ -5230,7 +5230,7 @@ complement of a fully non-inductive ST current balance would erase that distinct
 \designconsequence{Low aspect ratio has now been shown to close the kink obstruction
 in a published finite-$A$ model and to raise the bootstrap fraction to a quantified,
 promising level. Whether it closes Freidberg's bootstrap obstruction depends on the
-separate question $I_{\rm CD,allow}\gtrsim2.6\,\mathrm{MA}$.}
+separate question $I_{\rm CD,allow}\ge2.6$--$2.9\,\mathrm{MA}$.}
 
 % ============================= PAGE 112 ==============================
 \newpage
@@ -5497,10 +5497,10 @@ questions:
 \item What $B_0$, $R_0$, and $A$ are demanded by the plasma mission?
 \item Does Eq.~\eqref{eq:centre-stack-field} leave positive inboard radius after
 the required nuclear build $b$?
-\item Is $\pi R_{\rm cs}^2$ sufficient for the full area ledger in
+\item Does the available $\pi R_{\rm cs}^2$ exceed the full area ledger in
 Eq.~\eqref{eq:centre-stack-area-ledger}?
-\item Can the structural allocation withstand the field load within stress and
-superconducting strain limits?
+\item Can the structural allocation carry the field-dependent load without exceeding
+stress or superconducting-strain limits?
 \item If solenoid area is reduced, what explicit non-inductive start-up and current
 maintenance system replaces its flux swing?
 \end{enumerate}
@@ -5569,13 +5569,11 @@ claim radial space before the magnet is sized.}
 
 This gives the radial order of operations:
 \[
-\begin{gathered}
-\boxed{\text{plasma mission}}\\[3pt]
-\downarrow\\[3pt]
-\boxed{\text{neutron, heat, and tritium functions}}\\[3pt]
-\downarrow\\[3pt]
+\boxed{\text{plasma mission}}
+\ \longrightarrow\
+\boxed{\text{neutron, heat, and tritium functions}}
+\ \longrightarrow\
 \boxed{\text{space left for TF conductor, support, and start-up}}.
-\end{gathered}
 \]
 Reversing that order---choosing a desired tiny centre column first and assigning
 the nuclear functions whatever space survives---would be the same category error
@@ -5645,8 +5643,7 @@ and start-up ledger at the chosen $R_0$, $A$, and $B_0$.}
 \section*{124. What remains after the Freidberg answer}
 
 The causal argument has reached a useful, deliberately narrow conclusion. The
-finite-$A$ analysis in Sections 106--111 passed the stated kink screen and
-identified the independent condition still required for bootstrap closure.
+finite-$A$ calculation on pages 106--111 answered Freidberg's two current questions.
 The earlier first-principles geometry explains why that answer was possible:
 \begin{enumerate}
 \item Eq.~\eqref{eq:aspect-ratio-q-beta} changes the current--safety-factor geometry
@@ -5661,9 +5658,8 @@ show that these ingredients can be put into a serious systems calculation.
 That establishes the result relevant here: a specified finite-$A$ ST model closes the
 kink constraint that failed in Freidberg's conventional baseline and reduces the
 bootstrap constraint to an explicit, quantified current-drive condition
-($I_{\rm CD,allow}\gtrsim2.6\,\mathrm{MA}$, Section 111). Raising $H$ in
-Freidberg's conventional family could close the kink and bootstrap tests but
-still violated the Troyon bound; it did not close all four screens. It does not establish a theorem
+($I_{\rm CD,allow}\ge2.6$--$2.9\,\mathrm{MA}$, page 111), whereas merely raising
+$H$ in that baseline did neither. It does not establish a theorem
 that every ST or every other reactor constraint is closed; exhaust, blanket, tritium,
 radiation, maintenance, and cost remain their own questions.
 

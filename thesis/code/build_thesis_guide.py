@@ -11,10 +11,7 @@ import re
 import importlib.util
 from pathlib import Path
 
-try:
-    import pymupdf as fitz
-except ImportError:
-    import fitz  # Compatibility with PyMuPDF releases before the renamed import.
+import pymupdf as fitz
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont

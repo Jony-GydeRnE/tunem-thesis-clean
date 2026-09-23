@@ -16,8 +16,7 @@ Neither document is a reactor design. The guide complements the thesis; it does 
 From the repository root:
 
 ```sh
-python3 thesis/code/build.py thesis        # inspect .build/documents/thesis/thesis-draft.pdf
-# Copy the reviewed thesis build to thesis/thesis-draft.pdf before building the excerpt.
+python3 thesis/code/build.py thesis        # the excerpt includes pages of thesis/thesis-draft.pdf
 python3 thesis/code/build.py excerpt
 python3 thesis/code/build_thesis_guide.py --figures thesis/figures/final --output .build/thesis-guide/thesis-guide.pdf
 ```
