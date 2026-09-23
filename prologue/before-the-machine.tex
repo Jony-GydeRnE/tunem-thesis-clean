@@ -42,33 +42,73 @@
 
 
 {\LARGE\bfseries Before the Machine}\par
-{\large From fundamental fields to the physical requirements of fusion}\par
-\vspace{5pt}
 
-In the deuterium--tritium fusion reaction we will study, matter changes its nuclear arrangement and releases energy. Before asking how to build a machine that sustains it, we will ask what that matter is, why it holds together, and how its interactions make another arrangement possible. The route begins with the electromagnetic and strong interactions and follows them toward nucleons, nuclei, and fusion.
+{\large From quarks to the physical requirements of fusion}\par
+\vspace{4pt}
+\textit{We will build the machine from its purpose. First we must understand the
+matter we intend to change, the energy available from that change, and the
+obstacle between possibility and a useful reaction rate.}
 
-Our aim is an analytic explanation whose steps we can examine. We will take the specified fundamental theory and its parameters as our starting point. Where we can derive a relation, we will show the argument. Where the complete derivation is missing, we will identify the missing question and the evidence that lets physics proceed. Confinement and the mass gap enter here because they concern the very existence and properties of the objects from which the nuclear story is built.
+\heading{0.1}{Inside a nucleon}
 
-\heading{1}{What is inside the fuel}
+A quark is one of the elementary constituents in our present theory of matter.
+To locate it, begin with an atom: a positively charged nucleus surrounded by
+negatively charged "quantum clouds" of electrons. Electron are also elementary constituents of matter and carry charge $-e$. Chemical reactions change electron arrangements while leaving the nuclei intact. Nuclear reactions such as fission and fusion change the nuclear arrangement itself.
 
-Begin with an atom. Its nucleus contains positively charged protons and electrically neutral neutrons, collectively called \emph{nucleons}. Electrons carry negative electric charge and occupy quantum states around the nucleus. Electromagnetism binds the atom; understanding the nucleus requires the strong interaction as well.
+Inside the nucleus are \emph{nucleons}: Protons and neutrons are baryons-- composite particles made of three quarks. Quarks come in different flavors. Two types of quarks are up quarks and down quarks. A proton can be written as $uud$ and a neutron can be written as $udd$, where
+$u$ and $d$ denote up and down quarks. Quarks possess both electric charge and color charge.
 
-In quantum field theory, particles are states of underlying fields. The electron is elementary in the Standard Model. A nucleon is composite: its description involves quark and gluon fields. Quarks come in different species, called \emph{flavors}; the up and down flavors are the ones needed to label the proton and neutron. Their net valence contents are
+The electromagnetic force is described by rotations of a circle, called the $U(1)$ group, which transforms via a matrix representation of the groups linear map $\chi(\theta) = \exp(iq\theta)$ that satisfies a circles compactification: $\chi(\theta + 2\pi) = \chi(\theta)$, which quantizes charge into an integer multiple of the smallest charge, $q \in \mathbb{Z}$. Physics doesn't tell us exactly why the electric charge is $+2e/3$ for an up quark and $-e/3$ for a down quark, anomaly cancellations give constraints, experiments fix the number: $e/3$ is the smallest positive charge we know. Given this fact, because constituent phase factors multiply (ie $e^{iq_1\theta}e^{iq_2\theta}=e^{i(q_1+q_2)\theta}$), protons have $+e$ electric charge, and
+neutrons have \emph{zero net electric charge}:
 \[
- p:\ uud,\qquad n:\ udd.
+q_p=\left(\frac23+\frac23-\frac13\right)e=e,
+\qquad
+q_n=\left(\frac23-\frac13-\frac13\right)e=0.
 \]
-These labels specify the excess of quarks over antiquarks of each flavor. The full quantum state also contains gluonic dynamics and quark--antiquark fluctuations. They do not describe three stationary objects joined by rigid rods.\refn{1}
 
-An up quark has electric charge $+2e/3$ and a down quark $-e/3$, where $e>0$ is the magnitude of the electron charge. Electric charges add, so
-\[
- q_p=\left(\frac23+\frac23-\frac13\right)e=e,
- \qquad q_n=\left(\frac23-\frac13-\frac13\right)e=0.
-\]
-This addition has a simple symmetry expression. Under an electromagnetic phase rotation, a field of dimensionless charge $Q$ acquires a factor $e^{iQ\theta}$. A product acquires $e^{iQ_1\theta}e^{iQ_2\theta}=e^{i(Q_1+Q_2)\theta}$. The symmetry is called $U(1)$; the charge assignments specify how the fields transform under it.
+These are \emph{quark labels}: they only specify net quark content. A nucleon is a quantum state that also contains gluon fields and quark--antiquark fluctuations.\refn{1}
 
-The proton's positive charge already identifies a difficulty for fusion: two positively charged nuclei repel as they approach. Before that encounter can be understood, however, we must explain the other interaction that makes each incoming nucleus possible. Quarks also carry \emph{color}, the charge associated with the strong interaction, described by \emph{quantum chromodynamics} (QCD).
+What binds that state? Quarks second kind of charge, called
+\emph{color}. The theory of color interactions is \emph{quantum chromodynamics} (QCD), and it describes the strong nuclear force-- one of the four fundamental forces of nature. Gluons mediate the strong force and possess color charge, leading to self-interactions amongst gluons. This is unlike photons, neutrally charged electromagnetic force carriers that have no direct electric-charge self-interaction, unlike gluons with color charge.
 
-\clearpage
+Color is not a single number $q$ to be summed into a different state of color charge — it is a basis vector of $\mathbb{C}^3$, such as $(1,0,0)$, to be rotated via matrices whose inverse equal it's conjugate transpose and whose determinant equals to $1$, eg elements of $SU(3)$. A state is \emph{color neutral} when it is left invariant by every such rotation: for baryons this is achieved by carrying exactly one quark of each color, combined in the unique totally antisymmetric combination, $\epsilon_{ijk}q^iq^jq^k$, that $SU(3)$ leaves unchanged. This explains why three quarks can form a color-neutral state, whereas two or four quarks alone cannot: three colors demand three quarks to form this invariant, fully analogous to how a determinant vanishes unless you antisymmetrize over as many vectors as there are dimensions. Indeed $\epsilon_{ijk}U^i{}_aU^j{}_bU^k{}_c=(\det U)\,\epsilon_{abc}$, so if color rotations were allowed any determinant other than $1$, this three-quark combination would change by that factor and no longer be neutral; that is why the group is $SU(3)$.\refn{2}
+
+Most nucleon mass is not the sum of the small up- and down-quark mass parameters.
+It comes from the energy of the interacting quark--gluon system. Lattice QCD,
+which approximates the fields on a spacetime grid and controls extrapolations,
+has reproduced the light-hadron mass spectrum. Most ordinary matter's mass is
+in nucleons, predomenantkly made of dynamical QCD energy.\refn{3}
+
+\openingfigure{figN0_atom_to_quarks}{Inside a helium atom is the nucleus, inside the nucleus are the nucleons: protons and neutrons. Inside a nucleon such as a proton are three quarks.  Colored regions are schematic; the proton's
+$uud$ reflect two up-flavored quarks and one down quark. Neutrons follow $udd$.}{fig:n0}
+
+
+%{\large From fundamental fields to the physical requirements of fusion}\par
+%\vspace{5pt}
+
+%In the deuterium--tritium fusion reaction we will study, matter changes its nuclear arrangement and releases energy. Before asking how to build a machine that sustains it, we will ask what that matter is, why it holds together, and how its interactions make another arrangement possible. The route begins with the electromagnetic and strong interactions and follows them toward nucleons, nuclei, and fusion.
+
+%Our aim is an analytic explanation whose steps we can examine. We will take the specified fundamental theory and its parameters as our starting point. Where we can derive a relation, we will show the argument. Where the complete derivation is missing, we will identify the missing question and the evidence that lets physics proceed. Confinement and the mass gap enter here because they concern the very existence and properties of the objects from which the nuclear story is built.
+
+%\heading{1}{What is inside the fuel}
+
+%Begin with an atom. Its nucleus contains positively charged protons and electrically neutral neutrons, collectively called \emph{nucleons}. Electrons carry negative electric charge and occupy quantum states around the nucleus. Electromagnetism binds the atom; understanding the nucleus requires the strong interaction as well.
+
+%In quantum field theory, particles are states of underlying fields. The electron is elementary in the Standard Model. A nucleon is composite: its description involves quark and gluon fields. Quarks come in different species, called \emph{flavors}; the up and down flavors are the ones needed to label the proton and neutron. Their net valence contents are
+%\[
+ %p:\ uud,\qquad n:\ udd.
+%\]
+%These labels specify the excess of quarks over antiquarks of each flavor. The full quantum state also contains gluonic dynamics and quark--antiquark fluctuations. They do not describe three stationary objects joined by rigid rods.\refn{1}
+
+%An up quark has electric charge $+2e/3$ and a down quark $-e/3$, where $e>0$ is the magnitude of the electron charge. Electric charges add, so
+%\[
+ %q_p=\left(\frac23+\frac23-\frac13\right)e=e,
+ %\qquad q_n=\left(\frac23-\frac13-\frac13\right)e=0.
+%\]
+%This addition has a simple symmetry expression. Under an electromagnetic phase rotation, a field of dimensionless charge $Q$ acquires a factor $e^{iQ\theta}$. A product acquires $e^{iQ_1\theta}e^{iQ_2\theta}=e^{i(Q_1+Q_2)\theta}$. The symmetry is called $U(1)$; the charge assignments specify how the fields transform under it.
+
+%The proton's positive charge already identifies a difficulty for fusion: two positively charged nuclei repel as they approach. Before that encounter can be understood, however, we must explain the other interaction that makes each incoming nucleus possible. Quarks also carry \emph{color}, the charge associated with the strong interaction, described by \emph{quantum chromodynamics} (QCD).
+
 \heading{2}{What color symmetry explains}
 
 A quark’s color state is a vector in \(\mathbb C^3\). Choose the orthonormal basis
@@ -108,12 +148,12 @@ Here $\mu,\nu$ label spacetime directions and $g$ is the strong coupling. The $A
 
 The field equations specify interactions. Their quantum dynamics must still explain how those interactions organize into the matter we observe.
 
-\clearpage
-\heading{3}{What it would mean to explain confinement}
 
-When quarks are extremely close together, the strong interaction between them becomes weak, and they behave almost like free particles. This is called \emph{asymptotic freedom}.\refn{2} As they are pulled farther apart, this nearly free behavior gives way to a strong interaction. The contrast with electromagnetism is striking: the electric attraction between opposite charges weakens as they separate, whereas a separating quark and antiquark can remain connected by a narrow tube of gluon field. Stretching this \emph{flux tube} stores more and more energy, rather than allowing the particles to drift apart freely.\refn{4}
+\heading{3}{Confinement, and the boundary of the explanation}
 
-To state a confinement test, first simplify the system. Keep the gluon field and introduce an external, infinitely heavy quark in the fundamental color representation and an antiquark in its conjugate, separated by $r$. The sources remain fixed while the quantum field responds. We ask how the lowest energy in their presence changes with separation. This is a diagnostic of the theory, rather than a model of a physical proton.
+QCD has an unusual scale dependence. Quarks are never observed isolated in nature. Nucleons are three quarks grouped together, an example of baryons. More generally, any number of quarks grouped together are called hadrons.
+
+When quarks are extremely close together, the strong interaction between them becomes weak, and they behave almost like free particles. This is called \emph{asymptotic freedom}. However, as quarks are pulled farther apart, their color field becomes concentrated into a narrow tube of gluon field called a \emph{flux tube}. Stretching this tube requires more and more energy. Eventually, enough energy is stored in the tube that it becomes energetically favorable to create a new quark--antiquark pair precisely when the flux tube breaks.  In conclusion, no isolated quark is produced: each separated quark instead joins with one of the newly created partners to form a new color-neutral particle. In this way, quarks are never observed in isolation. This is called \emph{quark confinement} or \emph{color confinement}.\refn{4}
 
 One proposed large-distance behavior is
 \[
@@ -137,7 +177,6 @@ Now restore dynamical light quarks. At sufficient separation, a state containing
 
 Confinement in physical QCD must therefore account for the allowed separated states as well as the force between idealized sources. A complete analytic explanation would establish this behavior from a well-defined quantum theory and explain the scales it produces. The observed absence of isolated color and the numerical evidence constrain that explanation; they do not complete it.
 
-\clearpage
 \heading{4}{Why the mass gap is a foundational question}
 
 The source experiment asks how energy changes when color sources are separated. A second question concerns the field with no external sources at all: what excitations can exist above its vacuum? The \emph{vacuum} is the lowest-energy quantum state, not a classical field configuration with every fluctuation switched off.
@@ -166,7 +205,6 @@ In pure Yang--Mills theory, the expected massive color-singlet excitations are c
 
 They belong together in our inquiry: why do the fields restrict which objects can separate, and why do their physical excitations have the energy scales they do?
 
-\clearpage
 \heading{5}{Returning to nucleons and the light pion}
 
 Pure Yang--Mills theory isolates the gauge-field question. To reach nucleons we restore the quark fields and their interactions. For nuclear matter we must also include electromagnetism; weak interactions matter for processes that change quark flavor. The next task is to determine the physical states of this richer theory.
@@ -187,7 +225,6 @@ Here $B_\chi$ encodes a property of the strongly interacting vacuum. The relatio
 
 This is why returning from pure gauge fields to physical QCD is a substantial bridge. Quarks change the spectrum and introduce chiral dynamics. The pion will now carry part of the explanation of how two color-neutral nucleons can interact over a nuclear distance.
 
-\clearpage
 \heading{6}{From the pion to nuclear binding}
 
 Color neutrality does not require two nucleons to have zero interaction. Their composite quantum states can exchange energy and momentum. At low energies, one long-range contribution is represented by virtual pion exchange: the pion is internal to the scattering process, while the incoming and outgoing particles can be nucleons. Its coupling and spin structure are inherited from the strong dynamics.\refn{8}
@@ -213,7 +250,6 @@ A normalizable state satisfying $H_{\rm rel}\psi=-B_D\psi$, with $B_D>0$, is bou
 
 We can now distinguish the bridges we must understand: fields organize into nucleons and pions; their interactions permit nuclei; a reaction connects nuclear arrangements with different energies. Before following the reaction into D--T fusion, we will examine what sets a nucleus's spatial extent and how its binding energy is measured. The analytic gaps in the earlier steps remain part of the inquiry, including how confinement, the vacuum spectrum, and chiral dynamics produce the nuclear interaction and its scales.
 
-\clearpage
 \setlength{\parskip}{5pt}
 \heading{7}{Why does a nucleus have a finite size?}
 
@@ -720,7 +756,6 @@ energy-handling strategies. Microscopic color confinement and macroscopic
 plasma confinement are different problems; the latter does not follow from
 the former by analogy.
 
-\clearpage
 \phantomsection\pdfbookmark[1]{A. Symmetry and the light pion}{appendixA}
 \section*{A\quad Chiral symmetry and the light pion}
 
@@ -757,7 +792,6 @@ is the additional idealization that produces massless pions. For nuclear
 physics, the measured small-but-positive pion mass gives the finite
 $\ell_\pi\simeq1.4\,\mathrm{fm}$ range we used in the main story.
 
-\clearpage
 \phantomsection\pdfbookmark[1]{B. Tunnelling and instantons}{appendixB}
 \section*{B\quad Tunnelling and instantons}
 
@@ -810,7 +844,6 @@ it gives the total charge under suitable boundary conditions.\refn{21}\refn{24}
 
 Jing-Yuan Chen studies how to preserve this information on a lattice. His construction refines the usual group-valued variables using higher category theory, allowing a local instanton density operator to be defined.\refn{24} This preserves specified topological information; establishing the continuum dynamics and its spectrum remains a further task. It returns us to the opening's question of how a representation of quark--gluon physics can retain the mathematical structure of the underlying theory.
 
-\clearpage
 \phantomsection\pdfbookmark[1]{Source notes}{sources}
 \section*{Source notes}
 \small
