@@ -1,5 +1,5 @@
 % =====================================================================
-% PART I REBUILD — SIX-PAGE OPENING
+% PART I — COMPRESSED MACHINE FORMATION AND EQUILIBRIUM SAMPLE
 % The machine is not presented in advance. Each component appears only
 % after a physical failure makes it necessary.
 % Build from the repository root: python3 thesis/code/build.py thesis
@@ -36,151 +36,119 @@
   \begin{center}\fcolorbox{orange!80!black}{yellow!12}{\parbox{0.90\textwidth}{%
   \textbf{PLACE IMAGE HERE --- #1.} {\footnotesize #2}}}\end{center}}
 
-\title{Part I --- Let the Machine Reveal Itself\\
-\large A first-principles route to the tokamak}
-\author{Jony (TUNEM)}
-\date{Rebuilt opening, August 2026}
-
 \newcommand{\schematicnote}{\emph{Idealized schematic; not a fabrication drawing.}}
 \begin{document}
-
-% ============================== PAGE 1 ==============================
+% Compression sample: §§1--24. Original preserved in .build/compression-sample/original/.
+\title{Let the Machine Reveal Itself\\\large Machine formation and equilibrium}
+\author{Jony (TUNEM)}
+\date{Compression sample v4 --- October 2026}
 \maketitle
-\vspace{-1.5em}
+\vspace{-1em}
 
-\textbf{Promise to the reader.} We will not begin by displaying a tokamak and asking
-you to accept its parts. We will begin with a desired physical event---controlled
-deuterium--tritium fusion---and let each failure of the simplest attempted design force
-the next component into existence. Every load-bearing equation will either be derived
-where it appears or tied to an accessible source. An approximation will be named before
-it is used.
+
+\newcommand{\samplescope}[1]{\textit{Scope.} #1}
+\newcommand{\samplemodel}[1]{\textit{Model used here.} #1}
+\let\sampleOriginalHfigure\theHfigure
+\renewcommand{\theHfigure}{sample.\arabic{figure}}
+% Sample-only layout helpers. Figures stay adjacent to their causal summaries.
+\newcommand{\sampletall}[4]{\par\medskip\noindent\begin{minipage}{\linewidth}\designconsequence{#1}\centering{\small Perspective view and component key\par}\smallskip\includegraphics[width=.34\linewidth,trim=185 444.6 177.8 85,clip]{#2}\hspace{.02\linewidth}\raisebox{36pt}{\includegraphics[width=.60\linewidth,trim=118 342.6 117.8 280,clip]{#2}}\end{minipage}\par\smallskip\noindent\begin{minipage}{\linewidth}\centering\includegraphics[width=.98\linewidth,trim=0 #3 0 328,clip]{#2}\samplecaption{#4}\end{minipage}\par\medskip}
+\newcommand{\samplecaption}[1]{\par\smallskip{\small\refstepcounter{figure}\textbf{Figure \thefigure.} #1\par}}
+\newcommand{\samplefigure}[2]{\par\medskip\noindent\begin{minipage}{\linewidth}\centering #1\samplecaption{#2}\end{minipage}\par\medskip}
+\newcommand{\samplepair}[3]{\par\medskip\noindent\begin{minipage}{\linewidth}\designconsequence{#1}\centering #2\samplecaption{#3}\end{minipage}\par\medskip}
+
+We begin with a physical event: two light nuclei fuse and release energy. Each step
+between that event and a working magnetic confinement system introduces a new demand.
+Following those demands will give us the tokamak's components, the quantities that
+describe them, and the equations that tie them together.
 
 \section*{1. The first requirement: make nuclei approach}
-
-The reaction chosen by nearly every near-term fusion-power design is
+The fuel considered here is an equal mixture of deuterium and tritium, the two heavy
+isotopes of hydrogen. Their reaction is
 \begin{equation}
  {}^{2}\mathrm H+{}^{3}\mathrm H\longrightarrow{}^{4}\mathrm{He}\;(3.5\,\mathrm{MeV})
- +n\;(14.1\,\mathrm{MeV}), \qquad Q=17.6\,\mathrm{MeV}.\label{eq:dt}
+ +n\;(14.1\,\mathrm{MeV}),\qquad Q=17.6\,\mathrm{MeV}.
+ \label{eq:dt}
 \end{equation}
-The released energy is the decrease in rest mass multiplied by $c^2$. The products
-share it in inverse proportion to their masses because momentum is conserved: the
-lighter neutron carries about four fifths and the alpha particle about one fifth. These
-numbers will later decide which energy remains in the plasma and which must be caught by
-a blanket. For now, the obstacle comes before the reward.
+The energy comes from the decrease in rest mass. In the centre-of-mass frame, the two
+products carry equal and opposite momenta, so their kinetic energies are inversely
+proportional to their masses. The neutron takes about four fifths of the released
+energy; the helium nucleus, or alpha particle, takes the rest. That division will
+later determine how much energy heats the fuel and how much must be collected outside it.
 
-A deuteron and triton both carry charge $+e$. At separation $r$ their electrostatic
-potential energy is
+Both reacting nuclei carry charge $+e$. Their electrostatic repulsion is
 \begin{equation}
- U(r)=\frac{e^2}{4\pi\epsilon_0 r}.\label{eq:coulomb}
+ U(r)=\frac{e^2}{4\pi\epsilon_0r}.
+ \label{eq:coulomb}
 \end{equation}
-At $r=2\,\mathrm{fm}$, a nuclear length scale, Eq.~\eqref{eq:coulomb} is about
-$0.72\,\mathrm{MeV}$.
-A classical particle would need a comparable collision energy to reach that distance.
-Fusion plasmas operate at much lower thermal energies, typically $T\sim10$--$20\,\mathrm{keV}$,
-because quantum tunnelling gives some collisions a finite probability of crossing the
-remaining barrier. Temperature is being measured in energy units: $T$ means $k_BT$.
-Thus
-\[
-10\,\mathrm{keV}=10^4\,\mathrm{eV}
-\quad\Longleftrightarrow\quad
-T_K=\frac{10^4\,\mathrm{eV}}{k_B}=1.16\times10^8\,\mathrm K.
-\]
-This does not mean every ion has the same energy. It means the distribution has a hot
-tail; fusion occurs disproportionately in that tail. A later section will derive the
-Gamow peak and the reaction rate. Here we need only the first unavoidable conclusion.
+At a separation of $2\,\mathrm{fm}$ this is about $0.72\,\mathrm{MeV}$. Quantum
+tunnelling allows fusion at much lower collision energies. At temperatures of order
+$10$--$20\,\mathrm{keV}$, collisions in the energetic part of the ion distribution
+have a useful probability of penetrating the barrier. We use temperature in energy
+units throughout: $T$ denotes $k_BT_K$, so $10\,\mathrm{keV}$ corresponds to
+$1.16\times10^8\,\mathrm K$.
 
-\designconsequence{Useful D--T fusion requires matter at roughly one hundred million
-kelvin. Sustained contact with a material surface would cool and contaminate the plasma,
-while reactor heat flux would erode and damage the surface. The fuel must therefore be
-kept in vacuum and away from material walls.}
+Fuel at this temperature must be kept away from material surfaces. Contact would
+remove its energy, erode the surface and introduce impurities into the fuel. A
+\emph{vacuum vessel} provides an evacuated chamber that limits contact with cold gas;
+the hot fuel inside it must be confined by electromagnetic fields. Reaction energies
+and the reactor-design framework used here follow Freidberg, Mangiarotti and
+Minervini.\footnote{J.~P.~Freidberg, F.~J.~Mangiarotti and J.~Minervini,
+``Designing a Tokamak Fusion Reactor---How Does Plasma Physics Fit In?'' (2015),
+\href{https://library.psfc.mit.edu/catalog/reports/2010/15ja/15ja021/15ja021_full.pdf}{open manuscript}.
+This is the reference for the reduced reactor model developed later.}
 
-\vfill
-{\footnotesize Reaction data and the reactor-design context are reproduced in
-J.~P. Freidberg, F.~J. Mangiarotti, and J.~Minervini, ``Designing a Tokamak Fusion
-Reactor---How Does Plasma Physics Fit In?'' (2015), open manuscript:
-\url{https://library.psfc.mit.edu/catalog/reports/2010/15ja/15ja021/15ja021_full.pdf}.}
-\newpage
+\designconsequence{An evacuated vessel limits cold-gas contact with the hot fuel. Keeping the plasma clear of its wall requires magnetic confinement.}
 
-% ============================== PAGE 2 ==============================
-\section*{2. The handle nature gives us: charged particles}
-
-At $10\,\mathrm{keV}$, the thermal energy is hundreds of times larger than the
-$13.6\,\mathrm{eV}$ binding energy of ground-state hydrogen. Deuterium and tritium do
-not remain neutral atoms: electrons are stripped from their nuclei. The result is a
-\emph{plasma}, containing positive ions and negative electrons.
-
-The plasma is not, as a whole, a charged ball. On length scales large compared with a
-small electrostatic screening length, its positive and negative charge densities nearly
-cancel: it is \emph{quasineutral}. The useful fact is subtler. Its constituent particles
-carry charge, so electromagnetic fields can redirect them without a material surface.
-
-For a particle of mass $m$, charge $q$, and velocity $\mathbf v$, the Lorentz equation is
+\section*{2. Charged particles give us a handle}
+At these temperatures the fuel is ionized: electrons and nuclei form a plasma.
+On lengths large compared with its electrostatic screening length, the positive and
+negative charge densities nearly cancel. This property is called \emph{quasineutrality}.
+Each constituent still responds to the Lorentz force,
 \begin{equation}
- m\frac{d\mathbf v}{dt}=q\big(\mathbf E+\mathbf v\times\mathbf B\big).\label{eq:lorentz}
+ m\frac{d\mathbf v}{dt}=q(\mathbf E+\mathbf v\times\mathbf B).
+ \label{eq:lorentz}
 \end{equation}
-Set $\mathbf E=0$ temporarily and take a uniform field
-$\mathbf B=B\hat{\mathbf z}$. Dotting Eq.~\eqref{eq:lorentz} with $\mathbf v$ gives
-\[
-\frac{d}{dt}\left(\frac12m|\mathbf v|^2\right)
-=q\,\mathbf v\cdot(\mathbf v\times\mathbf B)=0.
-\]
-The magnetic force changes direction but not kinetic energy. It is therefore a steering
-force, not a refrigerator and not a source of free plant power.
-
-Write $w=v_x+i v_y$. The perpendicular components of Eq.~\eqref{eq:lorentz} become
-\[
-\dot v_x=\frac{qB}{m}v_y,\qquad
-\dot v_y=-\frac{qB}{m}v_x,
-\qquad\Longrightarrow\qquad
-\dot w=-i\frac{qB}{m}w.
-\]
-Hence $w(t)=w(0)e^{-iqBt/m}$: the perpendicular velocity rotates. Integrating once,
-the particle follows a circle of radius
+Set $\mathbf E=0$ and $\mathbf B=B\hat{\mathbf z}$. Since
+$\mathbf v\cdot(\mathbf v\times\mathbf B)=0$, the magnetic force does no work: it preserves the particle's
+kinetic energy while turning its velocity. With $w=v_x+iv_y$, the perpendicular
+motion satisfies $\dot w=-i(qB/m)w$. Thus $w=w(0)e^{-iqBt/m}$, and integration gives
 \begin{equation}
  \omega_c=\frac{|q|B}{m},\qquad
- r_L=\frac{v_\perp}{\omega_c}=\frac{m v_\perp}{|q|B}.\label{eq:gyro}
+ r_L=\frac{v_\perp}{\omega_c}=\frac{mv_\perp}{|q|B}.
+ \label{eq:gyro}
 \end{equation}
-Meanwhile the parallel component obeys $\dot v_z=0$. The full orbit is a helix: a
-small circle across the field combined with free streaming along it.
+Here $\omega_c$ is the gyrofrequency and $r_L$ the gyroradius. Parallel motion remains
+free, so the orbit is a helix around a magnetic field line. A $10\,\mathrm{keV}$
+deuteron with $v_\perp=\sqrt{2T/m_D}=9.8\times10^5\,\mathrm{m\,s^{-1}}$ has
+$r_L=6.8\,\mathrm{mm}$ in a $3\,\mathrm T$ field. A metre-scale chamber can therefore
+contain small transverse orbits. Its next problem is escape along the field.
 
-For a $10\,\mathrm{keV}$ deuteron in $3\,\mathrm T$,
-$v_\perp=\sqrt{2T/m_D}=9.8\times10^5\,\mathrm{m/s}$ and
-$r_L=6.8\,\mathrm{mm}$. A magnetic field can therefore keep transverse excursions
-small compared with a metre-scale chamber. Equation~\eqref{eq:gyro}, however, exposes the failure:
-it does nothing to stop motion along the field.
+\designconsequence{A magnetic field bounds transverse motion while leaving particles free to stream along it. Confinement must therefore address parallel escape.}
 
-\designconsequence{The ``invisible wall'' cannot be a wall in the ordinary sense. It
-must be a set of magnetic field lines that guide charged particles, and those lines
-must eventually have no open ends.}
-
-\newpage
-
-% ============================== PAGE 3 ==============================
-\section*{3. First attempted machine: a straight magnetic corridor}
-
-Before closing the ends, we must make a field. Electric current is its source. In a
-static situation Amp\`ere's law is
+\section*{3. A straight magnetic corridor}
+A coil is a conductor wound into turns so that their magnetic fields add. For a long
+solenoid, the turns surround a cylindrical volume. Amp\`ere's law gives
 \begin{equation}
- \oint_C\mathbf B\cdot d\boldsymbol\ell=\mu_0 I_{\rm linked}.\label{eq:ampere}
+ \oint_C\mathbf B\cdot d\boldsymbol\ell=\mu_0I_{\rm linked}.
+ \label{eq:ampere}
 \end{equation}
-Wind wire into many circular turns around a long cylinder. If there are $n$ turns per
-unit length, take a rectangular Amp\`ere loop with one long side of length $L$ inside
-the winding and the other far outside. For an ideal long solenoid, the exterior field
-is negligible and the two short sides are perpendicular to $\mathbf B$.
-Equation~\eqref{eq:ampere}
-then gives
+Choose a rectangular path with length $L$ inside the solenoid and its return far
+outside. \samplemodel{For a solenoid long compared with its radius, the exterior field is small.} With $n_{\rm turn}$ turns per unit length, each carrying current $I_c$,
 \begin{equation}
- BL=\mu_0(nL)I,\qquad\text{so}\qquad B\simeq\mu_0 nI.
-\label{eq:solenoid}\end{equation}
-This is our first actual component: a current-carrying coil. Its job is not yet to heat
-or shape the fuel. Its job is to create the field that makes the gyro-orbits of
-Eq.~\eqref{eq:gyro}.
+ BL=\mu_0(n_{\rm turn}L)I_c,\qquad B\simeq\mu_0n_{\rm turn}I_c.
+ \label{eq:solenoid}
+\end{equation}
+This field guides particles down the tube. At $v_\parallel\sim10^6\,\mathrm{m\,s^{-1}}$,
+a particle traverses a $10\,\mathrm m$ device in about $10\,\mu\mathrm s$.
+Increasing $B$ reduces the gyroradius but leaves this parallel transit time unchanged.
+Magnetic mirrors can reflect a range of particle pitch angles; here we pursue another
+way to remove direct end loss: join the ends of the corridor.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.90,>=stealth]
+\designconsequence{The straight solenoid leaves a direct escape path at each end. Closing that path requires a different geometry.}
+\samplefigure{\begin{tikzpicture}[scale=1.0,>=stealth]
   \draw[thick] (-4,-1.0) rectangle (4,1.0);
   \foreach \x in {-3.6,-3.0,...,3.6}{
-    \draw[blue!70!black,thick] (\x,-1.25) ellipse (0.18 and 1.25);
+    \draw[blue!70!black,thick] (\x,0) ellipse (0.18 and 1.25);
   }
   \foreach \x in {-3.2,-2.0,...,3.2}{
     \draw[red!75!black,->,thick] (\x,0) -- ++(0.75,0);
@@ -189,77 +157,36 @@ Eq.~\eqref{eq:gyro}.
     node[right,black,align=left]{particles stream out\\along $\mathbf B$};
   \node[above] at (0,1.35) {current turns};
   \node[below] at (0,-1.45) {straight magnetic corridor};
-\end{tikzpicture}
-\end{center}
+\end{tikzpicture}}{The axial field guides particles through the open ends.}
 
-The corridor controls cross-field motion, but Eq.~\eqref{eq:lorentz} already told us that
-$v_\parallel$ remains free. At the deuteron speed above, a particle crosses a
-$10\,\mathrm m$ device in roughly
-\[
- t_{\rm end}\sim\frac{L}{v_\parallel}\sim
- \frac{10\,\mathrm m}{10^6\,\mathrm{m/s}}=10\,\mu\mathrm s.
-\]
-Making the straight corridor stronger reduces $r_L$ but does not change this end-loss
-time. Magnetic mirrors can reflect some pitch angles, but particles within their loss
-cone still escape. We have learned something more valuable than a failed design: the
-problem is topological, not merely quantitative.
-
-\designconsequence{Do not try to plug the ends of the magnetic corridor. Remove the
-ends by joining them. The simplest closed version of a tube is a torus.}
-
-\model{Equation~\eqref{eq:solenoid} assumes a solenoid long compared with its radius. End fields and
-finite-coil corrections are deliberately omitted because the calculation is being used
-to expose, not conceal, end loss.}
-
-\newpage
-
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM1_stage1_tall.pdf}
-  \caption{The first machine state. A solenoid makes the field; the corridor has open ends, which is the failure the next section names.}
-  \label{fig:figM1_stage1_tall}
-\end{figure}
-
-% ============================== PAGE 4 ==============================
 \section*{4. Closing the corridor creates the torus}
-
-Bend the straight magnetic corridor until its two ends meet. The field now runs the
-long way around a torus; this direction is called \emph{toroidal}. A cross-section of
-the tube has radius $a$, while the distance from the symmetry axis to the centre of that
-cross-section is the major radius $R_0$:
+The resulting tube is a torus. Its long-way direction is \emph{toroidal}; the short
+way around a tube cross-section is \emph{poloidal}. The major radius $R_0$ measures
+from the symmetry axis to the cross-section's centre. The minor radius $a$ measures
+the horizontal extent of the plasma from that centre. Their ratio is
 \begin{equation}
- A\equiv\frac{R_0}{a}\qquad\text{(aspect ratio).}
-\label{eq:aspect}
+ A\equiv\frac{R_0}{a}\qquad\text{(aspect ratio)}.
+ \label{eq:aspect}
 \end{equation}
-These parameters have appeared because the design has acquired two geometrically
-different lengths, not because a tokamak diagram handed them to us.
-
-\freidbergvariable{$a$ (minor radius) and $R_0$ (major radius)}{Closing the
-straight corridor makes these two dimensions unavoidable: $a$ measures the
-cross-sectional reach available to the plasma, while $R_0$ measures the radius of
-the closed path that removes end loss. Their ratio $A=R_0/a$ is useful, but is a
-derived supporting quantity rather than an additional primary parameter.}
-
-How do coils make a toroidal field? Arrange current-carrying loops around the torus so
-that, in the ideal limit of continuously distributed coils, the system is axisymmetric.
-Apply Amp\`ere's law to a circle of radius $R$ centred on the symmetry axis. The field is
-tangent to the circle and constant along it, while the loop links total current $NI_c$:
+Toroidal-field (TF) coils wrap around the tube at successive positions around the
+ring. Approximating them by a continuous, axisymmetric winding, a circular
+Amp\`ere path of radius $R$ links $N$ turns carrying $I_c$:
 \begin{equation}
- 2\pi R B_\varphi(R)=\mu_0NI_c,
- \qquad
- \boxed{B_\varphi(R)=\frac{\mu_0NI_c}{2\pi R}}.
-\label{eq:btor}
+ 2\pi RB_\varphi(R)=\mu_0NI_c,\qquad
+ B_\varphi(R)=\frac{\mu_0NI_c}{2\pi R}.
+ \label{eq:btor}
 \end{equation}
-Thus the toroidal field is intrinsically stronger on the inboard side and weaker on the
-outboard side. Across a circular plasma,
+\samplemodel{The continuous-winding approximation is axisymmetric. Discrete TF coils introduce a periodic field variation called \emph{ripple}.} The field is stronger on the
+\emph{inboard} side, nearest the symmetry axis, than on the \emph{outboard} side:
 \begin{equation}
- \frac{B_{\rm in}}{B_{\rm out}}
- =\frac{R_0+a}{R_0-a}=\frac{A+1}{A-1}.
-\label{eq:fieldratio}
+ \frac{B_{\rm in}}{B_{\rm out}}=\frac{R_0+a}{R_0-a}=\frac{A+1}{A-1}.
+ \label{eq:fieldratio}
 \end{equation}
+The closed path removes the ends, but its curvature and field gradient change the
+particle orbits. We must calculate that change before accepting the magnetic bottle.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.92,>=stealth]
+\designconsequence{Closing the corridor creates field curvature and a gradient, $B_\varphi\propto1/R$. Their effect on particle orbits must now be checked.}
+\samplefigure{\begin{tikzpicture}[scale=1.0,>=stealth]
   \draw[dashed] (0,-2.15) -- (0,2.15) node[above]{symmetry axis};
   \draw[red!70!black,very thick]
     (1.05,-1.95) -- (1.05,1.95)
@@ -270,138 +197,84 @@ outboard side. Across a circular plasma,
   \draw[<->] (0,-1.65) -- node[below]{$R_0$} (4,-1.65);
   \draw[<->] (4,0) -- node[above]{$a$} (5.15,0);
   \node[blue!70!black] at (4,0) {$\boldsymbol\odot\ B_\varphi$};
-  \node[right,align=left] at (6.65,-0.75) {poloidal cross-section;\\revolve the plasma\\about the axis};
-\end{tikzpicture}
-\end{center}
+  \draw[blue!70!black,->,thick] (4,.85) arc (90:220:.85);
+  \node[right,align=left] at (6.65,-0.75) {toroidal: out of page\\poloidal: around the tube};
+\end{tikzpicture}}{Torus geometry in a poloidal section: the TF winding surrounds the plasma tube; $R_0$ locates its centre and $a$ measures its minor radius. The blue arrow marks the poloidal direction.}
 
-We have now removed the ends. We have not yet built a tokamak. The object presently on
-the page is only a toroidal magnetic bottle, and Eq.~\eqref{eq:btor} has introduced a new asymmetry:
-the field strength varies across the tube. The next question is whether this closed
-field actually confines a particle.
-
-\model{Equation~\eqref{eq:btor} is exact for the axisymmetric continuous-coil idealization. A finite
-number of real toroidal-field coils produces ripple and a small external stray field;
-those are later engineering corrections, not erased facts.}
-
-\newpage
-
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM2_stage2_tall.pdf}
-  \caption{The corridor closed into a torus. The straight solenoid turns have become toroidal-field coils around the same tube; $R_0$, $a$ and $B_\varphi$ now exist because the geometry acquired two lengths.}
-  \label{fig:figM2_stage2_tall}
-\end{figure}
-
-% ============================== PAGE 5 ==============================
-\section*{5. The closed bottle still leaks: toroidal drifts}
-
-The gyro-orbit derivation assumed uniform $\mathbf B$. Equation~\eqref{eq:btor} makes the field
-stronger on one side of every orbit than the other, and the field line itself is curved.
-We now calculate the leading effect, assuming $r_L/R_0\ll1$ so the field changes little
-during one gyro-orbit.
-
-First derive a useful general result. Add a constant force $\mathbf F\perp\mathbf B$ to
-Eq.~\eqref{eq:lorentz}, with $\mathbf E=0$. Seek a solution consisting of gyromotion plus a constant
-velocity $\mathbf v_F$. Requiring the constant terms to cancel gives
+\section*{5. Why the toroidal bottle still leaks}
+When $r_L/R_0\ll1$, we can average over gyromotion and follow the orbit's centre,
+called the \emph{guiding centre}. For a slowly varying perpendicular force $\mathbf F$,
+seek a constant drift velocity satisfying
+$q\mathbf v_F\times\mathbf B+\mathbf F=0$. Crossing with $\mathbf B$ yields
 \begin{equation}
- q\mathbf v_F\times\mathbf B+\mathbf F=0
- \quad\Longrightarrow\quad
- \boxed{\mathbf v_F=\frac{\mathbf F\times\mathbf B}{qB^2}}.
-\label{eq:forcedrift}
+ \mathbf v_F=\frac{\mathbf F\times\mathbf B}{qB^2}.
+ \label{eq:forcedrift}
 \end{equation}
-The torus supplies two effective forces. Conservation of the magnetic moment
-$\mu=m v_\perp^2/(2B)$ is not merely asserted: a gyro-orbit is a current loop, so
+Two effective forces arise in a toroidal field. The magnetic-moment magnitude of a
+gyro-orbit follows from its circulating charge:
 \[
- \mu=\left(\frac{q\omega_c}{2\pi}\right)(\pi r_L^2)
- =\frac{m v_\perp^2}{2B}.
+ \mu=\frac{|q|\omega_c}{2\pi}\,\pi r_L^2=\frac{mv_\perp^2}{2B}.
 \]
-When $B$ changes little during one orbit, gyro-averaging makes $\mu$ an adiabatic
-invariant; the orbit therefore has potential energy $\mu B$ and gradient force
-$\mathbf F_{\nabla B}=-\mu\nabla B$.\footnote{A systematic open derivation of
-guiding-centre motion and its ordering assumptions is A. J. Brizard and T. S. Hahm,
-``Foundations of nonlinear gyrokinetic theory,'' \url{https://arxiv.org/abs/physics/0409119}.}
-Following a field line curved with radius $R$
-also requires centripetal acceleration; in the frame of the guiding centre this enters
-as the outward curvature force
-$\mathbf F_c=(m v_\parallel^2/R)\hat{\mathbf R}$.
+For fields varying slowly over a gyroperiod and gyroradius, $\mu$ is an adiabatic
+invariant. The perpendicular energy $\mu B$ then gives a gradient force
+$-\mu\nabla B$. Following a curved field line also gives the effective outward
+curvature force $(mv_\parallel^2/R)\hat{\mathbf R}$. The guiding-centre ordering
+underlying these expressions is developed systematically by Brizard and Hahm.\footnote{
+A.~J.~Brizard and T.~S.~Hahm, ``Foundations of nonlinear gyrokinetic theory,''
+\emph{Reviews of Modern Physics} \textbf{79}, 421--468 (2007),
+\href{https://doi.org/10.1103/RevModPhys.79.421}{doi:10.1103/RevModPhys.79.421}.}
 
-For Eq.~\eqref{eq:btor}, $\nabla B=-(B/R)\hat{\mathbf R}$. Therefore both effective forces point
-radially outward. With $\mathbf B=B\hat{\boldsymbol\varphi}$ and
-$\hat{\mathbf R}\times\hat{\boldsymbol\varphi}=\hat{\mathbf Z}$, Eq.~\eqref{eq:forcedrift} gives
+Because $B\propto1/R$, we have $\nabla B=-(B/R)\hat{\mathbf R}$.
+Both effective forces point outward. With $\mathbf B=B\hat{\boldsymbol\varphi}$
+and $\hat{\mathbf R}\times\hat{\boldsymbol\varphi}=\hat{\mathbf Z}$,
 \begin{equation}
-\begin{aligned}
- \mathbf v_{\nabla B}
- &=\frac{m v_\perp^2}{2qBR}\,\hat{\mathbf Z},\\
- \mathbf v_c
- &=\frac{m v_\parallel^2}{qBR}\,\hat{\mathbf Z},\\[-2pt]
- \therefore\qquad
- \boxed{\mathbf v_d
- =\frac{m}{qBR}\left(v_\parallel^2+\frac12v_\perp^2\right)
- \hat{\mathbf Z}}.
-\end{aligned}
-\label{eq:toroidaldrift}
+ \mathbf v_{\nabla B}=\frac{mv_\perp^2}{2qBR}\hat{\mathbf Z},\qquad
+ \mathbf v_c=\frac{mv_\parallel^2}{qBR}\hat{\mathbf Z},\qquad
+ \mathbf v_d=\frac{m}{qBR}\left(v_\parallel^2+\frac{v_\perp^2}{2}\right)\hat{\mathbf Z}.
+ \label{eq:toroidaldrift}
 \end{equation}
-
-Equation~\eqref{eq:toroidaldrift} is fatal to the design in its present form. Positive and negative charges
-drift in opposite vertical directions because the sign is set by $q$. The resulting
-charge separation creates a vertical electric field. Returning to Eq.~\eqref{eq:lorentz}, an electric
-force $q\mathbf E$ inserted into Eq.~\eqref{eq:forcedrift} gives
+Ions and electrons drift vertically in opposite directions. The resulting charge
+separation creates a vertical electric field. Setting $\mathbf F=q\mathbf E$ in
+Eq.~\eqref{eq:forcedrift} gives
 \begin{equation}
- \mathbf v_E=\frac{\mathbf E\times\mathbf B}{B^2},
-\label{eq:exb}
+ \mathbf v_E=\frac{\mathbf E\times\mathbf B}{B^2}.
+ \label{eq:exb}
 \end{equation}
-which is independent of charge and mass. Ions and electrons now move together. For the
-vertical charge-separation field produced here, that common drift is radially outward,
-toward the vessel wall.
+This drift is common to both species and carries the plasma outward toward the wall.
+A purely toroidal field therefore leaves a systematic escape mechanism.
 
-\designconsequence{Closing the straight field into a torus removes end loss but creates
-systematic toroidal drifts. A purely toroidal magnetic field cannot confine the plasma.
-The field line must be made to visit both the top and bottom of the torus so that the
-same vertical drift alternates between outward and inward displacement.}
+The remedy is to make field lines visit the top and bottom of the tube. Then a
+vertical drift alternates between outward and inward motion relative to the local
+magnetic surface. Adding a poloidal field provides this rotation and allows bounded
+orbit excursions in the axisymmetric confinement picture.
 
-\newpage
+\designconsequence{Toroidal drifts separate charge and drive outward motion. A poloidal field is needed to carry particles around the cross-section.}
 
-% ============================== PAGE 6 ==============================
-\section*{6. A second field is forced upon us}
-
-A field line confined to one horizontal plane experiences the drift of Eq.~\eqref{eq:toroidaldrift} with the
-same radial consequence throughout its journey. Make the line wind the short way around
-the tube as well as the long way around the torus. It then passes successively through
-the top and bottom of the cross-section; a vertical displacement is outward on one half
-and inward on the other. The unbounded drift is replaced, to leading order, by a bounded
-orbit excursion.
-
-The required short-way field is called \emph{poloidal}. There are two broad ways to make
-it. External helical windings can do so, producing a stellarator. The tokamak makes the
-main poloidal field with a toroidal electric current carried by the plasma itself. On a
-circular cross-section, apply Amp\`ere's law to a poloidal circle of radius $r$ enclosing
-plasma current $I_{\rm enc}(r)$:
+\section*{6. Plasma current supplies the second field}
+External helical windings can produce the required twist; that is the stellarator
+route. The tokamak uses a toroidal current in the plasma to generate the principal
+poloidal field. For a circular cross-section at large aspect ratio, Amp\`ere's law gives
 \begin{equation}
- 2\pi r B_\theta(r)=\mu_0I_{\rm enc}(r),
- \qquad
- \boxed{B_\theta(r)=\frac{\mu_0I_{\rm enc}(r)}{2\pi r}}.
-\label{eq:bpol}
+ B_\theta(r)\simeq\frac{\mu_0I_{\rm enc}(r)}{2\pi r},
+ \label{eq:bpol}
 \end{equation}
-The combined field
-\[
- \mathbf B=B_\varphi\hat{\boldsymbol\varphi}+B_\theta\hat{\boldsymbol\theta}
-\]
-is helical. A field line no longer remains at one height. The toroidal drift problem has
-dictated a plasma current, and the plasma current has dictated a helical field.
+where $I_{\rm enc}(r)$ is the plasma current inside radius $r$. The combination
+$\mathbf B=B_\varphi\hat{\boldsymbol\varphi}+B_\theta\hat{\boldsymbol\theta}$
+produces helical field lines.
 
-Where does that current come from? Place a solenoid through the central hole and vary
-its magnetic flux. Faraday's law,
+To initiate that current, place a solenoid through the central hole and change its
+magnetic flux. Faraday's law,
 \begin{equation}
  \oint\mathbf E\cdot d\boldsymbol\ell=-\frac{d\Phi}{dt},
-\label{eq:faraday}
+ \label{eq:faraday}
 \end{equation}
-creates a toroidal electric field. The plasma acts as the one-turn secondary winding of
-a transformer; the induced electric field drives $I_p$. The central solenoid has therefore
-not been added because tokamaks traditionally possess one. It has been demanded by the
-decision to obtain the poloidal field through plasma current.
+creates a toroidal electric field. The central solenoid is the primary winding of a
+transformer; the plasma ring acts as its one-turn secondary. This gives the
+\emph{plasma current} $I_p$ a physical source. The TF coils provide the long-way
+field, and the induced plasma current provides the short-way field.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.75,>=stealth]
+\designconsequence{Changing central-solenoid flux drives plasma current and its poloidal field. The resulting helical field needs a measure of its pitch.}
+\samplefigure{\begin{tikzpicture}[scale=1.0,>=stealth]
   \draw[dashed] (0,-1.5) -- (0,1.5) node[above]{symmetry axis};
   \draw[fill=black!15] (0.30,-1.25) rectangle (0.70,1.25);
   \node[rotate=90] at (0.50,0) {CS};
@@ -412,188 +285,125 @@ decision to obtain the poloidal field through plasma current.
   \node[right,blue!75!black,align=left] at (5.35,0.45) {$B_\theta$ circles\\the plasma current};
   \draw[red!75!black,->,thick] (0.82,0) -- (2.65,0)
     node[midway,above] {induced $E_\varphi$};
-\end{tikzpicture}
-\end{center}
+\end{tikzpicture}}{Induced toroidal electric field drives current; its poloidal field circles the plasma.}
 
-\designconsequence{The machine revealed so far contains a vacuum vessel, toroidal-field
-coils, a toroidal plasma, and a means of driving plasma current. This is the minimal
-physical chain that creates the tokamak field. It is not yet a reactor: we have not shown
-pressure equilibrium, stability, adequate confinement time, heating, exhaust, breeding,
-magnet survival, or net electricity. Each of those failures will demand its own component.}
-
-One distinction will matter later. The plasma current produces the principal poloidal
-field that makes field lines helical. Separate external poloidal-field coils will be
-introduced only when radial force balance, position control, and shaping require them.
-The next derived parameter will be the pitch of the helix---the safety factor $q$---because
-the current that repairs drift also creates the machine's first major stability limit.
-
-\newpage
-
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM3_stage3_tall.pdf}
-  \caption{The tokamak field. A central solenoid drives $I_p$, and $I_p$ alone supplies $B_\theta$ --- no external coil does this. Every component of the previous state is retained.}
-  \label{fig:figM3_stage3_tall}
-\end{figure}
-
-% ============================== PAGE 7 ==============================
-\section*{7. The helix has a pitch: the safety factor $q$}
-
-The combined field has two components, so a field line advances two ways at once. On a
-nearly circular magnetic surface of minor radius $r$, a short displacement has toroidal
-length $R\,d\varphi$ and poloidal length $r\,d\theta$. Because the displacement is
-parallel to $\mathbf B$, their ratio must equal the corresponding ratio of field
-components:
+\section*{7. The helix has a pitch: the safety factor}
+A field-line displacement is parallel to $\mathbf B$. On a circular surface its
+toroidal and poloidal lengths therefore satisfy
 \begin{equation}
  \frac{R\,d\varphi}{r\,d\theta}=\frac{B_\varphi}{B_\theta}.
-\label{eq:pitch}
+ \label{eq:pitch}
 \end{equation}
-At large aspect ratio the variation of $R$ and $B_\varphi$ around one cross-section is
-small enough that $R\simeq R_0$ and $B_\varphi\simeq B_0$. One poloidal circuit,
-$\Delta\theta=2\pi$, then advances the field line toroidally by $2\pi q$, where
+At large aspect ratio take $R\simeq R_0$ and $B_\varphi\simeq B_0$. During one
+poloidal circuit the field line advances toroidally through $2\pi q$, where
 \begin{equation}
- q(r)\equiv\frac{\Delta\varphi}{2\pi}
- \simeq \frac{rB_0}{R_0B_\theta(r)}.
-\label{eq:qdef}
+ q(r)\equiv\frac{\Delta\varphi}{2\pi}\simeq\frac{rB_0}{R_0B_\theta(r)}.
+ \label{eq:qdef}
 \end{equation}
-Thus $q$ is simply the number of long-way circuits made per one short-way circuit. The
-word \emph{safety} is historical; the stability reason for that name comes later.
+The \emph{safety factor} $q$ counts toroidal turns per poloidal turn. Its historical
+name reflects its use in stability analysis. Substituting Eq.~\eqref{eq:bpol} gives
+\begin{equation}
+ q(r)\simeq\frac{2\pi r^2B_0}{\mu_0R_0I_{\rm enc}(r)},\qquad
+ q_a\simeq\frac{2\pi a^2B_0}{\mu_0R_0I_p}.
+ \label{eq:qedge}
+\end{equation}
+Thus an imposed lower bound on the edge safety factor becomes a ceiling on current:
+\begin{equation}
+ I_p\simeq\frac{2\pi a^2B_0}{\mu_0R_0q_a}.
+ \label{eq:ipq}
+\end{equation}
+Increasing plasma current strengthens the poloidal field and reduces the number of
+toroidal turns per poloidal circuit. Size, current, field and pitch are now coupled.
+For $q=m/n$ in lowest terms, the ideal field line closes after $n$ poloidal turns and
+$m$ toroidal turns. An irrational $q$ produces a line that densely samples its surface.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.63,>=stealth]
+\samplepair{An adopted minimum safety factor bounds plasma current at fixed size and toroidal field. Force balance must also be satisfied.}{\begin{tikzpicture}[scale=1.0,>=stealth]
   \draw[thick] (0,0) rectangle (8,2.4);
   \draw[gray,dashed] (0,1.20)--(8,1.20);
   \draw[blue!75!black,very thick,->] (0.35,0.30) -- (3.30,1.18)
     -- (6.25,2.06) -- (7.65,2.25);
   \node[below] at (4,0) {one toroidal period: $\varphi\to\varphi+2\pi$};
   \node[left,align=right] at (0,1.20) {one poloidal\\period};
-  \node[blue!75!black,above] at (4.3,1.45) {field line, unwrapped from a torus};
-\end{tikzpicture}
-\end{center}
+  \node[blue!75!black,above] at (4.0,2.6) {field line, unwrapped from a torus};
+\end{tikzpicture}}{Unwrapping the magnetic surface shows the field-line pitch.}
 
-Substitute the poloidal field already derived in Eq.~\eqref{eq:bpol}:
+\section*{8. The plasma pushes back: pressure and beta}
+Electrons and ions both contribute to pressure. With singly charged fuel,
+$n_e\simeq n_i\equiv n$, and equal temperatures,
 \begin{equation}
- q(r)\simeq\frac{2\pi r^2B_0}{\mu_0R_0I_{\rm enc}(r)},
- \qquad
- q_a\simeq\frac{2\pi a^2B_0}{\mu_0R_0I_p}.
-\label{eq:qedge}
+ p=n_eT_e+n_iT_i\simeq2nT.
+ \label{eq:pressure}
 \end{equation}
-The edge value $q_a$ has not been chosen by a convention. It has emerged from geometry,
-Amp\`ere's law, and the decision to use plasma current for the poloidal field. Reading
-the same relation backwards gives the equally important current relation
+At $n=10^{20}\,\mathrm{m^{-3}}$ and $T=10\,\mathrm{keV}$ this gives
+$p\simeq3.2\times10^5\,\mathrm{Pa}$. The pressure gradient drives expansion.
+On scales large compared with particle orbits, a single-fluid model with scalar
+pressure gives
 \begin{equation}
- I_p\simeq\frac{2\pi a^2B_0}{\mu_0R_0q_a}.
-\label{eq:ipq}
+ \rho_m\frac{d\mathbf u}{dt}=-\nabla p+\mathbf j\times\mathbf B.
+ \label{eq:mhdmomentum}
 \end{equation}
-Any later lower bound on $q_a$ is therefore an upper bound on plasma current. This
-connection is one of the load-bearing constraints in the later reactor audit.
-
-A rational value $q=m/n$, for integers $m,n$, closes after $n$ poloidal and $m$
-toroidal turns. An irrational value never exactly closes and instead samples its surface.
-
-\designconsequence{The toroidal field, the plasma current, the size of the torus, and
-the helix pitch are not independent knobs. Equation~\eqref{eq:ipq} ties them together.
-The current that makes confinement possible has already spent part of the machine's
-future stability budget.}
-
-{\footnotesize The shaped generalization and later stability use are given by
-Freidberg, Mangiarotti, and Minervini (2015), Eq.~(30):
-\url{https://library.psfc.mit.edu/catalog/reports/2010/15ja/15ja021/15ja021_full.pdf}.}
-
-\newpage
-
-% ============================== PAGE 8 ==============================
-\section*{8. A hot plasma is not a passenger: it has pressure}
-
-Until now we have followed one particle in fields prescribed from outside. A fusion
-plasma contains enough particles that its collective push matters. For one ideal gas
-species, random impacts transfer momentum to a surface and give $p=nk_BT$. We are
-using energy units for temperature, so this is simply $p=nT$. Electrons and ions each
-contribute; quasineutrality gives $n_e\simeq n_i\equiv n$, hence
+Here $\rho_m$ is mass density, $\mathbf u$ bulk velocity and $\mathbf j$ current
+per unit area. We use static magnetohydrodynamic (MHD) equilibrium: negligible bulk
+acceleration, isotropic pressure and negligible viscous force. Then
 \begin{equation}
- p=n_eT_e+n_iT_i\simeq 2nT
- \quad\text{when }T_e\simeq T_i\equiv T.
-\label{eq:pressure}
+ \mathbf j\times\mathbf B=\nabla p.
+ \label{eq:forcebalance}
 \end{equation}
-For orientation, $n=10^{20}\,\mathrm{m^{-3}}$ and $T=10\,\mathrm{keV}$ give
-$p\simeq3.2\times10^5\,\mathrm{Pa}$, about three atmospheres. This pressure is
-inside a near-vacuum vessel, so it tries to expand the plasma.
-
-At scales large compared with a gyro-orbit, it is useful to average the particles into
-one conducting fluid. Its momentum equation is
+Dotting with $\mathbf B$ immediately gives
 \begin{equation}
- \rho\frac{d\mathbf v}{dt}=-\nabla p+\mathbf J\times\mathbf B.
-\label{eq:mhdmomentum}
+ \mathbf B\cdot\nabla p=0.
+ \label{eq:pressurefieldline}
 \end{equation}
-Here $-\nabla p$ is the force due to pressure and $\mathbf J\times\mathbf B$ is the
-magnetic force density. A static equilibrium requires
+Pressure is constant along each field line, and on a nested surface densely sampled
+by those lines. Magnetic geometry must support this pressure distribution.
+
+A natural pressure scale follows from the work needed to establish a field. For a
+long solenoid of $N$ turns, length $L$ and area $S$, its linked flux is $NBS$ and
+$B=\mu_0NI_c/L$. Integrating $dW_B=I_c\,d(NBS)$ gives
 \begin{equation}
- \boxed{\mathbf J\times\mathbf B=\nabla p.}
-\label{eq:forcebalance}
+ W_B=\frac{B^2}{2\mu_0}SL.
+ \label{eq:fieldenergy}
 \end{equation}
-This is a model declaration, not a universal law: it assumes slow evolution, negligible
-bulk flow, small gyro-orbits compared with the plasma size, and an approximately scalar
-pressure. Those assumptions will be checked rather than silently inherited when we use
-the equation quantitatively.
-
-One consequence follows without solving anything. Dot Eq.~\eqref{eq:forcebalance}
-with $\mathbf B$:
+The energy density $B^2/(2\mu_0)$ has pressure units. Its ratio to plasma pressure
+defines the dimensionless parameter
 \begin{equation}
- \mathbf B\cdot\nabla p
- =\mathbf B\cdot(\mathbf J\times\mathbf B)=0.
-\label{eq:pressurefieldline}
+ \beta\equiv\frac{p}{B^2/(2\mu_0)}.
+ \label{eq:beta}
 \end{equation}
-Pressure is constant along a field line. The invisible wall is therefore not a loose
-collection of lines: a static confined plasma requires nested magnetic surfaces on
-which pressure can live.
+Beta measures how much plasma pressure is supported relative to the magnetic energy
+density. Later global estimates use representative or volume-averaged pressure and
+$B_0$, with that convention stated in the calculation. The allowable beta requires a
+stability model; the definition itself sets no universal limit.
 
-There is a natural way to compare plasma push with magnetic capability. Build the field
-of a solenoid slowly. With $N$ turns, length $L$, area $A$, and flux linkage $NBA$,
-the source supplies $dW=I\,d(NBA)$. Since $B=\mu_0NI/L$, integration gives
+\designconsequence{Plasma pressure and current produce forces that require external equilibrium fields. The next task is to identify the field that balances radial expansion.}
+
+\section*{9. External coils hold the plasma in position}
+The plasma ring's pressure and self-generated magnetic field create an outward
+expansion tendency. A vertical field supplies an adjustable radial force on its
+toroidal current. For a ring element,
 \begin{equation}
- W=\frac{B^2}{2\mu_0}AL.
-\label{eq:fieldenergy}
+ d\mathbf F=I_pR_0\,d\varphi\,\hat{\boldsymbol\varphi}\times
+ B_v\hat{\mathbf Z}=I_pR_0B_v\,d\varphi\,\hat{\mathbf R}.
+ \label{eq:ringforce}
 \end{equation}
-Thus $B^2/(2\mu_0)$ is the magnetic energy per unit volume and has the same units as
-pressure. Define
-\begin{equation}
- \boxed{\beta\equiv\frac{p}{B^2/(2\mu_0)}.}
-\label{eq:beta}
-\end{equation}
-It is the fraction of magnetic pressure-scale that the plasma is asking the field to
-hold. Raising $B$ makes a given pressure easier to support; raising $p$ makes the same
-magnet work harder.
+Changing the sign of $B_v$ reverses the local force. The circumferentially integrated
+\emph{radial load} is $2\pi R_0I_pB_v$; vector forces around a complete symmetric
+ring cancel in translation while still expanding or compressing the ring.
 
-\designconsequence{A tokamak cannot be designed by field-line geometry alone. Its
-magnetic surfaces must also balance pressure. This forces a second task on the coil
-system: hold the plasma at a chosen radial position while its own pressure and current
-try to move it.}
+External \emph{poloidal-field coils}, or PF coils, are circular windings around the
+symmetry axis, placed at selected radii and heights. Their fields lie in the
+$R$--$Z$ plane. By changing their currents we can supply the vertical field that
+balances radial expansion, and later adjust plasma height and shape. A power supply
+is the circuit that controls each coil's current; the coil is the magnetic actuator.
+The necessary field magnitude depends on the plasma pressure and current profiles,
+which enter the equilibrium equation derived below.
 
-\vfill
-{\footnotesize The static-MHD model and the use of $\beta$ in reactor design are treated
-in the open Freidberg--Mangiarotti--Minervini manuscript cited on page~1. The field
-energy relation above is derived from the work needed to establish a solenoidal field.}
+The coil roles are now distinct. TF coils generate $B_\varphi$. The central solenoid
+induces $I_p$, whose field supplies the main poloidal twist. The external PF system
+positions and shapes the resulting plasma.
 
-\newpage
-
-% ============================== PAGE 9 ==============================
-\section*{9. Holding position forces external poloidal-field coils}
-
-The plasma current is a toroidal current loop. A current loop in a vertical magnetic
-field feels a radial force. This is not a slogan; apply the elementary force law
-$d\mathbf F=I\,d\boldsymbol\ell\times\mathbf B$ to a circular loop. For
-$d\boldsymbol\ell=R_0d\varphi\,\hat{\boldsymbol\varphi}$ and
-$\mathbf B_v=B_v\hat{\mathbf Z}$,
-\begin{equation}
- d\mathbf F=I_pR_0B_vd\varphi\,\hat{\mathbf R},
- \qquad
- \mathbf F_R=2\pi R_0I_pB_v\,\hat{\mathbf R}.
-\label{eq:ringforce}
-\end{equation}
-Changing the sign of $B_v$ changes the force from outward to inward.
-
-\begin{center}
-\begin{tikzpicture}[scale=0.83,>=stealth]
+\designconsequence{A controlled vertical field supplies radial force on the plasma ring. PF coils must control its cross-sectional boundary as well as its position.}
+\samplefigure{\begin{tikzpicture}[scale=1.0,>=stealth]
   \draw[dashed] (0,-2.0)--(0,2.0) node[above]{symmetry axis};
   \foreach \x/\y in {2.45/1.55,5.55/1.55,2.45/-1.55,5.55/-1.55}{
     \draw[red!70!black,fill=red!20] (\x,\y) circle (0.16);
@@ -606,73 +416,45 @@ Changing the sign of $B_v$ changes the force from outward to inward.
   }
   \node[blue!75!black,right] at (5.55,0.80) {$B_v\hat{\mathbf Z}$};
   \draw[->,black!70] (4,-1.35)--(5.25,-1.35) node[midway,below] {outboard};
-\end{tikzpicture}
-\end{center}
+\end{tikzpicture}}{A vertical field acts radially on the toroidal plasma current.}
 
-The plasma has several sources of radial imbalance: its pressure is higher in the
-interior; its own poloidal field has a curved, toroidal geometry; and the applied
-toroidal field varies as $1/R$. Equation~\eqref{eq:forcebalance} says that the sum
-must cancel, but it does \emph{not} say that a free current ring automatically sits
-at the desired $R_0$. Equation~\eqref{eq:ringforce} gives the actuator that can
-correct the residual force.
-
-This finally distinguishes two uses of a poloidal field. The field generated by
-$I_p$ is the principal field that makes field lines helical and repairs drift. The
-external vertical component shown here is part of an applied \emph{poloidal-field}
-(PF) system. Its first job is equilibrium and radial position. The same system will
-later acquire separate coils for shaping and fast feedback.
-
-We deliberately do not yet quote one ``required vertical field'' formula. Its exact
-coefficient depends on the pressure profile, current profile, cross-section, and the
-plasma's self-inductance. Giving a single number before those objects have been derived
-would conceal those assumptions. At this stage physics has rigorously forced the
-existence and the direction of the control field; the full equilibrium calculation will
-set its magnitude.
-
-\designconsequence{The first coils around the torus made $B_\varphi$. The central
-solenoid drove $I_p$. Pressure balance now forces a separate external PF-coil system:
-it must hold the plasma's position rather than merely create field lines.}
-
-\newpage
-
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM4_stage4_tall.pdf}
-  \caption{Equilibrium and position control. External PF coils, drawn as square markers strictly outside the toroidal-field envelope, apply the vertical field that holds the current ring at $R_0$.}
-  \label{fig:figM4_stage4_tall}
-\end{figure}
-
-% ============================== PAGE 10 ==============================
-\section*{10. Flux surfaces turn coil currents into a plasma boundary}
-
-To say that coils ``hold position'' is still too vague. Axisymmetry lets us name the
-geometric object they control. In cylindrical coordinates $(R,\varphi,Z)$, with no
-$\varphi$ dependence, $\nabla\cdot\mathbf B=0$ becomes
+\section*{10. Flux surfaces define the magnetic boundary}
+In cylindrical coordinates $(R,\varphi,Z)$, axisymmetry means
+$\partial/\partial\varphi=0$. The divergence-free condition becomes
 \begin{equation}
- \frac{\partial(RB_R)}{\partial R}+\frac{\partial(RB_Z)}{\partial Z}=0.
-\label{eq:divfree}
+ \partial_R(RB_R)+\partial_Z(RB_Z)=0.
+ \label{eq:divfree}
 \end{equation}
-This is the two-dimensional statement that a flow has no sources or sinks. Therefore
-there is a scalar function $\psi(R,Z)$ whose derivatives generate the poloidal field:
+Introduce a flux function $\psi(R,Z)$ through
 \begin{equation}
- B_R=-\frac1R\frac{\partial\psi}{\partial Z},\qquad
- B_Z=\frac1R\frac{\partial\psi}{\partial R},\qquad
- \mathbf B_p=\frac{\nabla\psi\times\hat{\boldsymbol\varphi}}{R}.
-\label{eq:psidef}
+ B_R=-\frac1R\partial_Z\psi,\qquad B_Z=\frac1R\partial_R\psi,\qquad
+ \mathbf B_p=\frac{\nabla\psi\times\hat{\boldsymbol\varphi}}R.
+ \label{eq:psidef}
 \end{equation}
-Substituting these two derivatives into Eq.~\eqref{eq:divfree} verifies the claim in
-one line. More importantly,
+The mixed derivatives cancel in Eq.~\eqref{eq:divfree}. Also,
 \begin{equation}
- \mathbf B\cdot\nabla\psi=0.
-\label{eq:psiconstant}
+ \mathbf B\cdot\nabla\psi=0,
+ \label{eq:psiconstant}
 \end{equation}
-The toroidal part is also perpendicular to $\nabla\psi$ because $\psi$ does not
-depend on $\varphi$. Thus a field line stays on a surface $\psi=\text{constant}$.
-The quantity $2\pi\psi$ is the poloidal magnetic flux enclosed by the toroidal loop
-at $(R,Z)$.
+so field lines lie on surfaces of constant $\psi$. With this convention, $2\pi$
+times a difference in $\psi$ is a poloidal magnetic-flux difference. Rotating a closed
+contour of $\psi$ about the symmetry axis constructs a magnetic surface.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.83,>=stealth]
+The outermost closed surface defines the confined plasma boundary. The vacuum vessel
+surrounds this magnetic configuration. PF-coil currents and plasma current together
+set its flux contours; controlling these currents lets us change the boundary's
+position and shape. The point inside the nested contours about which they contract
+is the \emph{magnetic axis}.
+
+
+
+This flux description is the starting point for the Grad--Shafranov equilibrium
+calculation in §§21--24. An analytic treatment is given by Cerfon and
+Freidberg.\footnote{A.~J.~Cerfon and J.~P.~Freidberg, ``One size fits all'' analytic
+solutions to the Grad--Shafranov equation, \emph{Physics of Plasmas} \textbf{17},
+032502 (2010), \href{https://doi.org/10.1063/1.3328818}{doi:10.1063/1.3328818}.}
+
+\samplepair{The magnetic boundary is a contour of $\psi$, controlled by PF currents. The vessel must leave room around that confined plasma.}{\begin{tikzpicture}[scale=1.0,>=stealth]
   \draw[dashed] (0,-2.0)--(0,2.0) node[above]{symmetry axis};
   \foreach \rx/\ry in {1.25/0.78,1.65/1.03,2.05/1.28}{
     \draw[blue!60!black] (4.15,0) ellipse [x radius=\rx,y radius=\ry];
@@ -684,827 +466,535 @@ at $(R,Z)$.
     \draw[red!70!black,fill=red!20] (\x,\y) circle (0.16);
   }
   \node[red!70!black,fill=white,inner sep=1pt] at (4.15,2.02) {PF-coil currents set boundary flux};
-\end{tikzpicture}
-\end{center}
+\end{tikzpicture}}{PF currents set the flux contours that form the plasma boundary.}
 
-The outer closed contour is not just the vessel wall. It is the last closed magnetic
-surface selected by the plasma current together with the PF-coil currents. The vessel
-must contain and protect this arrangement, but it cannot replace the magnetic boundary:
-a conducting wall cannot hold a $10\,\mathrm{keV}$ plasma in steady contact.
-
-This is also why shape will matter. Moving PF-coil currents changes the boundary value
-of $\psi$, and therefore changes the cross-section of the nested surfaces. A circle is
-only the first solvable shape, not a physical law. Elongation and triangularity will be
-introduced only when a specific performance or stability problem demands them.
-
-\designconsequence{PF coils control flux, and flux contours are the plasma boundary.
-The emerging machine therefore needs a vacuum vessel outside a deliberately shaped,
-magnetically defined plasma---not a metal container that touches the fuel.}
-
-\vfill
-{\footnotesize This axisymmetric flux representation is derived from
-$\nabla\cdot\mathbf B=0$ above. For an openly available full equilibrium treatment,
-see Cerfon and Freidberg, ``One size fits all'' analytic solutions to the
-Grad--Shafranov equation (2010), \href{https://www.researchgate.net/publication/234959741_One_size_fits_all_analytic_solutions_to_the_Grad-Shafranov_equation}{open public manuscript}.}
-
-\newpage
-
-% ============================== PAGE 11 ==============================
-\section*{11. The transformer has a clock}
-
-The central solenoid was introduced to drive the toroidal current. Faraday's law now
-reveals a price. Around a toroidal loop,
+\section*{11. The transformer has a finite flux budget}
+Faraday's law around the plasma ring defines the loop voltage:
 \begin{equation}
  V_{\rm loop}\equiv\oint\mathbf E\cdot d\boldsymbol\ell
  =-\frac{d\Phi_{\rm link}}{dt}.
-\label{eq:loopvoltage}
+ \label{eq:loopvoltage}
 \end{equation}
-Integrating through a discharge gives
+Over a discharge,
 \begin{equation}
  \int V_{\rm loop}\,dt=-\Delta\Phi_{\rm link}.
-\label{eq:voltseconds}
+ \label{eq:voltseconds}
 \end{equation}
-The available linked-flux change has units of volt-seconds. A central solenoid can
-only swing through a finite magnetic flux before its current, field, and mechanical
-limits are reached. It can start and sustain a pulse, but it cannot supply a steady
-DC loop voltage forever. A volt-second is exactly a weber:
-$1\,\mathrm{V\,s}=1\,\mathrm{Wb}$. It is therefore a unit of linked magnetic
-flux---the transformer's finite magnetic-flux budget---not a unit of stored energy.
+One volt-second equals one weber of linked flux. The central solenoid can swing only
+through a finite flux range before reaching its current, field or mechanical limits.
+The flux budget pays for initiating and ramping the plasma current and for maintaining
+it against resistance. Sustained transformer-driven operation therefore has a finite
+pulse length. Longer operation needs another source of current or a new pulse after
+resetting the solenoid.
 
-The induced current initially supplies useful heat. The local electrical power density
-is $\mathbf J\cdot\mathbf E$; integrating over the plasma gives
+Electrical resistance also provides \emph{ohmic heating}. In a resistive fluid model,
 \begin{equation}
- P_{\rm ohm}=\int\mathbf J\cdot\mathbf E\,dV
- \simeq I_pV_{\rm loop}=I_p^2R_p.
-\label{eq:ohmic}
+ P_{\rm ohm}=\int\eta j^2\,dV\simeq I_p^2R_p,
+ \label{eq:ohmic}
 \end{equation}
-The final form is the lumped-circuit approximation, with plasma resistance $R_p$.
-It is useful for the design argument, not a claim that the current density is uniform.
+where $\eta$ is resistivity and $R_p$ an effective plasma resistance. During a current
+ramp, part of the electrical input changes magnetic energy. For a simple circuit with
+fixed inductance $L_p$, $V_{\rm loop}=L_p\dot I_p+R_pI_p$; only when the inductive
+term is small does $I_pV_{\rm loop}\simeq P_{\rm ohm}$.
 
-There is a second limit. In a fully ionized, collisional plasma the classical Spitzer
-resistivity falls approximately as
+In a fully ionized collisional plasma, classical Spitzer resistivity scales as
 \begin{equation}
- \eta\equiv\frac{E_\parallel}{J_\parallel}\propto T_e^{-3/2}.
-\label{eq:spitzer}
+ \eta\propto T_e^{-3/2}
+ \label{eq:spitzer}
 \end{equation}
-Hot electrons collide less effectively, so at comparable current density the plasma
-becomes a better conductor and ohmic heating weakens. This is a pleasant fact for
-current flow and an inconvenient fact for trying to heat a reactor plasma by resistance.
+for fixed composition and approximately fixed Coulomb logarithm.\footnote{Naval
+Research Laboratory, \emph{NRL Plasma Formulary} (2019), collisional transport and
+resistivity relations, \href{https://www.nrl.navy.mil/Portals/38/PDF\%20Files/NRL_Plasma_Formulary_2019.pdf}{open formulary}.}
+At comparable current density, heating falls as the electrons get hotter. Resistance
+is useful during startup, but reaching fusion temperature calls for auxiliary heating.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.88,>=stealth]
+\samplepair{The transformer has a finite volt-second budget, while ohmic heating weakens as temperature rises. Additional heating must sustain the hot plasma.}{\begin{tikzpicture}[scale=1.0,>=stealth]
   \draw[fill=black!15] (0.0,-1.35) rectangle (0.46,1.35);
   \node[rotate=90] at (0.23,0) {central solenoid};
   \draw[thick] (3.7,0) circle (1.05);
   \node at (3.7,0) {plasma};
   \draw[red!75!black,->,thick] (0.65,0)--(2.58,0)
-    node[midway,above] {changing linked flux};
+    node[midway,above,align=center] {changing\\linked flux};
   \node[red!75!black] at (3.7,0.32) {$\boldsymbol\odot\ E_\varphi$};
   \node[blue!75!black] at (3.7,-0.32) {$\boldsymbol\odot\ I_p$};
   \node[right,align=left] at (6.0,-0.45) {finite flux swing\\$\Rightarrow$ finite pulse};
-\end{tikzpicture}
-\end{center}
+\end{tikzpicture}}{The transformer couples changing linked flux to the plasma ring.}
 
-\designconsequence{The central solenoid has two jobs---start the plasma current and
-provide early ohmic heat---but neither is an indefinitely scalable heat source. The
-machine must acquire auxiliary heating, and eventually non-inductive current drive, if
-it is to operate beyond a transformer pulse.}
-
-\vfill
-{\footnotesize The $T_e^{-3/2}$ Spitzer scaling and the power-density form
-$\eta J^2$ are available openly in the NRL Plasma Formulary:
-\url{https://www.nrl.navy.mil/Portals/38/PDF%20Files/NRL_Plasma_Formulary_2019.pdf}.}
-
-\newpage
-
-% ============================== PAGE 12 ==============================
-\section*{12. Reaching fusion temperature forces a heating system}
-
-The statement ``make the fuel hot'' on page~1 can now be made into an energy balance.
-Each Maxwellian species has thermal energy density $3n_sT_s/2$. For an approximately
-uniform D--T plasma with equal ion and electron temperatures,
+\section*{12. Heating must balance energy loss}
+A Maxwellian species has thermal energy density $3n_sT_s/2$. For approximately uniform
+fuel at equal ion and electron temperatures,
 \begin{equation}
- W\simeq 3nTV,
- \qquad
- P_{\rm loss}\equiv\frac{W}{\tau_E}.
-\label{eq:taue}
+ W\simeq3nTV,\qquad P_{\rm loss}\equiv W/\tau_E.
+ \label{eq:taue}
 \end{equation}
-The first relation is energy stored in the plasma. The second \emph{defines} the
-energy-confinement time $\tau_E$: if all heating were removed, it is the time scale on
-which the stored energy would be lost at the present loss rate.
-
-The bookkeeping law is therefore
+Here $\tau_E$ is the energy-confinement time. In this section $P_{\rm loss}$ includes
+transport and radiation losses together; each loss channel is counted once. The
+thermal-energy balance is
 \begin{equation}
- \frac{dW}{dt}=P_{\rm aux}+P_\alpha-P_{\rm loss}-P_{\rm rad}.
-\label{eq:powerbalance}
+ \frac{dW}{dt}=P_{\rm ohm}+P_{\rm aux}+P_\alpha-P_{\rm loss}.
+ \label{eq:powerbalance}
 \end{equation}
-At startup $P_\alpha$ is small because fusion is small. Auxiliary power must raise
-$W$ faster than transport and radiation remove it. Later, the $3.5\,\mathrm{MeV}$
-alpha particles from Eq.~\eqref{eq:dt} are charged and can be magnetically confined;
-their deposited energy is the desired self-heating term $P_\alpha$. The $14.1\,\mathrm{MeV}$
-neutrons are neutral and escape, eventually to be captured in a blanket.
+The powers on the right are deposited in the plasma. Auxiliary heating must raise
+$W$ against losses while fusion power is small. Later, confined alpha particles
+from Eq.~\eqref{eq:dt} transfer their energy to the fuel, providing $P_\alpha$.
+Neutrons carry their energy out of the magnetically confined plasma.
 
-Why not simply fire charged particles into the plasma? The same magnetic field that
-confines the fuel bends an incoming charged beam before it reaches the core. A neutral
-beam solves that entry problem: neutral atoms cross the field, ionize in the plasma,
-and then transfer their energy and momentum by collisions. Radio-frequency systems use
-another handle already present in Eq.~\eqref{eq:lorentz}: an oscillating electric field
-can transfer energy resonantly to selected charged-particle orbits. These are not
-ornaments on a completed tokamak. They are responses to the transformer and power-balance
-limits just derived.
+A \emph{neutral-beam injector} accelerates ions and neutralizes them before injection.
+The fast neutral atoms cross the confining magnetic field, become ionized inside the
+plasma, and transfer energy and momentum through collisions. A \emph{radio-frequency}
+(RF) system instead sends electromagnetic waves through an antenna or launcher; suitable
+frequencies and wave patterns transfer energy to electrons or ions. These systems
+require access openings, or ports, through the vessel. With suitable injection or
+wave conditions, they can also drive plasma current without transformer induction.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.88,>=stealth]
+We now have the equipment that produces a hot current-carrying plasma. Its useful
+volume and stable pressure depend on the shape that the PF system can create and hold.
+
+\designconsequence{Beam injectors or RF launchers supply auxiliary heat through vessel ports. Their deposited power must cover losses and any increase in stored energy.}
+\samplefigure{\begin{tikzpicture}[scale=1.0,>=stealth]
   \draw[thick,fill=black!3] (4,0) circle (1.25);
   \node at (4,0) {plasma energy $W$};
   \draw[red!75!black,->,very thick] (0.35,0.8)--(2.65,0.35)
-    node[midway,above,align=center] {neutral beam or RF};
+    node[midway,above,align=center] {neutral beam\\or RF};
   \draw[orange!85!black,->,very thick] (3.15,1.75)--(3.65,1.05)
     node[midway,left] {$P_\alpha$};
   \draw[blue!75!black,->,very thick] (5.1,-0.75)--(7.7,-1.6)
     node[midway,below,align=center] {transport and\\radiation losses};
-\end{tikzpicture}
-\end{center}
+\end{tikzpicture}}{Deposited heating competes with energy carried out of the plasma.}
 
-The next question is not yet whether the machine makes net electricity. It is more
-basic: how much pressure can a magnetic equilibrium and a stable plasma sustain, and
-how should the boundary be shaped to improve that answer? Those questions will force
-elongation, triangularity, feedback, and the first genuine stability limits. Only after
-the ordinary tokamak has been derived on those terms will it make sense to ask whether
-a spherical tokamak changes the bargain.
-
-\designconsequence{Twelve pages in, the machine has emerged component by component:
-a vacuum environment, toroidal-field coils, a plasma current and central solenoid,
-external PF coils, and auxiliary heating. What remains absent is just as important:
-the shaped boundary, exhaust, blanket, shielding, superconducting magnets, and the
-reactor's energy ledger must each earn their place through the next physical failure.}
-
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM5_stage5_tall.pdf}
-  \caption{Auxiliary heating. A tangential neutral beam and a radial RF launcher add the power the transformer cannot. No blanket, divertor or shield appears: none has been derived.}
-  \label{fig:figM5_stage5_tall}
-\end{figure}
-
-% ============================= PAGE 13 ==============================
-\newpage
-\section*{13. More room is useful; a taller cross-section supplies it}
-
-The circular cross-section used so far was deliberately austere. It makes the geometry
-easy to see, but it is not the only allowed shape. Suppose the plasma boundary is an
-ellipse with horizontal semi-axis $a$ and vertical semi-axis $\kappa a$. The dimensionless
-number
+\section*{13. Elongation buys volume}
+An elliptical cross-section has horizontal semi-axis $a$ and vertical semi-axis
+$\kappa a$, where
 \begin{equation}
- \kappa\equiv\frac{\hbox{vertical semi-axis}}{\hbox{horizontal semi-axis}}
+ \kappa\equiv\frac{\text{vertical semi-axis}}{\text{horizontal semi-axis}}
  \label{eq:kappa}
 \end{equation}
-is called \emph{elongation}. A circle has $\kappa=1$; a vertically stretched plasma has
-$\kappa>1$. Parameterize the boundary by
-\[
- R(\theta)=R_0+a\cos\theta,\qquad Z(\theta)=\kappa a\sin\theta.
-\]
-The cross-sectional area is $\pi(\kappa a)a=\pi\kappa a^2$. Rotating that area once
-around the major radius $R_0$ gives, to leading order in $a/R_0$,
+is the \emph{elongation}. A convenient boundary parameterization is
+$R=R_0+a\cos\theta$, $Z=\kappa a\sin\theta$. Its area is $\pi\kappa a^2$.
+Rotating the ellipse about the symmetry axis gives
 \begin{equation}
- V=2\pi R_0\,(\pi\kappa a^2)=2\pi^2R_0a^2\kappa.
+ V=2\pi R_0\,\pi\kappa a^2=2\pi^2R_0a^2\kappa.
  \label{eq:elongated-volume}
 \end{equation}
-Thus, at fixed $R_0$ and $a$, elongation buys volume linearly. More volume can hold more
-fuel and more fusion power; later we will state exactly which other quantities must be
-held fixed before making that comparison.
+\samplescope{The volume formula is exact for the specified ellipse with $R_0>a$.} At fixed $R_0$ and $a$,
+increasing $\kappa$ increases volume in direct proportion. At a fixed plasma state,
+that volume can contain more fuel and produce more fusion power.
 
-\freidbergvariable{$\kappa$ (elongation)}{Equation~\eqref{eq:kappa} changes the plasma
-volume in Eq.~\eqref{eq:elongated-volume} and enters the shaped safety-factor and current
-limits derived below. It is not decorative geometry: it is a design lever with a
-stability cost.}
+Creating the ellipse requires a spatially varying PF field. Coil locations and
+currents are selected so that the combined plasma and external fields support a tall
+boundary. Shape is therefore an additional task for the same PF system that holds
+the plasma's radial position. Elongation also changes its response to displacement.
 
-The price is immediate. A round set of poloidal-field coils naturally supports a round
-boundary. An elliptical boundary needs an intentionally nonuniform external field: some
-coils pull or push more strongly above and below the midplane than at the outboard side.
-The PF-coil system derived on page 9 therefore acquires a second job. It does not merely
-keep the plasma centered; it helps choose the boundary shape. This is the first time an
-earlier component has been asked to do more than solve the failure that first called it
-into existence.
-
-\imagebrief{Cumulative construction state 5: elongated conventional tokamak}{Use the
-existing toroidal vacuum vessel, TF coils, central solenoid, plasma-current arrow, and
-external PF coils. Change only the plasma cross-section from circular to vertically
-elongated, label its semi-axes $a$ and $\kappa a$, and show that the upper/lower shaping
-coils are part of the same PF system. This is a construction-state image, not a reset
-physics sketch. Generate it reproducibly with the project figure workflow.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM6_stage6_tall.pdf}
-  \caption{Machine state: elongation. A taller cross-section supplies volume without growing every linear dimension, and the coil set follows the same boundary. Every component of the previous state is retained.}
-  \label{fig:figM6_stage6_tall}
-\end{figure}
+\designconsequence{Elongation increases volume at fixed $R_0$ and $a$. Its benefit must be assessed together with the response to vertical displacement.}
 
 
-\model{Equation~\eqref{eq:elongated-volume} treats the cross-section as an ellipse and
-the torus as thin enough that its circumference is $2\pi R_0$. Real equilibria also use
-triangularity and have shifted magnetic surfaces. Those refinements come only after the
-basic geometric benefit and cost of $\kappa$ are clear.}
-
-\designconsequence{If a reactor needs more plasma volume without simply increasing every
-linear dimension, it has a reason to elongate the cross-section. That choice requires
-shaping PF coils and raises a new question: is the taller plasma passively stable?}
-
-% ============================= PAGE 14 ==============================
-\newpage
-\section*{14. A taller plasma can tip: shaping requires feedback}
-
-Imagine displacing an elongated plasma a small distance $z$ upward. The magnetic forces
-from the surrounding coils change. Near a chosen equilibrium height, any smooth vertical
-force can be expanded as
+\samplefigure{\begin{tikzpicture}[>=stealth,scale=.8]
+\draw[gray,dashed] (0,0) circle (1.3);
+\draw[blue!70!black,thick] (0,0) ellipse (1.3 and 2.05);
+\draw[<->] (0,0)--node[below]{$a$}(1.3,0);
+\draw[<->] (-1.8,0)--node[left]{$\kappa a$}(-1.8,2.05);
+\node[align=left,right] at (2,0){fixed $R_0$ and $a$\\circle: $\kappa=1$\\ellipse: $\kappa>1$};
+\end{tikzpicture}}{Elongation increases cross-sectional area from $\pi a^2$ to $\pi\kappa a^2$. The added height also changes the vertical-stability problem.}
+\section*{14. A taller plasma needs position feedback}
+To expose the stability question, represent a small vertical displacement by $z$.
+Expand its force about equilibrium:
 \begin{equation}
- F_Z(z)=F_Z(0)+\left.\frac{\partial F_Z}{\partial z}\right|_0z+\cdots .
+ F_Z(z)=F_Z(0)+K_z z+\cdots,\qquad
+ K_z=\left.\frac{\partial F_Z}{\partial z}\right|_0.
  \label{eq:vertical-linearization}
 \end{equation}
-At equilibrium $F_Z(0)=0$. Newton's law then becomes
+Since $F_Z(0)=0$, a one-coordinate inertial model gives
 \begin{equation}
- M\ddot z=K_z z,\qquad
- K_z\equiv\left.\frac{\partial F_Z}{\partial z}\right|_0 .
+ M\ddot z=K_z z.
  \label{eq:vertical-mode}
 \end{equation}
-If $K_z<0$, Eq.~\eqref{eq:vertical-mode} is an oscillator: a displacement creates a
-restoring force. If $K_z>0$, its solutions include $z\propto e^{\sqrt{K_z/M}t}$: a small
-upward displacement grows instead of returning. This elementary sign test is the core
-of a vertical instability. Elongation generally makes this control problem harder,
-because a tall current-carrying column has a stronger tendency to move as a whole.
+For $K_z<0$ a displacement produces a restoring force. For $K_z>0$ the growing
+solution is $z\propto e^{\sqrt{K_z/M}t}$. This model explains the sign of the
+feedback needed. \samplescope{A real vertical mode also couples to induced currents in nearby conducting structures and to the coil circuits; its growth rate requires those dynamics.}
 
-This does \emph{not} make elongation forbidden. It says that its equilibrium cannot be
-trusted to remain in place by itself. A real machine measures its position with magnetic
-sensors, compares it with a requested position, and changes currents in selected PF
-coils. The control system must act before the growing displacement reaches the wall.
-The causal chain is therefore precise: more useful shape $\rightarrow$ weaker passive
-vertical stability $\rightarrow$ sensors, power supplies, and fast controlled coils.
+Elongation generally increases the difficulty of vertical stabilization.\footnote{
+J.~P.~Freidberg, A.~Cerfon and J.~P.~Lee, ``Tokamak elongation---how much is too
+much? Part 1. Theory,'' \emph{Journal of Plasma Physics} \textbf{81}, 515810607
+(2015), \href{https://arxiv.org/abs/1508.06658}{open manuscript}.}
+Magnetic sensors measure signals from which plasma position is estimated. A controller
+compares that position with the requested one and commands power supplies to change
+control-coil currents. The resulting field must oppose the displacement quickly enough
+to keep the plasma clear of the vessel. Conducting structures can slow the motion and
+give the active system time to respond.
 
-\imagebrief{Cumulative construction state 5B: add the control loop}{Start with state 5.
-Add small magnetic-position sensors outside the vessel, arrows from them to a controller
-box, and arrows from the controller to two fast vertical-control PF coils. Draw a faint
-displaced plasma outline and label it $+z$; keep all previously derived components
-visible. The purpose is to show an engineering system forced by Eq.~\eqref{eq:vertical-mode},
-not to imply that the controller itself is a magnetic component.}
+\designconsequence{An unstable vertical displacement requires active correction. Sensors, a controller and powered coils must close the restoring feedback loop.}
+\samplefigure{\begin{tikzpicture}[>=stealth,node distance=1cm]
+ \node[draw,rounded corners,align=center,minimum width=2.4cm] (p) at (0,0){plasma\\position};
+ \node[draw,rounded corners,align=center,minimum width=2.4cm] (s) at (3.4,0){magnetic sensors\\and estimate};
+ \node[draw,rounded corners,align=center,minimum width=2.4cm] (c) at (6.8,0){controller\\requested $Z$};
+ \node[draw,rounded corners,align=center,minimum width=3.4cm] (a) at (3.4,-1.6){power supply and\\vertical-control coils};
+ \draw[->] (p)--(s); \draw[->] (s)--(c);
+ \draw[->] (c.south)|-(a.east); \draw[->] (a.west)-|(p.south);
+\end{tikzpicture}}{The feedback loop turns a measured displacement into a corrective magnetic
+force. Sensor, circuit and controller response times enter the achievable elongation.}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM7_stage7_tall.pdf}
-  \caption{Machine state: vertical control. The pair is wired \emph{anti-series} ($\odot$ above, $\otimes$ below): opposite currents make the combined field radial on the midplane, which is what restores $Z$. A same-sign pair would only move the plasma in $R$.}
-  \label{fig:figM7_stage7_tall}
-\end{figure}
-
-
-\model{Equation~\eqref{eq:vertical-mode} is a one-coordinate linear model. Actual
-vertical control couples plasma shape, conducting structures, coil circuits, and sensor
-delays. It is used here only to establish the sign logic that makes feedback necessary.
-For an openly available treatment of elongation and vertical stability, see E.~Cerfon,
-J.~P.~Freidberg, and J.~P.~Vesey, ``Tokamak elongation: how much is too much? Part 1,''
-\url{https://www.cambridge.org/core/services/aop-cambridge-core/content/view/1ABC7975053E19C0A93D9952CBB53102/S0022377815001270a.pdf}.}
-
-\designconsequence{A shaped tokamak is not merely coils plus plasma. It includes a
-closed feedback system. The allowed elongation is set jointly by the gain in volume,
-the available PF-coil authority, nearby conducting structures, and the speed and
-reliability of active control.}
-
-% ============================= PAGE 15 ==============================
-\newpage
-\section*{15. The same geometry changes how much plasma current is allowed}
-
-We already derived a safety factor for a simple circular plasma. It counted, in effect,
-how far a field line moves toroidally while making one poloidal circuit. The local
-version at minor radius $r$ is
+\section*{15. Shape also changes the current allowance}
+The safety-factor relation from §7 can be generalized to the elongated geometry.
+The reduced reactor model of Freidberg, Mangiarotti and Minervini adopts
 \begin{equation}
- q(r)=\frac{2\pi r^2B_0}{\mu_0R_0 I_{\rm enc}(r)},
- \qquad
- I_{\rm enc}(r)=2\pi\int_0^r j_\varphi(r')r'\,dr'.
- \label{eq:qprofile}
-\end{equation}
-Here $j_\varphi$ is the toroidal current density and $I_{\rm enc}$ is the current inside
-the selected magnetic surface. The first relation follows from the same field-line ratio
-used before, $q\simeq rB_\varphi/(R_0B_\theta)$; the second is the area integral of
-current density, and Amp\`ere's law gives $B_\theta\simeq\mu_0I_{\rm enc}/(2\pi r)$.
-
-An elongated boundary alters this simple geometry. A widely used large-aspect-ratio,
-elongated-plasma estimate is
-\begin{equation}
- q_* = \frac{2\pi a^2B_0}{\mu_0R_0I_p}\,
-       \frac{1+\kappa^2}{2}.
+ q_* =\frac{2\pi a^2B_0}{\mu_0R_0I_p}\frac{1+\kappa^2}{2}.
  \label{eq:qstar}
 \end{equation}
-The first fraction is the circular edge estimate. The factor $(1+\kappa^2)/2$ records
-that one poloidal circuit is no longer circular. Equation~\eqref{eq:qstar} is not being
-introduced as a mysterious correction: it is the next-order geometry that becomes
-necessary once we deliberately choose $\kappa\ne1$.
+The first factor is the circular edge estimate. The second accounts approximately
+for elongation in this large-aspect-ratio description. We take this shaped relation
+from the model, which uses it as a global measure of field-line pitch.
 
-For the simple global kink constraint used in the reactor-design model, require
-$q_*>q_K$, where $q_K\simeq2$. Solving Eq.~\eqref{eq:qstar} for $I_p$ gives a current
-ceiling,
+A \emph{kink} is a collective displacement that bends the current-carrying plasma.
+The model represents its global current limit by requiring $q_*>q_K$, with an adopted
+threshold $q_K\simeq2$. Substitution gives
 \begin{equation}
- I_p < \frac{2\pi a^2B_0}{\mu_0R_0q_K}\,
-        \frac{1+\kappa^2}{2}.
+ I_p<\frac{2\pi a^2B_0}{\mu_0R_0q_K}\frac{1+\kappa^2}{2}.
  \label{eq:ip-kink-limit}
 \end{equation}
-The direction of the result is instructive. More toroidal field $B_0$, more minor
-cross-section, or more elongation permits more current under this particular limit;
-larger major radius $R_0$ lowers the permitted current when the other variables are held
-fixed.
+The shaped estimate and threshold are the closures used in Eqs.~(30) and (39) of the
+2015 reference. \samplemodel{Profiles, conducting-wall response and operating regime affect the physical stability boundary. The current ceiling here uses the stated large-aspect-ratio closure and $q_K\simeq2$.}
 
-\freidbergvariable{$q_*$ and $I_p$}{Equation~\eqref{eq:qstar} is the shaped global
-safety factor used by Freidberg's reactor model. Equation~\eqref{eq:ip-kink-limit}
-turns its stability requirement into a quantitative current constraint. Together they
-couple geometry ($R_0,a,\kappa$), field ($B_0$), and the plasma current ($I_p$).}
+Within that model, stronger toroidal field, greater minor radius and greater
+elongation permit more current. Increasing $R_0$ while holding the other quantities
+fixed reduces the allowance. This matters because the current that creates the
+poloidal confinement field also enters stability limits. Elongation offers both more
+volume and a larger current allowance, while demanding stronger position control.
+These consequences must be considered together.
 
-\model{The estimate in Eq.~\eqref{eq:qstar}, and the $q_K\simeq2$ limit, are the
-large-aspect-ratio design closure adopted in Freidberg, Mangiarotti, and Minervini
-(2015), Eqs.~(30) and (39), open manuscript cited on page 1. A full stability boundary
-depends on profiles, wall response, and feedback. We use the explicit model before
-asking it to carry any design conclusion.}
+\designconsequence{Elongation raises the current allowance in the adopted model. The chosen shape must also remain within the vertical-control capability.}
 
-\designconsequence{Elongation is valuable twice in this reduced model: it increases
-volume and relaxes a particular current limit. But it also created the feedback demand
-on the preceding page. A good parameter cannot be optimized one equation at a time.}
-
-% ============================= PAGE 16 ==============================
-\newpage
-\section*{16. A single safety factor is not enough: the current profile matters}
-
-Equation~\eqref{eq:qprofile} contains more information than the edge number $q_*$. If
-two plasmas have the same total $I_p$ but different functions $j_\varphi(r)$, then
-$I_{\rm enc}(r)$ and therefore $q(r)$ differ throughout the interior. The machine
-cannot treat its current as a single knob when the plasma's magnetic geometry depends on
-where that current flows.
-
-The reason is already visible in the field-line picture. When $q=m/n$ for integers $m$
-and $n$, a field line closes after $m$ poloidal and $n$ toroidal circuits in the idealized
-description. Such rational surfaces are not automatically harmful, but perturbations
-can accumulate coherently there. That is why later stability discussions specify a
-\emph{profile} such as $q(0)$ and $q(a)$, rather than only a total current.
-
-There is also a practical lesson. The transformer acts on current induction, while
-auxiliary systems can add or reshape current through other mechanisms. The sources of
-current and the resulting profile must both be accounted for in any steady-state claim.
-At this stage we need not choose a detailed profile. We need to preserve the variable
-that the later stability and bootstrap-current arguments will require.
-
-Here bootstrap current means a pressure-gradient-driven share of the toroidal plasma
-current. Its orbit-and-collision mechanism is derived on pages 36--37, before any
-numerical bootstrap fraction is used.
-
-\supportingquantity{$q(r)$ and $j_\varphi(r)$}{The radial safety-factor profile in
-Eq.~\eqref{eq:qprofile} carries the current-distribution information that a single
-$q_*$ loses. Later closure arguments will need it to distinguish total current from
-the fraction supplied by the plasma itself or by external drive.}
-
-\imagebrief{Cumulative construction state 6: shape and profile-control hardware}{Start
-with the elongated, feedback-controlled machine. Add only a clear callout that the
-central solenoid and auxiliary current-drive/heating ports influence the toroidal-current
-profile $j_\varphi(r)$, alongside a small inset of nested flux surfaces labelled
-$q(r)$. Do not draw a spherical tokamak or a finished power plant. This image should
-make the distinction between total $I_p$ and profile $j_\varphi(r)$ legible.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM7a_profile_tall.pdf}
-  \caption{Machine state: the current profile. Total current and its distribution $j_\varphi(r)$ are different quantities, and it is the profile that fixes $q(r)$. No new hardware appears --- this is an annotation layer.}
-  \label{fig:figM7a_profile_tall}
-\end{figure}
-
-
-\designconsequence{The next design calculations must carry both a global current $I_p$
-and a profile $q(r)$. That added bookkeeping is not mathematical fussiness: it records
-which field lines and which stability limits the plasma actually contains.}
-% ============================= PAGE 17 ==============================
-\newpage
-\section*{17. Why field strength and volume dominate the first performance estimate}
-
-A fusion reaction needs one deuterium ion and one tritium ion. In a roughly equal D--T
-mixture, the number of reaction opportunities per unit volume is proportional to $n^2$,
-where $n$ is a representative fuel density. At a fixed useful temperature, the
-reactivity $\langle\sigma v\rangle$ is also fixed, so
+\section*{16. The current profile determines the interior pitch}
+Total current is an area integral. In the circular approximation,
 \begin{equation}
- P_{\rm fus}\propto n^2 V.
+ I_{\rm enc}(r)=2\pi\int_0^r j_\varphi(r')r'\,dr',\qquad
+ q(r)\simeq\frac{2\pi r^2B_0}{\mu_0R_0I_{\rm enc}(r)}.
+ \label{eq:qprofile}
+\end{equation}
+Two plasmas with the same $I_p=I_{\rm enc}(a)$ can therefore have different interior
+$q(r)$ if their current density is distributed differently. A centrally concentrated
+current places more enclosed current inside a small radius and lowers $q$ there
+relative to a broader distribution with the same total current.
+
+For example, a uniform $j_\varphi=j_0$ gives $I_{\rm enc}=\pi j_0r^2$ and a constant
+$q\simeq2B_0/(\mu_0R_0j_0)$ in this approximation. A varying profile changes that
+pitch from surface to surface. The radial variation of pitch is called
+\emph{magnetic shear}. Both pitch and shear influence how disturbances couple across
+magnetic surfaces. Rational surfaces, where $q=m/n$, allow perturbations with matching
+periodicity to remain aligned with the field.
+
+The transformer and auxiliary current-drive systems influence where current flows,
+as well as how much flows. Current control must account for $j_\varphi(r)$ and
+$q(r)$ alongside $I_p$.
+
+\designconsequence{Total current alone does not fix $q(r)$. Current control must account for the distribution $j_\varphi(r)$ as well as $I_p$.}
+
+
+\samplefigure{\begin{tikzpicture}[>=stealth,x=3cm,y=1cm]
+\draw[->] (0,0)--(1.15,0) node[right]{$r/a$};
+\draw[->] (0,0)--(0,2.4) node[above]{$j/\bar j$};
+\draw[gray,thick,dashed] (0,1)--(1,1);
+\draw[blue!70!black,thick,domain=0:1,samples=40] plot (\x,{2*(1-\x*\x)});
+\node[below] at (1,0){1};
+\begin{scope}[xshift=6cm]
+\draw[->] (0,0)--(1.15,0) node[right]{$r/a$};
+\draw[->] (0,0)--(0,2.4) node[above]{$q/q(a)$};
+\draw[gray,thick,dashed] (0,2)--(1,2);
+\draw[blue!70!black,thick,domain=0:1,samples=40] plot (\x,{2/(2-\x*\x)});
+\node[left] at (0,2){1};\node[left] at (0,1){$1/2$};\node[below] at (1,0){1};
+\end{scope}
+\end{tikzpicture}}{Illustrative circular, large-aspect-ratio profiles with the same total current: uniform $j=\bar j$ (dashed) and peaked $j=2\bar j[1-(r/a)^2]$ (blue), where $\bar j=I_p/(\pi a^2)$. The corresponding normalized pitches are $1$ and $[2-(r/a)^2]^{-1}$; the peaked profile lowers the interior pitch while preserving $q(a)$.}
+\section*{17. Why field and volume dominate a first power estimate}
+For an equal D--T mixture with total fuel-ion density $n$, $n_D=n_T=n/2$. In a uniform
+plasma the reaction rate per unit volume is
+$n_Dn_T\langle\sigma v\rangle=n^2\langle\sigma v\rangle/4$.
+The \emph{reactivity} $\langle\sigma v\rangle$ averages the cross-section times
+relative speed over the ion distributions. At fixed temperature and fuel mixture,
+\begin{equation}
+ P_{\rm fus}=\frac{n^2}{4}\langle\sigma v\rangle QV\propto n^2V.
  \label{eq:pfus-density}
 \end{equation}
-This is a scaling statement, not yet a reactor-power calculation: the missing
-proportionality constant contains the reaction energy and $\langle\sigma v\rangle(T)$.
-
-For a fully ionized, equal-temperature D--T plasma, ions and electrons both contribute
-to pressure, so $p\simeq 2nT$. The beta definition from page 8 gives
-$p=\beta B_0^2/(2\mu_0)$ in this reduced scaling model. Therefore, at fixed $T$,
+Using $p=2nT$ and $p=\beta B_0^2/(2\mu_0)$ gives
+$n=\beta B_0^2/(4\mu_0T)$, and hence
 \begin{equation}
- n\propto\beta B_0^2,\qquad
- P_{\rm fus}\propto\beta^2B_0^4 V
+ P_{\rm fus}\propto\beta^2B_0^4V
  \propto\beta^2B_0^4R_0a^2\kappa.
  \label{eq:pfus-scaling}
 \end{equation}
-The fourth power of field is the memorable point. If all the stated assumptions hold,
-raising $B_0$ slightly has a much larger effect on this estimate than raising it by the
-same percentage appears to have at first glance. That is a motivation, not permission,
-to choose an arbitrarily large field: coils, stresses, superconductors, plasma limits,
-and the central stack will later impose the corresponding prices.
+\samplescope{This scaling holds temperature, composition and profile factors fixed, and uses $B_0$ as the reference magnetic field.} For example, a 10\% field increase gives a
+factor $1.1^4\simeq1.46$ in fusion power if beta and volume can be maintained.
+The fourth power explains the attraction of high field. Maintaining those other
+quantities requires compatible confinement, current and stability; producing the
+field also imposes loads on the magnet. The scaling identifies the incentive that
+later engineering calculations must price.
 
-\freidbergvariable{$B_0$ and $\beta$}{Equation~\eqref{eq:pfus-scaling}
-is the first bridge from plasma equilibrium to reactor output. It explains why the
-toroidal field $B_0$, normalized pressure $\beta$, and shaped volume
-$2\pi^2R_0a^2\kappa$ recur throughout Freidberg's design closure. The equation is a
-conditional scaling law; temperature, confinement, and stability have not been
-eliminated.}
+\designconsequence{The conditional $\beta^2B_0^4V$ scaling rewards field, pressure and volume. These quantities must be achievable together in one operating state.}
 
-\model{This page holds $T$, fuel mix, and $\langle\sigma v\rangle$ fixed, identifies
-the confining field with $B_0$, and ignores profile factors. The actual D--T reactivity
-varies strongly with temperature. The purpose is to derive the dependence that remains
-once a target operating temperature has been chosen, not to replace a reactivity model.}
-
-\imagebrief{Cumulative construction state 7: performance quantities attached to the
-partly revealed machine}{Use the stage-6 conventional tokamak. Add unobtrusive labels
-for $R_0$, $a$, $\kappa$, $B_0$, and $I_p$ on the actual machine components, plus a
-small side panel showing the derived chain
-$P_{\rm fus}\propto n^2V\propto\beta^2B_0^4R_0a^2\kappa$.
-The figure must retain all previously introduced components and make clear that this is
-a scaling law, not a claim of net electrical power.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM7b_performance_tall.pdf}
-  \caption{Machine state: the performance quantities, attached to the machine. Every symbol in the fusion-power scaling is a feature that can be pointed at.}
-  \label{fig:figM7b_performance_tall}
-\end{figure}
-
-
-\designconsequence{The machine now has a reason to seek strong field, high allowed
-pressure, and useful volume. The remainder of the thesis must show whether these desires
-can coexist with current limits, confinement, materials, coil technology, and power
-balance.}
-
-% ============================= PAGE 18 ==============================
-\newpage
-\section*{18. A ledger before optimization: what has actually been derived?}
-
-These pages have built a ledger of demands rather than selected a tokamak by
-declaration. It prevents improving one formula while silently violating another.
-
+\section*{18. The machine and its coupled variables}
+A component enters the ledger only after a section has forced it. We can now
+identify each component by the physical task that introduced it:
 \begin{center}
-\renewcommand{\arraystretch}{1.12}
-\begin{tabular}{p{0.23\textwidth}p{0.31\textwidth}p{0.34\textwidth}}
-\textbf{Quantity} & \textbf{What it measures} & \textbf{Why it cannot be chosen alone}\\
-\hline
-$R_0,\ a,\ A=R_0/a$ & Overall and cross-sectional size & Set geometry, volume, and aspect ratio.\\
-$B_0$ & Toroidal confining field & Shrinks gyro-orbits; appears as $B_0^4$ in the conditional power scaling.\\
-$I_p$ & Toroidal plasma current & Creates poloidal field, but is bounded by the safety-factor constraint.\\
-$q(r),\ q_*$ & Field-line pitch and its shaped global measure & Depend on current distribution as well as total current.\\
-$\kappa$ & Vertical elongation & Increases volume and the reduced $I_p$ allowance; requires shaping and feedback.\\
-$n,\ T,\ p,\ \beta$ & Fuel state and magnetic-pressure fraction & Set reaction opportunity and challenge confinement and stability.\\
-$\tau_E$ & Energy-confinement time & Decides whether heating can outrun losses; it remains to be derived and modeled.\\
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{.25\textwidth}p{.64\textwidth}}
+\textbf{Component} & \textbf{Purpose}\\\hline
+Vacuum vessel & Maintains the evacuated environment around the magnetically confined fuel.\\
+TF coils & Produce the toroidal field that guides particle motion around the ring.\\
+Central solenoid & Changes linked flux to initiate and ramp plasma current.\\
+Plasma current & Generates the principal poloidal field and sets field-line pitch.\\
+PF and control coils & Position and shape the plasma; apply corrective forces.\\
+Sensors, controller, power supplies & Measure the state and command the coil response.\\
+Beam or RF systems & Deposit auxiliary heat and, under suitable conditions, drive current.\\
 \end{tabular}
 \end{center}
-
-The drawing now has earned components: vacuum and magnetic field for hot fuel; a torus
-to remove open ends; a solenoid and plasma current for the poloidal field; PF coils for
-position and shape; feedback for vertical stability; and heating/current-drive ports
-because the transformer has a finite clock.
-
-\imagebrief{Construction-atlas checkpoint}{Make a one-page cumulative annotated
-cross-section and toroidal cutaway of the conventional tokamak derived so far: vacuum
-vessel; plasma; TF coils and $B_\varphi$; central solenoid and induced $I_p$; PF/shaping
-coils; elongated boundary with $a$, $\kappa a$, and $R_0$; magnetic sensors and feedback;
-heating/current-drive port. Number each component by the page where its physical need
-was derived. Leave out divertor, blanket, shielding, superconducting magnets, and all
-spherical-tokamak geometry: those have not yet earned their place.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM7c_atlas1_tall.pdf}
-  \caption{Atlas checkpoint. Every component derived so far, numbered by the section that forced it. Nothing later than \S18 appears: a part enters this table only after a section has made it necessary.}
-  \label{fig:figM7c_atlas1_tall}
-\end{figure}
+The associated variables form a coupled set. Geometry $(R_0,a,\kappa)$ determines
+volume; $B_0$ and $I_p$ determine pitch through Eq.~\eqref{eq:qstar}; the current
+profile sets interior $q(r)$. Density and temperature set pressure and reaction rate,
+while beta compares pressure with magnetic energy density. Finally, $\tau_E$
+connects stored energy to the heating requirement.
 
 
-\supportingquantity{first coupled ledger}{The variables in this ledger are the
-minimum state carried forward into the Freidberg-style closure problem. A proposed
-parameter set is acceptable only when the equations that constrain \emph{all} of them
-are checked together.}
 
-\designconsequence{The ordinary tokamak is now visible, but only as the accumulated
-answer to specific physical failures. The next section can add the remaining reactor
-subsystems in the same discipline: name the failure, derive the demand, then add the
-component and its variables to the ledger.}
+The remaining task in this block is to put shape and force balance into one equation.
+We first add the D-shaped boundary parameter, then derive the equation that determines
+which boundary, pressure profile and current distribution can coexist.
 
-% ============================= PAGE 19 ==============================
-\newpage
-\section*{19. The next shape parameter: a D rather than an ellipse}
+\designconsequence{The components now have defined physical tasks. Their settings must support a common plasma state, requiring a shared description of shape and force balance.}
+\samplefigure{\begin{tikzpicture}[>=stealth,scale=.85]
+ \draw[dashed] (0,-2.5)--(0,2.5) node[above]{symmetry axis};
+ \draw[fill=green!15,draw=green!40!black] (.18,-1.8) rectangle (.6,1.8);
+ \node[rotate=90] at (.39,0){central solenoid};
+ \draw[blue!70!black,thick] (3.8,0) ellipse (1.8 and 2.25);
+ \draw[gray,thick] (3.8,0) ellipse (1.5 and 1.9);
+ \draw[fill=red!8,draw=red!60!black,thick] (3.8,0) ellipse (1.05 and 1.45);
+ \node at (3.8,.3){plasma}; \node at (3.8,-.25){$\odot\ I_p,\ B_\varphi$};
+ \foreach \x/\y in {1.4/1.8,6.1/1.8,1.4/-1.8,6.1/-1.8}{\draw[orange!80!black,fill=orange!15] (\x,\y) circle (.15);}
+ \draw[->,red!60!black,thick] (3.8,1.1) arc (90:225:.65 and 1.1);
+ \node[red!60!black] at (2.4,.65){$B_p$};
+ \draw[->] (7.1,2.8)--(5.0,1.68); \node[right] at (7.1,2.8){TF winding envelope};
+ \draw[->] (7.1,1.8)--(6.25,1.8); \node[right] at (7.1,1.8){PF coil cross-section};
+ \draw[->] (7.1,.75)--(5.25,.4); \node[right] at (7.1,.75){vacuum vessel};
+ \draw[->,very thick,teal] (7.0,-.8)--(4.85,-.8); \node[right,align=left] at (7.1,-.8){auxiliary heating\\through a vessel port};
+ \draw[<->] (0,-2.6)--(3.8,-2.6) node[midway,below]{$R_0$};
+\end{tikzpicture}}{Component map in a poloidal cross-section. The TF winding wraps around
+the vessel; separate PF rings appear as small coil cross-sections. The central
+solenoid changes flux through the plasma ring. The winding and vessel outlines are
+schematic; a heating port is shown only by its access direction.}
 
-Elongation says how tall the cross-section is. It does not say whether its upper point
-lies above the geometric centreline or leans toward the central hole. To name that
-second feature without drawing a machine first, take the boundary
+\section*{19. Triangularity adds a D-shaped boundary}
+Elongation specifies height relative to width. A second parameter measures the inward
+shift of the upper and lower tips of the cross-section. A useful boundary family is
 \begin{equation}
- R(\theta)=R_0+a\cos(\theta+x\sin\theta),\qquad
- Z(\theta)=\kappa a\sin\theta,\qquad x=\arcsin\delta .
+ \begin{aligned}
+ R(\theta)&=R_0+a\cos(\theta+x\sin\theta),\qquad x=\arcsin\delta,\\
+ Z(\theta)&=\kappa a\sin\theta.
+ \end{aligned}
  \label{eq:miller-boundary}
 \end{equation}
-This is a useful \emph{coordinate chart} for a family of closed curves, not a law of
-nature. At the top, $\theta=\pi/2$, Eq.~\eqref{eq:miller-boundary} gives
-\[
- R_{\rm top}=R_0+a\cos(\pi/2+x)=R_0-a\sin x=R_0-\delta a.
-\]
-Thus
+At the top, $\theta=\pi/2$, so $R_{\rm top}=R_0-a\sin x=R_0-\delta a$. Thus
 \begin{equation}
- \delta=\frac{R_0-R_{\rm top}}{a}
+ \delta=\frac{R_0-R_{\rm top}}a
  \label{eq:triangularity}
 \end{equation}
-is the normalized inward displacement of the top point. Positive $\delta$ makes the
-familiar D-like cross-section; $\delta=0$ returns the ellipse of page 13.
+is the \emph{triangularity}. Positive $\delta$ pulls the top and bottom inward,
+producing a D-like cross-section. At $\delta=0$ the boundary is the ellipse of §13.
+\samplemodel{The Miller parameterization specifies a boundary family. The small-$\delta$ harmonic expansion below retains terms through first order.}
 
-For small $\delta$, we can see exactly which new geometric pattern it adds. Use
-$\cos(\theta+x\sin\theta)=\cos\theta-x\sin^2\theta+O(x^2)$ and
-$\sin^2\theta=(1-\cos2\theta)/2$. Since $x=\delta+O(\delta^3)$,
+For small $\delta$, expand $\cos(\theta+x\sin\theta)$ and use
+$\sin^2\theta=(1-\cos2\theta)/2$:
 \begin{equation}
  R(\theta)=R_0-\frac{a\delta}{2}+a\cos\theta+
-            \frac{a\delta}{2}\cos2\theta+O(\delta^2).
+ \frac{a\delta}{2}\cos2\theta+O(a\delta^2).
  \label{eq:triangular-harmonic}
 \end{equation}
-The first cosine describes the ordinary left-right radius. Triangularity is, to
-leading order, a second angular harmonic plus a small centering shift. That is why it
-needs more than the simple shaping action which made the ellipse.
+The added second angular harmonic and centring shift describe a shape change
+independent of elongation. The PF system must supply another adjustable spatial
+pattern to control it.
 
-\supportingquantity{$\delta$ (triangularity)}{Equation~\eqref{eq:triangularity}
-defines the D-shape parameter carried in reactor equilibria. Equation~\eqref{eq:triangular-harmonic}
-shows that it is an independently adjustable geometric feature, not another name for
-elongation. Its stability benefit, when present, must be established separately from
-this definition.}
+\designconsequence{Triangularity adds an independent boundary parameter. The PF system needs enough adjustable field patterns to control it alongside position and elongation.}
+\samplefigure{\begin{tikzpicture}[>=stealth,scale=0.9]
+ \draw[gray,dashed,thick] plot[domain=0:360,samples=100] ({1.3*cos(\x)},{1.8*sin(\x)});
+ \draw[blue!70!black,thick] plot[domain=0:360,samples=100] ({1.3*cos(\x+23.58*sin(\x))},{1.8*sin(\x)});
+ \draw[dotted] (0,-2)--(0,2); \draw[dotted] (-.52,1.8)--(-.52,2.25);
+ \draw[<->] (-.52,2.15)--(0,2.15) node[midway,above]{$\delta a$};
+ \draw[->] (0,0)--(1.3,0) node[midway,below]{$a$};
+ \node[gray,align=left] at (4,1){dashed: $\delta=0$};
+ \node[blue!70!black,align=left] at (4,.3){solid: $\delta=0.4$};
+ \node[align=left] at (4,-.7){same $R_0$, $a$ and $\kappa$};
+\end{tikzpicture}}{Triangularity shifts the upper and lower tips toward the central hole.
+Elongation and horizontal half-width are held fixed.}
 
-\imagebrief{Cumulative construction state 8: add triangularity}{Start with the elongated,
-feedback-controlled conventional tokamak. Replace the ellipse in the cross-sectional
-inset with two labelled boundaries, $\delta=0$ and $\delta>0$, keeping the same $a$,
-$\kappa a$, PF coils, and central solenoid. Mark the inward shift $\delta a$ of the
-top point. The image must make clear that triangularity changes plasma shape, not the
-shape of the toroidal-field coils.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM8_stage8_tall.pdf}
-  \caption{Machine state: triangularity. A D rather than an ellipse. No new species of coil appears --- consistent with the text, the existing PF set has simply gained another job.}
-  \label{fig:figM8_stage8_tall}
-\end{figure}
-
-
-\model{Equation~\eqref{eq:miller-boundary} is the Miller local-equilibrium shape
-parameterization. Its role here is definitional and geometric; it is not derived from
-Maxwell's equations. A freely available analytic-equilibrium treatment by Cerfon and
-Freidberg is cited on page 10.}
-
-\designconsequence{A D-shaped boundary creates a new demand on the PF system: it must
-produce another independently controllable field pattern. The machine has not gained a
-new species of coil, but the coil set has gained another job.}
-% ============================= PAGE 20 ==============================
-\newpage
-\section*{20. Why more shape means more carefully placed PF coils}
-
-Outside the plasma there is no plasma current density. In that region, magnetic field
-lines from PF coils satisfy the source-free magnetostatic equations
-\[
- \nabla\times\mathbf B=0,\qquad \nabla\cdot\mathbf B=0.
-\]
-The first equation permits a scalar magnetic potential, $\mathbf B=-\nabla\Phi$;
-inserting it into the second gives $\nabla^2\Phi=0$. This is Laplace's equation.
-Near the plasma centre, its smooth solutions can be organized by angular pattern.
-
-The first three patterns have an immediate physical reading. A nearly uniform vertical
-field translates the plasma radially. A field whose horizontal component grows with
-height and whose vertical component grows with radius is a quadrupole: it stretches or
-squeezes the boundary into an ellipse. The next pattern, a hexapole, has the angular
-structure needed for the leading $\cos2\theta$ term in Eq.~\eqref{eq:triangular-harmonic}.
-These are not three unrelated inventions. They are the first terms in one local
-expansion of the externally applied field.
-
-A simple two-dimensional example makes the hierarchy visible. The harmonic functions
+\section*{20. Coil placement controls the available shape patterns}
+In a current-free vacuum region away from the coils,
+$\nabla\times\mathbf B=0$ and $\nabla\cdot\mathbf B=0$. Locally we can write
+$\mathbf B=-\nabla\Phi_m$, so the magnetic scalar potential satisfies
+$\nabla^2\Phi_m=0$. A two-dimensional local example organizes the first patterns as
 \[
  \Phi_1=C_1r\sin\theta,\qquad
  \Phi_2=C_2r^2\sin2\theta,\qquad
- \Phi_3=C_3r^3\sin3\theta
+ \Phi_3=C_3r^3\sin3\theta.
 \]
-all solve $\nabla^2\Phi=0$ in polar coordinates. Taking $-\nabla\Phi$ turns their
-successive angular structures into the uniform, quadrupole, and hexapole-like field
-patterns just described. A coil system chooses the coefficients $C_1,C_2,C_3$ by its
-locations and currents. The exact tokamak geometry is toroidal rather than this flat
-example, but the local lesson survives: more detailed boundary shape requires more
-independent field moments.
+Each is harmonic. With local Cartesian coordinates $x=r\cos\theta$, $z=r\sin\theta$,
+the first two become $C_1z$ and $2C_2xz$. Their fields are, respectively, uniform and
+linear in position. The third potential, $C_3(3x^2z-z^3)$, gives a quadratic field.
 
-\imagebrief{Physics sketch: the external-field harmonic ladder}{Make a separate
-three-panel line drawing, not a cumulative machine view. Panel 1: uniform vertical
-field translating a circular plasma. Panel 2: quadrupole field stretching it into an
-ellipse. Panel 3: hexapole-like shaping field producing a D-like boundary. Label the
-patterns $C_1,C_2,C_3$ and state that real PF-coil geometry is toroidal. Generate from
-a reproducible script.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_harmonic_ladder.pdf}
-  \caption{Physics sketch: the external-field harmonic ladder. \schematicnote}
-  \label{fig:figS_harmonic_ladder}
-\end{figure}
+A uniform vertical field changes the radial force on the plasma. The linear,
+\emph{quadrupole} pattern contributes to elliptical shaping. The next,
+\emph{hexapole} pattern supplies a further shaping degree of freedom useful for
+triangularity. These names describe successive spatial patterns of the field. The
+actual response of the boundary follows from force balance in toroidal geometry.
 
 
-\designconsequence{The phrase shape control hides a finite-dimensional control
-problem. A reactor needs enough independently powered PF circuits, appropriately
-located, to control position, elongation, and triangularity while the plasma current
-and pressure change.}
 
-% ============================= PAGE 21 ==============================
-\newpage
-\section*{21. The plasma as a fluid: the equilibrium equation}
+Each coil influences several patterns. Its position fixes that influence, while its
+power supply sets the current. Independent control of position and shape therefore
+requires enough independently adjustable coil circuits, with suitable placement and
+current range. More detailed shaping makes this an increasingly coupled control problem.
 
-The single-particle Lorentz force was enough to explain gyro-orbits and field-guided
-motion. To decide the shape of a plasma containing an enormous number of particles, we
-add their forces per unit volume. Let $\rho_m$ be mass density, $\mathbf u$ the bulk
-velocity, $p$ the scalar pressure, and $\mathbf j$ the current density. Momentum
-conservation for a small fluid element is
+\samplepair{Each coil contributes to several field patterns. Coil placement and independently powered circuits must provide the required shaping freedom.}{\includegraphics[width=.93\linewidth]{figures/final/figS_harmonic_ladder.pdf}}{Successive field patterns supply additional shaping freedom.}
+
+\section*{21. Equilibrium joins pressure to magnetic surfaces}
+The static fluid balance derived in §8 is
+$\nabla p=\mathbf j\times\mathbf B$. Its projection along the field gave
+$\mathbf B\cdot\nabla p=0$. In the nested-surface equilibrium considered here,
+we therefore write $p=p(\psi)$: one pressure value for each flux surface.
+The pressure profile specifies how that value changes from the hot interior to the edge.
+
+This is the point where particle confinement becomes a collective design problem.
+Pressure, plasma current and the field from the coils must satisfy force balance at
+every point. \samplemodel{We retain the static, axisymmetric, isotropic-pressure model introduced in §8. Substantial flow or pressure anisotropy requires a generalized equilibrium.}
+Each surface is labelled by its poloidal flux $\psi$, so $p=p(\psi)$ gives
+both a pressure value and, through $dp/d\psi$, the pressure change from one surface
+to the next. The spatial gradient is $\nabla p=(dp/d\psi)\nabla\psi$: its direction
+is normal to the surface and its magnitude depends on the spacing of the contours.
+This links a profile specified as a function of flux to the physical force density
+that the magnetic field must balance. Within the stated model, the geometry can
+therefore be reduced to a scalar differential equation.
+
+\designconsequence{Force balance makes pressure constant on connected magnetic surfaces. Describing those surfaces requires a common flux coordinate.}
+
+\section*{22. Two scalar functions describe the field}
+Combine the poloidal flux representation of §10 with a toroidal component written as
+$B_\varphi=F(R,Z)/R$:
 \begin{equation}
- \rho_m\frac{d\mathbf u}{dt}=\mathbf j\times\mathbf B-\nabla p.
- \label{eq:mhd-momentum}
-\end{equation}
-The magnetic term is simply the Lorentz force $q\mathbf v\times\mathbf B$ summed
-over charged particles per unit volume. The pressure term points from high pressure
-toward low pressure: a small box has slightly greater inward force on its high-pressure
-face than on its low-pressure face.
-
-For the slowly changing equilibrium that defines the intended plasma boundary, set the
-bulk acceleration to zero. Equation~\eqref{eq:mhd-momentum} becomes
-\begin{equation}
- \boxed{\nabla p=\mathbf j\times\mathbf B.}
- \label{eq:force-balance-local}
-\end{equation}
-This one equation has an exceptionally concrete reading. At every location, magnetic
-force density must exactly push back against the local pressure gradient. If it does
-not, the plasma moves; the supposed boundary is not an equilibrium.
-
-Dot Eq.~\eqref{eq:force-balance-local} with $\mathbf B$. Since
-$\mathbf B\cdot(\mathbf j\times\mathbf B)=0$, we obtain
-\[
- \mathbf B\cdot\nabla p=0.
-\]
-Pressure is therefore constant along each magnetic field line in this equilibrium
-model. When field lines densely cover a nested magnetic surface, pressure is constant
-on that surface too. This is the precise reason flux surfaces became more than a
-drawing convention on page 10: they are also surfaces of constant pressure.
-
-\supportingquantity{$p(\psi)$}{In an axisymmetric equilibrium, pressure becomes a
-function of the flux-surface label $\psi$. This is one of the inputs to the
-Grad--Shafranov equation and later controls $\beta$, fusion power density, and
-pressure-driven stability.}
-
-\model{Equation~\eqref{eq:mhd-momentum} assumes a single fluid with isotropic
-pressure and neglects viscosity, kinetic orbit effects, and rapid flows. Those effects
-matter in detailed equilibrium reconstruction; this model is the minimum one needed to
-derive the ordinary tokamak equilibrium equation.}
-
-\designconsequence{A plasma boundary is not a material container. It is a
-self-consistent solution of pressure, plasma current, and externally produced field.
-The next pages derive the equation that tests that consistency.}
-
-% ============================= PAGE 22 ==============================
-\newpage
-\section*{22. A flux function compresses the axisymmetric geometry}
-
-Use cylindrical coordinates $(R,\varphi,Z)$ and assume axisymmetry:
-$\partial/\partial\varphi=0$. The toroidal component of the magnetic field is written
-as $B_\varphi=F(R,Z)/R$. For the poloidal part, define a scalar $\psi(R,Z)$ by
-\begin{equation}
- \mathbf B_p=\frac{1}{R}\nabla\psi\times\hat{\boldsymbol\varphi}.
- \label{eq:flux-representation}
-\end{equation}
-Writing out the cross product gives
-\[
- B_R=-\frac1R\frac{\partial\psi}{\partial Z},\qquad
- B_Z=\frac1R\frac{\partial\psi}{\partial R}.
-\]
-Substitution into
-$\nabla\cdot\mathbf B_p=R^{-1}\partial_R(RB_R)+\partial_ZB_Z$
-shows the two mixed derivatives cancel. Thus Eq.~\eqref{eq:flux-representation}
-automatically satisfies $\nabla\cdot\mathbf B_p=0$.
-
-A curve of constant $\psi$ has tangent displacement $d\boldsymbol\ell$ satisfying
-$\nabla\psi\cdot d\boldsymbol\ell=0$. Equation~\eqref{eq:flux-representation}
-also gives $\mathbf B_p\cdot\nabla\psi=0$. Hence the poloidal field is tangent to
-the curves $\psi=\text{constant}$; rotating such a curve around the symmetry axis
-creates one magnetic surface. The symbol $\psi$ is therefore a surface label. Up
-to a conventional factor of $2\pi$, it is also the poloidal magnetic flux enclosed
-by that surface.
-
-Putting the pieces together,
-\begin{equation}
- \mathbf B=\frac{1}{R}\nabla\psi\times\hat{\boldsymbol\varphi}
-            +\frac{F}{R}\hat{\boldsymbol\varphi}.
+ \mathbf B=\frac1R\nabla\psi\times\hat{\boldsymbol\varphi}
+ +\frac FR\hat{\boldsymbol\varphi}.
  \label{eq:axisymmetric-B}
 \end{equation}
-This is not an approximation. It is a representation of any sufficiently smooth,
-axisymmetric, divergence-free magnetic field away from the coordinate axis.
+Axisymmetry and $\nabla\cdot\mathbf B=0$ permit this representation away from the
+coordinate axis. The contours of $\psi$ locate the magnetic surfaces, and the function
+$F$ sets the toroidal field strength. The factor $1/R$ retains the toroidal geometry.
 
-\imagebrief{Physics sketch: reading $\psi$}{Draw an axisymmetric poloidal cross-section
-with nested curves labelled $\psi_1,\psi_2,\psi_3$, arrows tangent to the curves for
-$\mathbf B_p$, and a curled toroidal arrow for $B_\varphi$. Include a small arrow
-for $\nabla\psi$ perpendicular to the surfaces. Do not show hardware; this is the
-mathematical map that makes flux surfaces intelligible.}
+We have already established $p=p(\psi)$. The toroidal component of force balance
+will now establish $F=F(\psi)$ as well. The two functions carry different information. Derivatives of $\psi(R,Z)$
+give $B_R$ and $B_Z$, so closely spaced contours mean a stronger poloidal field
+at the same $R$. Its contour shapes locate the magnetic surfaces and boundary.
+Meanwhile $F=RB_\varphi$ fixes the toroidal field; it has units of tesla-metres,
+whereas $\psi$ has flux units. In a current-free toroidal-field region $F$ is constant,
+recovering $B_\varphi\propto1/R$. In the plasma, $F(\psi)$ can vary across surfaces
+and contributes to the current and force balance.
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_reading_psi.pdf}
-  \caption{Physics sketch: reading $\psi$. \schematicnote}
-  \label{fig:figS_reading_psi}
-\end{figure}
+Specifying $p(\psi)$ and $F(\psi)$ thus supplies two surface profiles. It still
+leaves $\psi(R,Z)$ to be found: the map from those surface labels to real space.
+The Grad--Shafranov equation determines that map with the imposed boundary or
+external-coil conditions. Its solution simultaneously supplies the poloidal field,
+flux-surface geometry and toroidal current density.
 
+\samplepair{The flux function specifies the surfaces and poloidal field. The next step is to solve for it using pressure and toroidal-field profiles.}{\includegraphics[width=.93\linewidth]{figures/final/figS_reading_psi.pdf}}{Flux contours and their normal identify the poloidal field geometry.}
 
-\designconsequence{The entire two-dimensional equilibrium can now be described by
-two scalar functions, $\psi(R,Z)$ and $F(R,Z)$. This is the compression that makes
-a calculable plasma boundary possible.}
-
-% ============================= PAGE 23 ==============================
-\newpage
-\section*{23. Deriving the Grad--Shafranov equation, one force at a time}
-
-Ampere's law without displacement current is
-$\mu_0\mathbf j=\nabla\times\mathbf B$. Insert Eq.~\eqref{eq:axisymmetric-B}.
-The toroidal component comes only from the curl of $\mathbf B_p$:
+\section*{23. Deriving the Grad--Shafranov equation}
+Insert Eq.~\eqref{eq:axisymmetric-B} into
+$\mu_0\mathbf j=\nabla\times\mathbf B$. The toroidal current density comes from
+the curl of the poloidal field:
 \begin{equation}
- j_\varphi=-\frac{1}{\mu_0R}\Delta^*\psi,\qquad
+ j_\varphi=-\frac1{\mu_0R}\Delta^*\psi,\qquad
  \Delta^*\psi\equiv R\frac{\partial}{\partial R}
  \left(\frac1R\frac{\partial\psi}{\partial R}\right)
  +\frac{\partial^2\psi}{\partial Z^2}.
  \label{eq:gradstar}
 \end{equation}
-This follows directly by differentiating $B_R$ and $B_Z$ written on page 22:
-$(\nabla\times\mathbf B_p)_\varphi=\partial_ZB_R-\partial_RB_Z$.
-
-The toroidal component of the equilibrium force in Eq.~\eqref{eq:force-balance-local}
-must vanish because $p$ is axisymmetric. It gives
-$\mathbf B_p\cdot\nabla F=0$, so $F$ is constant along the poloidal field and may
-be written $F=F(\psi)$. The same argument on page 21 gave $p=p(\psi)$. With those
-two results, direct cross products reduce the force balance to a single direction,
-normal to the surfaces:
+To check the sign, use
+$(\nabla\times\mathbf B)_\varphi=\partial_ZB_R-\partial_RB_Z$ and the components
+in Eq.~\eqref{eq:psidef}. The remaining components give
 \[
- \mathbf j\times\mathbf B=
- -\frac{1}{\mu_0R^2}\left(\Delta^*\psi+F\frac{dF}{d\psi}\right)\nabla\psi,
- \qquad
- \nabla p=\frac{dp}{d\psi}\nabla\psi .
+ \mathbf j_p=\frac1{\mu_0R}\nabla F\times\hat{\boldsymbol\varphi}.
 \]
-The common vector $\nabla\psi$ can be cancelled wherever it is nonzero. The result is
+Since pressure is axisymmetric, the toroidal component of $\mathbf j\times\mathbf B$
+must vanish. Its value is proportional to $\mathbf B_p\cdot\nabla F$, so
+$F$ is constant along the poloidal field. On the nested surfaces we can write
+$F=F(\psi)$ and hence $\mathbf j_p=F'(\psi)\mathbf B_p/\mu_0$.
+
+Only two cross products remain: $j_\varphi\hat{\boldsymbol\varphi}\times\mathbf B_p$
+and $\mathbf j_p\times B_\varphi\hat{\boldsymbol\varphi}$. Using
+$\hat{\boldsymbol\varphi}\times\mathbf B_p=\nabla\psi/R$, they give
+\[
+ \mathbf j\times\mathbf B
+ =-\frac{\Delta^*\psi+FF'}{\mu_0R^2}\nabla\psi,
+ \qquad \nabla p=p'\nabla\psi.
+\]
+Equating coefficients normal to a regular flux surface yields
 \begin{equation}
- \boxed{\Delta^*\psi=-\mu_0R^2\frac{dp}{d\psi}
-                    -F\frac{dF}{d\psi}.}
+ \boxed{\Delta^*\psi=-\mu_0R^2\frac{dp}{d\psi}-F\frac{dF}{d\psi}.}
  \label{eq:grad-shafranov}
 \end{equation}
-This is the Grad--Shafranov equation. It has no hidden tokamak magic: the first term
-is the pressure-gradient demand and the second represents toroidal-field/current
-effects. A boundary shape and the two functions $p(\psi)$ and $F(\psi)$ determine
-the equilibrium problem; external coils supply the boundary conditions.
+This is the \emph{Grad--Shafranov equation}. The pressure gradient and toroidal-field
+profile supply its source terms; the solution supplies the flux surfaces.
 
-\supportingquantity{$\psi$, $p(\psi)$, and $F(\psi)$}{These are the minimal
-axisymmetric-equilibrium data beneath the reactor variables. They determine whether a
-proposed $I_p$, shape, and pressure can share nested magnetic surfaces.}
+\noindent\begin{minipage}{\linewidth}
+\samplescope{At a smooth magnetic axis or null, the equation is interpreted through the regular solution. The intermediate cancellation of $\nabla\psi$ applies where that gradient is nonzero.}
+\end{minipage}
 
-\model{The cancellation leading to Eq.~\eqref{eq:grad-shafranov} fails at magnetic
-nulls such as an X-point, where $\nabla\psi=0$; the equation itself remains the
-standard equilibrium equation but the local geometric argument must be treated with
-care there.}
-
-% ============================= PAGE 24 ==============================
-\newpage
-\section*{24. What the equilibrium equation says before it is solved}
-
-Equation~\eqref{eq:grad-shafranov} is a differential equation, not a ready-made
-shape. To solve it, one specifies a vacuum-vessel or plasma-boundary condition for
-$\psi$, the external-coil currents that contribute to that condition, and profiles
-for $p(\psi)$ and $F(\psi)$. The solution then reports the nested surfaces, the
-plasma current, and the position of the magnetic axis. This is why a tokamak needs
-both a physics model and a coil-control model.
-
-The equation also explains an effect visible in real cross-sections: the magnetic
-axis usually shifts outward from the geometric centre. Pressure gradients and the
-plasma's own poloidal field produce an outward hoop tendency; the poloidal-field
-system counters it. The shift is called the Shafranov shift. Its exact size depends
-on the profiles, so it must not be inserted as a universal number. The robust
-conclusion is only the causal one: increasing pressure or current changes the
-equilibrium shape, and fixed coil currents will no longer hold the intended boundary.
-
-This is also the cleanest place to separate two kinds of D. A D-shaped \emph{plasma}
-boundary is selected through $\delta$ and the equilibrium/stability tradeoffs. A
-D-shaped \emph{toroidal-field coil}, when used, is a mechanical solution for reducing
-bending stress in a conductor exposed to a field that varies approximately as $1/R$.
-They can appear in the same machine, but they solve different equations and neither
-should be used to explain the other.
-
-\imagebrief{Cumulative construction state 9: equilibrium is a moving target}{Use the
-stage-8 conventional tokamak cross-section with shaped PF coils. Draw two nested
-sets of flux surfaces: a low-pressure reference centered near the geometric axis and
-a higher-pressure/current case shifted slightly outward. Label $\psi$, $p(\psi)$,
-and the PF-coil currents. Show the same hardware in both cases; the message is that
-operating state changes the demanded coil settings.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM9_stage9_tall.pdf}
-  \caption{Machine state: the same machine, a different equilibrium. Raise $\bar p$ or lower $I_p$ and the magnetic axis shifts outward; the PF currents must change to undo it. The shift drawn is illustrative --- its size follows from Grad--Shafranov.}
-  \label{fig:figM9_stage9_tall}
-\end{figure}
+The derivation reveals why geometry alone is insufficient to specify a tokamak.
+Changing pressure or current changes the differential equation that its magnetic
+surfaces must satisfy. Coil settings then have to support the resulting equilibrium.
 
 
-\designconsequence{The physical boundary cannot be designed once and forgotten.
-Every planned operating point requires an equilibrium and a control solution. This is
-why later performance calculations must report profiles and margins, not merely a list
-of nominal dimensions.}
-% ============================= PAGE 25 ==============================
-\newpage
+\section*{24. From an equilibrium equation to an operating machine}
+There are two useful ways to pose the calculation. In a~\emph{fixed-boundary} calculation we prescribe the plasma boundary and the profiles $p(\psi)$ and $F(\psi)$,
+then solve for the interior flux surfaces and current. In a~\emph{free-boundary} calculation we include the external-coil fields and surrounding vacuum; the plasma
+boundary is part of the solution. A desired shape can thus be tested first, then
+translated into requirements on coil locations and currents. The analytic equilibria
+cited in §10 illustrate how profiles and boundary geometry enter this problem.
+
+The magnetic axis generally shifts outward relative to the geometric centre of the
+boundary. This \mbox{\emph{Shafranov shift}} reflects the pressure and current contributions
+to toroidal force balance. Its size depends on the profiles and geometry. When those
+profiles change during heating or a current ramp, the equilibrium changes, and the
+PF currents needed to maintain the requested boundary change with it.
+
+A D-shaped plasma and a D-shaped TF coil have separate design purposes. Triangularity
+specifies a plasma boundary chosen through equilibrium and stability considerations.
+A D-like TF-coil shape can instead be chosen to carry magnetic loads mainly in tension
+and reduce conductor bending. The engineering design must accommodate both the
+required magnetic surfaces and the forces on the conductors that produce their field.
+
+We have reached a working description of machine formation. Hot charged particles
+require a vacuum environment and magnetic guidance; closing the field introduces
+curvature drifts; plasma current supplies the poloidal twist; pressure demands
+external equilibrium fields; transformer limits demand auxiliary heating and current
+drive; useful shaping demands feedback. The Grad--Shafranov equation joins these
+choices into a calculable equilibrium. The next block asks what fuel state and
+confinement this machine must sustain to produce useful fusion power.
+
+\designconsequence{Pressure and current evolution change the equilibrium. Each operating state needs compatible profiles, a magnetic boundary and PF-coil settings.}
+
+
+\samplefigure{\begin{tikzpicture}[>=stealth,scale=.8]
+\draw[black,thick] (0,0) ellipse (2 and 2.5);
+\foreach \a/\b in {1.4/1.85,.85/1.15,.3/.45}{
+\draw[gray,dashed] (0,0) ellipse [x radius=\a cm,y radius=\b cm];
+\draw[blue!70!black] (.35,0) ellipse [x radius=\a cm,y radius=\b cm];}
+\fill[gray] (0,0) circle (.045);\fill[blue!70!black] (.35,0) circle (.045);
+\draw[<->] (0,-.65)--node[below]{$\Delta$}(.35,-.65);
+\node[align=left,right] at (2.5,.4){solid: shifted surfaces\\dashed: reference surfaces\\black: prescribed boundary};
+\draw[->] (2.4,-1.5)--(4,-1.5) node[right]{$R$};
+\end{tikzpicture}}{Schematic outward displacement of the magnetic axis relative to a fixed boundary. The interior contours illustrate the shift only; an equilibrium calculation determines their deformation and spacing for the specified profiles.}
+
+% End of authorized compression sample v4. Later sections unchanged.
+\clearpage
+% Retain legacy page references in the unchanged later sections.
+\setcounter{page}{39}
+\setcounter{equation}{52}
+\setcounter{figure}{14}
+\let\theHfigure\sampleOriginalHfigure
 \section*{25. From individual collisions to a fusion-power density}
 
 Consider a small volume $dV$ containing $n_DdV$ deuterons and $n_TdV$ tritons.
