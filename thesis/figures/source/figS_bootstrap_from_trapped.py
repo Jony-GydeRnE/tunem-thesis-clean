@@ -33,6 +33,7 @@ from sketch_base import *
 
 W, H = TEXTWIDTH_IN, 5.55
 fig, ax = canvas(W, H)
+fig.set_size_inches(W, 3.35)
 
 # ==========================================================================
 # BAND A — the drawing (left) with leader-lined labels (right)
@@ -90,8 +91,7 @@ arrow(ax, (R0 - 1.16, COLL_Y), (R0 - 0.70, COLL_Y), PALETTE["heat"],
 CUR_X, CUR_Y = R0 - 0.35, ZC - 0.62
 otimes(ax, CUR_X, CUR_Y, 0.075, PALETTE["vessel"])
 
-ax.text(0.10, H - 0.14, "FROM TRAPPED PARTICLES TO A CURRENT — and why it is "
-                        "not free", fontsize=10.2, ha="left", va="top",
+ax.text(0.10, H - 0.14, "FROM TRAPPED PARTICLES TO BOOTSTRAP CURRENT", fontsize=10.2, ha="left", va="top",
         color=PALETTE["vessel"])
 
 # ---- leader-lined labels, all in the right-hand column -------------------
@@ -106,15 +106,13 @@ A1 = at_height(X1, Y1, ZC + 0.48)
 A2 = at_height(X2, Y2, ZC + 0.12)
 LAB = [
     (A1[0], A1[1], 4.92, PALETTE["current"],
-     r"inner banana at $r$ — MORE particles, since $p$ falls outward"),
+     r"inner orbit: larger population at higher density"),
     (A2[0], A2[1], 4.42, PALETTE["cs"],
-     r"outer banana at $r+\Delta$ — FEWER, and opposite $v_\parallel$"),
+     r"outer orbit: smaller population; opposite $v_\parallel$"),
     (R0 - 0.72, COLL_Y, 3.62, PALETTE["heat"],
-     "collisions hand the imbalance to the PASSING electrons —\n"
-     "without that step it never becomes a plasma current"),
+     "collisional coupling transfers the imbalance\nto passing electrons"),
     (CUR_X, CUR_Y, 3.02, PALETTE["vessel"],
-     "a MODEST net toroidal current: what SURVIVES the\n"
-     "near-cancellation of two opposite banana currents"),
+     "net toroidal current from incomplete cancellation"),
 ]
 for xa, ya, ytxt, col, txt in LAB:
     ax.annotate(txt, xy=(xa, ya), xytext=(2.72, ytxt), fontsize=8.0,
@@ -123,39 +121,6 @@ for xa, ya, ytxt, col, txt in LAB:
                                 connectionstyle="arc3,rad=0.12",
                                 shrinkA=2, shrinkB=4), zorder=11)
 
-ax.plot([0.10, W - 0.10], [2.52, 2.52], color="0.85", lw=0.9, zorder=1)
-
-# ==========================================================================
-# BAND B — the chain, and the two things it must not be read as saying
-# ==========================================================================
-ax.text(0.10, 2.40,
-        "1.  At a given point the two adjacent bananas carry OPPOSITE "
-        r"$v_\parallel$, so their currents nearly cancel." "\n"
-        r"2.  Because $dp/dr<0$, slightly more particles sit on the inner "
-        "orbit — the cancellation is INCOMPLETE.\n"
-        "3.  Collisions transfer that residue to the passing electrons. "
-        "That step is what makes it a plasma current.\n"
-        r"4.  Scaling:  $j_{\rm bs}\sim-\,C\,\frac{\sqrt{\varepsilon}}"
-        r"{B_\theta}\,\frac{dp}{dr}$,  the $\sqrt{\varepsilon}$ inherited from "
-        r"the trapped fraction $\sim\sqrt{2\varepsilon/(1+\varepsilon)}$.",
-        fontsize=8.4, ha="left", va="top", color="0.22", linespacing=2.05)
-
-ax.text(0.10, 1.24,
-        "The coefficient $C$ is left unwritten ON PURPOSE. It is where the "
-        "kinetic model enters — collisionality\nregime, profile shape, impurity "
-        "content — and the primer's own audit of the 2015 baseline turns on\n"
-        "exactly that number. Quoting one here would hide the modelling choice "
-        "the audit later argues about.",
-        fontsize=8.0, ha="left", va="top", color=PALETTE["pf"],
-        linespacing=1.65)
-
-ax.text(0.10, 0.62,
-        "This is an INCOMPLETE CANCELLATION, not free current. It exists only "
-        "while the pressure gradient is\nmaintained, and maintaining that "
-        "gradient is what the heating system is for.",
-        fontsize=8.0, ha="left", va="top", color=PALETTE["current"],
-        linespacing=1.65)
-
+ax.set_ylim(2.20, H)
 save_exact(fig, "figS_bootstrap_from_trapped",
-           "Explanatory sketch; schematic, not to scale. The banana width and "
-           "the orbit separation are exaggerated for legibility.", y=0.08)
+           "Adjacent trapped orbits sample different populations. Orbit widths and separation are schematic.", y=2.25)

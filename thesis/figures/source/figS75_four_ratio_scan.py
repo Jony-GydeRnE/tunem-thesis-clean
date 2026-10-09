@@ -89,7 +89,7 @@ ax.plot([a_best], [w_best], marker="o", ms=7, mfc="white",
         mec=PALETTE["vessel"], mew=1.8, zorder=6)
 ax.annotate(f"least-violating point\n$a={a_best:.2f}$ m, worst ratio "
             f"$={w_best:.2f}$\n(still $>1$: no radius passes)",
-            xy=(a_best, w_best), xytext=(a_best + 0.20, w_best + 0.92),
+            xy=(a_best, w_best), xytext=(0.73, 2.48),
             fontsize=8.8, color=PALETTE["vessel"], ha="left",
             arrowprops=dict(arrowstyle="-|>", color=PALETTE["vessel"], lw=1.0),
             zorder=7)
@@ -119,13 +119,8 @@ ax.legend(frameon=False, fontsize=9, loc="upper center", ncol=2,
           handlelength=2.8, columnspacing=1.4)
 
 fig.text(0.5, -0.015,
-         "Reproduced from code/calculations/freidberg_baseline_scan.py. "
-         "These are the ratios implied by ONE declared model set — an analytic\n"
-         "coil build, one empirical confinement fit, one stability threshold, "
-         "one kinetic bootstrap coefficient. This is NOT a universal\n"
-         "tokamak limit: it is the behaviour of that model set, and each "
-         "ingredient is a modelling choice that can be argued with.",
-         fontsize=7.6, ha="center", va="top", color="0.35", linespacing=1.5)
+         "Source: freidberg_baseline_scan.py; fixed 2015 mission, coil, confinement and current-supply models.",
+         fontsize=8.0, ha="center", va="top", color="0.35")
 
 fig.tight_layout()
 fig.savefig("figS75_four_ratio_scan.pdf", bbox_inches="tight")

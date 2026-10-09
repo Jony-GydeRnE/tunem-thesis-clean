@@ -1811,33 +1811,25 @@ whether all four inequalities can hold simultaneously for a conventional baselin
 Its reduced blanket and analytic TF-coil models supply the numerical design assumptions.}\end{minipage}
 
 \clearpage
-\setcounter{page}{79}
-\setcounter{figure}{29}
-\let\theHfigure\sampleOriginalHfigure
-\section*{51. Entering the 2015 argument: a model, not a verdict}
+\setcounter{page}{36}
+\setcounter{figure}{22}
+\renewcommand{\theHfigure}{blockthree.\arabic{figure}}
+\section*{51. Entering the 2015 reference calculation}
 
-We now change tasks. The first fifty pages asked, "Why must the machine contain these
-parts?" The next task is, "If a particular conventional-reactor model is required to
-make a specified amount of power, what plasma state does that model demand?" This is
-the calculation made analytically by Freidberg, Mangiarotti, and Minervini in 2015.
+The first fifty sections established the machine's components and primary parameters.
+We now ask what plasma state a specified electric output demands. Freidberg,
+Mangiarotti and Minervini's 2015 calculation closes this problem with a chosen wall
+loading, thermal efficiency, coil-field ceiling, structural and winding-pack limits,
+and recirculating-power budget.
 
-Their reference design is intentionally simplified. It specifies an electric output,
-an allowed neutron wall loading, a thermal conversion efficiency, a maximum inboard
-coil field, magnet stress and winding-pack limits, and a cap on recirculating power.
-It then asks whether a conventional plasma can simultaneously meet the resulting
-density, beta, kink-safety-factor, and bootstrap-current requirements.
+\samplemodel{The baseline combines mission choices, engineering limits, nuclear
+modelling and an empirical confinement fit. Its conclusion applies to that combination;
+changing an input defines a new case.}
 
-\designconsequence{The following conclusion, if reproduced, will be conditional:
-there is no self-consistent reactor within the stated baseline assumptions. It will not
-say that no tokamak can ever work. That distinction is where honest engineering begins.}
+\designconsequence{The reference plant must satisfy density, beta, kink-safety and
+steady-state-current constraints at the same operating point. We first calculate the
+state demanded by its mission.}
 
-\model{Every numerical input in this reconstruction will be visibly tagged as either
-an economic choice, an engineering limit, a nuclear-data/model choice, or an empirical
-plasma-physics fit. Changing one of them defines a different reactor case; it is not a
-mathematical error.}
-
-% ============================= PAGE 52 ==============================
-\newpage
 \section*{52. The reference design asks the machine to do a specific job}
 
 For the 2015 baseline, the primary imposed mission choices are
@@ -1852,10 +1844,8 @@ wall loading, and $\eta_T$ converts fusion heat into electric power:
  P_E=\eta_TP_F.
  \label{eq:thermal-conversion}
 \end{equation}
-The subscript $F$ denotes the total thermal power credited to fusion and blanket
-reactions in the paper's accounting model. The point of displaying these numbers is
-not to bless them. A $1000\,\mathrm{MW_e}$ plant, a $4\,\mathrm{MW\,m^{-2}}$ wall
-limit, and $40\%$ conversion efficiency are assumptions to be audited.
+Here $P_F$ is the thermal power credited to fusion and blanket reactions in the
+source's accounting model. These inputs set the plant mission and conversion assumption.
 
 The reference magnet model also takes
 \[
@@ -1863,17 +1853,9 @@ The reference magnet model also takes
  \sigma_{\rm allow}=600\,\mathrm{MPa},\qquad
  J_{\rm wp}=20\,\mathrm{MA\,m^{-2}}.
 \]
-These are a baseline conventional-superconductor and structural model, not claims
-about the best magnets available today. They are precisely the assumptions later
-challenged by the high-field option.
+These values define the conventional-superconductor and structural baseline.
+They are reference inputs supporting the primary Table-1 parameters.
 
-\supportingquantity{reference inputs}{The quantities $P_E,W_n,\eta_T,B_{\max},
-\sigma_{\rm allow}$, and $J_{\rm wp}$ are inputs to a chosen design case. They guide
-the determination of the primary parameter set; they are not additional Table-1
-parameters.}
-
-% ============================= PAGE 53 ==============================
-\newpage
 \section*{53. Power and wall loading turn two dimensions into one family}
 
 For the shaped boundary, the source uses the standard mean-square ellipse-perimeter
@@ -1883,11 +1865,10 @@ approximation. Revolving it around the major radius gives the first-wall area
  \left(\frac{1+\kappa^2}{2}\right)^{1/2}.
  \label{eq:shaped-wall-area}
 \end{equation}
-This agrees with the circular result $4\pi^2R_0a$ when $\kappa=1$. It is an
-analytic shape approximation, not a replacement for an actual first-wall surface.
+This agrees with the circular result $4\pi^2R_0a$ when $\kappa=1$. 
 
 The D--T neutron carries $E_n=14.1\,\mathrm{MeV}$ of the fusion energy
-$E_{\rm DT}=17.6\,\mathrm{MeV}$. In the reference energy accounting,
+$E_{\rm DT}=17.6\,\mathrm{MeV}$. With $E_F$ the credited thermal energy per fusion reaction in the reference accounting,
 \[
  P_n=\frac{E_n}{E_F}P_F
  =\frac{E_n}{E_F}\frac{P_E}{\eta_T}.
@@ -1901,8 +1882,8 @@ $P_n=W_nS_{\rm wall}$, gives
  \left(\frac{2}{1+\kappa^2}\right)^{1/2}.
  \label{eq:r0a-wall-loading}
 \end{equation}
-All quantities on the right are chosen inputs or previously earned parameters.
-Thus the design does not choose $R_0$ and $a$ independently:
+At fixed mission, energy accounting and elongation, the right-hand side is constant:
+
 \begin{equation}
  R_0(a)=\frac{C_{\rm wall}}{a},
  \qquad
@@ -1911,18 +1892,15 @@ Thus the design does not choose $R_0$ and $a$ independently:
  \left(\frac{2}{1+\kappa^2}\right)^{1/2}.
  \label{eq:r0-of-a}
 \end{equation}
-This is why Freidberg can make a one-parameter scan. After fixing the mission and
-the blanket/magnet model, each trial minor radius implies a corresponding major radius.
+\samplemodel{The area estimate uses an ellipse-perimeter approximation and average
+wall loading. Local loading requires the actual first-wall surface and neutron transport.}
 
-\model{Equation~\eqref{eq:shaped-wall-area} uses a simple perimeter approximation and
-an average wall loading. A final reactor analysis needs local neutron transport and
-the actual first-wall surface. The one-parameter logic survives those refinements.}
+\designconsequence{Each trial minor radius fixes a major radius. The inboard
+build must determine the field available to that plasma.}
 
-% ============================= PAGE 54 ==============================
-\newpage
 \section*{54. The radial build makes the field a coupled result}
 
-The preceding page makes $R_0$ a function of $a$. For its particular analytic
+Section~53 makes $R_0$ a function of $a$. For its particular analytic
 TF-coil calculation, Freidberg defines the inboard field-build fraction
 \[
  \epsilon_B=\frac{a+b}{R_0}
@@ -1931,42 +1909,16 @@ and writes
 \[
  B_0=B_{\max}(1-\epsilon_B).
 \]
-This is the source model's field convention: $c$ is then found from its stress and
-winding-pack equations, rather than inserted into $\epsilon_B$. The physical radial
-ledger on pages 46--48 remains useful for understanding why $c$ exists; reproducing
-the source's numerical scan requires us not to mix that fuller ledger with its
-analytic convention. Its logical structure is more important than its algebra:
-\[
-\begin{array}{c}
-\text{mission and wall loading}\ \Longrightarrow\ R_0(a),\\[2pt]
-\text{neutron transport}\ \Longrightarrow\ b,\\[2pt]
-\text{field, stress, and ampere-turns}\ \Longrightarrow\ c(a,B_0),\\[2pt]
-\text{inboard radial build}\ \Longrightarrow\ B_0(a).
-\end{array}
-\]
-The central field is therefore neither a free wish nor merely a property of the
-superconductor. It is the outcome of a coupled geometric and mechanical problem.
+\samplemodel{This is the source's analytic field convention: $c$ is obtained
+separately from the stress and winding-pack equations. The fuller physical ledger in
+\S\S46--48 explains the coil thickness; reproducing this scan uses $(a+b)/R_0$ in
+$\epsilon_B$.}
 
-This is also the first place to be alert to a future HTS comparison. If a different
-conductor technology changes the credible $B_{\max}$ or $J_{\rm wp}$, it changes the
-solution for $c$ and therefore the accessible $B_0$. We will not assume that this
-improves the reactor until the baseline plasma constraints have been tested.
+The trial geometry and neutron build determine $B_0$, while the mechanical and
+ampere-turn requirements determine whether a real coil thickness $c$ exists.
 
-\imagebrief{Causal ledger diagram: how the reference design reduces to a scan in $a$}
-{Make a compact flow diagram of the four arrows displayed above. Use a distinct style
-for chosen inputs, primary parameters, and derived supporting quantities. End at
-"test plasma constraints," not at a success claim. This is a reset explanatory figure,
-not a cumulative machine image.}
+\samplefigure{\includegraphics[width=.92\linewidth]{figures/final/figS_causal_scan_in_a.pdf}}{The mission and radial build reduce the baseline to a family indexed by minor radius. Each member must meet the plasma constraints.\label{fig:figS_causal_scan_in_a}}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_causal_scan_in_a.pdf}
-  \caption{Causal ledger diagram: how the reference design reduces to a scan in $a$. \schematicnote}
-  \label{fig:figS_causal_scan_in_a}
-\end{figure}
-
-
-% ============================= PAGE 55 ==============================
-\newpage
 \section*{55. Fusion power fixes the required pressure}
 
 The D--T reaction rate in an equal fuel mixture is
@@ -2001,19 +1953,19 @@ Power balance therefore determines a required pressure:
  \right]^{1/2}.
  \label{eq:preq}
 \end{equation}
-This is a crucial conceptual reversal. The plasma physicist does not simply choose a
-pleasantly low pressure; the requested electric output and available volume demand one.
+The mission and available volume therefore demand a pressure. The reference model
+uses $T\simeq14\,\mathrm{keV}$, near the broad favourable range of
+$\langle\sigma v\rangle/T^2$ for D--T.
 
-The 2015 reference model selects $T\simeq14\,\mathrm{keV}$ because the ratio
-$\langle\sigma v\rangle/T^2$ is near its favorable broad maximum for D--T fuel. Later
-we will reproduce that statement from a cited reactivity fit and replace the uniform
-approximation with the paper's declared density and temperature profiles.
+\samplemodel{The estimate above uses uniform density and temperature. The numerical
+reference calculation uses the declared profiles introduced in \S68.}
 
-% ============================= PAGE 56 ==============================
-\newpage
+\designconsequence{Fusion output fixes a pressure requirement. Alpha heating must
+then sustain the thermal energy stored at that pressure.}
+
 \section*{56. Ignition turns pressure into a required confinement time}
 
-Fusion power does not remain as useful plasma heat. The neutron escapes; for D--T,
+The neutron carries energy out of the plasma; for D--T,
 the alpha fraction is
 \[
  \frac{E_\alpha}{E_{\rm DT}}=\frac{3.5}{17.6}\simeq\frac15.
@@ -2037,65 +1989,40 @@ $P_\alpha\simeq P_{\rm fus}/5$,
  \frac{15pV}{2P_{\rm fus}}.
  \label{eq:taue-pressure}
 \end{equation}
-Substituting the pressure demanded by Eq.~\eqref{eq:preq} gives the next causal
-chain:
-\[
- P_E,\ W_n,\ \eta_T,\ a
- \ \Longrightarrow\ R_0,\ V,\ p
- \ \Longrightarrow\ \tau_{E,\rm req}.
-\]
-The remaining, decisive question is whether an empirical tokamak confinement law can
-deliver this $\tau_E$ without demanding an unacceptable plasma current. That is where
-the one indispensable plasma-physics input enters the 2015 design.
+\designconsequence{Power and wall loading determine the required pressure and
+confinement time. The regression will translate that time into a current demand.}
 
-% ============================= PAGE 57 ==============================
-\newpage
 \section*{57. Before testing a limit: what kind of statement is it?}
 
-The four tests ahead do not all have the same epistemic status. It would be a serious
-error to place them in one box labelled "first principles." We will use three labels.
+Three kinds of evidence enter the four tests:
 
 \begin{center}
 \begin{tabular}{p{0.22\textwidth}p{0.66\textwidth}}
 \textbf{Derived relation} & follows from stated equations and stated approximations;
 for example, $p=2nT$ and $q_*\propto a^2B_0/(R_0I)$.\\[3pt]
 \textbf{Physics model} & follows after adopting a specified equilibrium, profile, or
-kinetic model; it may be calculated but is not universal.\\[3pt]
-\textbf{Empirical boundary} & summarizes experimental operation or a regression; its
-coefficient and range are evidence, not a theorem.
+kinetic model; its regime and profile assumptions accompany the result.\\[3pt]
+\textbf{Empirical boundary} & summarizes experimental operation or a regression; its coefficient and applicability range come from that evidence.
 \end{tabular}
 \end{center}
 
-Greenwald density is an empirical boundary. The practical Troyon beta coefficient is
-an experiment- and model-informed stability boundary. The kink threshold is a result
-of a specified MHD stability model, with profile and wall dependence. The bootstrap
-fraction requires a neoclassical kinetic model plus a current profile. Their physical
-motivation can be derived; their reactor-grade numerical coefficients cannot honestly
-be manufactured from the motivation alone.
+Greenwald density is empirical; the practical Troyon coefficient combines stability
+modelling and experimental evidence. The kink threshold depends on the adopted MHD
+model, profiles and wall. Bootstrap current requires a kinetic closure and compatible
+profiles.
 
-The test itself is nevertheless elementary. For every constraint define a demand-to-
-allowance ratio,
+For every constraint define a demand-to-allowance ratio,
 \begin{equation}
  \mathcal R\equiv\frac{\hbox{quantity demanded by the reference design}}
  {\hbox{quantity allowed by the stated constraint}}.
  \label{eq:constraint-ratio}
 \end{equation}
-A baseline is admissible only if each relevant $\mathcal R\le1$. This notation forces
-us to name both numerator and denominator before announcing pass or failure.
+All relevant ratios must be at most one at the same design point.
 
-\designconsequence{The goal is not to make empirical plasma physics look more certain
-than it is. The goal is to expose exactly which evidence a conventional reactor would
-need to satisfy, and whether the same design point can satisfy all of it at once.}
-
-% ============================= PAGE 58 ==============================
-\newpage
 \section*{58. The one empirical input that determines the required current}
 
-The 2015 reference case uses an ELMy H-mode confinement regression. H-mode is a
-high-confinement tokamak regime with a strong edge transport barrier. ELMy means that
-the edge undergoes recurring edge-localized-mode (ELM) relaxations: short bursts that
-expel a small amount of edge energy and particles. The word identifies the experiment
-class behind the regression; it does not add an independently derived law.\footnote{A
+The 2015 reference case uses an ELMy H-mode confinement regression. H-mode has a strong edge transport barrier. ELMy identifies discharges with recurring
+edge-localized-mode relaxations, which expel edge energy and particles.\footnote{A
 freely accessible ITER explanation describes H-mode's steep edge pressure region and
 the associated edge-localized modes: \url{https://www.iter.org/node/20687/progress-elm-physics-and-elm-control}.}
 In the declared units, the regression is
@@ -2110,27 +2037,16 @@ In the declared units, the regression is
 \end{equation}
 Here $I$ is in MA, $R_0$ and $a$ in m, $\bar n$ in
 $10^{20}\,\mathrm{m^{-3}}$, $B_0$ in T, $P_\alpha$ in MW, $A=2.5$ is the
-mean ion mass used by the fit, and $H$ is the confinement multiplier. The coefficient
-is meaningless if these units or the database/regime are changed.
+mean ion mass used by the fit, and $H$ is the confinement multiplier. The coefficient belongs to these units and the selected regression.
+Here $A$ denotes mean ion mass; the geometric aspect ratio is written explicitly as $R_0/a$.
 
-Equation~\eqref{eq:freidberg-confinement} is not deduced from the Lorentz force. It
-is the particular empirical closure selected by the paper. Its physical direction is
-intelligible: larger current and machine size correlate with better confinement;
-greater heating power correlates with more difficult power exhaust. But the exponents
-are measured regression exponents, not universal laws of nature.
+\samplescope{This is the empirical closure in Freidberg, Mangiarotti and Minervini
+(2015), Eq.~(28). Treat the regression as data with a stated applicability range.
+Its current, size and power exponents describe the fitted operating regime.}
 
-\supportingquantity{reference confinement fit}{Equation~\eqref{eq:freidberg-confinement}
-is the explicit version of $\tau_E=H\tau_{E,\rm ref}$ used in this reconstruction.
-It is the one direct plasma-performance input that turns the ignition requirement
-into a required current. The freely available source is Freidberg, Mangiarotti, and
-Minervini (2015), Eq.~(28), linked on page 1 of this thesis.}
+The conventional baseline uses $H=1$; varying $H$ later tests a specified improvement
+in confinement.
 
-\model{The reference paper assumes $H=1$ for its conventional baseline. We will retain
-that assumption only while reproducing that baseline, then vary it openly when testing
-the advanced-confinement option.}
-
-% ============================= PAGE 59 ==============================
-\newpage
 \section*{59. Solving the confinement fit for the current}
 
 The ignition calculation has already supplied $\tau_{E,\rm req}$. Set it equal to the
@@ -2152,8 +2068,7 @@ Raising both sides to the power $1/0.93$ gives
 \right]^{1/0.93}\mathrm{MA}.
 \label{eq:ireq-from-confinement}
 \end{equation}
-There is no mystery step here: the current is whatever value makes the selected
-empirical confinement law equal the confinement time required by ignition.
+This current makes the fitted confinement time equal the ignition requirement.
 
 After substituting the reference design's previously determined relations, Freidberg
 obtains the compact scaling
@@ -2162,29 +2077,14 @@ obtains the compact scaling
  12.1\,\frac{a^{1.63}}{B_0^{0.16}}\ \mathrm{MA},
 \label{eq:ireq-compact}
 \end{equation}
-where the remaining fixed baseline assumptions and the stated units are absorbed into
-the coefficient. The striking feature is not the exact decimal exponents. It is the
-strong approximately $a^{5/3}$ current demand and the weak $B_0^{-0.16}$ dependence.
+The coefficient absorbs the fixed baseline inputs and stated units. Current grows
+strongly with $a$ and depends weakly on $B_0$ in this reduced relation. At
+$a=1.34\,\mathrm m$ and $B_0=6.83\,\mathrm T$, the source obtains
+$I_{\rm req}=14.3\,\mathrm{MA}$.
 
-For the reference point $a=1.34\,\mathrm m$ and $B_0=6.83\,\mathrm T$, the paper
-finds $I_{\rm req}=14.3\,\mathrm{MA}$. This is a demanded current, not a performance
-target selected because it is easy to sustain.
+\designconsequence{The confinement requirement fixes the current. Its poloidal field
+must leave sufficient field-line twist for the adopted stability criterion.}
 
-\imagebrief{Reset derivation sketch: confinement requirement becomes current demand}
-{Show a left-to-right chain: ignition power balance gives $\tau_{E,\rm req}$; the
-explicit empirical fit gives $\tau_E(I)$; equating them produces $I_{\rm req}$. Put
-the words "fit, not theorem" directly beneath the confinement-law block. Include the
-weak $B_0^{-0.16}$ and strong $a^{1.63}$ reference scaling.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_confinement_to_current.pdf}
-  \caption{Reset derivation sketch: confinement requirement becomes current demand. \schematicnote}
-  \label{fig:figS_confinement_to_current}
-\end{figure}
-
-
-% ============================= PAGE 60 ==============================
-\newpage
 \section*{60. High required current immediately tests field-line twist}
 
 The safety factor was introduced as the number of toroidal circuits made by a field
@@ -2202,28 +2102,24 @@ $B_\theta\sim\mu_0I/(2\pi a)$; the shape factor records the paper's chosen elong
 correction. Thus substituting $I_{\rm req}$, not an independently chosen current,
 produces the required $q_*$.
 
-Why does a lower $q_*$ matter? A current-carrying plasma column contains free energy.
-A helical displacement can bend and reconnect the field in a way that releases some
-of that current-associated magnetic energy. The exact stability boundary depends on
-current profile, pressure profile, wall response, rotation, and mode number. The
+A helical displacement can release magnetic energy associated with the plasma current.
+The ideal-MHD kink criterion depends on current and pressure profiles, wall response,
+rotation and mode number.
+
+The
 reference model uses the practical external-kink/disruption condition
 \begin{equation}
  q_*\ge q_K,\qquad q_K\simeq2.
 \label{eq:kink-boundary}
 \end{equation}
-Here a disruption means an abrupt loss of controlled plasma equilibrium and
-confinement, commonly accompanied by a rapid current termination and large transient
-loads. The mechanism is MHD current-driven instability; the numerical threshold is a
-stated model boundary, not a number obtained by setting two elementary equations
-equal.
+\samplemodel{The adopted threshold represents a practical external-kink/disruption
+boundary. A disruption is an abrupt loss of controlled equilibrium and confinement,
+often followed by rapid current termination and large transient loads.}
 
-\supportingquantity{kink ratio}{The transparent test is
-$\mathcal R_K=q_K/q_*$. It is below one only when the demanded current leaves enough
-field-line twist to meet the adopted kink-safety criterion.}
+The ratio is $\mathcal R_K=q_K/q_*$: raising the demanded current lowers $q_*$ and
+increases this ratio.
 
-% ============================= PAGE 61 ==============================
-\newpage
-\section*{61. The four tests are now motivated, not imported}
+\section*{61. Four tests at one operating point}
 
 At the same reference design point, evaluate four distinct ratios:
 \begin{align}
@@ -2240,31 +2136,15 @@ At the same reference design point, evaluate four distinct ratios:
  &&
  \label{eq:ratio-bootstrap}
 \end{align}
-Units in the Greenwald and normalized-beta forms are the conventional MA--m--T units
-stated earlier. Each ratio has a different physical origin:
+The Greenwald expression uses $I$ in MA and $a$ in m; its density comparison follows
+the reference model's averaging convention. The Troyon expression here uses beta in
+percent and $B_0$ in T, so the adopted normalized coefficient is $\beta_N=2.8$.
+$\mathcal R_B$ compares the required bootstrap fraction $f_B$ with the calculated
+neoclassical fraction $f_{\rm NC}$.
 
-\begin{itemize}
-\item $\mathcal R_G$ checks the experimentally observed density boundary introduced
-on page 35;
-\item $\mathcal R_T$ checks pressure against the practical MHD beta allowance
-motivated on pages 33--34;
-\item $\mathcal R_K$ checks the current-driven kink boundary just explained;
-\item $\mathcal R_B$ checks whether non-inductive current sources can replace the
-required current in steady state.
-\end{itemize}
+\designconsequence{Confinement-driven current enters all four comparisons. We test
+density, pressure and twist first, then calculate the available bootstrap share.}
 
-The notation makes the decision rule uniform but does not erase the different kinds
-of evidence behind the four denominators. A claim that the reactor "passes plasma
-physics" will be permitted only after every one of these ratios is shown, with its
-assumptions, at the same design point.
-
-\designconsequence{The current required by confinement appears in every test: directly
-in $n_G$, $\beta_T$, and $q_*$, and indirectly in the current balance. This is why
-the conventional-tokamak difficulty has a common root rather than four unrelated
-problems.}
-
-% ============================= PAGE 62 ==============================
-\newpage
 \section*{62. First audit: the density requirement}
 
 The fusion-power calculation demands the reference average density
@@ -2283,16 +2163,11 @@ Therefore
  \mathcal R_G=\frac{1.43}{2.54}=0.56<1.
 \label{eq:greenwald-reference}
 \end{equation}
-The baseline passes this particular test with margin. That result is valuable: it
-shows the later failure is not created by declaring every well-known limit violated.
+The reference point lies below the adopted density boundary.
 
-\model{The use of the Greenwald relation at reactor scale remains an extrapolation.
-The conclusion here is only that the 2015 baseline lies below the boundary assumed by
-that model. It is not a first-principles proof that such a density is attainable in a
-burning reactor.}
+\samplescope{This comparison reproduces the source's density convention and
+reactor-scale extrapolation of the Greenwald relation.}
 
-% ============================= PAGE 63 ==============================
-\newpage
 \section*{63. Second audit: pressure is barely allowed}
 
 The same reference design requires
@@ -2310,16 +2185,12 @@ Thus
  \mathcal R_T=\frac{4.13}{4.39}=0.94<1.
 \label{eq:troyon-reference}
 \end{equation}
-The comparison passes, but only narrowly. It is not a reserve that can be spent
-silently on profile changes, control margin, or modelling error.
+The reference point passes with little beta margin for profile changes, control
+reserve or modelling uncertainty.
 
-\model{The $2.8$ coefficient is the reference model's Troyon-normalized-beta
-assumption. A different equilibrium, wall, profile, or stability-control model can
-change it. The algebra above is exact once that assumption and its conventional units
-are stated; the coefficient itself is not derived from the algebra.}
+\samplescope{The normalized coefficient $2.8$ is the source's stability allowance;
+its applicability depends on equilibrium, wall, profile and control assumptions.}
 
-% ============================= PAGE 64 ==============================
-\newpage
 \section*{64. Third audit: the confinement-driven current fails the kink test}
 
 Insert the same demanded current into Eq.~\eqref{eq:freidberg-qstar}. The reference
@@ -2332,31 +2203,14 @@ The adopted disruption-avoidance threshold is $q_K\simeq2$, so
  \mathcal R_K=\frac{2}{1.56}=1.28>1.
 \label{eq:kink-reference}
 \end{equation}
-This is a failure of the stated baseline. The required current produces insufficient
-edge field-line twist for the adopted kink-safety margin.
+The demanded current leaves insufficient edge twist for the adopted kink criterion.
+Reducing it would raise $q_*$, while lowering the confinement time predicted by the
+same baseline regression.
 
-Notice the causal chain. The kink problem was not inserted after the reactor was
-chosen. Electric output and wall loading demanded pressure and volume; ignition
-demanded $\tau_E$; the confinement fit demanded $I$; that $I$ forced $q_*$ below the
-adopted stability boundary. Reducing current would improve $q_*$, but would then fail
-to provide the empirical confinement time used in the baseline.
+\designconsequence{The reference current fails the kink test. Its steady-state
+supply must also be checked against external drive and bootstrap current.}
 
-\imagebrief{Causal failure sketch: why the kink ratio exceeds one}{Draw the chain
-$P_E,W_n\rightarrow p,V\rightarrow\tau_{E,\rm req}\rightarrow I_{\rm req}
-\rightarrow q_*\rightarrow\mathcal R_K$. Mark the last comparison
-$1.28>1$ as a reference-model failure. Include a note that $q_K\simeq2$ is a
-profile/wall-dependent stability-model input.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_kink_failure_chain.pdf}
-  \caption{Causal failure sketch: why the kink ratio exceeds one. \schematicnote}
-  \label{fig:figS_kink_failure_chain}
-\end{figure}
-
-
-% ============================= PAGE 65 ==============================
-\newpage
-\section*{65. Fourth audit begins with a current ledger, not a magic bootstrap number}
+\section*{65. Fourth audit: the required bootstrap share}
 
 A steady-state tokamak cannot rely on a transformer indefinitely. Its current ledger
 must be
@@ -2371,8 +2225,7 @@ Divide by the required total current:
  f_B=1-\frac{I_{\rm CD}}{I}.
 \label{eq:required-bootstrap}
 \end{equation}
-This equation is only charge accounting. It does not claim that the plasma can supply
-the required $f_B$.
+This is a current accounting identity; the two sources must supply its terms.
 
 For the reference recirculating-power and lower-hybrid current-drive model, the paper
 obtains $I_{\rm CD}=2.25\,\mathrm{MA}$. With $I=14.3\,\mathrm{MA}$,
@@ -2380,27 +2233,17 @@ obtains $I_{\rm CD}=2.25\,\mathrm{MA}$. With $I=14.3\,\mathrm{MA}$,
  f_B=1-\frac{2.25}{14.3}=0.84.
 \label{eq:required-bootstrap-reference}
 \end{equation}
-The required bootstrap fraction is therefore very large because the demanded current
-is large while economically permitted external drive is limited.
+A large total current and limited external-drive allowance demand a large bootstrap
+share. The attainable fraction $f_{\rm NC}$ follows from the kinetic closure,
+pressure profiles and magnetic geometry.
 
-The next task is not to announce a bootstrap limit from nowhere. We must derive the
-physical source of bootstrap current from trapped-particle collisional asymmetry, state
-the selected neoclassical current-density model, and integrate it over the declared
-profiles to obtain the achievable fraction $f_{\rm NC}$. Only then can we evaluate
-$\mathcal R_B=f_B/f_{\rm NC}$.
+\designconsequence{The ledger requires $f_B=0.84$. Trapped-particle dynamics and
+radial gradients determine how much self-current the plasma can supply.}
 
-\designconsequence{Three audited comparisons now exist: density passes, beta is
-marginal, and kink safety fails. The remaining steady-state test will ask whether the
-pressure gradients that help make fusion power can naturally supply enough current to
-replace what the transformer cannot.}
-
-% ============================= PAGE 66 ==============================
-\newpage
 \section*{66. Where bootstrap current actually comes from}
 
-Page 36 established the first ingredient: a torus has trapped as well as passing
-particles. Page 37 stated the second: the pressure falls from the hot, dense core
-toward the edge. Put those facts together, but do not yet call the result a formula.
+Sections~36--37 introduced trapped particles and an outward-decreasing pressure
+profile. Their coupling provides the bootstrap drive.
 
 In a uniform straight field, particles moving parallel to $\mathbf B$ in the two
 directions can cancel one another's current. In a torus, trapped particles bounce
@@ -2411,34 +2254,17 @@ then separate the two populations slightly. Collisions transfer part of that imb
 between trapped and passing particles. The cancellation of parallel electron motion is
 therefore incomplete: a toroidal current remains.
 
-The energy source is not mysterious. It is the pressure profile itself. Flatten the
-profile so that $dp/dr=0$, and the drive disappears. Make the profile steeper, and the
-available drive grows, while the pressure-gradient stability burden grows with it.
-This is precisely why bootstrap current belongs in the same closure problem as beta
+The pressure profile supplies the free energy. Flattening the density and temperature
+profiles removes this drive; steepening them increases the drive and the associated
+stability burden. Bootstrap current belongs in the same closure calculation as beta
 and kink safety.
 
-\imagebrief{Physics sketch: from trapped particles to bootstrap current}{Draw a
-small annular plasma shell. On the inboard side show stronger field and trapped
-electron bounce points; on the outboard side show passing electrons. Add an outward
-pressure-gradient arrow and a collision arrow transferring the trapped-particle
-asymmetry to passing electrons. End with a modest toroidal-current arrow labelled
-``incomplete cancellation,'' not ``free current.''}
+\samplefigure{\includegraphics[width=.92\linewidth]{figures/final/figS_bootstrap_from_trapped.pdf}}{Trapped orbits, radial gradients and collisional coupling produce a parallel-current imbalance. The kinetic closure quantifies its magnitude.\label{fig:figS_bootstrap_from_trapped}}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_bootstrap_from_trapped.pdf}
-  \caption{Physics sketch: from trapped particles to bootstrap current. \schematicnote}
-  \label{fig:figS_bootstrap_from_trapped}
-\end{figure}
+\designconsequence{Pressure gradients can supply part of the required current.
+Quantifying that share requires a kinetic closure on the same profiles and geometry.}
 
-
-\designconsequence{The pressure gradient that is required to make fusion power also
-creates a possible self-current. Whether it is large enough is not an independent
-choice: it must be calculated from a kinetic model, the same profiles, and the
-magnetic geometry already demanded by the reactor.}
-
-% ============================= PAGE 67 ==============================
-\newpage
-\section*{67. The first irreducibly kinetic input is declared, not smuggled in}
+\section*{67. The kinetic closure for bootstrap current}
 
 The mathematical object behind the preceding paragraph is a drift-kinetic equation.
 In schematic form for a distribution function $f(\mathbf x,\mathbf v)$ it is
@@ -2449,10 +2275,7 @@ In schematic form for a distribution function $f(\mathbf x,\mathbf v)$ it is
  \label{eq:drift-kinetic-schematic}
 \end{equation}
 Here $\mathbf b=\mathbf B/B$, $\mathbf v_d$ represents the guiding-center drifts,
-and $C[f]$ is the Coulomb collision operator. Solving Eq.~\eqref{eq:drift-kinetic-schematic}
-with trapped orbits is beyond a first course in differential equations; writing a
-number for it without acknowledgement would be worse than leaving a difficult step
-visible.
+and $C[f]$ is the Coulomb collision operator. Trapped orbits and collisional coupling enter through this kinetic description.
 
 Freidberg, Mangiarotti, and Minervini therefore choose a particular large-aspect-ratio,
 low-collisionality neoclassical closure. They assume equal ion and electron
@@ -2468,19 +2291,11 @@ Their local bootstrap-current model is their Eq.~(41):
  \left(\frac1n\frac{dn}{dr}+0.055\,\frac1T\frac{dT}{dr}\right).
  \label{eq:freidberg-local-bootstrap}
 \end{equation}
-The coefficient $2.44$ and the relative temperature-gradient weight $0.055$ are the
-kinetic closure, expressed in the paper's conventional working units; they are not
-deducible from Maxwell's equations and elementary calculus alone. Everything from
-this point onward---the gradients, the poloidal field, the area integral, and the
-comparison with the required fraction---can and will be shown explicitly.
+\samplemodel{Equation~\eqref{eq:freidberg-local-bootstrap} is the source's Eq.~(41),
+a large-aspect-ratio, low-collisionality closure for $T_i=T_e$ and $Z=1$.
+Its coefficients include the kinetic response. Gradients, poloidal field and the area
+integral are evaluated explicitly below.}
 
-\model{Equation~\eqref{eq:freidberg-local-bootstrap} is a declared neoclassical
-model, not a universal bootstrap law. Its regime assumptions, effective charge,
-collisionality treatment, and chosen profiles are part of the result. The accessible
-source is Freidberg, Mangiarotti, and Minervini (2015), Eq.~(41).}
-
-% ============================= PAGE 68 ==============================
-\newpage
 \section*{68. The selected profiles make the pressure-gradient term calculable}
 
 The same paper does not leave $n(r)$ and $T(r)$ implicit. Its standard-profile choice
@@ -2521,17 +2336,14 @@ then gives, with $2.44(1.110)(2.5)=6.77\simeq6.8$,
  \frac{\rho^{3/2}(1-\rho^2)^{1/2}}{B_\theta(\rho)}.
  \label{eq:bootstrap-profiled-current}
 \end{equation}
-The sign convention is now carried by the direction chosen for $B_\theta$ and plasma
-current. The useful content is transparent: this model predicts a current density
-which vanishes at the axis and edge and is driven in the finite-gradient interior.
+The direction follows the conventions for $B_\theta$ and current. The radial shape
+also depends on $B_\theta(\rho)$, which comes from the total-current profile.
 
-% ============================= PAGE 69 ==============================
-\newpage
 \section*{69. The poloidal field is obtained from the assumed total-current profile}
 
-Equation~\eqref{eq:bootstrap-profiled-current} still contains $B_\theta(\rho)$.
-It cannot be chosen after seeing the desired answer: it is produced by the total
-plasma-current profile. The paper selects
+The total-current profile determines the remaining denominator $B_\theta(\rho)$.
+The paper selects
+
 \begin{equation}
  J_T(\rho)=\frac{I}{\pi\hat a^2}\frac{9\rho^{1/4}}8
  \frac{\alpha^2(1-x)e^{\alpha x}}{e^\alpha-1-\alpha},
@@ -2567,12 +2379,13 @@ Ampere's law $2\pi rB_\theta=\mu_0I_{\rm enc}$ now gives
  \right].
  \label{eq:freidberg-btheta}
 \end{equation}
-This is the missing magnetic denominator in the bootstrap calculation. No additional
-machine component has appeared; we have only made the previously required current
-profile explicit.
+At $\rho=1$, $I_{\rm enc}=I$ and $b_\theta=1$, confirming the normalization.
+Near the axis the selected profile gives $b_\theta\propto\rho^{5/4}$, so the bootstrap
+current density scales as $\rho^{1/4}$ and remains regular.
 
-% ============================= PAGE 70 ==============================
-\newpage
+\designconsequence{The total-current profile fixes the poloidal field. Integrating
+the resulting bootstrap density gives the available current share.}
+
 \section*{70. Integrate the local current, then test the steady-state requirement}
 
 In the area-equivalent circular cross-section, $dA=2\pi\hat a^2\rho\,d\rho$ after
@@ -2592,9 +2405,10 @@ constants. Since $4\pi^2(6.8)=268.5$, the result is the paper's Eq.~(44):
  \int_0^1\frac{\rho^{5/2}(1-\rho^2)^{1/2}}{b_\theta(\rho)}\,d\rho.
  \label{eq:freidberg-bootstrap-fraction}
 \end{equation}
-This integral has no elementary antiderivative. That is not a gap in the argument: it
-is a fully specified one-dimensional numerical quadrature. With $\alpha=2.53$, its
-dimensionless value is $0.318$ (three significant figures). For the reference point,
+Numerical quadrature at $\alpha=2.53$ gives the dimensionless integral $0.318$
+(to three significant figures).
+
+For the reference point,
 \begin{equation}
  \kappa=1.70,\quad \hat a=\sqrt{1.70}(1.34\,\mathrm m)=1.747\,\mathrm m,
  \quad \bar p=7.57\,\mathrm{atm},\quad R_0=5.34\,\mathrm m,\quad
@@ -2613,18 +2427,15 @@ The audited comparison is therefore
  \mathcal R_B=\frac{f_B}{f_{\rm NC}}=\frac{0.84}{0.44}=1.91>1.
  \label{eq:bootstrap-reference-ratio}
 \end{equation}
-This is a failure of the selected standard-profile neoclassical model: its calculated
-self-current is about half the required self-current. It is not a proof that no
-tokamak can ever operate steadily.
+The selected standard-profile model supplies about half the required self-current.
 
-% ============================= PAGE 71 ==============================
-\newpage
-\section*{71. What the four tests have, and have not, established}
+\section*{71. The two coupled closure failures}
 
-The baseline can now be read as one causal argument rather than a bag of named limits:
+The reference point gives:
+
 \begin{center}
-\begin{tabular}{l c c l}
-\textbf{Test} & \textbf{ratio} & \textbf{status} & \quad\textbf{meaning}\\
+\begin{tabular}{l c l p{.37\textwidth}}
+\textbf{Test} & \textbf{ratio} & \textbf{status} & \textbf{meaning}\\
 \hline
 Greenwald density & $\mathcal R_G=0.56$ & passes & density is below the adopted empirical boundary\\
 Troyon beta & $\mathcal R_T=0.94$ & marginal & pressure is near the adopted MHD boundary\\
@@ -2632,36 +2443,14 @@ Kink safety & $\mathcal R_K=1.28$ & fails & required current gives too little $q
 Bootstrap closure & $\mathcal R_B=1.91$ & fails & calculated self-current is below required current share
 \end{tabular}
 \end{center}
-The first two boundaries are empirical or model-dependent operating margins. The last
-two failures are coupled: fusion mission and wall loading demand $p$ and volume;
-ignition and the confinement fit demand $I$; that current lowers $q_*$, while the
-same pressure profile can supply only a limited bootstrap share under the declared
-kinetic model.
+The mission demands pressure and volume; ignition and confinement demand current.
+That current lowers $q_*$, while the chosen pressure profile supplies only a limited
+bootstrap share under the kinetic closure.
 
-\imagebrief{Reset sketch: the conventional baseline's two coupled closure failures}{
-Draw one concise logic map. Mission and wall loading lead to $p,V$; ignition and the
-confinement fit lead to $I$. Split into two branches: $I\rightarrow q_*\rightarrow
-\mathcal R_K=1.28>1$, and pressure profile plus trapped-particle kinetic model
-$\rightarrow f_{\rm NC}=0.44$ compared with $f_B=0.84$, hence
-$\mathcal R_B=1.91>1$. Keep density and beta as side checks marked pass and marginal.
-Label every threshold or regression as model/empirical rather than first principle.}
+\designconsequence{The reference point fails kink safety and steady-state current
+supply. We must test whether another size in the same family closes both.}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_two_closure_failures.pdf}
-  \caption{Reset sketch: the conventional baseline's two coupled closure failures. \schematicnote}
-  \label{fig:figS_two_closure_failures}
-\end{figure}
-
-
-\designconsequence{The conventional reference point is not rejected because a named
-limit appeared from the left field. It fails two explicit closure tests after their
-physical origin, profile assumptions, and calculation have been exposed. The next
-question is which previously declared demands can be changed together without simply
-moving the failure elsewhere.}
-
-% ============================= PAGE 72 ==============================
-\newpage
-\section*{72. A reference point is not a design-space conclusion}
+\section*{72. Extending the calculation across machine size}
 
 The reference point $a=1.34\,\mathrm m$ was chosen in the source by imposing
 $R_0/a=4$. It is a useful check, but it cannot establish that the conventional
@@ -2680,11 +2469,9 @@ For every trial $a$, the source's analytic radial-build convention supplies
  \quad b=1.20\,\mathrm m,\quad B_{\max}=13\,\mathrm T.
  \label{eq:freidberg-b0-scan}
 \end{equation}
-Its TF-coil stress and winding-pack model then determines $c(a)$; the plasma
-calculation does not get to prescribe $c$ afterward. This is an important bookkeeping
-point. The physical build developed earlier explains why the magnet has finite radial
-thickness. Equation~\eqref{eq:freidberg-b0-scan} is the particular reduced
-convention required to reproduce this paper's numerical scan.
+The TF-coil stress and winding-pack model determines $c(a)$ and bounds the
+geometrically admissible range. Equation~\eqref{eq:freidberg-b0-scan} retains the
+analytic field convention stated in \S54.
 
 The already-derived power and ignition relations become compact functions of $a$:
 \begin{equation}
@@ -2693,16 +2480,15 @@ The already-derived power and ignition relations become compact functions of $a$
  \tau_E(a)=0.81a^{1/2}\ \mathrm s.
  \label{eq:freidberg-state-scan}
 \end{equation}
-These are not new laws of nature. They are the stated mission, profile, and
-wall-loading model expressed as a one-parameter family.
+These functions retain the baseline mission, profile and wall-loading assumptions;
+$a$ is entered in metres.
 
-% ============================= PAGE 73 ==============================
-\newpage
 \section*{73. The current-drive allowance must move with the trial design}
 
-In the reference case, $I_{\rm CD}=2.25\,\mathrm{MA}$ was obtained from a fixed
-recirculating-power allowance. A scan must not hold that number fixed when density,
-field, and size change. The power allocated to waves is
+The external-drive allowance changes with density, field and size. At each trial
+radius, calculate it from the same recirculating-power budget.
+
+The power allocated to waves is
 \begin{equation}
  P_{\rm CD}=\eta_{\rm RF}\eta_{\rm kly}f_{\rm RP}P_E
  =(0.80)(0.50)(0.10)P_E=40\,\mathrm{MW}.
@@ -2738,16 +2524,10 @@ $I_{\rm CD}(a)=P_{\rm CD}\eta_{\rm CD}/[R_0(a)\bar n(a)]$, and finally
  f_B(a)=1-\frac{I_{\rm CD}(a)}{I(a)}.
  \label{eq:bootstrap-demand-scan}
 \end{equation}
-This is why the bootstrap-demand curve cannot be drawn from the single reference
-fraction alone.
+\samplemodel{The lower-hybrid efficiency and accessibility relations specify the
+source's current-drive closure at $\rho_m\simeq0.8$. Holding wave power fixed still
+allows $I_{\rm CD}$ to vary with the trial design.}
 
-\model{Equations~\eqref{eq:freidberg-current-drive-efficiency}--
-\eqref{eq:lower-hybrid-frequencies} are a specified lower-hybrid current-drive model,
-not a universal efficiency theorem. They are included because the scan needs its
-assumptions exposed as clearly as the bootstrap model did.}
-
-% ============================= PAGE 74 ==============================
-\newpage
 \section*{74. Four ratio functions, one admissibility question}
 
 For each permitted $a$, use the confinement regression and the relations above to
@@ -2762,7 +2542,7 @@ obtain $I(a)$, then calculate
 The denominator in the first line is in the usual Greenwald units. The $2.8$ in the
 second line is the stated Troyon-normalized-beta model input, in percent convention.
 The $2$ in the third line is the adopted kink-safety threshold. The final denominator
-is the profile-integrated neoclassical result derived on pages 66--70.
+is the profile-integrated neoclassical result derived in \S\S66--70.
 
 The calculation has a clean pass rule:
 \begin{equation}
@@ -2774,15 +2554,11 @@ The scan used here is implemented in the accompanying transparent arithmetic fil
 \begin{center}
 \texttt{freidberg\_baseline\_scan.py}
 \end{center}
-It evaluates the published analytic coil, confinement, lower-hybrid, and bootstrap
-closures directly; it does not fit a curve to the source's published figure.
+It evaluates the analytic coil, confinement, lower-hybrid and bootstrap closures directly.
 
-\designconsequence{A claimed ``operating window'' is an intersection, not four
-separate checks. Changing $a$ is acceptable only if it reduces the largest violation
-without raising another ratio above one.}
+\designconsequence{An operating window requires the intersection of all four
+allowances. The scan tests whether changing size can produce that intersection.}
 
-% ============================= PAGE 75 ==============================
-\newpage
 \section*{75. The conventional baseline has no simultaneous window in the scan}
 
 The table below gives representative outputs of the fully disclosed calculation. The
@@ -2799,62 +2575,46 @@ $a$ (m) & $\mathcal R_G$ & $\mathcal R_T$ & $\mathcal R_K$ & $\mathcal R_B$
 \hline
 0.40 & 0.72 & 2.31 & 3.56 & 0.53 & 3.56\\
 0.80 & 0.64 & 1.21 & 1.66 & 1.00 & 1.66\\
-1.00 & 0.61 & 1.03 & 1.40 & 1.28 & 1.40\\
-1.05 & 0.61 & 1.00 & 1.36 & 1.36 & 1.36\\
+1.00 & 0.61 & 1.03 & 1.39 & 1.28 & 1.39\\
+1.05 & 0.61 & 1.00 & 1.35 & 1.36 & 1.36\\
 1.20 & 0.58 & 0.95 & 1.29 & 1.62 & 1.62\\
-1.34 & 0.56 & 0.94 & 1.28 & 1.91 & 1.91\\
-1.60 & 0.52 & 1.02 & 1.50 & 2.62 & 2.62
+1.34 & 0.56 & 0.94 & 1.29 & 1.91 & 1.91\\
+1.60 & 0.52 & 1.02 & 1.49 & 2.62 & 2.62
 \end{tabular}
 \end{center}
 
-The least-violating sampled point is near $a=1.05\,\mathrm m$, but it still has
-$\mathcal R_K\simeq1.36$ and $\mathcal R_B\simeq1.36$. No row makes all four
-ratios at most one. This independently reproduces the logical content of the source's
-Fig.~5: shrinking the machine makes kink and beta worse; enlarging it eventually makes
-the required bootstrap share worse. Greenwald density is not the bottleneck in this
-baseline family.
+The table is rounded to two decimals; a displayed ratio of $1.00$ can lie slightly above unity.
+The scan uses rounded analytic coefficients, so its ratios can differ slightly from
+the source reference-point values quoted in \S\S62--70.
 
-\imagebrief{Reset plot: reproducible four-ratio scan versus minor radius}{Plot the
-four calculated ratios from \texttt{freidberg\_baseline\_scan.py} against $a$.
-Add a horizontal pass line at one, shade only the region above one, and mark the
-least-violating point near $a=1.05\,\mathrm m$. Label the plot ``2015 baseline
-models,'' not a universal tokamak limit. Do not add ST or HTS hardware.}
+The least-violating sampled point is near $a=1.05\,\mathrm m$, with both
+$\mathcal R_K\simeq1.35$ and $\mathcal R_B\simeq1.36$. Across the scan, decreasing
+size worsens kink and beta, while increasing size raises the bootstrap requirement
+relative to the available share. Greenwald density remains below its boundary.
+This reproduces the trade shown in the source's Fig.~5.
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS75_four_ratio_scan.pdf}
-  \caption{Reset plot: reproducible four-ratio scan versus minor radius. \schematicnote}
-  \label{fig:figS75_four_ratio_scan}
-\end{figure}
+\samplefigure{\includegraphics[width=.92\linewidth]{figures/final/figS75_four_ratio_scan.pdf}}{The four demand-to-allowance ratios for the 2015 baseline. Simultaneous admissibility requires every curve at or below unity.\label{fig:figS75_four_ratio_scan}}
 
-
-% ============================= PAGE 76 ==============================
-\newpage
 \section*{76. The first conventional conclusion is conditional and specific}
 
-We can now state precisely what has been demonstrated. Within the chosen mission,
-wall-loading, blanket, TF-coil, confinement, lower-hybrid-current-drive,
-standard-profile, and neoclassical-bootstrap models, changing conventional tokamak
-size alone does not close both the kink and steady-state current requirements.
+Within the chosen mission, wall-loading, blanket, TF-coil, confinement, lower-hybrid,
+standard-profile and neoclassical-bootstrap models, changing size alone does not close
+both kink safety and steady-state current supply.
 
-This is a strong result, but it is not a slogan about fusion. It does \emph{not} prove
-that conventional tokamaks cannot operate, that advanced scenarios cannot improve
-profiles, or that a modern magnet system cannot alter the trade. It identifies the
-two demands that any proposed remedy must address: lower the confinement-driven total
-current, and/or increase the allowed current and field-line-twist margin without
-merely transferring the burden to beta, wall loading, or recirculating power.
+A remedy must reduce the confinement-driven current or improve the available current
+supply and twist margin while retaining the other allowances. The next tests vary
+confinement ($H$), then the engineering field ceiling ($B_{\max}$), before changing
+the plant mission and geometry.
 
-The next section of the 2015 paper tests remedies in a disciplined order. First it
-asks what improved confinement ($H>1$) buys and what beta margin it costs. Second it
-raises the engineering field ceiling $B_{\max}$---the point at which a modern
-HTS-enabled magnet discussion becomes relevant. Only after those conventional
-trade-offs are visible will the thesis introduce alternative aspect-ratio geometry.
+\designconsequence{The baseline identifies the current-closure problem that improved
+confinement and higher field must solve. HTS enters when the required field exceeds
+the conventional magnet model.}
 
-\designconsequence{The conventional baseline has now earned the question ``what
-changes the current closure?'' High field and HTS enter next as a response to a
-calculated failure, not as an unmotivated technology preference.}
 
-% ============================= PAGE 77 ==============================
-\newpage
+\clearpage
+\setcounter{page}{108}
+\setcounter{figure}{35}
+\let\theHfigure\sampleOriginalHfigure
 \section*{77. Remedy one: what an $H$ factor does and does not mean}
 
 The first remedy in the 2015 paper does not add a new piece of hardware. It asks
