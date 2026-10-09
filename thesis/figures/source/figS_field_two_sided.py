@@ -3,7 +3,7 @@
 from sketch_base import *
 
 fig, ax = new(h=3.1)
-node(ax, 3.5, 2.55, 1.9, 0.44, "raise $B_{\\max}$ at the coil", "chosen")
+node(ax, 3.5, 2.55, 3.4, 0.62, "After baseline closure:\nraise $B_{\\max}$ at the coil", "chosen")
 
 # left: what it buys
 node(ax, 1.5, 1.45, 1.9, 0.44, "higher $B_0$ at fixed build", "derived")
@@ -28,9 +28,6 @@ ax.text(3.55, 0.02, "and a thicker coil eats the very radial build\n"
                     "that was supposed to deliver the higher $B_0$",
         fontsize=8, ha="center", va="top", color=PALETTE["current"])
 
-arrow(ax, (6.7, 2.55), (7.6, 2.55), color="0.45", ls=(0, (4, 2)), lw=1.4)
-ax.text(7.65, 2.55, "test only AFTER\nbaseline closure", fontsize=8,
-        ha="left", va="center", color="0.35")
 ax.set_xlim(0, 9.3); ax.set_ylim(-0.55, 3.3)
 save(fig, "figS_field_two_sided",
      "Explanatory sketch. No magnet technology, vendor or numerical performance "

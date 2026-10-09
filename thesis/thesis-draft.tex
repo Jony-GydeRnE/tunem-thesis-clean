@@ -991,10 +991,12 @@ confinement this machine must sustain to produce useful fusion power.
 % End of authorized compression sample v4. Later sections unchanged.
 \clearpage
 % Retain legacy page references in the unchanged later sections.
-\setcounter{page}{39}
+\setcounter{page}{19}
 \setcounter{equation}{52}
 \setcounter{figure}{14}
 \let\theHfigure\sampleOriginalHfigure
+\setcounter{figure}{16}
+\renewcommand{\theHfigure}{blocktwo.\arabic{figure}}
 \section*{25. From individual collisions to a fusion-power density}
 
 Consider a small volume $dV$ containing $n_DdV$ deuterons and $n_TdV$ tritons.
@@ -1013,9 +1015,8 @@ volume:
  \langle\sigma v\rangle=\int_0^\infty \sigma(v)v\,f_{\rm rel}(v)\,dv .
  \label{eq:reaction-rate}
 \end{equation}
-The brackets are an average, not a new force law. All difficult nuclear physics is
-contained in the measured cross section $\sigma(v)$; all thermal statistics is
-contained in $f_{\rm rel}(v)$.
+The measured cross-section $\sigma(v)$ supplies the nuclear reaction probability;
+$f_{\rm rel}(v)$ supplies the thermal statistics.
 
 If each reaction releases total energy $E_f=17.6\,\mathrm{MeV}$, then
 \begin{equation}
@@ -1024,26 +1025,16 @@ If each reaction releases total energy $E_f=17.6\,\mathrm{MeV}$, then
  P_{\rm fus}=p_{\rm fus}V.
  \label{eq:pfus-exact}
 \end{equation}
-This is the exact starting point behind the proportional sign on page 17. It says
-why a fusion plant cannot be discussed using temperature alone: density, volume, and
-the sharply temperature-dependent reactivity all matter.
+This gives the factors behind the scaling in §17: density, volume and the
+temperature-dependent reactivity jointly determine fusion output.
 
-\supportingquantity{$\langle\sigma v\rangle(T)$}{The D--T reactivity turns a chosen
-temperature into a fusion-rate coefficient in Eq.~\eqref{eq:reaction-rate}. It is
-a measured nuclear input, not a free reactor-design variable and not something this
-thesis should replace with an unsupported universal formula.}
-
-\model{Equation~\eqref{eq:reaction-rate} assumes independent binary collisions and
+\samplemodel{Equation~\eqref{eq:reaction-rate} assumes independent binary collisions and
 a thermal distribution. At reactor density, D--T fusion remains dilute enough for that
 description; collective plasma physics controls confinement, not the short-range
 nuclear reaction once two ions meet.}
 
-\designconsequence{Fusion output grows with a product of densities. The next question
-is therefore a design question: for a fixed amount of fuel, which mixture makes that
-product largest?}
+\designconsequence{Fusion output depends on the product $n_Dn_T$. At fixed fuel density, the mixture must maximize that product.}
 
-% ============================= PAGE 26 ==============================
-\newpage
 \section*{26. Why the fuel mixture is nearly fifty--fifty}
 
 Let the total fuel-ion density be fixed:
@@ -1068,43 +1059,22 @@ at $x=1/2$. Thus
  p_{\rm fus}=\frac14n_i^2\langle\sigma v\rangle E_f.
  \label{eq:pfus-5050}
 \end{equation}
-This is an unusually clean design conclusion: equal fuel fractions maximize fusion
-opportunities at fixed total ion density and temperature.
+Equal fuel fractions maximize the reaction rate at fixed total fuel-ion density and temperature.
 
 The pressure used in magnetic confinement also includes electrons. A quasi-neutral
-50--50 D--T mixture has electron density $n_e=n_i$. If the ions and electrons share
+50--50 D--T mixture has electron density $n_e=n_i$. We write the primary fuel
+density as $n\equiv n_i$. If the ions and electrons share
 a temperature $T$ measured in energy units, their ideal-gas pressures add:
 \begin{equation}
  p=(n_i+n_e)T=2n_iT.
  \label{eq:plasma-pressure}
 \end{equation}
 Combining Eqs.~\eqref{eq:pfus-5050} and \eqref{eq:plasma-pressure} explains the
-scaling chain on page 17, but with its factors visible: at fixed $T$,
+scaling chain on §17, but with its factors visible: at fixed $T$,
 $n_i=p/(2T)$ and hence $p_{\rm fus}\propto p^2$.
 
-\freidbergvariable{$T$, $n$, and $p$}{For the equal 50--50 mixture used here,
-$n_i$ is the primary fuel-density variable $n$, and $p=2nT$. A claimed gain in
-density at fixed magnetic field must therefore be checked against the pressure and
-density limits separately.}
+\designconsequence{The density needed for fusion also creates pressure. The same fuel state must satisfy the magnetic-pressure and density constraints.}
 
-\imagebrief{Physics sketch: counting fusion pairs}{Make a small conceptual graphic
-with two boxes containing the same total number of fuel ions: one unequal D--T mixture,
-one equal mixture. Show the pair count proportional to $n_Dn_T$ and the completed-square
-maximum at $n_D=n_T$. This is a reset explanatory sketch, not a machine drawing.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_fusion_pairs.pdf}
-  \caption{Physics sketch: counting fusion pairs. \schematicnote}
-  \label{fig:figS_fusion_pairs}
-\end{figure}
-
-
-\designconsequence{The density needed for power also creates pressure. The magnetic
-field must therefore confine not only charged particles one at a time, but the
-collective pressure of the mixture.}
-
-% ============================= PAGE 27 ==============================
-\newpage
 \section*{27. Where the fusion energy goes decides what the machine must add}
 
 The D--T products are an alpha particle and a neutron. In the center-of-mass frame
@@ -1116,42 +1086,19 @@ $E_\alpha=p^2/(2m_\alpha)$ and $E_n=p^2/(2m_n)$. Therefore
  E_\alpha=\frac15E_f\simeq3.5\,\mathrm{MeV},\quad
  E_n=\frac45E_f\simeq14.1\,\mathrm{MeV}.
 \]
-The alpha is charged. It remains magnetically confined long enough to slow down by
-collisions and can heat the plasma. The neutron has no electric charge, so magnetic
+The charged alpha particle can remain confined long enough to slow down by
+collisions and heat the plasma. The neutron has no electric charge, so magnetic
 fields do not bend it; it escapes the plasma and deposits its energy only after
 meeting material outside the vacuum region.
 
-Define alpha heating by $P_\alpha=(E_\alpha/E_f)P_{\rm fus}$ before loss channels.
-Similarly, $P_n=(E_n/E_f)P_{\rm fus}$ is neutron power. This is not a minor accounting
-choice. A burning plasma needs the alpha fraction to replace energy
-lost from the plasma. A power plant needs the neutron fraction to be captured in a
-future blanket, which will earn its place later by this physical necessity.
+With complete alpha-energy deposition, $P_\alpha=(E_\alpha/E_f)P_{\rm fus}\simeq P_{\rm fus}/5$.
+Neutron power is $P_n\simeq4P_{\rm fus}/5$. The first term enters the plasma
+self-heating balance; the second must be captured outside the confined plasma.
+\samplemodel{The power balances below assume thermal fuel, common ion and electron
+temperature, and complete alpha-energy deposition. Alpha escape reduces the deposited fraction.}
 
-\supportingquantity{$P_\alpha$ and $P_n$}{The split $P_\alpha=P_{\rm fus}/5$ and
-$P_n=4P_{\rm fus}/5$ separates plasma self-heating from energy that leaves the
-magnetic bottle. It is the bridge between the plasma power balance and the later
-reactor-around-the-plasma discussion.}
+\designconsequence{Alpha energy can sustain the plasma; neutron energy must be collected in surrounding material. The two fractions enter different power balances.}
 
-\imagebrief{Cumulative construction state 10: alpha heating and neutron escape}{Use
-the existing conventional tokamak cross-section, without adding a blanket. Inside the
-plasma, show a short spiral alpha trajectory and label $3.5$ MeV self-heating. Draw
-straight neutral-neutron arrows crossing the vacuum region and stopping at a clearly
-labelled future boundary outside the current derived machine. State explicitly that
-the blanket is not yet drawn because it has not yet been derived.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM10_stage10_tall.pdf}
-  \caption{Machine state: one charge difference. The alpha is charged, so it gyrates and stays. The neutron is not, so $\mathbf{B}$ does nothing to it and it leaves in a straight line --- toward a boundary this figure deliberately does not yet draw.}
-  \label{fig:figM10_stage10_tall}
-\end{figure}
-
-
-\designconsequence{A magnetic field can confine the alpha energy that helps sustain
-the plasma, but it cannot confine neutron energy. That one charge difference will
-later force the first wall, blanket, shielding, and coolant into the machine.}
-
-% ============================= PAGE 28 ==============================
-\newpage
 \section*{28. Stored energy and the meaning of confinement time}
 
 Before asking whether alpha heating is enough, we need a careful measure of loss.
@@ -1172,26 +1119,16 @@ The energy-confinement time is defined, rather than guessed, by
 It answers a plain question: if all heating stopped and the loss rate stayed at its
 instantaneous value, how long would the present thermal energy take to leave?
 
-This definition does not say that plasma energy literally decays as one perfect
-exponential. It packages all conduction, turbulent transport, radiation, and other
-losses into a measured or modelled net rate. That is exactly why it is useful in a
-design equation: the detailed mechanisms may be complicated, but the power balance
-must still know their sum.
+Here $P_{\rm loss}$ includes transport and radiation, each counted once. The
+instantaneous ratio $W/P_{\rm loss}$ remains useful even when the energy decay
+is not exponential.
 
 Using Eq.~\eqref{eq:plasma-pressure}, Eq.~\eqref{eq:stored-energy} can also be
 written $W=(3/2)pV$. Thus a high-pressure plasma stores more energy at a given
 volume, but it also demands proportionally more heating power if $\tau_E$ is fixed.
 
-\freidbergvariable{$\tau_E$}{Energy-confinement time is the variable that converts
-the plasma state $(n,T,V)$ into an energy-loss power. It is a core Freidberg input,
-but unlike geometry it is not obtained from equilibrium alone.}
+\designconsequence{The loss power is $W/\tau_E$. Ignition requires alpha heating to cover it at the proposed density and temperature.}
 
-\designconsequence{The reactor must satisfy two equations simultaneously: fusion
-must create enough alpha heating, and transport must make $P_{\rm loss}=W/\tau_E$
-small enough. The next page combines them without skipping the cancellation.}
-
-% ============================= PAGE 29 ==============================
-\newpage
 \section*{29. The Lawson condition follows from one inequality}
 
 Ignition means that alpha heating alone can replace the plasma losses:
@@ -1223,35 +1160,11 @@ Every factor has a visible origin: $1/4$ from the equal fuel mix, $3$ from ions 
 electrons and three translational degrees of freedom, and $E_\alpha$ rather than
 $E_f$ because neutrons do not heat the confined plasma.
 
-Multiplying Eq.~\eqref{eq:lawson} by $T$ produces the common triple product
-$n_iT\tau_E$. Its numerical threshold cannot be chosen without an openly stated
-reactivity curve and temperature. The expression above is more fundamental than a
-single memorized number because it keeps that dependence visible.
+Multiplying Eq.~\eqref{eq:lawson} by $T$ gives the triple product $n_iT\tau_E$.
+Its threshold depends on the chosen temperature and D--T reactivity.
 
-\supportingquantity{$nT\tau_E$}{The triple product is not a third independent
-quantity. It condenses the density, temperature, and confinement requirement for
-self-heating. Equation~\eqref{eq:lawson} is the version used when the temperature
-dependence of D--T reactivity matters.}
+\designconsequence{Ignition requires a compatible combination of density, temperature and confinement. External heating supplies any remaining power deficit.}
 
-\imagebrief{Physics sketch: the ignition balance}{Draw a two-pan balance. On the
-left, alpha heating $P_\alpha$ enters the plasma-energy box. On the right,
-$P_{\rm loss}=W/\tau_E$ leaves it. Under the balance, show the three algebra steps
-from Eq.~\eqref{eq:ignition-start} to Eq.~\eqref{eq:lawson}. This is a reset
-explanatory sketch, not a machine view.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_ignition_balance.pdf}
-  \caption{Physics sketch: the ignition balance. \schematicnote}
-  \label{fig:figS_ignition_balance}
-\end{figure}
-
-
-\designconsequence{Ignition does not mean high temperature alone. A reactor needs a
-particular combination of density, temperature, and confinement. Improving any one
-of them can relax the burden on the other two, but only within their own limits.}
-
-% ============================= PAGE 30 ==============================
-\newpage
 \section*{30. Gain is a ratio, not a synonym for ignition}
 
 A plasma can make useful fusion power without being ignited if external heating
@@ -1272,22 +1185,12 @@ tends to infinity: that limiting case is ignition. At finite $Q_{\rm plasma}$, t
 plant must supply auxiliary power and also pay the inefficiency of producing and
 delivering it.
 
-The distinction protects the argument from a common mistake. A large
-$Q_{\rm plasma}$ is a plasma metric. Net electric power is a plant metric that also
-depends on neutron-energy capture, thermal conversion, magnet refrigeration,
-pumps, controls, and all other recirculating loads. We will not declare a plant
-successful from Eq.~\eqref{eq:qplasma}; we have not yet derived the components that
-would make that claim meaningful.
+Net electric power additionally depends on neutron-energy capture, thermal
+conversion and recirculating loads such as refrigeration, pumps and controls.
+$Q_{\rm plasma}$ measures the plasma contribution to that wider power balance.
 
-\supportingquantity{$Q_{\rm plasma}$}{This ratio records how much fusion power is
-obtained per unit of auxiliary power delivered to the plasma. It enters the later
-Freidberg power ledger but cannot by itself establish net electricity.}
+\designconsequence{Finite plasma gain requires auxiliary power. Its required level depends on transport through $\tau_E$.}
 
-\designconsequence{The current ordinary-tokamak drawing has now earned auxiliary
-heating but not yet a power plant. The next physical obstacle is that $\tau_E$ is
-not supplied by the equilibrium equations: it is set by transport.}
-% ============================= PAGE 31 ==============================
-\newpage
 \section*{31. Why transport is the unresolved clock}
 
 A particle in a uniform magnetic field circles with a characteristic gyroradius
@@ -1312,33 +1215,15 @@ A container of minor radius $a$ would then have a diffusion time of order
 This is a transparent reason strong field helps: $\rho\propto1/B$, so the classical
 diffusion coefficient falls roughly as $1/B^2$ if the collision rate is held fixed.
 
-Unfortunately, measured tokamak energy transport is frequently much faster than this
-naive collisional estimate. Fluctuations and collective turbulence create correlated
-motions across flux surfaces. The derivation above is therefore not a promised
-confinement law. It is the baseline that tells us why the problem is surprising and
-why an empirical confinement time must later enter the reactor calculation.
+Measured energy transport often exceeds this classical estimate. Fluctuations
+and turbulence correlate motion across flux surfaces. The random walk supplies a
+baseline; reactor prediction uses a confinement model calibrated to experiments.
 
-\imagebrief{Physics sketch: random-walk transport across flux surfaces}{Draw nested
-flux surfaces with a guiding center taking many small, collision-induced radial steps
-of size about $\rho$. Beside it, show the derivation
-$N=\nu t$, $\langle\Delta r^2\rangle\sim N\rho^2$, and
-$D_{\rm cl}\sim\rho^2\nu/2$. Label turbulence as an additional, not-yet-modelled
-transport channel.}
+\samplefigure{\includegraphics[width=.95\linewidth]{figures/final/figS_random_walk.pdf}}{Independent collisional steps provide a classical transport scale; correlated fluctuations add further transport.\label{fig:figS_random_walk}}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_random_walk.pdf}
-  \caption{Physics sketch: random-walk transport across flux surfaces. \schematicnote}
-  \label{fig:figS_random_walk}
-\end{figure}
+\designconsequence{Cross-field transport sets the loss time. Reactor calculations therefore need a confinement model with a stated applicability range.}
 
-
-\designconsequence{Magnetic geometry suppresses simple cross-field diffusion, but it
-does not guarantee the required $\tau_E$. A reactor design must carry a confinement
-model and its uncertainty as explicitly as it carries $B_0$ or $a$.}
-
-% ============================= PAGE 32 ==============================
-\newpage
-\section*{32. An empirical confinement law must be treated as data, not destiny}
+\section*{32. Confinement is calibrated to experiments}
 
 For reactor studies, the working confinement time is often represented as
 \begin{equation}
@@ -1347,49 +1232,31 @@ For reactor studies, the working confinement time is often represented as
 \end{equation}
 Here $\tau_{E,\rm ref}$ is a regression fitted to a specified database of
 experiments, and $H$ is the ratio of the observed confinement to that reference.
-This equation is deliberately written without pretending that the exponents in a
-particular regression are fundamental constants. The role of the formula is to make
-an extrapolation auditable: which database, operating regime, units, heating mode,
-and shape range were used?
+Its use requires the database, operating regime, units, heating conditions and
+shape range of the selected regression. Treat the regression as data with a stated
+applicability range.
 
 The distinction between a derived equation and a fit matters especially here.
 Equation~\eqref{eq:classical-diffusion} followed from a stated random-walk model.
 Equation~\eqref{eq:Hfactor} is a bookkeeping identity once a reference scaling is
 chosen; its predictive content lives in the data and the applicability range of
-$\tau_{E,\rm ref}$. Neither should be disguised as the other.
+$\tau_{E,\rm ref}$.
 
 A practical design calculation must therefore report at least three things: the
-selected reference law, the assumed $H$, and a sensitivity range. If the operating
-point requires $H$ well above what comparable experiments have obtained, that is not
-a proof of impossibility, but it is an explicit research risk rather than hidden
-optimism.
+selected reference law, the assumed $H$, and a sensitivity range. An assumed $H$ above comparable experimental performance identifies the
+confinement improvement the design requires.
 
-\supportingquantity{$H$}{The confinement multiplier $H$ makes the
-assumption behind an empirical $\tau_E$ explicit. Freidberg-style closure cannot
-treat it as a harmless fitted detail, because Eq.~\eqref{eq:lawson} makes
-confinement directly load-bearing.}
+\samplescope{Confinement is represented here by an empirical reference law and multiplier $H$.
+The selected law, units and applicability range accompany the numerical reconstruction.}
 
-\model{No universal first-principles turbulence calculation is used in this thesis
-opening. When a particular confinement regression is introduced in the Freidberg
-reconstruction, its published coefficient, units, database, and fit range will be
-quoted alongside the calculation.}
+\designconsequence{Confinement closes the energy balance alongside geometry and pressure. The assumed reference law and $H$ must be tested together.}
 
-\designconsequence{A high-field, well-shaped plasma may still fail the energy balance
-if its actual transport is too fast. Confinement is not an optional correction added
-after geometry; it closes the same power balance.}
-
-% ============================= PAGE 33 ==============================
-\newpage
 \section*{33. Pressure cannot rise freely: the origin of a beta limit}
 
-Before the next two named constraints appear, keep their evidence status separate.
-The pressure-versus-line-bending argument below is a derived scaling. The practical
-normalized-beta boundary introduced on page 34 is an empirical/model closure. The
-Greenwald relation on page 35 is an empirical operating boundary. Their physical
-motivation is useful; none of their numerical coefficients follows from this local
-force-balance estimate alone.
+The local pressure-versus-line-bending balance gives a scaling estimate.
+Practical stability thresholds require a specified equilibrium and stability model.
 
-The beta on page 8 compares plasma pressure with magnetic pressure:
+The beta in §8 compares plasma pressure with magnetic pressure:
 \[
  \beta=\frac{p}{B_0^2/(2\mu_0)}.
 \]
@@ -1403,8 +1270,7 @@ Ampere's-law scale at the edge is
 \[
  B_\theta\sim\frac{\mu_0I_p}{2\pi a}.
 \]
-Equating pressure and bending \emph{scales}, rather than claiming an exact stability
-threshold, gives
+Equating the pressure and field-bending scales gives
 \[
  p_{\max}\sim\frac{B_\theta^2}{\mu_0}
  \sim\frac{\mu_0I_p^2}{4\pi^2a^2}.
@@ -1415,29 +1281,13 @@ Divide by $B_0^2/(2\mu_0)$ to obtain the dimensionless structural form
  \quad\hbox{in this crude local balance.}
  \label{eq:beta-scale-crude}
 \end{equation}
-A full ideal-MHD stability calculation changes this simplified power and introduces
-shape and profile dependence. The important accessible result is the mechanism:
-pressure pushes outward, and magnetic line bending supplies the restoring budget.
+The balance identifies pressure drive and magnetic restoring force. A global
+ideal-MHD calculation includes geometry and profiles when determining a stability boundary.
 
-\imagebrief{Physics sketch: pressure drive versus line bending}{Draw a small bulged
-segment of a flux tube. Use outward arrows labelled pressure drive $p$ and inward
-tension arrows labelled poloidal-field bending $B_\theta^2/\mu_0$. Include the
-edge-field estimate $B_\theta\sim\mu_0I_p/(2\pi a)$, and state that this is a
-scaling argument rather than the final MHD stability calculation.}
+\samplefigure{\includegraphics[width=.95\linewidth]{figures/final/figS_pressure_vs_bending.pdf}}{Pressure drives a bulge while magnetic line bending supplies a restoring force. The local balance gives a scaling estimate.\label{fig:figS_pressure_vs_bending}}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_pressure_vs_bending.pdf}
-  \caption{Physics sketch: pressure drive versus line bending. \schematicnote}
-  \label{fig:figS_pressure_vs_bending}
-\end{figure}
+\designconsequence{Pressure support depends on current, field and shape. A practical stability constraint must express that coupling.}
 
-
-\designconsequence{The variables desired for fusion power, $p$ and $B_0$, cannot be
-optimized separately from $I_p$, shape, and stability. The next page records the
-standard practical normalization of this coupled limit.}
-
-% ============================= PAGE 34 ==============================
-\newpage
 \section*{34. The normalized beta used in reactor design}
 
 Detailed ideal-MHD calculations and experiments are commonly summarized by a
@@ -1447,8 +1297,8 @@ normalized beta. With $\beta$ written as a fraction rather than a percentage, de
  \frac{\beta\,a(\mathrm m)\,B_0(\mathrm T)}{I_p(\mathrm{MA})}.
  \label{eq:betaN}
 \end{equation}
-This is a convention with stated units, not a dimensionless number formed from pure
-SI variables. It is useful because comparable tokamak equilibria show an approximate
+This numerical convention uses $a$ in metres, $B_0$ in tesla and $I_p$ in MA.
+Using beta in percent instead would give a normalized-beta value 100 times larger. It is useful because comparable tokamak equilibria show an approximate
 operating boundary of the form
 \begin{equation}
  \beta\lesssim\beta_{N,\max}
@@ -1456,27 +1306,16 @@ operating boundary of the form
  \label{eq:troyon-form}
 \end{equation}
 The coefficient $\beta_{N,\max}$ is empirical/model-dependent; it must be imported
-from a specified stability study or design paper, never derived by dimensional
-analysis alone.
+from a specified stability study or design paper.
 
-Equation~\eqref{eq:troyon-form} is nevertheless more than a fit-shaped ornament.
-It preserves the direction demanded by the pressure-versus-bending argument:
+Equation~\eqref{eq:troyon-form} makes the current--pressure coupling explicit:
 larger allowable current raises allowable pressure, while a larger $aB_0$ at fixed
 current lowers this particular normalized beta. Combining it with the current ceiling
-on page 15 makes the coupling visible: the kink limit restricts $I_p$, which then
+on §15 makes the coupling visible: the kink limit restricts $I_p$, which then
 restricts the pressure that can be claimed for fusion power.
 
-\supportingquantity{$\beta_N$}{Normalized beta is the portable stability-performance
-variable used to turn an MHD pressure limit into a reactor constraint. Its numerical
-limit is a sourced assumption; its coupling to $I_p$, $a$, and $B_0$ is explicit in
-Eq.~\eqref{eq:troyon-form}.}
+\designconsequence{The pressure allowance depends on the current permitted by kink stability. Both constraints must hold at the same operating point.}
 
-\designconsequence{The safe operating pressure is bounded twice: directly by
-pressure-driven stability and indirectly by the current that kink stability permits.
-A credible design must check both bounds at the same point.}
-
-% ============================= PAGE 35 ==============================
-\newpage
 \section*{35. Density has a separate experimental limit}
 
 It would be tempting to use Eq.~\eqref{eq:plasma-pressure} and conclude that a chosen
@@ -1492,43 +1331,17 @@ the Greenwald density
 Operational scenarios usually report the fraction $f_G=n_e/n_G$, rather than merely
 a raw density.
 
-There is an important methodological point here. Equation~\eqref{eq:greenwald} is
-not derived from the preceding equilibrium equations. It summarizes observations
-across tokamak discharges, and the physical mechanism behind its most general form is
-not settled well enough to pretend otherwise. The equation belongs in the thesis
-because it constrains designs; it belongs under an empirical label because its
-coefficient is not a theorem.
+\samplescope{The Greenwald relation is an empirical operating reference. The chosen
+scenario must state the density averaging convention and allowable fraction $f_G$;
+the numerical comparison uses a line-averaged electron density.}
 
 The formula still carries useful transparent geometry. At fixed current, a smaller
 cross-section raises the reference density as $1/a^2$. At fixed $a$, more current
 raises it. But that same current is limited by $q_*$ and the same density contributes
-to pressure and radiation. The quantity $f_G$ makes this web testable without
-claiming that one line of algebra has solved the underlying edge physics.
+to pressure and radiation. The fraction $f_G$ records the resulting density demand relative to the reference.
 
-\supportingquantity{$n_G$ and $f_G$}{The Greenwald density and its operating fraction
-are empirical constraints on $n_e$. They are load-bearing whenever the fusion-power
-calculation seeks higher density, and their extrapolation must be treated as an
-assumption with a range.}
+\designconsequence{Density has its own operating constraint. Increasing it must remain compatible with pressure, current and confinement.}
 
-\imagebrief{Constraint sketch: pressure is not one knob}{Draw a three-axis conceptual
-plot or linked sliders for density $n$, temperature $T$, and pressure $p=2nT$.
-Overlay separate labels for the Greenwald reference $n_G$, the beta limit, and the
-Lawson requirement. The point is to show that increasing $n$ affects several
-constraints at once; do not imply a precise universal operating boundary.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_pressure_not_one_knob.pdf}
-  \caption{Constraint sketch: pressure is not one knob. \schematicnote}
-  \label{fig:figS_pressure_not_one_knob}
-\end{figure}
-
-
-\designconsequence{The density needed by the fusion rate has its own operational
-ceiling. A reactor must find a region that satisfies density, pressure, current, and
-confinement constraints simultaneously.}
-
-% ============================= PAGE 36 ==============================
-\newpage
 \section*{36. Toroidal geometry traps some particles}
 
 The toroidal field is stronger on the inboard side because approximately
@@ -1548,43 +1361,20 @@ Conservation of $\mu$ gives
  \sin^2\alpha=\frac{B_{\min}}{B_{\max}}.
 \]
 Particles with larger perpendicular fraction reach this condition before the high-field
-side and bounce back. For isotropically distributed velocity directions, the trapped
-fraction is therefore
+side and bounce back. For isotropically distributed velocity directions evaluated at $B_{\min}$, the local
+trapped fraction is therefore
 \begin{equation}
  f_t=\sqrt{1-\frac{B_{\min}}{B_{\max}}}.
  \label{eq:trapped-fraction}
 \end{equation}
-This is a geometric consequence of the same $1/R$ toroidal field that was introduced
-to close the open magnetic corridor. It is neither uniformly good nor uniformly bad:
-trapping changes transport, and a pressure gradient acting on trapped orbits can also
-produce useful self-generated current.
+The same $1/R$ field that closes the magnetic corridor therefore creates trapped
+orbits. Neoclassical transport combines these toroidal guiding-centre orbits with
+Coulomb collisions; pressure gradients also produce a self-generated current.
 
-\supportingquantity{$f_t$}{The trapped-particle fraction in Eq.~\eqref{eq:trapped-fraction}
-is a geometry-dependent input to neoclassical transport and bootstrap-current
-reasoning. Here neoclassical means transport calculated from Coulomb collisions
-together with the torus-specific guiding-center orbits; it is more than the
-cylindrical classical-collision estimate, but it is still a stated kinetic model.
-This prepares the final missing current variable without invoking any
-spherical-tokamak comparison.}
+\samplefigure{\includegraphics[width=.95\linewidth]{figures/final/figS_trapped_orbit.pdf}}{Passing and trapped guiding-centre orbits. Turning points follow from conservation of magnetic moment and energy; orbit widths are schematic.\label{fig:figS_trapped_orbit}}
 
-\imagebrief{Physics sketch: a trapped orbit}{Show a poloidal cross-section with
-stronger field on the inboard side. Draw one passing orbit and one trapped
-guiding-center path, called a banana orbit because its poloidal projection has that
-shape, marking two turning points where $v_\parallel=0$. Include a small inset
-deriving the mirror condition from conservation of $\mu$ and energy.}
+\designconsequence{Toroidal field variation creates trapped particles. Their response to a pressure gradient introduces a source of plasma current.}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_trapped_orbit.pdf}
-  \caption{Physics sketch: a trapped orbit. \schematicnote}
-  \label{fig:figS_trapped_orbit}
-\end{figure}
-
-
-\designconsequence{The torus creates more than a closed corridor. Its unavoidable
-field variation creates an orbit population whose asymmetry can help supply plasma
-current, but only through a kinetic mechanism that must be introduced honestly.}
-% ============================= PAGE 37 ==============================
-\newpage
 \section*{37. A pressure gradient can generate some of the required current}
 
 A trapped particle does not sample the two sides of the torus symmetrically. Its
@@ -1605,35 +1395,21 @@ stated before importing such a coefficient is the structure:
 \end{equation}
 No pressure gradient means no bootstrap drive in this simplified statement. A steeper
 gradient can produce more self-driven current, but it also moves the plasma closer to
-pressure-driven stability limits. The word bootstrap should therefore not be heard as
-free current. It is a coupling between the profile needed for confinement and the
-current needed for magnetic geometry.
+pressure-driven stability limits. Bootstrap current couples the pressure profile to the current needed for magnetic geometry.
 
 Define the bootstrap fraction
 \begin{equation}
  f_{\rm bs}\equiv\frac{I_{\rm bs}}{I_p}.
  \label{eq:bootstrap-fraction}
 \end{equation}
-A later kinetic model can supply a coefficient and a profile-dependent prediction for
-$f_{\rm bs}$. At this stage, the variable is already essential because it reduces the
-current that must be supplied by a transformer or external current drive.
+The fraction $f_{\rm bs}$ is the primary parameter $f_B$. A kinetic model supplies
+its profile-dependent value, which sets the remaining transformer or external-drive demand.
 
-\freidbergvariable{$f_B$ (bootstrap fraction)}{Here $f_B$ is written
-$f_{\rm bs}=I_{\rm bs}/I_p$ in Eq.~\eqref{eq:bootstrap-fraction}. It is the
-self-generated share of the required plasma current. Its numerical value must come
-from a cited kinetic model or experiment, not from the proportionality sign alone.}
+\samplemodel{The proportionality describes the pressure-gradient drive in a reduced model.
+A quantitative prediction requires geometry, collisionality, species gradients and profiles.}
 
-\model{Equation~\eqref{eq:bootstrap-structure} is a mechanism and sign statement,
-not a complete bootstrap-current formula. The later Freidberg reconstruction will
-identify exactly which neoclassical coefficient it uses and will keep its profile
-assumptions visible.}
+\designconsequence{The pressure profile supplies part of the current. Its bootstrap contribution must remain compatible with stability and confinement.}
 
-\designconsequence{The pressure profile can help sustain the magnetic geometry, but
-it cannot be assigned independently of the stability and confinement requirements
-that created the profile in the first place.}
-
-% ============================= PAGE 38 ==============================
-\newpage
 \section*{38. The full current ledger}
 
 The toroidal plasma current can have several sources. Write the accounting identity
@@ -1641,13 +1417,13 @@ The toroidal plasma current can have several sources. Write the accounting ident
  I_p=I_{\rm ohm}+I_{\rm CD}+I_{\rm bs}.
  \label{eq:current-ledger}
 \end{equation}
-The first term is transformer-induced ohmic current; it is available while the
+Equation~\eqref{eq:current-ledger} is an accounting identity; performance enters
+through the three terms. The first term is transformer-induced ohmic current; it is available while the
 central solenoid changes linked flux. The second is externally driven non-inductive
 current, for example from waves or beams transferring directed momentum. The third
-is the pressure-gradient-driven bootstrap current from page 37.
+is the pressure-gradient-driven bootstrap current from §37.
 
-This equation is not a performance claim. It is a definition of what must be
-accounted for. For a long pulse after transformer action has faded,
+For a stationary non-inductive state with negligible transformer contribution,
 $I_{\rm ohm}\simeq0$, and Eq.~\eqref{eq:current-ledger} reduces to
 \begin{equation}
  I_{\rm CD}=(1-f_{\rm bs})I_p.
@@ -1655,33 +1431,10 @@ $I_{\rm ohm}\simeq0$, and Eq.~\eqref{eq:current-ledger} reduces to
 \end{equation}
 The larger the bootstrap fraction, the smaller the externally driven current
 requirement. But current drive consumes power and its efficiency depends on density,
-temperature, magnetic field, launch geometry, and the actuator itself. A design may
-not set $f_{\rm bs}$ near one merely to make the accounting easy.
+temperature, magnetic field, launch geometry, and the actuator itself. The bootstrap fraction must come from a compatible profile model.
 
-\supportingquantity{$I_{\rm CD}$}{Equation~\eqref{eq:current-drive-need} makes the
-unself-driven current explicit. It is the quantity later translated into heating and
-recirculating-power demand; it links plasma profiles to plant power balance.}
+\designconsequence{The required current must be supplied by transformer action, bootstrap current and affordable external drive. Their balance depends on operating mode.}
 
-\imagebrief{Cumulative construction state 11: the current ledger on the machine}{Start
-with the shaped conventional tokamak. Keep the central solenoid, heating/current-drive
-ports, and profile inset. Add a compact ledger beside the plasma:
-$I_p=I_{\rm ohm}+I_{\rm CD}+I_{\rm bs}$. Use arrows from the solenoid, an auxiliary
-port, and the pressure-gradient/profile inset to the three terms. Do not draw
-engineering components that have not yet been derived.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM11_stage11_tall.pdf}
-  \caption{Machine state: the full current ledger, $I_p=I_{\rm ohm}+I_{\rm CD}+I_{\rm bs}$, drawn as a stacked bar because the three terms add. The split shown is illustrative; only the sum is constrained at this point.}
-  \label{fig:figM11_stage11_tall}
-\end{figure}
-
-
-\designconsequence{Steady operation is a three-way closure: the current required by
-$q_*$ must be consistent with the bootstrap current predicted by profiles and the
-external current-drive power the plant can afford.}
-
-% ============================= PAGE 39 ==============================
-\newpage
 \section*{39. Pulsed operation is also a legitimate design choice}
 
 The central solenoid is a transformer primary. Faraday's law gives the loop voltage
@@ -1692,39 +1445,19 @@ around the torus:
 For a torus of major radius $R_0$, a representative toroidal electric field satisfies
 $2\pi R_0E_\varphi=-d\Phi_{\rm link}/dt$. The solenoid has a finite usable flux swing
 $\Delta\Phi_{\rm link}$, so it can induce current only for a finite time. This is the
-physical origin of the transformer clock introduced on page 11.
+physical origin of the transformer clock introduced on §11.
 
 There are two coherent responses. One is a pulsed plant: use transformer current
 during a burn, then recharge the solenoid between pulses. The other is a long-pulse
 or steady-state plant: replace the lost ohmic contribution with the current-drive and
 bootstrap terms in Eq.~\eqref{eq:current-ledger}. Neither option is free. Pulsing
 creates thermal cycling and dwell-time questions; non-inductive operation creates
-actuator power and accessibility questions. The correct choice belongs to an
-integrated design, not to a slogan about steady state.
+actuator power and accessibility questions. The operating choice must account for both the plant duty cycle and actuator demand.
 
-\supportingquantity{$\Delta\Phi_{\rm link}$}{The available linked-flux swing is the
-pulsed-operation resource. It sets how much transformer action the central solenoid
-can provide before the current ledger must rely on non-inductive sources.}
+\samplefigure{\includegraphics[width=.95\linewidth]{figures/final/figS_close_the_ledger.pdf}}{Two current-supply strategies: transformer-supported burns with recharge intervals, or non-inductive current sustaining the burn. The illustrated current shares are schematic.\label{fig:figS_close_the_ledger}}
 
-\imagebrief{Physics sketch: two ways to close the current ledger}{Make a two-panel
-conceptual diagram. Left: a pulsed timeline with solenoid flux decreasing during a
-burn and recharging during dwell. Right: a long-pulse balance with
-$I_{\rm CD}+I_{\rm bs}$ replacing $I_{\rm ohm}$. Keep it a clean accounting sketch,
-not a claim that either architecture is automatically preferable.}
+\designconsequence{Transformer flux limits the inductive burn. Extending it requires more usable flux or a larger non-inductive current contribution.}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_close_the_ledger.pdf}
-  \caption{Physics sketch: two ways to close the current ledger. \schematicnote}
-  \label{fig:figS_close_the_ledger}
-\end{figure}
-
-
-\designconsequence{The central solenoid has earned a place in the ordinary tokamak,
-but it also creates a choice between pulse duration, stored flux, and non-inductive
-current-drive burden. That choice will become an explicit Freidberg assumption.}
-
-% ============================= PAGE 40 ==============================
-\newpage
 \section*{40. The kink limit returns as a constraint on every current source}
 
 The current ledger does not allow arbitrary total current. A helical disturbance can
@@ -1748,24 +1481,14 @@ derived in Eq.~\eqref{eq:ip-kink-limit}. Every term in the current ledger must f
 under that same ceiling; bootstrap current helps meet a required $I_p$ but does not
 abolish the stability constraint on $I_p$ itself.
 
-\supportingquantity{$q_K$}{The kink threshold is a stability-model input applied to
-the shaped safety factor. It converts an otherwise desirable current into an upper
-bound and must be stated whenever a reactor calculation quotes $I_p$.}
+\samplemodel{The resonance argument motivates the role of field-line pitch. The global
+threshold $q_K$ is supplied separately by the selected stability model.}
 
-\model{This page derives the resonance logic, not the full numerical value of $q_K$.
-The later reconstruction will distinguish the analytical Kruskal--Shafranov
-criterion from the practical design threshold used in the 2015 paper.}
+\designconsequence{Kink stability constrains the total current, regardless of its source. Bootstrap current reduces external drive demand within that same ceiling.}
 
-\designconsequence{Current-drive accounting and kink stability are the same problem
-viewed from two directions: one asks where $I_p$ comes from; the other asks how much
-total $I_p$ the plasma can safely carry.}
+\section*{41. The operating constraints must overlap}
 
-% ============================= PAGE 41 ==============================
-\newpage
-\section*{41. The operating point is an intersection, not a target number}
-
-We can now state the first coupled operating-space problem without claiming to have
-solved it. A candidate state must satisfy, at minimum,
+For an ignited candidate state, the coupled operating requirements include
 \begin{align}
  q_*&>q_K &&\text{current and kink margin},\label{eq:wall-q}\\
  \beta&\lesssim\beta_{N,\max}\frac{I_p}{aB_0}
@@ -1776,87 +1499,31 @@ solved it. A candidate state must satisfy, at minimum,
  I_p&=I_{\rm ohm}+I_{\rm CD}+I_{\rm bs}
  &&\text{current accounting}.\label{eq:wall-current}
 \end{align}
+The beta relation uses the metre--tesla--MA convention of §34.
 The notation $\lesssim$ in the second and third lines is deliberate. Those limits
 are modelled or empirical margins, not exact equalities. The last line is an
 identity, but its terms depend on operating mode and profiles. The first and fourth
 lines are inequalities derived from explicit physical balances, with a stability
 threshold or reactivity curve still to be specified.
 
-This set is why the thesis refuses to present a tokamak as a collection of parts.
 Increasing density might help Eq.~\eqref{eq:wall-lawson} but challenge
 Eq.~\eqref{eq:wall-density}; increasing current can improve one normalized beta
 bound but challenge Eq.~\eqref{eq:wall-q}; improving confinement changes needed
 heating and current drive. The correct question is whether the inequalities overlap
 with usable margin.
 
-\imagebrief{Constraint-map sketch: the ordinary tokamak operating window}{Create a
-schematic, clearly labelled overlap diagram rather than a numerically calibrated plot.
-Show five boundaries corresponding to Eqs.~\eqref{eq:wall-q}--\eqref{eq:wall-current}
-and one small shaded feasible region. Include a warning that the plot is conceptual
-until a named confinement scaling, stability model, and profile model are supplied.}
+\designconsequence{An operating point must satisfy the coupled constraints with margin. The remaining geometric input is the radial space required around the plasma.}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_operating_window.pdf}
-  \caption{Constraint-map sketch: the ordinary tokamak operating window. \schematicnote}
-  \label{fig:figS_operating_window}
-\end{figure}
+\section*{42. From plasma requirements to the radial build}
 
+The plasma-side roles of Freidberg's Table-1 parameters:~$a,R_0,\kappa,T,n,p,\tau_E,B_0,\beta,I,q_*,f_B$ have now been introduced.
+Quantities such as $A,\delta,q(r),\beta_N,H,I_{\rm CD},Q_{\rm plasma}$ remain
+supporting quantities, not independent primary knobs. The missing hardware
+parameters are~$b$ and~$c$; they must be derived before numerical closure begins.
+Neutron interactions, magnetic forces and current-carrying area determine their roles.
 
-\designconsequence{The next stage is not to add more variables randomly. It is to
-take the exact set just derived and reconstruct, line by line, how Freidberg's 2015
-reference design attempts to close it.}
+\designconsequence{Neutron capture and magnet forces require radial space. Deriving $b$ and $c$ completes the reactor geometry.}
 
-% ============================= PAGE 42 ==============================
-\newpage
-\section*{42. The primary parameter set is not complete yet}
-
-The conventional tokamak has appeared in a causal order. Fusion temperature required a nonmaterial
-container. Charged particles made magnetic steering possible. Open field lines forced
-the torus and TF coils; drifts and pressure forced the plasma current, central solenoid,
-PF coils, and shaped equilibrium; transformer limits and power balance forced heating,
-current drive, and the distinction between pulsed and non-inductive operation. Shape
-was added only after its geometric and control price was visible.
-
-The canonical target is Freidberg's Table-1 set,
-\[
- a,\ R_0,\ \kappa,\ b,\ c,\ T,\ n,\ p,\ \tau_E,\ B_0,\ \beta,\ I,\ q_*,\ f_B.
-\]
-This draft has derived the physical role of $a,R_0,\kappa,T,n,p,\tau_E,B_0,\beta$,
-$I$, $q_*$, and $f_B$. It has deliberately also introduced supporting quantities---
-for example $A,\delta,q(r),\beta_N,H,I_{\rm CD}$, and $Q_{\rm plasma}$---because
-they make the causal argument intelligible. They are not additional primary
-Freidberg parameters or automatically independent design knobs. The two missing
-Table-1 hardware parameters are $b$ (blanket-region thickness) and $c$
-(TF-magnet thickness). They must earn their place before numerical Freidberg closure
-begins.
-
-\supportingquantity{remaining Part-I task}{The next physical chain is neutron escape
-to first wall, blanket, shielding, and then the TF magnet. It must explain why the
-blanket-region thickness $b$ and TF-magnet thickness $c$ are indispensable primary
-parameters before the 2015 numerical reactor argument is reconstructed.}
-
-\imagebrief{Construction-atlas checkpoint: before the nuclear island}{Update
-the cumulative conventional-tokamak atlas through state 11. Add a margin legend
-linking each physical component to its derived variable: TF coils to $B_0$; solenoid
-to $\Delta\Phi_{\rm link}$ and $I_{\rm ohm}$; PF coils to $\kappa,\delta,\psi$;
-plasma to $p,n,T,I_p,q$; heating/current-drive ports to $P_{\rm aux},I_{\rm CD}$;
-and feedback to vertical control. Leave a labelled future radial-space budget for
-first wall, blanket region $b$, shield, and TF-magnet thickness $c$; do not draw
-them as completed components yet. Exclude spherical-tokamak geometry.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM12_stage12_tall.pdf}
-  \caption{Atlas. Every component derived so far, and the design variable each one puts into the audit that follows. No later reactor hardware appears.}
-  \label{fig:figM12_stage12_tall}
-\end{figure}
-
-
-\designconsequence{Before calculating a reactor, the next pages must derive the
-nuclear island and the toroidal-field-magnet thickness. Only after $b$ and $c$ have
-joined the same causal parameter set can the thesis begin Freidberg's numerical
-engineering-and-nuclear-physics closure.}
-% ============================= PAGE 43 ==============================
-\newpage
 \section*{43. A magnetic bottle does not catch the neutron}
 
 The D--T reaction in Eq.~\eqref{eq:dt} has two products with very different fates.
@@ -1865,9 +1532,8 @@ the plasma. The neutron has no electric charge. Its Lorentz force is exactly zer
 \[
  \mathbf F_n=0\cdot(\mathbf E+\mathbf v_n\times\mathbf B)=0.
 \]
-It leaves the magnetic surfaces in a nearly straight line and reaches the first
-material it encounters. This is not an engineering inconvenience added after the
-plasma is designed. It is an unavoidable consequence of choosing the D--T reaction.
+It crosses the magnetic surfaces in a nearly straight line until it interacts
+with surrounding material.
 
 The neutron carries $14.1\,\mathrm{MeV}$, approximately four fifths of the fusion
 energy. A power-producing machine must therefore do four jobs outside the plasma:
@@ -1876,37 +1542,11 @@ protect the magnets and vacuum boundary from the remaining radiation. These jobs
 force a radial region between plasma and TF coil. We call its total inboard/outboard
 thickness $b$.
 
-\freidbergvariable{$b$ (blanket-region thickness)}{The D--T neutron is neutral, so
-magnetic confinement cannot retain it. A reactor must reserve radial space for a first
-wall, neutron multiplier or moderator where used, tritium-breeding material, shielding,
-and a vacuum boundary. The parameter $b$ records the total required radial build of
-this nuclear island. It is not an arbitrary clearance and it is not, by itself, a
-complete blanket design.}
+\designconsequence{Neutron energy requires a surrounding nuclear region. Its thickness competes with the radius available to the inboard magnet.}
 
-\imagebrief{Reset physics sketch: charged alpha versus neutral neutron}{At manuscript
-state 12, show the same D--T reaction at the plasma edge. The $3.5\,\mathrm{MeV}$
-alpha follows a curved magnetic guiding path back into the plasma; the
-$14.1\,\mathrm{MeV}$ neutron travels straight across magnetic field lines toward a
-not-yet-detailed radial material stack. Label "magnetic field does not act on a
-neutral." Keep all previously earned conventional-tokamak components visible only
-where needed for orientation.}
+\samplescope{The following one-dimensional model relates thickness to interaction lengths.
+Material-specific neutron transport, heat removal and tritium recovery determine the engineered build.}
 
-\begin{center}\small\itshape
-This brief asks for the same D--T reaction that cumulative state~10 already shows in Figure~\ref{fig:figM10_stage10_tall} --- charged alpha retained, neutral neutron leaving toward a boundary not yet drawn. Under the standing rule that redundancy is fixed rather than expanded, no second figure is drawn; the two quantities this brief would add (the mass-ratio energy split and the alpha gyro-radius) belong in the prose or in that figure's caption.
-\end{center}
-
-
-\designconsequence{A fusion reactor is not merely a plasma plus magnets. The neutron
-forces a nuclear island, and that island consumes radial space precisely where a
-toroidal-field coil would prefer to be close to the plasma.}
-
-\model{We use an intentionally simple, one-dimensional neutron model to derive the
-meaning and scale of $b$. Real blanket design requires material-specific transport,
-heat removal, structural design, activation analysis, and tritium-accounting margins.
-Those are later engineering calculations, not facts we may silently hide in one number.}
-
-% ============================= PAGE 44 ==============================
-\newpage
 \section*{44. Why the nuclear island has a thickness}
 
 First consider the slowing-down part of the problem. In a homogeneous material with
@@ -1964,18 +1604,11 @@ Capturing a chosen fraction $f_{\rm cap}$ then requires
  \label{eq:bbreed}
 \end{equation}
 Both $\lambda_s$ and $\lambda_B$ depend on material and neutron energy. Thus
-Eqs.~\eqref{eq:bslow}--\eqref{eq:bbreed} derive a physical requirement, not a
-material-independent numerical answer.
+Eqs.~\eqref{eq:bslow}--\eqref{eq:bbreed} retain those material and energy dependencies.
 
-\supportingquantity{neutron mean free path}{The quantities $\lambda_s$ and
-$\lambda_B$ are supporting transport lengths, not Primary Freidberg parameters. They
-explain why the primary radial-build parameter $b$ cannot be taken arbitrarily small.}
-
-% ============================= PAGE 45 ==============================
-\newpage
 \section*{45. From microscopic collisions to the reactor dimension $b$}
 
-The nuclear island is a sequence of functions, not a single substance. At the level
+The nuclear region performs several functions. At the level
 needed for a first reactor layout, write
 \begin{equation}
  b=b_{\rm FW}+b_{\rm mult}+b_{\rm slow}+b_{\rm breed}
@@ -1986,8 +1619,8 @@ Here $b_{\rm FW}$ is the first-wall allowance; $b_{\rm mult}$ represents any
 neutron-multiplying region; $b_{\rm slow}$ and $b_{\rm breed}$ are motivated by the
 preceding transport calculation; $b_{\rm shield}$ protects coils and surrounding
 structures; and $b_{\rm vac}$ is the vacuum-boundary allowance. Some concepts combine
-or reorder these functions. Equation~\eqref{eq:blanket-build} is deliberately a
-functional ledger, not a claim that every reactor has six sharply separated layers.
+or reorder these functions. The terms in Eq.~\eqref{eq:blanket-build} are non-overlapping radial allowances;
+combined functions are counted once.
 
 The first wall also sees a power-density demand. In the large-aspect-ratio circular
 approximation, a torus with major radius $R_0$ and minor radius $a$ has surface area
@@ -2011,28 +1644,8 @@ side, the blanket lies between the plasma edge and the TF coil. It displaces the
 toward the symmetry axis, where a toroidal field is stronger. The next section turns
 that qualitative statement into an equation.
 
-\imagebrief{Cumulative construction state 12: the earned nuclear island}{Update the
-atlas with the plasma, vacuum region, first wall, blanket/breeding region, shield, and
-vacuum boundary as a radial stack. Use a bracket labelled $b$ for the complete
-first-wall-to-vacuum-boundary build; do not label a single inner layer as $b$. Show
-one neutral-neutron path depositing energy and one tritium-breeding reaction. Retain
-the already-earned TF coil as a solid component, but annotate its radial bracket as
-$c$: thickness derived next, rather than assigning it a thickness. Exclude
-spherical-tokamak geometry and a divertor.}
+\designconsequence{The nuclear build $b$ separates plasma from magnet. That separation changes the attainable field through the inboard geometry.}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM13_stage13_tall.pdf}
-  \caption{Machine state: the earned nuclear island. The neutron that left has to stop somewhere --- first wall, blanket, shield. Their total thickness is $b$. No layer split is asserted beyond what the text derives.}
-  \label{fig:figM13_stage13_tall}
-\end{figure}
-
-
-\designconsequence{The blanket thickness $b$ has become a geometric actor. It sets a
-minimum separation between the fusion plasma and the field-producing magnet; it cannot
-be optimized independently of $R_0$, $a$, $B_0$, and the eventual coil thickness $c$.}
-
-% ============================= PAGE 46 ==============================
-\newpage
 \section*{46. The field gets stronger as the coil moves inward}
 
 The continuous-coil model already gave
@@ -2064,30 +1677,12 @@ minor radius, a thicker nuclear island, or a thicker TF coil leaves less inboard
 radius. At fixed material limit $B_{\max}$, each reduces the attainable central field
 $B_0$.
 
-\supportingquantity{inboard radial-build fraction}{It is often convenient to define
-$\epsilon_{\rm build}=(a+b+c)/R_0$. It is a derived bookkeeping ratio, not another
-primary parameter. Equation~\eqref{eq:b0radialbuild} says simply
-$B_0=B_{\max}(1-\epsilon_{\rm build})$.}
-
 The equation also explains why a tokamak cannot be designed by choosing a desirable
 $B_0$ and adding the blanket and magnets afterwards. Those supposedly external
 components feed back directly into the field available to the plasma.
 
-\imagebrief{Reset geometry sketch: why inboard build limits central field}{Draw a
-horizontal midplane cut through a conventional tokamak. Mark, from the plasma centre
-inward: $a$, the full nuclear-island bracket $b$, the TF-coil bracket $c$, and
-$R_{\rm in}=R_0-a-b-c$. Show toroidal-field arrows with increasing density inward.
-Place Eqs.~\eqref{eq:bmax} and \eqref{eq:b0radialbuild} beside the sketch.}
+\samplefigure{\includegraphics[width=.88\linewidth]{figures/final/figS_inboard_build.pdf}}{The inboard radial ledger connects nuclear thickness $b$ and magnet thickness $c$ to the field available at the plasma. Dimensions shown are illustrative.\label{fig:figS_inboard_build}}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_inboard_build.pdf}
-  \caption{Reset geometry sketch: why inboard build limits central field. \schematicnote}
-  \label{fig:figS_inboard_build}
-\end{figure}
-
-
-% ============================= PAGE 47 ==============================
-\newpage
 \section*{47. A field coil must carry current and survive its own force}
 
 A magnetic field stores energy. In vacuum its energy density is
@@ -2126,18 +1721,12 @@ then the structural contribution obeys the scaling
  \times(\hbox{geometry factor}).
  \label{eq:cstructure-scaling}
 \end{equation}
-The geometry factor is not a nuisance to be discarded: detailed TF-coil engineering
-calculates it from tensile, centering, bending, and wedging loads. Equation
-\eqref{eq:cstructure-scaling} is the load-bearing physical reason that the parameter
-$c$ exists at all.
+The geometry factor incorporates tensile, centering, bending and wedging loads.
+It connects the field-pressure scale to the required support thickness.
 
-\model{This section establishes the stress scaling, not a certified coil design.
-Real designs use three-dimensional force analysis, material allowables at operating
-temperature and fluence, insulation and cooling channels, joints where applicable,
-fatigue limits, and safety margins.}
+\samplescope{The support-thickness estimate uses a representative load path. Detailed sizing
+requires the coil geometry and material allowables at the operating temperature and fluence.}
 
-% ============================= PAGE 48 ==============================
-\newpage
 \section*{48. The other part of coil thickness: enough current-carrying area}
 
 Stress is not the only reason a coil occupies space. Amp\`ere's law requires a total
@@ -2148,7 +1737,7 @@ enclosed current approximately
 \end{equation}
 The product $NI$, called ampere-turns, cannot be carried through zero area. If
 $J_{\rm wp}$ is the allowed current density averaged over the complete winding pack
-(conductor, stabilizer, insulation, cooling paths, and structural allocation), the
+(including conductor, stabilizer and internal pack allowances), the
 required current-carrying area scales as
 \begin{equation}
  A_{\rm wp}\gtrsim\frac{NI}{J_{\rm wp}}.
@@ -2161,124 +1750,70 @@ scale
  {\mu_0J_{\rm wp}h_{\rm wp}}.
  \label{eq:winding-thickness}
 \end{equation}
-This is a scaling estimate, not a prescription for the cross-sectional shape of a
-real coil. Its purpose is to expose the independent current-density reason that coil
-thickness cannot be wished away.
+The area-to-thickness conversion uses the representative height $h_{\rm wp}$.
+Its geometric factor depends on how the total ampere-turns are distributed among coils.
 
 The full primary parameter is therefore a radial ledger:
 \begin{equation}
  c=c_{\rm str}+c_{\rm wp}+c_{\rm ins}+c_{\rm cool}+c_{\rm margin}.
  \label{eq:coil-build}
 \end{equation}
-The final three terms acknowledge insulation, cooling, manufacturing tolerances, and
-design margin. Their values must come from an explicit technology model. The first two
+Here $c_{\rm str}$ denotes support outside the winding pack. The remaining
+allowances cover insulation, cooling and margins outside that pack; internal
+allowances already included in $J_{\rm wp}$ are counted only once. The first two
 terms, Eqs.~\eqref{eq:cstructure-scaling} and \eqref{eq:winding-thickness}, are the
 two irreducible physical demands: survive the field and produce the field.
 
-\freidbergvariable{$c$ (TF-magnet thickness)}{The toroidal-field magnet needs radial
-space both for structure that carries magnetic stress and for a winding pack that
-carries the ampere-turns required by Amp\`ere's law. Its total radial build $c$
-therefore couples mechanical strength and current density to $B_{\max}$, $B_0$,
-$R_0$, $a$, and the nuclear-island thickness $b$.}
-
-\imagebrief{Cumulative construction state 13: the complete radial build}{Keep the
-already-earned TF coil solid. In a labelled inboard midplane cut, retain plasma
-radius $a$ and nuclear-island bracket $b$; replace the open $c$ annotation with a
-derived split into "winding pack" and "structure/support." Add the field labels
-$B_0$ at $R_0$ and $B_{\max}$ at $R_{\rm in}$. Use a small force arrow or stress
-arrows on the inboard coil. This is still a conventional tokamak, not an ST.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM14_stage14_tall.pdf}
-  \caption{Machine state: the complete radial build. $R_{\rm in}=R_0-a-b-c$ is what the inboard side leaves for the coil, and that is what caps $B_0$.}
-  \label{fig:figM14_stage14_tall}
-\end{figure}
-
-
-% ============================= PAGE 49 ==============================
-\newpage
-\section*{49. The high-field door is now visible, but not yet opened}
+\section*{49. Higher field changes both performance and magnet build}
 
 We can now say precisely what a higher-field magnet changes. At fixed radial geometry,
 Eq.~\eqref{eq:b0radialbuild} makes a higher allowable $B_{\max}$ available as a higher
 central field $B_0$. But Eqs.~\eqref{eq:cstructure-scaling} and
 \eqref{eq:winding-thickness} also show the price: field increases magnetic stress
-quadratically and imposes a technology-dependent current-density requirement. "Use a
-stronger magnet" is not a solution until both sides of this trade are analysed.
+quadratically and imposes a technology-dependent current-density requirement. Both effects enter the magnet-build calculation.
 
-This is the correct logical location for high-temperature superconductors (HTS).
-They are not needed to explain why a tokamak has TF coils, and they should not appear
-as an unexplained early feature. They matter later if the baseline, conventional
-field limit makes the plasma-current closure fail. At that point a conductor able to
-operate at the required field and current density can raise $B_{\max}$; the rest of
-the thesis must test whether the resulting improvement in current, stability, and
-current drive outweighs the extra magnet build and cost.
+High-temperature superconductors (HTS) enter the argument after the baseline
+closure identifies a field requirement beyond the conventional magnet model.
+They enter this trade through the field and
+current density their conductors can sustain. Their value to a reactor depends on
+the resulting plasma performance, magnet build and engineering cost. The reference
+calculation will compare field choices within the same coupled constraints.
 
-\designconsequence{HTS is an enabling option for a specified high-field reactor
-strategy, not a universal first-principles requirement for every conceivable tokamak.
-The thesis will earn the stronger design claim only after the classical baseline has
-been reconstructed and shown to require a field beyond its assumed conventional-magnet
-limit.}
+\designconsequence{A higher allowable coil field can raise $B_0$, while stress and current-density requirements consume radial space. The benefit requires a coupled calculation.}
 
-\supportingquantity{material field limit $B_{\max}$}{The maximum inboard coil field
-is an engineering constraint rather than a Table-1 reactor parameter. It governs the
-primary parameters $B_0$ and $c$ through the radial build. Later, a technology model
-will compare a conventional superconducting limit with an HTS-enabled high-field
-limit, including stress, protection, joints, neutron tolerance, and maintenance.}
+\samplefigure{\includegraphics[width=.80\linewidth]{figures/final/figS_field_two_sided.pdf}}{Higher coil field raises the available plasma field and the structural demand. The radial build couples those two effects.\label{fig:figS_field_two_sided}}
 
-\imagebrief{Reset trade-off sketch: field is performance and burden}{Create a
-two-sided causal diagram, not a sales graphic. Left: higher $B_{\max}$ permits higher
-$B_0$ at fixed radial build. Right: $p_B=B^2/(2\mu_0)$ raises structural demand and
-can increase $c$. Add a dashed arrow labelled "test only after baseline closure" to
-the later plasma-current/stability analysis. Do not yet draw an HTS brand, a
-spherical tokamak, or a numerical performance claim.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_field_two_sided.pdf}
-  \caption{Reset trade-off sketch: field is performance and burden. \schematicnote}
-  \label{fig:figS_field_two_sided}
-\end{figure}
-
-
-% ============================= PAGE 50 ==============================
-\newpage
 \section*{50. The primary design vocabulary is complete}
 
-The tokamak has now revealed every member of the primary parameter set:
+The primary parameter set is now complete, with $n=n_i$, $I=I_p$ and $f_B=f_{\rm bs}$:
 \[
  \boxed{a,\ R_0,\ \kappa,\ b,\ c,\ T,\ n,\ p,\ \tau_E,\ B_0,\ \beta,\ I,\ q_*,\ f_B.}
 \]
-They do not have the same logical status. Some describe geometry; some are plasma
-state variables; some record magnetic/current balance; and $b,c$ are radial builds
-forced by nuclear transport and magnet engineering. Nor are they independent. For
-example, the causal relations already derived include
+The set combines geometry, plasma state, magnetic balance and the radial builds
+forced by neutron transport and magnet engineering. Its variables are coupled:
 \[
  p=2nT,\qquad
  q_*\propto\frac{a^2B_0}{R_0I},\qquad
  B_0=B_{\max}\left(1-\frac{a+b+c}{R_0}\right).
 \]
-The purpose of writing them together is not to solve the reactor yet. It is to make
-clear that a proposed change in one component propagates through the whole machine.
+These relations show how a component change propagates through the machine.
 
-The next part of the thesis can therefore enter Freidberg's 2015 argument on honest
-terms. It will select explicit engineering and nuclear assumptions, express the
+The next part applies Freidberg's 2015 reference calculation. It will select explicit engineering and nuclear assumptions, express the
 primary parameters as coupled functions rather than isolated knobs, and then compare
 the demanded plasma state with four operational tests: Greenwald density, Troyon beta,
 kink safety factor, and achievable bootstrap fraction. The core question will be
 whether all four inequalities can hold simultaneously for a conventional baseline.
 
-\designconsequence{Only now is it legitimate to begin the numerical closure. If the
-baseline fails, the later high-field/HTS discussion will be an earned response to a
-specific contradiction, not an imported preference.}
+\designconsequence{The parameter set now supports a numerical closure. The reference calculation will test whether its operating constraints overlap.}
 
-\model{The open manuscript by J.~P.~Freidberg, F.~J.~Mangiarotti, and
-J.~Minervini (2015), especially its Sections~3--6, is used here as a freely available
-reference design. Its one-dimensional blanket and analytic TF-coil models motivate
-the present derivation; the thesis will state their assumptions before reproducing any
-numerical result.}
+\noindent\begin{minipage}{\linewidth}\samplescope{The reference is Freidberg, Mangiarotti and Minervini (2015),
+\href{https://library.psfc.mit.edu/catalog/reports/2010/15ja/15ja021/15ja021_full.pdf}{Sections~3--6}.
+Its reduced blanket and analytic TF-coil models supply the numerical design assumptions.}\end{minipage}
 
-% ============================= PAGE 51 ==============================
-\newpage
+\clearpage
+\setcounter{page}{79}
+\setcounter{figure}{29}
+\let\theHfigure\sampleOriginalHfigure
 \section*{51. Entering the 2015 argument: a model, not a verdict}
 
 We now change tasks. The first fifty pages asked, "Why must the machine contain these
