@@ -59,12 +59,12 @@ W_L = np.trapezoid(T_L * r, r)
 W_H = np.trapezoid(T_H * r, r)
 RATIO = W_H / W_L
 
-fig, (axL, axH) = plt.subplots(1, 2, figsize=(TEXTWIDTH_IN, 4.55),
+fig, (axL, axH) = plt.subplots(1, 2, figsize=(TEXTWIDTH_IN, 3.65),
                                sharey=True)
 
 for ax, T, ttl, col, nshort in (
-        (axL, T_L, "BROAD PROFILE — heat leaves fast", PALETTE["heat"], False),
-        (axH, T_H, "EDGE BARRIER — the same core, held up",
+        (axL, T_L, "BROAD PROFILE", PALETTE["heat"], False),
+        (axH, T_H, "EDGE TRANSPORT BARRIER",
          PALETTE["current"], True)):
     ax.plot(r, T, color=col, lw=2.2, zorder=5)
     ax.fill_between(r, 0, T, color=col, alpha=0.13, lw=0, zorder=2)
@@ -102,7 +102,7 @@ axH.annotate("a narrow region where outward transport\n"
              ha="left", va="top", color=PALETTE["cs"], linespacing=1.5,
              arrowprops=dict(arrowstyle="-|>", color=PALETTE["cs"], lw=1.0),
              zorder=8)
-axL.text(0.03, 1.90, "long arrows everywhere:\nnothing holds the gradient up",
+axL.text(0.03, 1.90, "outward heat transport\n(arrows schematic)",
          fontsize=8.2, ha="left", va="top", color=PALETTE["heat"],
          linespacing=1.5)
 
@@ -111,22 +111,11 @@ axH.text(0.03, 0.06, r"stored energy $\times\,%.2f$ versus the left panel"
          color=PALETTE["vessel"])
 
 # --------------------------------------------------------------------------
-fig.text(0.5, 0.175,
-         r"$H \equiv \tau_E/\tau_E^{\rm scaling}$ is a RATIO TO A FIT, and "
-         "therefore an OUTPUT. There is no dial marked $H$ on the machine: "
-         "nothing here\n"
-         "is a new coil, a new supply or a new component. What changed is a "
-         "TRANSPORT STATE, reached empirically and held only while its\n"
-         "conditions hold — an input-power threshold, a shape, a divertor "
-         "configuration — and paid for with edge-localised relaxations and\n"
-         r"impurity retention. The $\times\,%.2f$ above is the integral of the "
-         "two curves drawn here, so even that number is a property of these\n"
-         "two shapes, not a design input. Assuming a value of $H$ and then "
-         "quoting the performance it implies is assuming the conclusion."
-         % RATIO,
-         fontsize=7.7, ha="center", va="top", color="0.30", linespacing=1.55)
-
-fig.tight_layout(rect=(0, 0.315, 1, 1))
+fig.text(0.5, 0.10,
+         r"Illustrative profiles at uniform density: stored energy is proportional to $\int T(r)r\,dr$." "\n"
+         r"$H=\tau_E/\tau_{E,ref}$ additionally requires the loss power and a specified reference regression.",
+         fontsize=8,ha="center",va="top",color="0.3",linespacing=1.5)
+fig.tight_layout(rect=(0,.16,1,1))
 fig.savefig("figS_h_factor.pdf", bbox_inches="tight")
 fig.savefig("figS_h_factor.png", dpi=180, bbox_inches="tight")
 plt.close(fig)

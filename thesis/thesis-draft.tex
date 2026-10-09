@@ -2612,51 +2612,28 @@ the conventional magnet model.}
 
 
 \clearpage
-\setcounter{page}{108}
-\setcounter{figure}{35}
-\let\theHfigure\sampleOriginalHfigure
-\section*{77. Remedy one: what an $H$ factor does and does not mean}
+\setcounter{page}{50}
+\setcounter{figure}{25}
+\renewcommand{\theHfigure}{blockfour.\arabic{figure}}
+\section*{77. Remedy one: improved confinement}
 
-The first remedy in the 2015 paper does not add a new piece of hardware. It asks
-whether the plasma can lose energy more slowly than the reference H-mode regression
-predicts. Write that possibility honestly as
+The first remedy asks whether the plasma can retain energy longer than the reference
+H-mode regression predicts:
+
 \begin{equation}
  \tau_E=H\tau_{E,\rm ref},\qquad H>1.
  \label{eq:h-factor-definition}
 \end{equation}
-The symbol $H$ is a measured-performance multiplier relative to the particular
-regression on page 58. It is not a new conservation law, a material property, or a
-guarantee that a reactor can be run at the stated value.
+Here $H$ measures confinement relative to the regression in \S58. Pressure and
+current-profile control can change the magnetic shear and flow environment of turbulent
+eddies; transport barriers can reduce outward heat loss. Maintaining such a state
+requires control compatible with alpha heating in an ignited plasma.
 
-There is nevertheless a physical picture behind trying it. Turbulent eddies carry
-heat and particles down their gradients. Carefully shaped pressure and current
-profiles can, in favorable regimes, change the magnetic shear and flow environment
-felt by those eddies; an internal or edge transport barrier can then reduce the
-effective outward transport. Maintaining such a state requires profile control and
-must be demonstrated in the relevant operating regime. In an ignited plasma, alpha
-heating also makes that control problem less independent than it is in an
-externally heated experiment.
+\samplefigure{\includegraphics[width=.92\linewidth]{figures/final/figS_h_factor.pdf}}{Illustrative temperature profiles and transport barriers. The confinement multiplier $H$ is evaluated against a specified regression; these profiles illustrate transport control rather than a predicted reactor operating point.\label{fig:figS_h_factor}}
 
-\imagebrief{Reset physics sketch: why an $H$ factor is not a knob on the machine}
-{Draw a toroidal plasma cross-section only, with a broad radial temperature profile
-on the left and a steeper, protected-gradient region on the right. Show small
-outward turbulent heat arrows in the first case and shorter suppressed arrows in the
-second. Label the second as a transport-barrier and profile-control empirical
-performance change, not a new coil or reactor component. Do not add ST, HTS,
-divertor, or a spherical plasma.}
+\samplescope{An assumed $H>1$ specifies the confinement performance required of the
+scenario. Its sustained value must be demonstrated in the relevant operating regime.}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_h_factor.pdf}
-  \caption{Reset physics sketch: why an $H$ factor is not a knob on the machine. \schematicnote}
-  \label{fig:figS_h_factor}
-\end{figure}
-
-
-\model{Raising $H$ means assuming a better-than-reference confinement state and then
-testing its consequences. It is a scenario assumption with experimental burden of
-proof, not an available design margin.}
-% ============================= PAGE 78 ==============================
-\newpage
 \section*{78. Better confinement lowers current---and moves every coupled test}
 
 Equation~\eqref{eq:ireq-from-confinement} contains $H$ only in the denominator
@@ -2674,7 +2651,7 @@ $q_*\propto1/I$ at fixed geometry,
 This is the intended benefit: less current produces more field-line twist and hence
 more margin in the adopted kink test.
 
-But the same reduced current tightens two allowance ratios. The Greenwald allowance
+The same reduced current tightens two allowance ratios. The Greenwald allowance
 is proportional to $I$, and the adopted Troyon pressure allowance is also
 proportional to $I$. At fixed geometry and fusion pressure,
 \begin{equation}
@@ -2689,15 +2666,9 @@ Bootstrap closure shifts in the helpful direction at fixed geometry. From
 Eq.~\eqref{eq:freidberg-bootstrap-fraction}, $f_{\rm NC}\propto p/I^2$, while
 $f_B=1-I_{\rm CD}/I$. Lower $I$ both raises the calculated bootstrap fraction and
 reduces the required bootstrap share if the current-drive allowance is held fixed.
-That is why increasing $H$ can remove the two original current-closure failures.
-It cannot be called a solution until the density and beta checks are repeated.
+\designconsequence{Lower current helps kink safety and bootstrap closure while
+reducing density and beta allowances. The remedy requires a simultaneous recalculation.}
 
-\designconsequence{Improved confinement is not a free improvement. It trades a
-current-and-kink problem for reduced current-based density and beta headroom. The
-only fair test is a simultaneous recalculation.}
-
-% ============================= PAGE 79 ==============================
-\newpage
 \section*{79. The $H$ scan: close bootstrap first, then inspect the remaining margins}
 
 For each trial $H$, the 2015 procedure chooses the radius that closes the
@@ -2706,10 +2677,12 @@ steady-state current ledger:
  f_B\bigl(a,H\bigr)=f_{\rm NC}\bigl(a,H\bigr).
  \label{eq:h-bootstrap-match}
 \end{equation}
-This does not make the design acceptable; it simply removes one degree of freedom
-before the other ratios are tested. The same transparent calculation file used for
-the size scan now evaluates this condition, using the changed current in the
-defining safety-factor relation rather than reusing a baseline $q_*$.
+The fixed-geometry scalings above explain the direction of each effect. In the scan,
+$a$ is readjusted at each $H$, so the tabulated current and geometry change together.
+The radius is selected by this equality, then the other ratios are tested using the
+changed current in the safety-factor relation. The companion script uses the nearest
+bootstrap match on its $0.001\,\mathrm m$ radius grid. Tables below round ratios to
+two decimals; $1.00$ can represent a value slightly above or below unity.
 
 \begin{center}
 \begin{tabular}{c c c c c c}
@@ -2730,59 +2703,33 @@ are both obtained and the Greenwald ratio remains below one, but the Troyon rati
 is about $1.20$: the selected $2.8\%$ normalized-beta allowance is exceeded. Larger
 $H$ only increases that beta demand in this family.
 
-\auditnote{The paper reports the same qualitative conclusion and quotes a still
-larger required normalized beta, $3.6\%$ rather than $2.8\%$, at its threshold
-case. The printed analytic ledger reproduced here gives approximately $3.37\%$ on a
-$10^{-3}\,\mathrm m$ radius grid. Both exceed $2.8\%$. We retain the discrepancy
-rather than silently tune a coefficient to reproduce a prose number: the published
-paper does not supply the full numerical implementation behind its figure.}
+\samplescope{The paper reports a required normalized beta of $3.6\%$ at its threshold
+case; the printed analytic relations give about $3.37\%$ on the stated radius grid.
+Both exceed the $2.8\%$ allowance. This source--reconstruction discrepancy is retained;
+the paper's complete numerical implementation is unavailable.}
 
-% ============================= PAGE 80 ==============================
-\newpage
 \section*{80. What the advanced-confinement remedy has established}
 
-The $H$ exercise has sharpened the diagnosis. If an advanced transport state were
-reliably available, it could lower the confinement-driven current enough to close
-the baseline kink and bootstrap ledgers. In the declared conventional family, it
-does so by asking the plasma to operate above the adopted normalized-beta allowance.
-The missing quantity is not an unexplained new component; it is MHD pressure margin.
+Improved confinement can remove the baseline kink and bootstrap failures, but this
+family then exceeds the adopted beta allowance. The route therefore requires
+reproducible confinement enhancement, profile control and an MHD-stability basis for
+the higher normalized beta.
 
-This is a useful result even if future experiments improve that margin. It tells us
-exactly what must be supplied together: reproducible confinement enhancement,
-profile control, and an MHD-stability basis for the higher normalized beta. Calling
-only the first item the solution would conceal the coupled demand.
+\designconsequence{The remaining requirement is pressure-stability margin. We next
+hold $H=1$ and test whether a higher coil-field ceiling can provide it.}
 
-The next remedy changes a different primitive constraint: the maximum field that the
-inboard TF system can bear. Higher field changes the required current, the current
-drive efficiency, and the MHD ratios without assuming $H>1$. That is the logical
-place to introduce high-temperature superconductors: first establish what a higher
-$B_{\max}$ buys in this model, then ask whether an HTS magnet can provide it while
-surviving its structural, thermal, and manufacturing constraints.
+\section*{81. Freidberg's second remedy: raise the field ceiling}
 
-\designconsequence{The advanced-confinement route is a conditional plasma-physics
-remedy, not a completed reactor design. The high-field route will be tested next as
-a distinct engineering remedy, with its cost and stress penalties kept visible.}
+The second remedy keeps $H=1$ and raises the maximum inboard TF-coil field
+$B_{\max}$. Using the source's analytic radial-build convention from \S54,
 
-% ============================= PAGE 81 ==============================
-\newpage
-\section*{81. Freidberg's second remedy: raise the field ceiling, not the confinement claim}
-
-The preceding remedy changed the empirical confinement multiplier $H$. Freidberg's
-second remedy holds $H=1$ and changes an engineering input instead: the maximum
-magnetic field allowed at the inboard TF coil, $B_{\max}$. This is a clean
-counterfactual. It asks what the already-derived conventional machine would demand if
-its coil system could credibly tolerate a higher peak field.
-
-At a fixed trial geometry, the immediate result is already known from
-Eq.~\eqref{eq:b0radialbuild}, or from the source convention
-Eq.~\eqref{eq:freidberg-b0-scan}:
 \begin{equation}
  B_0=B_{\max}(1-\epsilon_B).
  \label{eq:high-field-b0}
 \end{equation}
-The central field consequently rises in direct proportion to the inboard field
-ceiling if the fractional radial build is held fixed. The plasma pressure required by
-the mission does not disappear. By the definition of beta,
+At fixed fractional build, the central field rises in proportion. The mission still
+requires the same pressure, and
+
 \begin{equation}
  \beta=\frac{2\mu_0p}{B_0^2}.
  \label{eq:high-field-beta-definition}
@@ -2792,37 +2739,27 @@ first reason high field can relieve a pressure-stability problem: it increases t
 magnetic pressure available to balance the same plasma pressure.
 
 The reference compact expression for beta had $13\,\mathrm T$ absorbed into its
-numerical coefficient. To vary $B_{\max}$ honestly, restore that dependence:
+numerical coefficient. Restore that dependence when varying $B_{\max}$:
 \begin{equation}
  \beta(\%)=
  \frac{1.31}{a^{1/2}(1-\epsilon_B)^2}
  \left(\frac{13\,\mathrm T}{B_{\max}}\right)^2.
  \label{eq:high-field-beta-scan}
 \end{equation}
-Equation~\eqref{eq:high-field-beta-scan} is not a new plasma law; it is
-Eq.~\eqref{eq:high-field-beta-definition} after the 2015 power-and-size relations
-have been substituted. Writing the factor explicitly prevents a common audit error:
-one must not use a coefficient calibrated at $13\,\mathrm T$ unchanged in a
-high-field scan.
+This is the beta definition with the source's power-and-size relations substituted.
+The explicit field factor updates the coefficient when moving away from $13\,\mathrm T$.
+$B_{\max}$ remains a supporting engineering input: it changes $B_0$, coil thickness
+$c$ and the coupled plasma requirements.
 
-\supportingquantity{raised field ceiling $B_{\max}$}{This is an engineering input,
-not a new primary Freidberg parameter. It changes the primary central field $B_0$ and
-the coil build $c$, then indirectly changes the current, stability, and
-current-drive calculations.}
-
-% ============================= PAGE 82 ==============================
-\newpage
-\section*{82. What field can help---and what it cannot help by itself}
+\section*{82. Higher field changes plasma and mechanical requirements}
 
 First hold geometry fixed as a thought experiment. The selected confinement regression
 gave the compact current requirement
 \[
  I_{\rm req}\propto B_0^{-0.16}.
 \]
-The exponent is weak: a field increase alone reduces the regression's current demand,
-but not dramatically. The more consequential changes occur after the current, safety
-factor, current-drive, bootstrap, and radial-build relations are recalculated
-together.
+This direct reduction in demanded current is weak. The full benefit requires
+recalculating safety factor, drive efficiency, bootstrap and radial build together.
 
 The safety-factor relation makes one helpful direction visible without any empirical
 claim:
@@ -2830,43 +2767,19 @@ claim:
  q_*\propto\frac{a^2B_0}{R_0I}.
  \label{eq:high-field-q-direction}
 \end{equation}
-At unchanged geometry and current, a higher toroidal field increases field-line twist.
-If the confinement relation also permits a lower current, the two effects both raise
-$q_*$. Thus high field can address the same kink failure that improved confinement
-addressed, but it does so through a different physical lever.
+Higher toroidal field and lower current both raise $q_*$ at fixed geometry.
+The same field imposes a mechanical load:
 
-There is no free magnetic pressure. The field energy density and representative
-mechanical stress scale are
 \begin{equation}
  u_B=p_B=\frac{B_{\max}^2}{2\mu_0}.
  \label{eq:high-field-stress}
 \end{equation}
-This is the same result derived on page 47, now applied to the proposed remedy.
-Higher field means larger Lorentz loads and, for a fixed allowable stress, more
-structure. The source's analytic coil model calculates this response as a larger
-$c$, rather than assuming that a better superconductor can make the support material
-vanish.
+For a fixed allowable stress, the higher Lorentz load requires more structure.
+The analytic coil model calculates the corresponding thickness $c$.
 
-\designconsequence{Raising $B_{\max}$ is physically promising because it lowers beta
-and tends to raise $q_*$. It is physically expensive because the very field that
-helps the plasma makes the coil's magnetic pressure grow as $B_{\max}^2$. The scan
-must retain both statements.}
+\designconsequence{Higher field lowers beta and raises twist, while magnetic pressure
+grows as $B_{\max}^2$. The scan must retain the accompanying structural demand.}
 
-\imagebrief{Reset physics sketch: a stronger inboard field changes two ledgers}{Show
-a conventional inboard midplane radial cut, not a new machine. Left branch:
-$B_{\max}\uparrow\Rightarrow B_0\uparrow\Rightarrow\beta=2\mu_0p/B_0^2\downarrow$
-and $q_*\propto B_0/I\uparrow$. Right branch:
-$B_{\max}\uparrow\Rightarrow p_B=B_{\max}^2/(2\mu_0)\uparrow\Rightarrow$ greater
-support demand and coil build $c$. Mark the right branch as a mechanical consequence,
-not a drawback that superconductivity erases. No ST or divertor.}
-
-\begin{center}\small\itshape
-This brief asks for the two-sided field diagram that Figure~\ref{fig:figS_field_two_sided} already carries; its right branch is identical and its left differs only by two further nodes. Under the standing rule that redundancy is fixed rather than expanded, no second figure is drawn --- the extra nodes belong on that figure, and this brief should be retired.
-\end{center}
-
-
-% ============================= PAGE 83 ==============================
-\newpage
 \section*{83. Why field also changes the selected current-drive calculation}
 
 The reference current ledger limits externally driven current because wave power is
@@ -2877,15 +2790,14 @@ limited. Its lower-hybrid model does not treat current-drive efficiency as a con
  \label{eq:high-field-current-drive}
 \end{equation}
 Here $n_\parallel\equiv ck_\parallel/\omega$ is the parallel refractive index of the
-launched wave. In the selected outside-launch approximation it contains the ratio
+launched wave, with $c$ here denoting the speed of light. In the selected outside-launch approximation it contains the ratio
 \begin{equation}
  \frac{\omega_{pe}}{\Omega_e},\qquad
  \omega_{pe}^2=\frac{ne^2}{\epsilon_0m_e},\qquad
  \Omega_e=\frac{eB}{m_e}.
  \label{eq:high-field-frequency-ratio}
 \end{equation}
-The first expression measures the electron-plasma oscillation rate; the second is
-the electron cyclotron rate. At fixed density, increasing local $B$ increases
+Here $\omega_{pe}$ is the electron plasma frequency and $\Omega_e$ is the electron cyclotron frequency. At fixed density, increasing local $B$ increases
 $\Omega_e$ and decreases $\omega_{pe}/\Omega_e$. In this particular lower-hybrid
 launch model, the resulting change in $n_\parallel$ improves the available
 current-drive efficiency. That improvement reduces the bootstrap share required by
@@ -2894,19 +2806,11 @@ the ledger
  f_B=1-\frac{I_{\rm CD}}{I}.
 \]
 
-This is a model-dependent bridge between magnet field and steady-state current. It
-must not be generalized into the claim that every wave system becomes more efficient
-at higher field. Launch geometry, accessibility, damping, parasitic absorption,
-current profile, and the power plant's recirculating-power budget all require a
-separate calculation.
+\samplemodel{The scan retains the source's $40\,\mathrm{MW}$ wave-power allocation,
+lower-hybrid accessibility model, profiles and $H=1$. It varies $B_{\max}$ and repeats
+the coupled calculation. The current-drive benefit depends on this launch and damping
+model; other wave systems require their own calculation.}
 
-\model{For Section 6.2 we keep Freidberg's $40\,\mathrm{MW}$ wave-power allocation,
-its lower-hybrid accessibility model, its profiles, and $H=1$. We change only
-$B_{\max}$ and then repeat the whole coupled calculation. This isolates what the
-high-field proposal actually claims.}
-
-% ============================= PAGE 84 ==============================
-\newpage
 \section*{84. The high-field scan: one closure condition, then four independent tests}
 
 For every trial $B_{\max}$, retain the mission and wall-loading relations, compute
@@ -2917,12 +2821,11 @@ $H$ scan, choose the remaining radius by the steady-state closure condition
  f_B(a,B_{\max})=f_{\rm NC}(a,B_{\max}).
  \label{eq:bmax-bootstrap-match}
 \end{equation}
-Only after that bookkeeping condition is met do we inspect the Greenwald, Troyon,
-kink, and bootstrap ratios. The procedure is implemented directly in
-\texttt{code/calculations/freidberg\_baseline\_scan.py}; its radius grid is
-$0.001\,\mathrm m$, so the last displayed digit should not be read as a precision
-claim.
+Then inspect all four ratios. The implementation is
+\texttt{code/calculations/freidberg\_baseline\_scan.py}, using the same
+$0.001\,\mathrm m$ radius grid.
 
+\par\noindent\begin{minipage}{\linewidth}
 \begin{center}
 \begin{tabular}{c c c c c c c c}
 $B_{\max}$ (T) & $a$ (m) & $B_0$ (T) & $c$ (m) & $\mathcal R_G$
@@ -2936,21 +2839,20 @@ $B_{\max}$ (T) & $a$ (m) & $B_0$ (T) & $c$ (m) & $\mathcal R_G$
 20.0 & 1.036 & 13.53 & 2.05 & 0.65 & 0.70 & 0.83 & 1.00
 \end{tabular}
 \end{center}
+{\small\textit{Table note.} The reconstruction's first all-pass point is
+$17.65\,\mathrm T$ on $0.01\,\mathrm T$ field and $0.001\,\mathrm m$ radius grids.\par}
+\end{minipage}\par
+
 
 The table has a simple reading. Greenwald changes little along this
 bootstrap-matched family. Troyon becomes comfortable before the threshold. The kink
-ratio is the last ratio to fall to one. On this transparent grid the first all-pass
-point is $B_{\max}=17.65\,\mathrm T$; rounding to the precision of the underlying
-model gives about $17.6\,\mathrm T$, the threshold reported in the 2015 paper.
+ratio is the last ratio to fall to one. The four ratios close near $B_{\max}=17.6\,\mathrm T$, consistent with the
+threshold reported in the 2015 paper.
 
-\auditnote{This is a conditional result, not a prediction of a built reactor. It says
-that the selected 2015 confinement regression, current-drive model, bootstrap model,
-and four boundaries overlap when the inboard field ceiling is raised to roughly
-$17.6\,\mathrm T$. Changing those models may move the number; it does not remove the
-need to test their overlap.}
+\samplescope{The threshold describes overlap of the selected confinement,
+current-drive, bootstrap and stability models. Its numerical value inherits those
+models and the grid resolution.}
 
-% ============================= PAGE 85 ==============================
-\newpage
 \section*{85. The price is measurable: more engineered volume and more exhaust burden}
 
 The increasing $c$ column is already a direct mechanical cost of high field. The
@@ -2960,44 +2862,34 @@ proxy is
  \frac{V_I}{P_E}=\frac{V_B+V_{\rm TF}}{P_E},
  \label{eq:freidberg-cost-proxy}
 \end{equation}
-where $V_B$ is blanket-region volume and $V_{\rm TF}$ is TF-coil volume in its
-specified geometry. It is not a literal construction-price quotation. It is a
-transparent proxy for how much highly engineered blanket and magnet material must be
-provided per electric megawatt.
+Here $V_B$ and $V_{\rm TF}$ are blanket and TF-coil volumes in the specified geometry.
+The ratio measures engineered material per electric megawatt.
 
 The source's parallel-heat-flux proxy follows the alpha power along the field:
 \begin{equation}
  Q_\parallel=\frac{P_\alpha B_0}{R_0}.
  \label{eq:freidberg-parallel-heat-proxy}
 \end{equation}
-Its units are $\mathrm{MW\,T\,m^{-1}}$. The relation is a scaling measure, not a
-divertor-surface heat-flux calculation; a later chapter must introduce scrape-off
-layer width, magnetic expansion, radiation, and material limits before asking what a
-plate can survive.
+\samplescope{$Q_\parallel$ has units $\mathrm{MW\,T\,m^{-1}}$ and measures the
+parallel-exhaust burden. Converting it to a material surface heat flux requires
+scrape-off-layer width, magnetic expansion, radiation and target geometry.}
 
 For the source's compared cases, moving from its advanced-confinement case at
 $13\,\mathrm T$ to the high-field all-constraint case near $17.6\,\mathrm T$
 increases $V_I/P_E$ from $1.07$ to $1.87\,\mathrm{m^3\,MW^{-1}}$ (about a factor
 $1.75$) and reports $Q_\parallel=657\,\mathrm{MW\,T\,m^{-1}}$, about $1.30$ times
-its advanced-confinement comparison case. These are source-reported model outputs;
-we do not reverse-engineer extra precision from a plotted calculation whose full
-implementation was not published.
+its advanced-confinement comparison case. These engineering proxies are source-reported outputs.
 
-\designconsequence{The high-field branch closes the selected plasma ratios only by
-moving difficulty into magnet structure, engineered volume, and exhaust. That is not
-a refutation of high field. It is the reason magnet technology and heat exhaust must
-be developed as part of the same reactor, not treated as a footnote to plasma
-performance.}
+\designconsequence{The high-field route closes the four plasma ratios with greater
+coil thickness, engineered volume and exhaust burden. A conductor must support that
+field while the magnet system carries its loads.}
 
-% ============================= PAGE 86 ==============================
-\newpage
 \section*{86. HTS is earned here: an enabler with a mechanical bill}
 
-A superconductor is useful because below its operating critical surface---set by
-temperature, magnetic field, current density, field angle, strain, and material
-state---it can carry a large current with negligible DC electrical resistance. The
-important engineering quantity is therefore not the slogan zero resistance. It is a
-measured, margin-bearing critical-current surface
+A superconductor carries current with negligible DC resistance below its operating
+critical surface. Its usable current depends on field, temperature, angle, strain
+and conductor architecture:
+
 \[
  I_c=I_c(B,T,\theta,\varepsilon,\hbox{conductor architecture}).
 \]
@@ -3005,13 +2897,8 @@ The conductor must remain below that surface throughout normal operation and cre
 transients, while its stabilizer, insulation, joints where present, cryogenic system,
 and protection system handle disturbances.
 
-The $13\,\mathrm T$ reference model was deliberately a conventional-magnet
-assumption. The preceding scan has now made a more precise statement: \emph{within
-this conventional $H=1$ route and these four declared plasma tests}, its
-$B_{\max}=13\,\mathrm T$ ceiling is insufficient, whereas a ceiling near
-$17.6\,\mathrm T$ makes the selected constraints overlap. A credible high-field
-conductor is therefore necessary for this particular remedy. It is not a theorem that
-HTS is necessary for every fusion strategy.
+The scan gives a concrete requirement: this $H=1$ route needs a coil-field ceiling
+near $17.6\,\mathrm T$, above the conventional $13\,\mathrm T$ baseline.
 
 Rare-earth barium copper oxide (REBCO), commonly called an HTS conductor, is a serious
 candidate because it can retain useful current capability in fields and temperatures
@@ -3023,40 +2910,19 @@ Program, open preprint, 2023: \url{https://arxiv.org/abs/2308.12301}. The report
 also records $40.5\,\mathrm{kA}$ terminal current, large Lorentz loading, and nearly
 $1\,\mathrm{GPa}$ structural-case stress.}
 
-That last fact is the corrective to magical thinking. HTS can open a higher
-$B_{\max}$ window; it does not repeal Eq.~\eqref{eq:high-field-stress}. A fusion
-magnet program must still close stress and strain, quench detection and energy
-extraction, radiation tolerance, joint resistance where demountability is desired,
-manufacturing yield, cryogenic power, inspection, and replacement. The next sections
-remain in Freidberg's conventional design space; only after its closure problem is
-fully mapped will the thesis ask whether a changed aspect ratio can solve a different
-geometric problem.
+HTS provides access to higher field while the magnetic-pressure load in
+Eq.~\eqref{eq:high-field-stress} remains. Magnet design must close stress and strain,
+quench detection and energy extraction, radiation tolerance, joint resistance,
+manufacturing, cryogenic power and replacement.
 
-\imagebrief{Cumulative high-field design state: the inboard TF system now has a
-technology requirement}{Use cumulative state 13, preserving its conventional tokamak
-geometry. In the inboard TF-coil bracket $c$, distinguish winding pack, structural
-case, insulation/cooling, and the nuclear island $b$. Add a callout:
-high-field branch requires a conductor technology whose operating critical-current
-margin supports $B_{\max}\gtrsim17.6\,\mathrm T$. Put force arrows on the structural
-case and state explicitly that HTS does not remove them. Do not introduce ST geometry
-or a divertor.}
+\designconsequence{The high-field calculation gives HTS a specific role and operating
+requirement. The next remedy keeps the conventional field ceiling and changes plant output.}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM15_highfield_tall.pdf}
-  \caption{The same machine as the previous state; only the coil bracket $c$ is resolved further, into structural case, winding pack and insulation/cooling. The field threshold is drawn as a REQUIREMENT on a conductor, not as a property the machine now has, and the force arrows stay: HTS changes what carries the current, not what the case must hold.}
-  \label{fig:figM15_highfield_tall}
-\end{figure}
-
-
-% ============================= PAGE 87 ==============================
-\newpage
 \section*{87. Freidberg's third remedy: change the plant scale}
 
-The high-field route changed a magnet limit. The next route changes a mission input:
-the requested electric output $P_E$. The reference case chose
-$P_E=1000\,\mathrm{MW_e}$. Raising that number may sound like making the problem
-harder, because a larger plant must make more fusion power. At fixed allowed neutron
-wall loading, however, it first forces a larger wall area:
+The third remedy raises electric output $P_E$ from $1000\,\mathrm{MW_e}$.
+At fixed neutron wall loading, additional fusion power requires more wall area:
+
 \begin{equation}
  R_0a=
  7.16\left(\frac{P_E}{1000\,\mathrm{MW}}\right)\mathrm{m^2},
@@ -3065,25 +2931,17 @@ wall loading, however, it first forces a larger wall area:
 where the coefficient retains the 2015 blanket, shape, wall-loading, and thermal
 conversion assumptions.
 
-The equation has an immediate geometrical meaning. For a chosen $a$, raising output
-raises $R_0$ in proportion. The machine gains toroidal length and plasma volume
-rather than being asked to generate arbitrarily more power per square metre of first
-wall. This is the physical content behind the familiar phrase economy of scale. It
-is not an accounting trick and it is not free: the absolute amount of plant,
-inventory, construction, and grid-connected power also grows.
+At fixed $a$, $R_0$ and plasma volume rise with output. The plant gains toroidal
+length while retaining the assigned neutron power per square metre.
 
 For this test Freidberg holds the original plasma and magnet assumptions:
 \[
  H=1,\qquad B_{\max}=13\,\mathrm T,\qquad W_n=4\,\mathrm{MW\,m^{-2}},
 \]
 and again uses $f_B=f_{\rm NC}$ to select the compatible $a$ for each trial output.
-The purpose is narrow: discover whether scale alone can make the four chosen
-plasma-model constraints overlap without asserting better confinement or a
-higher-field magnet.
+The test asks whether scale alone produces overlap of the four constraints.
 
-% ============================= PAGE 88 ==============================
-\newpage
-\section*{88. More output at fixed wall loading means more volume, not higher pressure}
+\section*{88. Output and volume grow together at fixed wall loading}
 
 At the fixed temperature and profiles of the reference model, fusion power has the
 form
@@ -3120,37 +2978,21 @@ $P_\alpha\propto P_E$. Thus
 \end{equation}
 again with no direct $P_E$ dependence at fixed $a$.
 
-\designconsequence{Higher output at fixed wall loading does not buy lower pressure
-by itself. It buys a larger volume in which to produce the larger total power. The
-benefit, if any, must enter through the way that larger $R_0$ changes the
-confinement-driven current and the current ledger.}
+\designconsequence{At fixed $a$, increased output requires proportionally more volume
+at the same pressure. Any current benefit must come from the larger major radius in
+the confinement and drive relations.}
 
-\imagebrief{Reset physics sketch: scale at fixed neutron wall loading}{Draw two
-conventional torus silhouettes at the same labelled wall loading $W_n$. The right
-machine has larger $R_0$, larger wall area, and proportionally larger $P_E$; keep the
-plasma cross-section and pressure shading comparable. Beside it show the short chain
-$P_E\uparrow\Rightarrow R_0a\uparrow\Rightarrow V\uparrow$ and
-$P_E\propto p^2V\Rightarrow p$ unchanged at fixed $a$. This is a reset scaling sketch,
-not a claim that large plants are automatically economical. No ST, HTS, or divertor.}
+\samplefigure{\includegraphics[width=.92\linewidth]{figures/final/figS_scale_two_ways.pdf}}{Two ways to increase volume at fixed minor radius and elongation. Raising output at fixed wall loading preserves the required pressure; lowering wall loading at fixed output reduces it.\label{fig:figS_scale_two_ways}}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_scale_two_ways.pdf}
-  \caption{Two ways to grow the same machine. Row A is this brief (fixed $W_n$); row B is the brief on lower wall loading. They are one figure because they are the same drawing with a different quantity held fixed --- and only side by side can the two chains be compared.}
-  \label{fig:figS_scale_two_ways}
-\end{figure}
-
-
-% ============================= PAGE 89 ==============================
-\newpage
 \section*{89. The enlarged machine changes the current requirement}
 
-The selected confinement relation, solved for current on page 59, has the dependence
+The selected confinement relation, solved for current in \S59, has the dependence
 \[
  I^{0.93}\propto
  \frac{\tau_{E,\rm req}P_\alpha^{0.69}}
  {R_0^{1.39}a^{0.58}n^{0.41}B_0^{0.15}}.
 \]
-At fixed $a$, the preceding page showed that $\tau_{E,\rm req}$ and $n$ do not carry
+At fixed $a$, section~88 showed that $\tau_{E,\rm req}$ and $n$ do not carry
 a direct power-output factor. In contrast,
 \[
  P_\alpha^{0.69}\propto P_E^{0.69},
@@ -3181,23 +3023,16 @@ required by the ledger falls:
 \[
  f_B=1-\frac{I_{\rm CD}}{I}.
 \]
-This is why a larger plant can ease both the kink test and steady-state closure in
-the stated model. It is not because a large reactor creates bootstrap current from
-nothing.
+\samplescope{The exponent $-0.75$ follows from the selected regression, fixed wall
+loading, fixed temperature and profiles, and the stated power budget. The full scan
+also updates $B_0$ and selects $a$ through bootstrap matching.}
 
-\model{The exponent $-0.75$ is a consequence of the selected empirical confinement
-fit, fixed wall loading, fixed temperature/profiles, and a fixed recirculating-power
-fraction. It is a transparent model implication, not a size-scaling theorem for all
-tokamaks.}
-
-% ============================= PAGE 90 ==============================
-\newpage
 \section*{90. The power-output scan: the model closes near $1.55\,\mathrm{GW_e}$}
 
 For each $P_E$, the calculation holds $H=1$ and $B_{\max}=13\,\mathrm T$, imposes
-$f_B=f_{\rm NC}$, and then tests all four ratios. The output and radius grids are
-$1\,\mathrm{MW}$ and $0.001\,\mathrm m$ respectively.
+$f_B=f_{\rm NC}$, and then tests all four ratios.
 
+\par\noindent\begin{minipage}{\linewidth}
 \begin{center}
 \begin{tabular}{c c c c c c c c}
 $P_E$ (MW) & $a$ (m) & $R_0$ (m) & $B_0$ (T) & $\mathcal R_G$
@@ -3211,48 +3046,37 @@ $P_E$ (MW) & $a$ (m) & $R_0$ (m) & $B_0$ (T) & $\mathcal R_G$
 1800 & 1.717 & 7.51 & 7.95 & 0.87 & 0.97 & 0.89 & 1.00
 \end{tabular}
 \end{center}
+{\small\textit{Table note.} Reconstruction outputs on $1\,\mathrm{MW}$ output and
+$0.001\,\mathrm m$ radius grids. Rounded source values are quoted separately in \S98.\par}
+\end{minipage}\par
 
-The kink and Troyon ratios are the last two to close. The script's first all-pass
-point is $P_E=1556\,\mathrm{MW}$ on its displayed grids; Freidberg reports
-$1550\,\mathrm{MW}$, an agreement appropriate to a simplified model and discrete
-scan. Greenwald remains below one with appreciable margin.
 
-\auditnote{This result does not say that a $1.55\,\mathrm{GW_e}$ reactor is preferred,
-financeable, grid-compatible, licensable, or buildable. It says only that raising
-the output is a third way to make the stated four plasma-model inequalities overlap
-while retaining $H=1$ and the paper's $13\,\mathrm T$ magnet assumption.}
+The kink and Troyon ratios are the last two to close. The scan closes near
+$1.55\,\mathrm{GW_e}$; Greenwald remains below one with appreciable margin.
 
-% ============================= PAGE 91 ==============================
-\newpage
+\samplescope{This is four-ratio closure within the stated $H=1$, $13\,\mathrm T$
+model. The plant-scale consequences enter the engineering comparison below.}
+
 \section*{91. A larger plant trades plasma closure for absolute scale and heat exhaust}
 
-The source's engineered-volume proxy at the $1550\,\mathrm{MW_e}$ case is
+The source's engineered-volume proxy near $1.55\,\mathrm{GW_e}$ is
 \[
  \frac{V_I}{P_E}=1.17\,\mathrm{m^3\,MW^{-1}},
 \]
-close to its $1.07\,\mathrm{m^3\,MW^{-1}}$ advanced-confinement comparison. That is
-the limited sense in which the source identifies an economy of scale: the engineered
-volume \emph{per megawatt} need not rise sharply. It does not mean the total
-engineering volume or capital required for a $1550\,\mathrm{MW_e}$ plant is small;
-both are necessarily larger in absolute terms.
+close to $1.07\,\mathrm{m^3\,MW^{-1}}$ in the advanced-confinement comparison.
+The volume per megawatt rises modestly, while total engineered volume increases with
+the larger plant output.
 
 The same source reports its parallel-heat-flux proxy rising to
 \[
  Q_\parallel=673\,\mathrm{MW\,T\,m^{-1}}
 \]
 at the high-output point, compared with $507\,\mathrm{MW\,T\,m^{-1}}$ in its
-advanced-confinement comparison case. The proxy is a warning that core
-plasma-constraint closure does not settle power exhaust. It is not a divertor design
-calculation, and it must not be translated directly into a material surface limit.
+advanced-confinement comparison case. The higher value identifies a greater parallel-exhaust burden within the source model.
 
-\designconsequence{The third remedy establishes a genuine alternative within the
-2015 model: conventional field and ordinary confinement can meet the four selected
-plasma tests at a sufficiently large output. It also leaves us with a larger,
-more-concentrated generating station and a more demanding exhaust proxy. A reactor
-is not complete merely because one family of plasma ratios reaches one.}
+\designconsequence{Larger output closes the selected constraints at conventional
+field and confinement, with greater absolute plant scale and exhaust demand.}
 
-% ============================= PAGE 92 ==============================
-\newpage
 \section*{92. Freidberg's fourth remedy: lower the permitted wall loading}
 
 The last single-knob remedy changes the allowed average neutron wall loading $W_n$.
@@ -3264,9 +3088,7 @@ larger first-wall area for the same neutron power:
  \qquad(P_E=1000\,\mathrm{MW_e}).
  \label{eq:wall-scan-wall-product}
 \end{equation}
-This is not an arbitrary way to make the plasma easier. It represents a conservative
-nuclear-material and first-wall design choice: less neutron power is assigned to each
-square metre, so more square metres must be built.
+Lower neutron power per unit area requires more first-wall surface at the same output.
 
 The immediate trade is visible before any plasma fit is used. At fixed $a$,
 $R_0\propto W_n^{-1}$ and $V\propto R_0a^2\propto W_n^{-1}$. The same fusion output
@@ -3278,13 +3100,9 @@ density, but it makes the reactor physically larger. Freidberg holds
 and again imposes bootstrap closure to select $a(W_n)$ before testing the four
 ratios.
 
-\designconsequence{A lower wall-loading limit is not a plasma improvement supplied
-for free. It is a decision to purchase lower power density with more wall, blanket,
-shielding, magnets, and building-scale volume. The next pages quantify how that
-engineering choice reaches the current problem.}
+\designconsequence{Lower wall loading reduces required power density by increasing
+wall area and volume. We next calculate how that change reaches the current requirement.}
 
-% ============================= PAGE 93 ==============================
-\newpage
 \section*{93. Lower wall loading reduces the required pressure}
 
 At fixed output and temperature, use again
@@ -3298,8 +3116,7 @@ elongation. Holding total fusion power fixed therefore gives
  n\propto\left(\frac{W_n}{a}\right)^{1/2}.
  \label{eq:wall-scan-pressure-density}
 \end{equation}
-Unlike the higher-output case, there is no cancellation: reducing $W_n$ genuinely
-reduces the average pressure and density required to make the same total power.
+Here reducing $W_n$ reduces the average pressure and density required to make the same total power.
 
 The stored energy scales as
 \[
@@ -3312,25 +3129,10 @@ The alpha power is unchanged because the total fusion output is unchanged. Hence
  \tau_{E,\rm req}\propto\left(\frac a{W_n}\right)^{1/2}.
  \label{eq:wall-scan-taue}
 \end{equation}
-This longer required confinement time may look like a penalty, but it must be placed
-beside the larger $R_0$, lower density, and changed field geometry in the empirical
-confinement law before judging the net current demand.
+The required confinement time rises. Its effect on current must be combined with
+the larger $R_0$, lower density and changed field in the regression.
+Figure~\ref{fig:figS_scale_two_ways} compares this route with increased output.
 
-\imagebrief{Reset physics sketch: lower wall loading trades density for machine
-scale}{Draw two conventional torus silhouettes at the same $P_E$ and temperature.
-The right machine has a larger $R_0$, more first-wall area, lower labelled $W_n$,
-and lighter pressure/density shading. Show
-$W_n\downarrow\Rightarrow V\uparrow\Rightarrow p,n\downarrow$, then the explicit
-warning: more blanket, shield, and TF-coil volume. This is a reset scaling sketch,
-not a cumulative machine state. No ST, HTS, or divertor.}
-
-\begin{center}\small\itshape
-This brief and the previous one ask for the same drawing with a different quantity held fixed, so they share one figure: see row~B of Figure~\ref{fig:figS_scale_two_ways}.
-\end{center}
-
-
-% ============================= PAGE 94 ==============================
-\newpage
 \section*{94. The net current direction follows from all terms together}
 
 Use the same selected confinement dependence:
@@ -3358,24 +3160,23 @@ Consequently,
 \end{equation}
 apart from the smaller self-consistent change in $B_0$. Lowering wall loading lowers
 the current demanded by the selected regression. It also lowers beta directly through
-Eq.~\eqref{eq:wall-scan-pressure-density}, while the larger $R_0$ and lower current
-improve the kink ratio in the full calculation.
+Eq.~\eqref{eq:wall-scan-pressure-density}, while the bootstrap-matched scan also changes $a$. Its combined geometry, field and
+current changes improve the kink ratio; increasing $R_0$ alone would lower $q_*$ at
+fixed $a$, $B_0$ and $I$.
 
-External current drive deserves the same caution as before. With fixed output,
+With fixed output,
 $P_{\rm CD}$ is fixed. As $W_n$ falls, $R_0n\propto W_n^{-1/2}$ grows, which tends to
 reduce the externally driven current in the selected efficiency model. Yet
 $I_{\rm req}$ falls more rapidly in this family; the required bootstrap share still
-decreases after all quantities are recalculated. The conclusion is a coupled result,
-not a consequence of holding $I_{\rm CD}$ fixed by hand.
+decreases after all quantities are recalculated. The scan therefore recalculates external drive at each trial point.
 
-% ============================= PAGE 95 ==============================
-\newpage
 \section*{95. The wall-loading scan closes near $2.1\,\mathrm{MW\,m^{-2}}$}
 
 The calculation now scans $W_n$ while retaining $P_E=1000\,\mathrm{MW_e}$,
 $H=1$, and $B_{\max}=13\,\mathrm T$. At each value it first sets
 $f_B=f_{\rm NC}$ and then tests the same four ratios.
 
+\par\noindent\begin{minipage}{\linewidth}
 \begin{center}
 \begin{tabular}{c c c c c c c c}
 $W_n$ ($\mathrm{MW\,m^{-2}}$) & $a$ (m) & $R_0$ (m) & $B_0$ (T)
@@ -3389,21 +3190,18 @@ $W_n$ ($\mathrm{MW\,m^{-2}}$) & $a$ (m) & $R_0$ (m) & $B_0$ (T)
 2.00 & 1.403 & 10.21 & 9.68 & 0.70 & 0.78 & 0.97 & 1.00
 \end{tabular}
 \end{center}
+{\small\textit{Table note.} The reconstruction's highest all-pass wall loading is
+$2.09\,\mathrm{MW\,m^{-2}}$ on $0.01\,\mathrm{MW\,m^{-2}}$ loading and
+$0.001\,\mathrm m$ radius grids.\par}
+\end{minipage}\par
 
-The kink criterion is again the final one to close. The transparent script finds the
-largest all-pass wall loading as $2.09\,\mathrm{MW\,m^{-2}}$ on its displayed grids;
-the source reports $W_n\lesssim2.1\,\mathrm{MW\,m^{-2}}$. This agreement is a
-useful check on the algebra, not validation of every physical assumption beneath the
-2015 model.
 
-\auditnote{Lower wall loading can close the selected plasma constraints without
-advanced confinement or a higher-field magnet. It does so by selecting a larger,
-lower-power-density machine. Any claim that this is the best reactor strategy must
-also compare its blanket, shield, coil, construction, maintenance, and financing
-burden.}
+The kink criterion is again the final one to close. The four ratios overlap when
+wall loading falls to about $2.1\,\mathrm{MW\,m^{-2}}$.
 
-% ============================= PAGE 96 ==============================
-\newpage
+\samplescope{The plasma constraints close by selecting a larger, lower-power-density
+machine under the original confinement and coil-field assumptions.}
+
 \section*{96. The reward is lower exhaust proxy; the price is a much larger plant}
 
 The source reports the low-wall-loading case's engineered-volume proxy as
@@ -3417,26 +3215,15 @@ toroidal dimensions, though the exact number belongs to its specified blanket an
 TF-coil geometry.
 
 The reported parallel-heat-flux proxy moves in the favorable direction,
-from $507$ to $374\,\mathrm{MW\,T\,m^{-1}}$ in those compared cases. Lower average
-power density makes an exhaust problem less severe, but it does not solve it.
-Divertor and first-wall design still require a separate calculation of power sharing,
-scrape-off-layer transport, radiation, magnetic expansion, detachment, and material
-response.
+from $507$ to $374\,\mathrm{MW\,T\,m^{-1}}$ in those compared cases. The lower value indicates a reduced parallel-exhaust burden. A target design still
+requires power sharing, scrape-off-layer transport, radiation, detachment and material response.
 
-\designconsequence{The four single-variable remedies have now revealed four distinct
-currencies: empirical confinement margin, magnet field and structure, plant output,
-and neutron-wall area. Each can close the selected plasma ledger under stated
-assumptions; each exports difficulty into another part of the reactor. The next task
-is to compare the remedies on one honest ledger before moving beyond Freidberg's
-conventional baseline.}
+\designconsequence{Lower wall loading improves the exhaust proxy while raising
+engineered volume per megawatt. The four remedies can now be compared on a common basis.}
 
-% ============================= PAGE 97 ==============================
-\newpage
 \section*{97. One comparison ledger: which changes actually close the four tests?}
 
-The four options are not four versions of the same physical claim. Each changes one
-declared input while retaining the others as closely as the coupled calculation
-permits:
+Each route changes one input and recalculates the same coupled requirements:
 
 \begin{center}
 \begin{tabular}{p{0.23\textwidth}p{0.29\textwidth}p{0.33\textwidth}}
@@ -3453,36 +3240,15 @@ close; engineered volume per megawatt rises strongly.
 \end{tabular}
 \end{center}
 
-The first row is deliberately retained. It teaches the method: finding one
-simultaneous equality, such as $f_B=f_{\rm NC}$, is not enough. Every inequality must
-be retested at the same state. The remaining three routes pass this particular
-four-ratio screen only because the changed input alters the confinement-driven current,
-the current ledger, and the pressure/stability ledger together.
+The confinement route closes kink and bootstrap but exceeds the beta allowance.
+The other three pass the four-ratio screen through distinct changes in field,
+plant scale or wall area. Bootstrap equality selects a state; all remaining
+inequalities must still be satisfied there.
 
-\imagebrief{Reset comparison sketch: four ways to move the same current closure}{Draw
-one compact causal map with a central block labelled required plasma current from the
-empirical confinement fit. Four incoming branches: $H\uparrow$ (empirical transport
-assumption); $B_{\max}\uparrow$ (field and structural demand); $P_E\uparrow$ at fixed
-$W_n$ (larger plant); and $W_n\downarrow$ at fixed $P_E$ (larger lower-power-density
-plant). Each branch must show a distinct exported burden. Mark $H=1.26$ as beta
-failure, and the other three as four-ratio closure only within the stated 2015
-models. This is a reset causal graphic, not a new machine drawing.}
+\section*{98. The source's final cases}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_four_ways_to_close.pdf}
-  \caption{Reset comparison sketch: four ways to move the same current closure. \schematicnote}
-  \label{fig:figS_four_ways_to_close}
-\end{figure}
-
-
-% ============================= PAGE 98 ==============================
-\newpage
-\section*{98. The source's final cases, stated without pretending to measure reality}
-
-For orientation, the 2015 paper reports the following rounded states. The values are
-not independent targets; they are outputs of its coupled equations after the listed
-input change. The reference row is shown because it makes the original mismatch
-visible.
+The 2015 paper reports the following rounded states. These are source outputs;
+the preceding scan tables report the independent reconstruction.
 
 \begin{center}
 \begin{tabular}{c c c c c c}
@@ -3500,108 +3266,66 @@ $\beta/\beta_T$ & 0.94 & 1.21 & 0.82 & 1.00 & 0.80
 \end{tabular}
 \end{center}
 
-The table confirms three conceptual lessons. First, the reference failure is
-current-centered: its $q_K/q_*$ and bootstrap ratio exceed one. Second, reducing
-current is not sufficient if the way it is reduced also tightens the beta allowance,
-as the $H=1.26$ row shows. Third, high field, plant scale, and low wall loading are
-not interchangeable technologies; they reach current closure through different
-geometric and engineering commitments.
+\samplescope{The source values are rounded and retain its profile, coil and
+empirical-boundary assumptions. The companion calculation reproduces the three
+closure thresholds at the resolutions stated above; source and reconstructed
+values remain separately identified.}
 
-\model{This table reproduces rounded values reported in the freely available 2015
-source. Our companion script independently reproduces the three closure thresholds
-to the resolution stated in the relevant scans. Neither result turns the source's
-profile choices, empirical boundaries, or coil model into universally valid reactor
-predictions.}
+\designconsequence{Reducing current helps only when the accompanying beta and supply
+requirements also close. The successful routes make different demands on the plant.}
 
-% ============================= PAGE 99 ==============================
-\newpage
-\section*{99. What Freidberg's calculation has rigorously established}
+\section*{99. What the conventional calculation establishes}
 
-The word rigorously must be used carefully. The following implication has been
-established by transparent substitution and numerical quadrature:
-\[
-\begin{array}{c}
-\text{2015 mission, geometry, coil, profile, confinement, current-drive,}\\
-\text{bootstrap, and four-limit assumptions}
-\end{array}
-\quad\Longrightarrow\quad
-\begin{array}{c}
-\text{the reference conventional state fails kink and}\\
-\text{steady-state bootstrap closure simultaneously.}
-\end{array}
-\]
-The size scan shows that merely choosing another minor radius within that baseline
-does not make all four tests pass. The remedy scans then identify which changed
-assumptions can restore overlap, and what new burden each imports.
+The reference state fails kink safety and bootstrap closure under the selected
+mission, geometry, coil, profile, confinement and current-drive assumptions. The
+size scan finds no common operating window within that baseline. The remedy scans
+identify changes that restore overlap and the engineering burden accompanying each.
 
-What has \emph{not} been established is equally important. The calculation is not a
-proof that every conventional tokamak fails, that any one high-field plant can be
-built, or that a ratio below one makes a reactor safe. The Greenwald relation and
-the chosen normalized-beta allowance are operational boundaries, not theorems. The
-confinement and current-drive laws are empirical/model closures. The bootstrap result
-depends on the chosen equilibrium and profiles. The analytic coil model is not a
-detailed magnet design.
+\samplescope{The Greenwald and normalized-beta allowances are operating boundaries;
+confinement and current drive use empirical or model closures. Bootstrap depends on
+the profiles and kinetic model, and the analytic coil calculation supplies a reduced
+engineering constraint.}
 
-\designconsequence{The real achievement of the reconstruction is not a slogan about
-tokamaks. It is a map of conditional causal failures: which physics assumption or
-engineering choice causes each failure, what intervention can remove it in the model,
-and what new design obligation is thereby created.}
+\designconsequence{The reconstruction identifies which changed assumptions remove
+the current-closure failures. Reactor development must then satisfy the additional
+physical and engineering requirements outside this screen.}
 
-% ============================= PAGE 100 ==============================
-\newpage
-\section*{100. Four ratios are not a complete reactor acceptance test}
+\section*{100. Requirements beyond the four-ratio screen}
 
-The 2015 paper intentionally keeps several major reactor questions outside its
-four-ratio screen. The most immediate is power exhaust. $Q_\parallel$ is only a
-parallel-transport proxy; no scrape-off-layer width, divertor geometry, impurity
-radiation, detachment window, transient load, or material lifetime has yet been
-calculated. A passing value of $q_K/q_*$ is likewise not a complete disruption-risk
-assessment. Vertical stability, control authority, error fields, energetic particles,
-resistive walls, and nonlinear evolution are not exhausted by one edge safety factor.
+The four-ratio calculation provides a core-plasma screening test. Power-exhaust
+design adds scrape-off-layer transport, divertor geometry, impurity radiation,
+detachment, transient loads and material lifetime. Disruption assessment adds
+vertical stability, control authority, error fields, energetic particles, resistive
+walls and nonlinear evolution to the edge-safety-factor criterion.
 
-On the engineering side, the radial-build calculation has identified why blanket,
-shield, winding pack, and structure consume space, but it has not produced a
-maintainable nuclear island. Neutron damage, tritium inventory, remote handling,
-cryoplant electricity, joint reliability where relevant, fatigue, and component
-replacement remain design problems. On the plant side, net electric output and
-recirculating power must eventually be joined to availability, construction schedule,
-licensing, fuel cycle, and grid integration.
+A maintainable nuclear island requires neutron-damage allowances, tritium inventory
+control, remote handling and component replacement. The magnet and plant studies add
+cryogenic power, joint reliability, fatigue, availability, construction, licensing,
+fuel cycle and grid integration. These requirements define the work needed to develop
+a state that passes the four ratios into an integrated plant.
 
-None of these omissions invalidates the four-ratio argument. They prevent us from
-misrepresenting it as a completed reactor design. The correct next move is to retain
-the conventional baseline as a reference and ask whether a different aspect-ratio
-geometry can improve the current-and-field trade \emph{without} hiding the radial
-build and central-stack obligations it creates.
+\section*{101. From conventional closure to the aspect-ratio question}
 
-% ============================= PAGE 101 ==============================
-\newpage
-\section*{101. The conventional baseline is now complete enough to earn the next question}
+The machine's requirements have established confinement, current supply, the nuclear
+island and a finite magnet build. The primary set
 
-We began without a tokamak and let the conventional machine reveal itself: a hot
-charged fusion plasma required magnetic confinement; the escape direction required a
-torus and TF coils; toroidal drifts required current, poloidal field, and shaping;
-steady state required a current ledger; fusion neutrons required the nuclear island;
-and the field required a finite inboard magnet build. The primary parameter set
 \[
  a,\ R_0,\ \kappa,\ b,\ c,\ T,\ n,\ p,\ \tau_E,\ B_0,\ \beta,\ I,\ q_*,\ f_B
 \]
-has acquired physical meaning before it was used as engineering input.
+now connects physical mechanisms to the numerical design. The conventional reference
+needs more current than its kink margin and bootstrap supply permit; high field is
+one route to closure, with corresponding structural and protection demands.
 
-Freidberg's reference calculation then exposed the conventional current closure:
-under its declared assumptions, an ordinary reference machine needs too much current
-for both its adopted kink margin and its available steady-state bootstrap share. The
-high-field result gives HTS its correct causal position: it is a technology that can
-open a needed field window in one closure route, while intensifying structural and
-protection demands.
+The next question is what changing aspect ratio does to these same requirements.
+Spherical-tokamak geometry must be tested for its effect on current and field while
+retaining the nuclear and magnet obligations in the reduced central space. The
+radial-build ledger provides the starting point.
 
-Only now is it legitimate to consider low-aspect-ratio, spherical-tokamak geometry.
-It will not be introduced as a compact machine-shaped answer. It must first be asked
-what aspect ratio changes in the same equations, which conventional failures it can
-relieve, and why its reduced central space creates the central-stack problem. The
-next chapter begins that comparison from the already-earned radial-build ledger.
 
-% ============================= PAGE 102 ==============================
-\newpage
+\clearpage
+\setcounter{page}{137}
+\setcounter{figure}{39}
+\let\theHfigure\sampleOriginalHfigure
 \section*{102. A spherical tokamak changes one geometric ratio, not the laws of plasma}
 
 Define the plasma aspect ratio by
