@@ -1,5 +1,5 @@
 % =====================================================================
-% PART I — COMPRESSED MACHINE FORMATION AND EQUILIBRIUM SAMPLE
+% COMPLETE COMPRESSED THESIS — SECTIONS 1--127
 % The machine is not presented in advance. Each component appears only
 % after a physical failure makes it necessary.
 % Build from the repository root: python3 thesis/code/build.py thesis
@@ -23,7 +23,7 @@
 \newcommand{\designconsequence}[1]{%
   \begin{center}\fcolorbox{black!50}{black!3}{\parbox{0.90\textwidth}{%
   \textbf{Design consequence.} #1}}\end{center}}
-\newcommand{\model}[1]{\textit{Model and limits.} #1}
+\newcommand{\model}[1]{\textit{Model and scope.} #1}
 \newcommand{\auditnote}[1]{%
   \begin{center}\fcolorbox{red!60!black}{red!4}{\parbox{0.90\textwidth}{%
   \textbf{Audit note.} #1}}\end{center}}
@@ -38,20 +38,21 @@
 
 \newcommand{\schematicnote}{\emph{Idealized schematic; not a fabrication drawing.}}
 \begin{document}
-% Compression sample: §§1--24. Original preserved in .build/compression-sample/original/.
-\title{Let the Machine Reveal Itself\\\large Machine formation and equilibrium}
+% Complete thesis: approved compressed sections 1--127.
+\title{Let the Machine Reveal Itself\\\large From Fusion Physics to the Spherical-Tokamak Centre Stack}
 \author{Jony (TUNEM)}
-\date{Compression sample v4 --- October 2026}
+\date{October 2026}
 \maketitle
 \vspace{-1em}
 
 
-\newcommand{\samplescope}[1]{\textit{Scope.} #1}
-\newcommand{\samplemodel}[1]{\textit{Model used here.} #1}
+\newcommand{\samplescope}[1]{\textit{Model and scope.} #1}
+\newcommand{\samplemodel}[1]{\textit{Model and scope.} #1}
 \let\sampleOriginalHfigure\theHfigure
 \renewcommand{\theHfigure}{sample.\arabic{figure}}
-% Sample-only layout helpers. Figures stay adjacent to their causal summaries.
+% Layout helpers keep figures adjacent to their causal summaries.
 \newcommand{\sampletall}[4]{\par\medskip\noindent\begin{minipage}{\linewidth}\designconsequence{#1}\centering{\small Perspective view and component key\par}\smallskip\includegraphics[width=.34\linewidth,trim=185 444.6 177.8 85,clip]{#2}\hspace{.02\linewidth}\raisebox{36pt}{\includegraphics[width=.60\linewidth,trim=118 342.6 117.8 280,clip]{#2}}\end{minipage}\par\smallskip\noindent\begin{minipage}{\linewidth}\centering\includegraphics[width=.98\linewidth,trim=0 #3 0 328,clip]{#2}\samplecaption{#4}\end{minipage}\par\medskip}
+\newcommand{\tablecaption}[1]{\par\smallskip{\small\refstepcounter{table}\textbf{Table \thetable.} #1\par}}
 \newcommand{\samplecaption}[1]{\par\smallskip{\small\refstepcounter{figure}\textbf{Figure \thefigure.} #1\par}}
 \newcommand{\samplefigure}[2]{\par\medskip\noindent\begin{minipage}{\linewidth}\centering #1\samplecaption{#2}\end{minipage}\par\medskip}
 \newcommand{\samplepair}[3]{\par\medskip\noindent\begin{minipage}{\linewidth}\designconsequence{#1}\centering #2\samplecaption{#3}\end{minipage}\par\medskip}
@@ -744,6 +745,7 @@ PF and control coils & Position and shape the plasma; apply corrective forces.\\
 Sensors, controller, power supplies & Measure the state and command the coil response.\\
 Beam or RF systems & Deposit auxiliary heat and, under suitable conditions, drive current.\\
 \end{tabular}
+\tablecaption{Machine components and their purposes.\label{tab:section-18}}
 \end{center}
 The associated variables form a coupled set. Geometry $(R_0,a,\kappa)$ determines
 volume; $B_0$ and $I_p$ determine pitch through Eq.~\eqref{eq:qstar}; the current
@@ -988,14 +990,10 @@ confinement this machine must sustain to produce useful fusion power.
 \draw[->] (2.4,-1.5)--(4,-1.5) node[right]{$R$};
 \end{tikzpicture}}{Schematic outward displacement of the magnetic axis relative to a fixed boundary. The interior contours illustrate the shift only; an equilibrium calculation determines their deformation and spacing for the specified profiles.}
 
-% End of authorized compression sample v4. Later sections unchanged.
+% Approved sections 25--50.
 \clearpage
-% Retain legacy page references in the unchanged later sections.
-\setcounter{page}{19}
-\setcounter{equation}{52}
-\setcounter{figure}{14}
+% Numbering continues across the assembled blocks.
 \let\theHfigure\sampleOriginalHfigure
-\setcounter{figure}{16}
 \renewcommand{\theHfigure}{blocktwo.\arabic{figure}}
 \section*{25. From individual collisions to a fusion-power density}
 
@@ -1811,8 +1809,6 @@ whether all four inequalities can hold simultaneously for a conventional baselin
 Its reduced blanket and analytic TF-coil models supply the numerical design assumptions.}\end{minipage}
 
 \clearpage
-\setcounter{page}{36}
-\setcounter{figure}{22}
 \renewcommand{\theHfigure}{blockthree.\arabic{figure}}
 \section*{51. Entering the 2015 reference calculation}
 
@@ -2004,6 +2000,7 @@ for example, $p=2nT$ and $q_*\propto a^2B_0/(R_0I)$.\\[3pt]
 kinetic model; its regime and profile assumptions accompany the result.\\[3pt]
 \textbf{Empirical boundary} & summarizes experimental operation or a regression; its coefficient and applicability range come from that evidence.
 \end{tabular}
+\tablecaption{Kinds of statements used in the model.\label{tab:section-57}}
 \end{center}
 
 Greenwald density is empirical; the practical Troyon coefficient combines stability
@@ -2442,6 +2439,7 @@ Troyon beta & $\mathcal R_T=0.94$ & marginal & pressure is near the adopted MHD 
 Kink safety & $\mathcal R_K=1.28$ & fails & required current gives too little $q_*$ margin\\
 Bootstrap closure & $\mathcal R_B=1.91$ & fails & calculated self-current is below required current share
 \end{tabular}
+\tablecaption{Four reference-point tests.\label{tab:section-71}}
 \end{center}
 The mission demands pressure and volume; ignition and confinement demand current.
 That current lowers $q_*$, while the chosen pressure profile supplies only a limited
@@ -2581,6 +2579,7 @@ $a$ (m) & $\mathcal R_G$ & $\mathcal R_T$ & $\mathcal R_K$ & $\mathcal R_B$
 1.34 & 0.56 & 0.94 & 1.29 & 1.91 & 1.91\\
 1.60 & 0.52 & 1.02 & 1.49 & 2.62 & 2.62
 \end{tabular}
+\tablecaption{Conventional baseline scan.\label{tab:section-75}}
 \end{center}
 
 The table is rounded to two decimals; a displayed ratio of $1.00$ can lie slightly above unity.
@@ -2612,8 +2611,6 @@ the conventional magnet model.}
 
 
 \clearpage
-\setcounter{page}{50}
-\setcounter{figure}{25}
 \renewcommand{\theHfigure}{blockfour.\arabic{figure}}
 \section*{77. Remedy one: improved confinement}
 
@@ -2696,6 +2693,7 @@ $H$ & $a$ (m) & $\mathcal R_G$ & $\mathcal R_T$ & $\mathcal R_K$
 1.30 & 1.323 & 0.75 & 1.24 & 0.97 & 1.00\\
 1.40 & 1.459 & 0.78 & 1.37 & 0.93 & 1.00
 \end{tabular}
+\tablecaption{Confinement-enhancement scan.\label{tab:section-79}}
 \end{center}
 
 The table exhibits the trade directly. Near $H=1.26$, bootstrap and kink closure
@@ -2838,6 +2836,7 @@ $B_{\max}$ (T) & $a$ (m) & $B_0$ (T) & $c$ (m) & $\mathcal R_G$
 18.0 & 0.976 & 12.66 & 1.70 & 0.65 & 0.80 & 0.97 & 1.00\\
 20.0 & 1.036 & 13.53 & 2.05 & 0.65 & 0.70 & 0.83 & 1.00
 \end{tabular}
+\tablecaption{High-field scan.\label{tab:section-84}}
 \end{center}
 {\small\textit{Table note.} The reconstruction's first all-pass point is
 $17.65\,\mathrm T$ on $0.01\,\mathrm T$ field and $0.001\,\mathrm m$ radius grids.\par}
@@ -3045,6 +3044,7 @@ $P_E$ (MW) & $a$ (m) & $R_0$ (m) & $B_0$ (T) & $\mathcal R_G$
 1600 & 1.493 & 7.67 & 8.44 & 0.82 & 0.99 & 0.97 & 1.00\\
 1800 & 1.717 & 7.51 & 7.95 & 0.87 & 0.97 & 0.89 & 1.00
 \end{tabular}
+\tablecaption{Power-output scan.\label{tab:section-90}}
 \end{center}
 {\small\textit{Table note.} Reconstruction outputs on $1\,\mathrm{MW}$ output and
 $0.001\,\mathrm m$ radius grids. Rounded source values are quoted separately in \S98.\par}
@@ -3189,6 +3189,7 @@ $W_n$ ($\mathrm{MW\,m^{-2}}$) & $a$ (m) & $R_0$ (m) & $B_0$ (T)
 2.10 & 1.349 & 10.11 & 9.72 & 0.69 & 0.80 & 1.00 & 1.00\\
 2.00 & 1.403 & 10.21 & 9.68 & 0.70 & 0.78 & 0.97 & 1.00
 \end{tabular}
+\tablecaption{Wall-loading scan.\label{tab:section-95}}
 \end{center}
 {\small\textit{Table note.} The reconstruction's highest all-pass wall loading is
 $2.09\,\mathrm{MW\,m^{-2}}$ on $0.01\,\mathrm{MW\,m^{-2}}$ loading and
@@ -3238,6 +3239,7 @@ absolute plant size and heat-exhaust proxy rise.\\[3pt]
 Lower wall loading & $W_n:4\rightarrow2.1\,\mathrm{MW\,m^{-2}}$ & All four ratios
 close; engineered volume per megawatt rises strongly.
 \end{tabular}
+\tablecaption{Comparison of the four remedies.\label{tab:section-97}}
 \end{center}
 
 The confinement route closes kink and bootstrap but exceeds the beta allowance.
@@ -3264,6 +3266,7 @@ $q_K/q_*$ & 1.28 & 1.00 & 1.00 & 1.00 & 1.00\\
 $f_B/f_{\rm NC}$ & 1.90 & 1.00 & 1.00 & 1.00 & 1.00\\
 $\beta/\beta_T$ & 0.94 & 1.21 & 0.82 & 1.00 & 0.80
 \end{tabular}
+\tablecaption{The source's final cases.\label{tab:section-98}}
 \end{center}
 
 \samplescope{The source values are rounded and retain its profile, coil and
@@ -3323,11 +3326,8 @@ radial-build ledger provides the starting point.
 
 
 \clearpage
-\setcounter{page}{137}
-\setcounter{figure}{39}
 \let\theHfigure\sampleOriginalHfigure
-\section*{102. A spherical tokamak changes one geometric ratio, not the laws of plasma}
-
+\section*{102. A spherical tokamak changes the aspect ratio}
 Define the plasma aspect ratio by
 \begin{equation}
  A\equiv\frac{R_0}{a}.
@@ -3346,33 +3346,15 @@ geometric variables can instead be written in terms of $A$:
  a=\left(\frac{C_{\rm wall}}A\right)^{1/2}.
  \label{eq:aspect-ratio-wall-geometry}
 \end{equation}
-Thus lowering $A$ makes the cross-section larger while bringing the plasma centre
-closer to the symmetry axis. It is not simply a uniformly shrunken conventional
-machine.
+Lowering $A$ widens the cross-section and brings its centre closer to the axis.
+The inboard gap shrinks even though the plasma minor radius grows.
 
-\designconsequence{Aspect ratio is a causal geometric variable. Lowering it can alter
-field-line twist, trapped-particle physics, volume, and radial space at once. We must
-derive each direction separately before calling low aspect ratio an advantage.}
+\designconsequence{Lower aspect ratio changes field variation, trapped orbits and available
+radial space together. We first trace its effect on the two current constraints.}
 
-\imagebrief{Reset geometry sketch: aspect ratio changes the torus, not the physics
-inventory}{Show two midplane cuts with the same labelled $R_0a=C_{\rm wall}$:
-a conventional $A\simeq4$ plasma and a low-$A\simeq1.5$ plasma. Mark $R_0$, $a$,
-and the symmetry axis. Retain only the already-earned plasma, nuclear-island bracket,
-and TF-system location as simplified outlines. Make the low-A inboard gap visibly
-smaller. Do not label either design as automatically superior and do not yet add an
-HTS brand or an ST-specific divertor.}
+\samplefigure{\includegraphics[width=.98\linewidth]{figures/final/figS_aspect_ratio_geometry.pdf}}{At fixed $R_0a$, lower aspect ratio widens the plasma cross-section and reduces the inboard gap. The two shapes have the same wall-area scaling at fixed elongation.\label{fig:figS_aspect_ratio_geometry}}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_aspect_ratio_geometry.pdf}
-  \caption{Reset geometry sketch: aspect ratio changes the torus, not the physics inventory. \schematicnote}
-  \label{fig:figS_aspect_ratio_geometry}
-\end{figure}
-
-
-% ============================= PAGE 103 ==============================
-\newpage
 \section*{103. Low aspect ratio strengthens toroidal field variation and trapping}
-
 The toroidal-field relation remains
 \[
  B_\varphi(R)R=B_0R_0.
@@ -3385,8 +3367,9 @@ At the inboard and outboard plasma edges, $R=R_0-a$ and $R=R_0+a$. Hence
  \label{eq:aspect-ratio-field-variation}
 \end{equation}
 When $A$ falls, this ratio falls: the inboard field becomes much stronger than the
-outboard field. The mirror argument from page 36 then says that a larger fraction of
-particles can be trapped. In the simple low-collisionality estimate used earlier,
+outboard field. The mirror argument from \S36 then says that a larger fraction of
+particles can be trapped. For isotropic velocity directions evaluated at the minimum
+field, the mirror estimate gives
 \begin{equation}
  f_t\simeq
  \left(1-\frac{B_{\min}}{B_{\max}}\right)^{1/2}
@@ -3396,22 +3379,16 @@ particles can be trapped. In the simple low-collisionality estimate used earlier
 For orientation, this expression gives $f_t\simeq0.63$ at $A=4$ and
 $f_t\simeq0.89$ at $A=1.5$.
 
-More trapped particles make a larger bootstrap response physically plausible because
-bootstrap current begins with trapped-particle/passing-particle collisional
-asymmetry. But Eq.~\eqref{eq:aspect-ratio-trapped-fraction} is not a bootstrap
-fraction. The large-aspect-ratio local closure used on pages 67--70 is no longer
-controlled at $A\sim1$--$2$. A finite-aspect-ratio kinetic calculation must replace
-it before claiming a numerical $f_{\rm NC}$ for an ST.
+Trapped and passing particles exchange momentum through collisions, providing a
+route from radial pressure gradients to bootstrap current. A larger trapped
+population can strengthen that response; its magnitude also depends on profiles
+and collisionality.
 
-\model{The direction of the trapping effect follows from the toroidal-field geometry
-and magnetic-moment argument. The resulting bootstrap fraction, profile, and
-collisionality dependence are finite-aspect-ratio neoclassical physics, not a number
-that can be extrapolated from Freidberg's large-aspect-ratio coefficient.}
+\samplemodel{This is the local mirror-trapping estimate from toroidal-field geometry
+and magnetic-moment conservation. A finite-aspect-ratio kinetic closure supplies the
+ST bootstrap fraction in place of the large-$A$ model used in \S\S67--70.}
 
-% ============================= PAGE 104 ==============================
-\newpage
 \section*{104. Aspect ratio also changes the kink--beta coupling}
-
 The shaped edge safety-factor estimate was
 \begin{equation}
  q_*=
@@ -3430,8 +3407,7 @@ Normalized beta contains the same dimensional group $aB_0/I$:
 \end{equation}
 Here $I_{\rm MA}=I/(10^6\,\mathrm A)$ and $\beta(\%)=100\beta$. Substitute
 \[
- \frac{aB_0}{I}
-=\frac{\beta_N}{10^8\beta}
+ \frac{aB_0}{I}=\frac{\beta_N}{10^8\beta}
 \]
 into Eq.~\eqref{eq:aspect-ratio-q} to obtain
 \begin{equation}
@@ -3444,47 +3420,27 @@ into Eq.~\eqref{eq:aspect-ratio-q} to obtain
 The numerical $0.05$ comes only from $\mu_0=4\pi\times10^{-7}$ and the conventional
 percent--MA units in $\beta_N$.
 
-Equation~\eqref{eq:aspect-ratio-q-beta} is a geometric insight, not a stability
-limit. At fixed $\beta$, $\beta_N$, and shape, lower $A$ raises $q_*$. Equivalently,
-at a required $q_*$ it permits a larger normalized beta within this relation. This
-is the first-principles reason low aspect ratio is a plausible response to the
-Freidberg kink--beta coupling: it changes the geometry of the current that produces
-the stabilizing poloidal field.
+At fixed $\beta$, $\beta_N$ and shape, this relation makes $q_*$ increase as $A$
+decreases. Equivalently, at fixed $q_*$ and $\beta_N$, lower $A$ permits larger
+$\beta$ within the estimate. This suggests a geometric route to easing the
+kink--pressure coupling.
 
-\auditnote{The equation does \emph{not} prove that an ST is stable at a chosen
-$\beta_N$. The allowable $\beta_N$ remains an equilibrium, wall, profile, rotation,
-and kinetic-MHD question. Low aspect ratio changes the relevant stability physics, so
-the conventional Troyon coefficient $2.8$ cannot simply be reused as an ST theorem.}
+\samplemodel{The shaped edge estimate motivates the direction of the comparison.
+The allowable $\beta_N$ and kink boundary require a finite-$A$ equilibrium and
+stability assessment with specified profiles and wall response.}
 
-% ============================= PAGE 105 ==============================
-\newpage
 \section*{105. What an ST can plausibly relieve in the Freidberg closure}
-
-The conventional reference failed because its required current simultaneously made
-$q_*$ too small and made steady-state replacement too demanding. Low aspect ratio
-attacks both mechanisms in direction, though not yet in certified magnitude:
-
+The conventional reference current gave too little edge safety factor and too large
+an externally unsupported current share. Lower aspect ratio offers three linked changes:
 \begin{itemize}
-\item Equation~\eqref{eq:aspect-ratio-q-beta} shows that smaller $A$ increases
-$q_*$ for the same normalized-beta and shape inputs. This can relax the
-kink-versus-pressure coupling that was restrictive in the conventional scan.
-\item Equation~\eqref{eq:aspect-ratio-trapped-fraction} shows stronger toroidal
-trapping. Combined with the pressure gradients already required by fusion, this
-creates a physical route to larger bootstrap current and a smaller externally driven
-current share.
-\item At fixed $R_0a$, Eq.~\eqref{eq:aspect-ratio-wall-geometry} gives a larger
-minor radius. That changes volume, current profile, wall area distribution, shaping,
-and power-exhaust geometry; none may be held fixed without calculation.
+\item The geometric estimate raises $q_*$ at the same beta, normalized beta and shape.
+\item Stronger trapping can increase the bootstrap response to pressure gradients.
+\item At fixed $R_0a$, the larger minor radius changes plasma volume, profiles,
+shaping and exhaust geometry.
 \end{itemize}
-
-This is enough to formulate a responsible test, not to announce its result. The
-question immediately next is narrow and mathematical: does a finite-aspect-ratio ST
-calculation satisfy the two ratios that failed in Freidberg's conventional baseline,
-namely the kink ratio and the non-inductive current ratio? We will use a published
-low-$A$ equilibrium and current-drive model, state every replacement assumption, and
-evaluate those two ratios. The centre-stack problem is \emph{not} a premise of that
-test; it is the separate engineering problem revealed only after the two Freidberg
-constraints have been answered.
+The numerical test now needs a published finite-$A$ equilibrium and current-supply
+model. It must evaluate kink safety and the affordable external-drive requirement
+at the same candidate state.
 
 Integrated ST studies make the same methodological point. Menard \emph{et al.}
 report low-aspect-ratio pilot-plant configurations only after free-boundary
@@ -3495,47 +3451,33 @@ facilities and pilot plants based on the spherical tokamak, \emph{Nuclear Fusion
 56 (2016) 106023, freely accessible at
 \url{https://iopscience.iop.org/article/10.1088/0029-5515/56/10/106023/pdf}.}
 
-% ============================= PAGE 106 ==============================
-\newpage
-\section*{106. The ST question is exactly Freidberg's two failed ratios}
-
+\section*{106. Applying the two current tests to an ST}
 Freidberg's conventional reference failed two current-centred tests:
 \[
- {\cal R}_{K}=\frac{q_K}{q_*}>1,
- \qquad
+ {\cal R}_{K}=\frac{q_K}{q_*}>1,\qquad
  {\cal R}_{B}=\frac{1-I_{\rm CD}/I}{f_{\rm NC}}>1.
 \]
 The first says that the confinement-demanded current leaves too little safety factor;
 the second says that the calculated self-current is smaller than the self-current
 share required after permitted external current drive is subtracted. For the
-conventional reference, pages 64 and 70 obtained $1.28$ and $1.91$, respectively.
+conventional reference, \S\S64 and 70 obtained $1.28$ and $1.91$, respectively.
 
-The ST test uses the same accounting, but it must replace the two
-large-aspect-ratio inputs rather than reuse them carelessly:
+The ST test keeps the accounting and uses geometry-appropriate inputs:
 \[
- {\cal R}_{K,\rm ST}=\frac{q_{K,\rm ST}}{q_{*,\rm ST}},
- \qquad
- {\cal R}_{B,\rm ST}=
- \frac{1-I_{\rm CD,allow}/I_{\rm ST}}{f_{\rm BS,ST}}.
- \label{eq:st-friedberg-ratios}
+ {\cal R}_{K,\rm ST}=\frac{q_{K,\rm ST}}{q_{*,\rm ST}},\qquad
+ {\cal R}_{B,\rm ST}=\frac{1-I_{\rm CD,allow}/I_{\rm ST}}{f_{\rm BS,ST}}.
 \]
 Here $q_{K,\rm ST}$ is an ST-specific kink boundary, $f_{\rm BS,ST}$ is obtained
 from an ST finite-aspect-ratio bootstrap model, and $I_{\rm CD,allow}$ is the
 external current that the plant can afford to supply under an independently stated
-power and efficiency constraint. The logic has not changed. A candidate closes
-Freidberg's bootstrap obstruction only when those two inputs are independently
-obtained and the ratio is at most one.
+power and efficiency constraint. The allowance comes from a power budget; the
+bootstrap fraction comes from the plasma model. Their independent origins make
+the ratio a test.
 
-\designconsequence{The centre-stack question is not included in
-Eq.~\eqref{eq:st-friedberg-ratios}. It must not be used to weaken or postpone the
-answer. The task first is to calculate the ST kink ratio and to compare its
-finite-$A$ bootstrap prediction with an independently justified current-drive
-allowance.}
+\designconsequence{The ST case needs both a safety-factor boundary and a calculated
+bootstrap share. The latter determines how much affordable external drive is required.}
 
-% ============================= PAGE 107 ==============================
-\newpage
 \section*{107. The finite-aspect-ratio bootstrap model is declared}
-
 Menard \emph{et al.} use a low-aspect-ratio equilibrium-informed bootstrap closure
 of the form
 \begin{equation}
@@ -3552,144 +3494,100 @@ profile/safety-factor coefficient. Their stated parameterization is
 \end{equation}
 Here $q_{\min}$ is the minimum safety factor of the assumed equilibrium/current
 profile. It is an input to this finite-$A$ closure, not a new universal constant.
-\footnote{J. E. Menard \emph{et al.}, cited on page 105, Sec.~2.1.5,
+\footnote{J. E. Menard \emph{et al.}, cited in \S105, Sec.~2.1.5,
 Eqs. and surrounding text on bootstrap/current-drive modeling. They state that this
 form is consistent with low-aspect-ratio equilibrium calculations; it is not
 deduced from Maxwell's equations alone.}
 
 The definition of poloidal beta makes the physical content visible:
 \[
- \beta_{\rm pol,th}\equiv
- \frac{2\mu_0\langle p_{\rm th}\rangle}{B_{\rm pol}^2}.
+ \beta_{\rm pol,th}\equiv\frac{2\mu_0\langle p_{\rm th}\rangle}{B_{\rm pol}^2}.
 \]
 It increases when thermal pressure rises relative to the poloidal magnetic field.
 Equation~\eqref{eq:menard-bootstrap-scaling} then combines the pressure-gradient
 source of bootstrap current with the low-$A$ orbit geometry through
 $\sqrt{\epsilon}$. This is the finite-$A$ replacement for Freidberg's
-large-aspect-ratio local integral on pages 67--70.
+large-aspect-ratio local integral in \S\S67--70.
 
-\model{The new coefficient and the equilibrium-derived poloidal beta make
-Eq.~\eqref{eq:menard-bootstrap-scaling} a model closure. That is acceptable and
-necessary: Freidberg's own numerical bootstrap result also required a declared
-neoclassical closure. What would be unacceptable is to use the conventional
-large-$A$ coefficient at $A\simeq1.7$ and call the extrapolation a proof.}
+\samplemodel{The coefficient and equilibrium-derived poloidal beta define the
+finite-$A$ closure used in this comparison. Its profile, safety-factor and regime
+assumptions accompany the predicted bootstrap fraction.}
 
-% ============================= PAGE 108 ==============================
-\newpage
-\section*{108. A published finite-$A$ candidate supplies every quantity the two tests need}
-
-The following is not a generic ST slogan. It is a specified low-aspect-ratio systems
-calculation from Menard \emph{et al.}: $A=1.7$, $\kappa=2.75$,
-$B_{T0}=3\,\mathrm T$, ITER-$H_{98}=1.25$, and $80\,\mathrm{MW}$ of neutral-beam
-heating/current-drive power. Their density scan at $R_0=1.6\,\mathrm m$ reports
+\section*{108. A published finite-$A$ candidate supplies the plasma inputs}
+Menard \emph{et al.} analyse a low-aspect-ratio candidate with $A=1.7$,
+$\kappa=2.75$, $B_{T0}=3\,\mathrm T$, ITER-$H_{98}=1.25$, and $80\,\mathrm{MW}$
+of neutral-beam heating/current-drive power. Their density scan at
+$R_0=1.6\,\mathrm m$ reports
 \[
- \beta_N=4.0\text{--}4.7,\qquad q_*\ge3,\qquad
- I=10.8\text{--}12\,\mathrm{MA}.
- \label{eq:menard-st-candidate-range}
+ \beta_N=4.0\text{--}4.7,\qquad q_*\ge3,\qquad I=10.8\text{--}12\,\mathrm{MA}.
 \]
-At normalized density near $0.8$, their current model gives a bootstrap fraction of
-about $f_{\rm BS}=0.76$ and a beam-driven share of about $0.24$.
-\footnote{Menard \emph{et al.}, cited on page 105, Secs.~2.1.3--2.1.6 and
-Figs.~8--9. Values read from the published scan are shown to two significant figures.
-The paper calculates total non-inductive current as the sum of bootstrap and
-neutral-beam current.}
+At a density near $0.8$ of the source's Greenwald reference, their current model
+gives a bootstrap fraction of about $f_{\rm BS}=0.76$ and a beam-driven share of
+about $0.24$.\footnote{Menard \emph{et al.}, cited in \S105, Secs.~2.1.3--2.1.6
+and Figs.~8--9. Values read from the published scan are shown to two significant
+figures. The paper calculates total non-inductive current as the sum of bootstrap
+and neutral-beam current.}
 
-These inputs give an ST safety factor and an ST bootstrap/current-drive distribution
-at the same operating point. They demonstrate that the authors can construct a
-fully non-inductive scenario in their model. They do \emph{not}, by themselves,
-state the independently derived current-drive allowance required in the numerator of
-Eq.~\eqref{eq:st-friedberg-ratios}. That distinction is the difference between
-constructing a current balance and testing Freidberg's economic current-drive
-constraint.
+The current shares describe the authors' fully non-inductive scenario: bootstrap
+and beam-driven current together supply the total current. The independent power
+allowance remains an input to the affordability test.
 
-\auditnote{The displayed $\beta_N=4.0$--$4.7$ range characterizes this candidate,
-but it is not silently used as a passed stability test in the present two-constraint
-comparison. Menard \emph{et al.} provide a separate normalized-beta/stability
-assessment for their ST equilibria. That analysis must be evaluated explicitly
-before this thesis makes any broader high-$\beta_N$ stability claim.}
+\samplescope{The quoted $\beta_N$ range characterizes the candidate. The present
+comparison tests kink safety and current supply; a broader pressure-stability claim
+requires the source's separate finite-$A$ stability assessment.}
 
-\imagebrief{Freidberg two-constraint closure: published low-A ST operating point}
-{Use a two-column, deliberately non-engineering graphic. Left: the conventional
-Freidberg reference with $q_*=1.56<2$ and required/calculated bootstrap
-$0.84/0.44$. Right: the specified $A=1.7$ ST model with $q_*\ge3$ against
-$q_{K,\rm ST}=2.8$, and current fractions $f_{\rm BS}\simeq0.76$ plus
-$f_{\rm NBI}\simeq0.24$. Label the right-hand current sum as an identity imposed by
-a fully non-inductive scenario, not as an independently passed Freidberg ratio.
-State the resulting required external current explicitly. Do not draw magnets,
-centre stacks, HTS, or reactor hardware; this image separates the resolved kink
-result from the still-conditional bootstrap question.}
+\samplefigure{\includegraphics[width=.98\linewidth]{figures/final/figS_st_closure.pdf}}{The conventional and ST model results answer two different questions: the kink ratio tests an adopted boundary; the ST current split specifies the external drive that must be affordable. The missions and model assumptions differ.\label{fig:figS_st_closure}}
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_st_closure.pdf}
-\caption{Freidberg's two obstructions, read with their required logical inputs visible. The ST kink comparison is an actual threshold test. The ST $0.76/0.24$ current split is an identity of Menard's fully non-inductive scenario, not an independent bootstrap-ratio pass: it identifies the external current the scenario must provide. Both columns are declared model results, not properties of tokamaks or of STs.}
-  \label{fig:figS_st_closure}
-\end{figure}
-
-
-% ============================= PAGE 109 ==============================
-\newpage
 \section*{109. First answer: the ST candidate closes the kink obstruction}
-
 The relevant ST disruption evidence used by Menard \emph{et al.} is more demanding
 than Freidberg's conventional reference threshold: NSTX disruption data show a marked
-increase in disruptivity below $q_*\simeq2.8$. Their stated ST design requirement is
-therefore
+increase in disruptivity below $q_*\simeq2.8$.\footnote{Menard \emph{et al.}, cited in \S105, Sec.~2.1.3. The numerical boundary
+comes from an NSTX data-based stability/disruption criterion and remains profile,
+wall, and operating-regime dependent.} Their stated ST design requirement is therefore
 \[
  q_{K,\rm ST}=2.8.
 \]
-\footnote{Menard \emph{et al.}, cited on page 105, Sec.~2.1.3. The numerical boundary
-comes from an NSTX data-based stability/disruption criterion and remains profile,
-wall, and operating-regime dependent.}
+
 The same candidate scan gives $q_*\ge3$. Substitute these published values:
 \begin{equation}
  {\cal R}_{K,\rm ST}=\frac{2.8}{q_*}
-\le\frac{2.8}{3.0}=0.93<1.
+\le\frac{2.8}{3.0}\simeq0.93<1.
  \label{eq:st-kink-closure}
 \end{equation}
+The candidate passes the adopted ST kink screen. Its geometry and operating state
+provide enough safety factor even against the larger ST-specific threshold.
 
-This is an affirmative answer to Freidberg's kink obstruction within the declared
-finite-$A$ model. It does not claim that every ST is kink stable; it demonstrates
-that the low-$A$ candidate can satisfy a stricter ST-specific safety-factor criterion
-than the $q_K=2$ criterion that the conventional reference failed. The geometrical
-reason anticipated on page 104 is now joined to an explicit operating-point test.
+\samplescope{The threshold is based on NSTX disruption evidence and retains its
+profile, wall and operating-regime dependence.}
 
-% ============================= PAGE 110 ==============================
-\newpage
-\section*{110. The bootstrap result identifies the price; it does not yet test Freidberg's constraint}
-
+\section*{110. The bootstrap share sets the external-drive requirement}
 The current ledger does not change with aspect ratio:
 \[
  I_{\rm ST}=I_{\rm BS}+I_{\rm CD}.
 \]
-Divide by $I_{\rm ST}$. The Menard candidate gives, to the precision supported by
-the published scan,
+Divide by $I_{\rm ST}$. The Menard candidate gives, to the precision supported by the
+published scan,
 \[
  \frac{I_{\rm BS}}{I_{\rm ST}}\simeq0.76,\qquad
  \frac{I_{\rm CD}}{I_{\rm ST}}\simeq0.24,
 \]
-and the two fractions sum to one. This equality is not an independent test. The
-Menard scenario is constructed to be fully non-inductive, so
-\[
- \frac{I_{\rm BS}}I+\frac{I_{\rm CD}}I=1
-\]
-by its current-accounting definition. Dividing its own complement by its own
-bootstrap fraction produces $1$ identically; it could not reveal a failure.
+The fractions add to one because the scenario is fully non-inductive. This is the
+current balance used to construct the state. Affordability requires a separate
+comparison with the plant's permitted drive power.
 
-What the published point does give us is the physical and engineering burden that
-an independent Freidberg test must meet:
+Because the scenario is constructed fully non-inductive, the current split is the requirement to be afforded, not an independent measurement of margin.
+
+The required external current is
 \begin{equation}
  I_{\rm CD,needed}=(1-f_{\rm BS})I\simeq0.24I
  =2.6\text{--}2.9\,\mathrm{MA}.
  \label{eq:st-current-drive-needed}
 \end{equation}
-The scenario assumes $80\,\mathrm{MW}$ of $0.5\,\mathrm{MeV}$ neutral-beam
-heating/current-drive power to obtain this fully non-inductive balance. It therefore
-demonstrates a substantial finite-$A$ bootstrap fraction and states the associated
-external-drive burden; it does not independently establish that a plant can afford
-that burden.
+The source supplies this share with $80\,\mathrm{MW}$ of neutral beams at
+$0.5\,\mathrm{MeV}$ per injected particle. A neutral beam carries energetic atoms
+into the plasma; after ionization, their collisions provide heating and driven current.
 
-The proper Freidberg test remains conditional until an economic/recirculating-power
-analysis supplies $I_{\rm CD,allow}$ independently:
+A separate recirculating-power budget must permit at least that current:
 \begin{equation}
  {\cal R}_{B,\rm ST}=
 \frac{1-I_{\rm CD,allow}/I}{f_{\rm BS}}\le1
@@ -3697,177 +3595,126 @@ analysis supplies $I_{\rm CD,allow}$ independently:
  I_{\rm CD,allow}\ge I_{\rm CD,needed}.
  \label{eq:st-bootstrap-conditional-closure}
 \end{equation}
-This is the question the next research pass must answer. It is more rigorous than
-calling the identity $0.76/0.76=1$ a measured closure.
+Thus the plasma result becomes a power-system requirement: afford about
+$2.6$--$2.9\,\mathrm{MA}$ of external drive at the intended operating state.
 
-The condition can be priced with published scalars alone. Freidberg's allowance was
-$100\,\mathrm{MW}$ of wall electricity for current drive, of which $40\,\mathrm{MW}$
-reaches the plasma (a $50\%$ wall-to-klystron and $80\%$ absorption chain); Menard's
-pilot-plant analysis likewise assumes a neutral-beam wall-plug efficiency of
-$0.4$.\footnote{Freidberg \emph{et al.}, Sec.~4.6; Menard \emph{et al.}, Sec.~2.1.6, where
-$\eta_{\rm aux}=0.4$ is described as higher than presently achievable, and Sec.~5.3. The arithmetic is reproduced in
-\texttt{thesis/code/calculations/st\_drive\_affordability.py}.} Keeping the published
-$80\,\mathrm{MW}$ beam state would therefore draw $80/0.4=200\,\mathrm{MW_e}$, twice
-that allowance; fitting under it would need a wall-plug efficiency of $0.8$, or, if only
-the allowance's $40\,\mathrm{MW}$ were injected, a drive efficacy of about
-$2.6\,\mathrm{MA}/40\,\mathrm{MW}\simeq65\,\mathrm{kA/MW}$ at that state. These are
-bounds on the published state, not on a redesigned ST: lowering the beam power changes
-heating, fast-ion pressure, fusion power, current, and bootstrap fraction together, and
-the FNSF point is a $Q_{\rm DT}\simeq2$ neutron-source mission rather than a
-$1\,\mathrm{GW_e}$ plant. The affordability question can only be settled on a
-power-plant-mission ST scan carrying its own recirculating-power budget.
+Wall-plug efficiency is the fraction of electrical input power delivered as beam
+power. With the source's assumed efficiency of $0.4$, an $80\,\mathrm{MW}$ beam
+requires about $200\,\mathrm{MW_e}$ of electricity. That is twice Freidberg's
+reference current-drive allowance.
 
-% ============================= PAGE 111 ==============================
-\newpage
+\begin{center}
+\small
+\begin{tabular}{p{.65\linewidth}p{.27\linewidth}}
+\textbf{Frozen-state budget check} & \textbf{Value}\\ \hline
+Beam power / assumed wall-plug efficiency & $80/0.4=200\,\mathrm{MW_e}$\\
+Freidberg reference electric allowance & $100\,\mathrm{MW_e}$\\
+Efficiency needed to retain the $80\,\mathrm{MW}$ beam under that allowance & $0.80$\\
+Injected power at the allowance and efficiency $0.4$ & $40\,\mathrm{MW}$\\
+Drive efficacy needed at $I=10.8\,\mathrm{MA}$, $f_{\rm BS}=0.76$ & about $65\,\mathrm{kA/MW}$
+\end{tabular}
+\tablecaption{Fixed-state external-drive budget comparison.\label{tab:st-drive-budget}}
+\end{center}
+{\small\textit{Table note.} The last row uses $I_{\rm CD,needed}=2.592\,\mathrm{MA}$.\footnote{Freidberg \emph{et al.}, Sec.~4.6, use a $50\%$ conversion and $80\%$
+absorption chain. Menard \emph{et al.}, Secs.~2.1.6 and 5.3, assume
+$\eta_{\rm aux}=0.4$, described in that 2016 study as higher than then achievable.}
+Inputs and arithmetic are in \texttt{st\_drive\_affordability.py}.}
+
+
+\samplescope{These are fixed-state budget comparisons. The cited FNSF case is a fusion
+nuclear science facility with a neutron-source mission and $Q_{\rm DT}\simeq2$
+(fusion power divided by auxiliary heating power), rather than the reference
+$1\,\mathrm{GW_e}$ power-plant mission. Reducing beam power changes heating,
+fast-ion pressure, fusion power, current and bootstrap together. A power-plant ST
+scan must carry its own electricity budget.}
+
 \section*{111. Verdict: ST closes the kink obstruction; bootstrap closure has a stated condition}
-
 The published finite-aspect-ratio ST model answers one of Freidberg's two
 current-centred obstructions affirmatively:
 \[
- {\cal R}_{K,\rm ST}\le0.93<1.
+ {\cal R}_{K,\rm ST}\le\frac{2.8}{3.0}<1.
 \]
 It also demonstrates a large bootstrap fraction, $f_{\rm BS}\simeq0.76$, and makes
 the missing condition quantitative: the operating point needs approximately
 $2.6$--$2.9\,\mathrm{MA}$ of independently affordable current drive.
 
-We must not call that second result closure until its current-drive allowance has
-been obtained independently. Freidberg's conventional comparison was meaningful
-because the permitted drive came from a separate recirculating-power calculation
-while the bootstrap fraction came from a neoclassical calculation. Reusing the
-complement of a fully non-inductive ST current balance would erase that distinction.
+An independent current-drive allowance is therefore the remaining input to the bootstrap test.
 
-\designconsequence{Low aspect ratio has now been shown to close the kink obstruction
-in a published finite-$A$ model and to raise the bootstrap fraction to a quantified,
-promising level. Whether it closes Freidberg's bootstrap obstruction depends on the
-separate question $I_{\rm CD,allow}\ge2.6$--$2.9\,\mathrm{MA}$.}
+\designconsequence{The specified ST model passes the kink screen. Bootstrap closure
+requires about $2.6$--$2.9\,\mathrm{MA}$ of independently affordable external drive.}
 
-% ============================= PAGE 112 ==============================
-\newpage
-\section*{112. Only after that answer does the separate centre-stack problem begin}
+\section*{112. Low aspect ratio introduces a centre-stack space requirement}
+Lowering $A$ also brings the plasma nearer the symmetry axis and increases the
+inboard toroidal field. The centre stack is the central column carrying the
+inboard TF current and its support, cooling and insulation, with any allocated
+solenoid. Around it, a D--T machine needs nuclear protection and, where assigned, breeding.
 
-The conclusion on page 111 does not say that the ST has no further problems. It says
-the kink question is answered affirmatively and the bootstrap question has been
-reduced to an explicit independent current-drive requirement. Lowering $A$ simultaneously brings
-the plasma closer to the symmetry axis and strengthens the inboard toroidal field.
-That creates a new engineering question: can a D--T reactor fit shielding, breeding,
-TF conductor, support, cooling, protection, and perhaps current-initiation function
-inside the remaining central radius?
+The available space must accommodate these functions at the field and current
+demanded by the plasma. This is the next engineering test, alongside the
+outstanding current-drive affordability condition.
 
-That question is logically separate. It cannot retroactively turn the resolved kink
-ratio into a failure, any more than it can replace the independent current-drive
-analysis still required for bootstrap closure. The remainder of this chapter changes
-its subject explicitly: from \emph{what does low-$A$ plasma physics change?} to
-\emph{what engineering debt does the low-$A$ solution create, and can HTS help pay
-it?}
-
-% ============================= PAGE 113 ==============================
-\newpage
 \section*{113. The same geometry takes radial space away from the centre stack}
-
-The inboard radial ledger is the unavoidable counterargument. Let $c_{\rm cs}$ denote
-the radial build occupied by the centre-stack TF conductor, its structural case,
-insulation, cooling, and any allocated central-solenoid function. The innermost
-radius available to the toroidal field is
+After reserving plasma radius $a$ and inboard nuclear build $b$, the outer radius
+available to the central column is
 \begin{equation}
- R_{\rm cs}=R_0-a-b-c_{\rm cs}
-=R_0\left(1-\frac1A\right)-b-c_{\rm cs}.
+ R_{\rm cs}=R_0-a-b
+=R_0\left(1-\frac1A\right)-b.
  \label{eq:centre-stack-radius}
 \end{equation}
-The same $BR=\mathrm{constant}$ relation now gives
+For an ideal axisymmetric TF system, evaluate the field just outside the enclosed
+central TF current. The $BR=\mathrm{constant}$ relation gives
 \begin{equation}
  B_{\rm cs}=\frac{B_0R_0}{R_{\rm cs}},\qquad
  B_0=B_{\rm cs}
-\left[1-\frac1A-\frac{b+c_{\rm cs}}{R_0}\right].
+\left[1-\frac1A-\frac{b}{R_0}\right].
  \label{eq:centre-stack-field}
 \end{equation}
-Every term in the square bracket has a physical meaning. Lowering $A$ subtracts
-geometric room; $b$ is demanded by neutrons; $c_{\rm cs}$ is demanded by current,
-structure, insulation, cooling, and possibly start-up flux. The bracket must be
-positive even before a usable central field can exist.
+Here $R_{\rm cs}$ is the column's outer envelope radius, the same quantity called
+$R_{\rm env}$ in the area scan below. Conductor, support, insulation, cooling and
+any solenoid are allocated inside this envelope. This convention counts the column area once.
 
-As $A\rightarrow1$, the purely geometric factor $1-1/A$ tends to zero. No improved
-plasma stability can reverse that subtraction. A low-$A$ reactor must instead choose
-among a larger $R_0$, thinner-but-credible inboard nuclear and magnet systems, a
-higher permissible $B_{\rm cs}$, different start-up/current-drive architecture, or
-some combination. This is the centre-stack problem in its most elementary form.
+\samplemodel{$B_{\rm cs}$ is the field at an exterior path enclosing the TF current.
+Inside the winding region, Ampere's law uses the current enclosed by each path;
+a peak field on conductor requires the winding geometry.}
 
-\imagebrief{Cumulative construction state: low aspect ratio reveals the centre stack}
-{Start with the complete conventional radial-build state, then reduce $A$ while
-preserving the plasma, first wall/nuclear island $b$, and TF function. On the inboard
-side show the shrinking interval $R_{\rm cs}=R_0-a-b-c_{\rm cs}$. Split
-$c_{\rm cs}$ into conductor, structure, insulation/cooling, and optional central-
-solenoid allocation. Label $B_0$ at the plasma and $B_{\rm cs}$ at the central
-column. The image must show that low $A$ improves some plasma geometry while making
-this physical interval scarce; do not depict a solved reactor.}
+As $A$ approaches one, $R_0(1-1/A)$ shrinks. Preserving nuclear build and column
+area then requires a larger $R_0$ or a changed allocation and operating target.
 
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figM16_centrestack_tall.pdf}
-  \caption{The same inventory as the complete radial build, at $A=2$: the plasma, the nuclear island $b$ and the TF function are all preserved --- only the aspect ratio changes. What changes with it is the room left for $R_{\rm cs}$. The magnified strip is drawn unfilled and unsized on purpose: that split is an engineering result this document has not derived.}
-  \label{fig:figM16_centrestack_tall}
-\end{figure}
+\designconsequence{Low aspect ratio reduces the column envelope. The required field
+and current must fit the remaining radius together with the column's other functions.}
 
+\section*{114. HTS raises the usable field and current-density range}
+Equation~\eqref{eq:centre-stack-field} explains why HTS becomes especially valuable in
+a low-aspect-ratio branch. For fixed desired $B_0$, reducing $A$ raises the required
+central-column field $B_{\rm cs}$. A conductor with credible operating current
+margin at higher field can make a smaller or more capable centre stack possible.
+It may therefore preserve some of the low-$A$ gain that an ordinary conductor
+field ceiling would otherwise erase.
 
-% ============================= PAGE 114 ==============================
-\newpage
-\section*{114. HTS is a centre-stack lever, not a centre-stack eraser}
-
-Equation~\eqref{eq:centre-stack-field} explains why HTS becomes especially valuable
-in a low-aspect-ratio branch. For fixed desired $B_0$, reducing $A$ raises the
-required central-column field $B_{\rm cs}$. A conductor with credible operating
-current margin at higher field can make a smaller or more capable centre stack
-possible. It may therefore preserve some of the low-$A$ gain that an ordinary
-conductor field ceiling would otherwise erase.
-
-But the same equation returns us to page 47:
+The same field also creates magnetic loading:
 \[
  p_B=\frac{B_{\rm cs}^2}{2\mu_0}.
 \]
-The central column must carry that magnetic loading while remaining manufacturable,
-cooled, electrically insulated, protected, and maintainable in a neutron environment.
-HTS does not turn $c_{\rm cs}$ into zero; its conductor and support still occupy
-space, and higher field can increase the structural allocation. The central column
-also competes with shielding and tritium-breeding volume, which cannot be dismissed
-for a D--T plant.
+The column must carry this load while remaining cooled, insulated, protected and
+maintainable in a neutron environment. Higher allowable conductor field can preserve
+an operating option, while the accompanying force increases support demand.
 
-\designconsequence{HTS can raise the credible field ceiling in the precise radial
-interval that low aspect ratio makes scarce. It is a powerful enabling lever for an
-ST, but it cannot by itself close the centre-stack equation.}
+\designconsequence{HTS expands the conductor's operating range. The centre-stack
+check must include the area and loads of the complete column.}
 
-% ============================= PAGE 115 ==============================
-\newpage
-\section*{115. What remains after the ST answers Freidberg's two questions}
-
-The narrowly posed Freidberg result is now established on page 111: the kink
-obstruction is closed within the declared finite-$A$ model, and the bootstrap
-obstruction has been reduced to an explicit current-drive condition that still awaits
-an independent affordability calculation. That result does not settle every physical
-or engineering demand placed on a reactor. The following
-questions are separate and still require an integrated calculation:
-
+\section*{115. The coupled calculations needed for an ST plant}
+A consistent ST plant case needs the following calculations at the same state:
 \begin{enumerate}
-\item a finite-aspect-ratio equilibrium and stability calculation, rather than the
-large-aspect-ratio kink and Troyon closures;
-\item a finite-aspect-ratio neoclassical bootstrap and current-drive calculation,
-with explicit profiles and collisionality;
-\item a transport and confinement basis applicable to the intended ST regime;
-\item a radial centre-stack design that makes the bracket in
-Eq.~\eqref{eq:centre-stack-field} positive with credible stress, current density,
-shielding, cooling, protection, and maintenance margins;
-\item a divertor, first-wall, blanket, and tritium-breeding calculation. This includes
-the exhaust problem Freidberg's four ratios intentionally did not close.
+\item finite-$A$ equilibrium and stability, including profiles and wall response;
+\item bootstrap and external current drive with an independent electricity budget;
+\item transport and confinement applicable to the intended ST regime;
+\item column area, stress, current-density and protection allowances;
+\item neutron shielding, breeding, heat exhaust and component lifetime.
 \end{enumerate}
+The following bounds isolate the column's electromagnetic and geometric
+requirements. They reveal which field, material or space allocation causes a proposed column to fail.
 
-The centre-stack calculation begins next. Its task is not to reopen the two
-Freidberg ratios; one has been passed and the other has been reduced to a stated
-condition. Its task is to measure the exact
-geometric and mechanical debt created by the low-$A$ solution. Only then can HTS,
-reduced shielding, larger radius, alternative current initiation, or modular
-maintenance be discussed as quantified responses rather than wishful labels.
-
-% ============================= PAGE 116 ==============================
-\newpage
-\section*{116. The central column cannot evade Ampere's law}
-
+\section*{116. Ampere's law fixes the central TF current requirement}
 The toroidal field outside an axis-enclosing current path obeys
 \[
  B_\varphi(R)=\frac{\mu_0NI}{2\pi R}.
@@ -3877,32 +3724,26 @@ Evaluate it at the plasma centre:
  NI=\frac{2\pi R_0B_0}{\mu_0}.
  \label{eq:centre-stack-ampere-turns}
 \end{equation}
-This is a striking centre-stack fact. The required TF ampere-turns are set by the
-desired plasma product $R_0B_0$, not by the small radius of the central column. Moving
-the current path inward raises the local field so that $RB_\varphi$ remains constant;
-it does not make the required enclosed current disappear.
+The required ampere-turns depend on $R_0B_0$. Moving the current inward raises
+the local field while leaving that total current requirement unchanged.
+A narrower column must therefore carry the same ampere-turns through less area.
 
-Let $J_{\rm wp,cs}$ be the allowed winding-pack current density after conductor,
-stabilizer, insulation, cooling, joints where relevant, and allocated structural
-fraction are counted honestly. The current-carrying cross-sectional area has the
-necessary lower bound
+Let $J_{\rm wp,cs}$ be the allowed current per unit winding-pack area. It includes
+internal conductor, stabilizer, insulation, cooling and any support already
+allocated within the pack. Separate column support and service areas are counted outside it.
+
+The current-carrying cross-sectional area has the necessary lower bound
 \begin{equation}
  A_{\rm wp,cs}\ge
 \frac{NI}{J_{\rm wp,cs}}
 =\frac{2\pi R_0B_0}{\mu_0J_{\rm wp,cs}}.
  \label{eq:centre-stack-winding-area}
 \end{equation}
-It is a lower bound because a real column also needs support and non-conductor
-functions. The equation makes the danger of vague compactness claims visible:
-low aspect ratio shrinks the available column, while the TF current-carrying area
-is controlled by the plasma field target.
+The result is a minimum winding-pack area. The column must provide that area as
+well as its separately allocated support and services.
 
-% ============================= PAGE 117 ==============================
-\newpage
 \section*{117. A first necessary radius inequality for the centre stack}
-
-Even in the unrealistically generous case that the entire circular column were
-available to the TF winding pack,
+If the entire envelope were available to the winding pack, its circular area would require
 \[
  \pi R_{\rm cs}^2\ge A_{\rm wp,cs}.
 \]
@@ -3912,33 +3753,25 @@ Substitute Eq.~\eqref{eq:centre-stack-winding-area}:
 \left(\frac{2R_0B_0}{\mu_0J_{\rm wp,cs}}\right)^{1/2}.
  \label{eq:centre-stack-radius-current-bound}
 \end{equation}
-This is not a design formula. It is a necessary condition with every real allocation
-set to zero except current-carrying area. A credible design needs a stronger
-inequality,
+Allocating the other column functions strengthens the requirement:
 \begin{equation}
  \pi R_{\rm cs}^2\ge
  A_{\rm wp,cs}+A_{\rm str}+A_{\rm ins/cool}+A_{\rm sol}
 +A_{\rm margin},
  \label{eq:centre-stack-area-ledger}
 \end{equation}
-where $A_{\rm str}$ carries magnetic load, $A_{\rm ins/cool}$ provides electrical and
-thermal function, $A_{\rm sol}$ is any central-solenoid allocation, and the final
-term represents manufacturing, protection, and operational margin.
+where $A_{\rm str}$ is support outside the winding pack, $A_{\rm ins/cool}$
+covers electrical and thermal services outside the pack, $A_{\rm sol}$ is any
+central-solenoid allocation, and the final term represents manufacturing,
+protection, and operational margin.
 
-Combine Eq.~\eqref{eq:centre-stack-radius} with
-Eq.~\eqref{eq:centre-stack-area-ledger}. Lowering $A$ reduces the left-side geometric
-radius, while the right side is set by field, materials, and operating functions.
-The centre-stack problem is therefore a geometric inequality test. It can fail before
-we ask whether the plasma is stable.
+Each area is counted once. Reducing $A$ shrinks the available envelope while
+field, materials and operating functions set the required areas.
 
-\designconsequence{A proposed ST must publish a centre-stack area ledger, not merely
-an aspect ratio and a peak field. Without the conductor, structure, shielding, and
-start-up allocations, there is no check that the proposed central column exists.}
+\designconsequence{The column must satisfy an explicit area ledger. A current-carrying
+pack that uses another function's allocation has not closed the geometry.}
 
-% ============================= PAGE 118 ==============================
-\newpage
-\section*{118. Higher central field helps the plasma only by increasing mechanical demand}
-
+\section*{118. Central field sets a structural load scale}
 At the centre-stack radius, the local magnetic-pressure scale is
 \[
  p_{B,\rm cs}=\frac{B_{\rm cs}^2}{2\mu_0}.
@@ -3953,88 +3786,59 @@ material limited to $\sigma_{\rm allow}$, force balance requires
 The detailed geometry determines $A_{\rm load}$ and the actual stress distribution;
 the quadratic field dependence is already inescapable. As low $A$ reduces
 $R_{\rm cs}$, Eq.~\eqref{eq:centre-stack-field} pushes $B_{\rm cs}$ upward for a
-fixed $B_0$. The winding pack and its supporting structure then compete for the same
-shrinking area.
+fixed $B_0$. The winding pack and its supporting structure then compete for the same shrinking area.
 
-HTS can improve the conductor part of the ledger by providing useful current margin
-at higher field. It does not make the structural fraction vanish. In fact, if a
-design uses the higher field that HTS enables, Eq.~\eqref{eq:centre-stack-structure-bound}
-can require more support. That is why a high-field ST must report both conductor
-performance and a credible mechanical case.
+\samplemodel{This is a load-path scaling. Detailed sizing requires the three-dimensional
+force distribution, superconductor strain limits, cyclic loads, protection and
+neutron-degraded material properties. HTS can improve current-carrying margin while
+higher operating field increases the load to be supported.}
 
-\model{Equation~\eqref{eq:centre-stack-structure-bound} is a lower-bound scaling,
-not a finite-element stress certification. Real centre columns need three-dimensional
-load paths, strain limits for the superconductor, cyclic-fatigue analysis, joints and
-terminations where used, electrical insulation, quench or fault protection, and
-neutron-degraded material properties.}
-
-% ============================= PAGE 119 ==============================
-\newpage
 \section*{119. The transformer also loses flux swing as the column shrinks}
-
-The transformer argument from page 20 gives a second, independent centre-stack
-constraint. A solenoid of effective radius $R_{\rm sol}$ changes linked magnetic flux
-by the scale
+The transformer argument from \S11 gives a second, independent centre-stack
+constraint. A solenoid of effective radius $R_{\rm sol}$ changes linked magnetic
+flux by the scale
 \begin{equation}
  \Delta\Psi_{\rm sol}\sim\pi R_{\rm sol}^2\Delta B_{\rm sol}.
  \label{eq:centre-stack-flux-swing}
 \end{equation}
 Faraday's law converts this flux swing into the volt-seconds available to initiate
-and ramp plasma current. Since $R_{\rm sol}$ must fit inside the same central column,
-$R_{\rm sol}<R_{\rm cs}$, the available inductive flux falls at least quadratically
-as the column becomes narrow.
+and ramp plasma current. Since $R_{\rm sol}$ must fit inside the same central
+column, $R_{\rm sol}<R_{\rm cs}$, at fixed usable $\Delta B_{\rm sol}$ the flux
+capacity falls with the square of the allocated solenoid radius.
 
-This fact connects directly to the Freidberg current ledger. A pulsed ST cannot
-claim steady operation simply because it can make an initial plasma current; it needs
-enough flux swing for its chosen pulse or a non-inductive start-up and sustainment
-route. Conversely, a steady-state ST with high bootstrap fraction has a second
-incentive to develop non-inductive current initiation: it can release central-column
-area otherwise reserved for a large solenoid.
+This flux change supplies the volt-seconds used to initiate, ramp and inductively
+sustain plasma current. A chosen pulse needs a sufficient flux budget.
+Non-inductive start-up can release solenoid area, while creating a requirement
+for another means of initiating current, such as radio-frequency drive,
+neutral beams or helicity injection.
 
-The choice is an engineering-plasma co-design decision. Removing solenoid allocation
-from Eq.~\eqref{eq:centre-stack-area-ledger} may help the radial ledger, but transfers
-an obligation to radio-frequency, neutral-beam, helicity-injection, or other
-start-up/current-drive systems. It cannot be deleted from the thesis by a diagram.
+\designconsequence{Reducing solenoid area reduces available inductive flux. Any space
+saved must be paired with a specified start-up and current-sustainment route.}
 
-% ============================= PAGE 120 ==============================
-\newpage
 \section*{120. The central-stack test is now ready to be made quantitative}
-
-The equations above turn the phrase centre-stack problem into five checkable
-questions:
+The equations above turn the phrase centre-stack problem into five checkable questions:
 \begin{enumerate}
 \item What $B_0$, $R_0$, and $A$ are demanded by the plasma mission?
-\item Does Eq.~\eqref{eq:centre-stack-field} leave positive inboard radius after
-the required nuclear build $b$?
-\item Does the available $\pi R_{\rm cs}^2$ exceed the full area ledger in
-Eq.~\eqref{eq:centre-stack-area-ledger}?
-\item Can the structural allocation carry the field-dependent load without exceeding
-stress or superconducting-strain limits?
-\item If solenoid area is reduced, what explicit non-inductive start-up and current
-maintenance system replaces its flux swing?
+\item Does Eq.~\eqref{eq:centre-stack-field} leave positive inboard radius after the required nuclear build $b$?
+\item Does the available $\pi R_{\rm cs}^2$ exceed the full area ledger in Eq.~\eqref{eq:centre-stack-area-ledger}?
+\item Can the allocated support carry the magnetic load within its stress limit and the superconductor strain limit?
+\item If solenoid area is reduced, what explicit non-inductive start-up and current maintenance system replaces its flux swing?
 \end{enumerate}
+The remaining calculation varies the declared field, radius, nuclear build,
+winding-pack current density and area allocation. It begins with a necessary area
+test before adding the other requirements.
 
-The next step is not to assign convenient answers. We will define a transparent
-reference ST radial ledger and vary its field, radius, shielding, conductor current
-density, and solenoid allocation. That will identify whether an HTS-enabled central
-stack can close geometrically, where it fails, and which missing technologies would
-have to carry the remaining burden.
-
-% ============================= PAGE 121 ==============================
-\newpage
 \section*{121. A published ST study shows why the ledger must be literal}
-
-It is useful to test the preceding geometry against a published allocation, provided
-we do not mistake one study's choices for universal constants. Menard \emph{et al.}
-examined an illustrative FNSF configuration with $A=2$, $R_0=1.87\,\mathrm m$, and
-a $30\,\mathrm{cm}$ centre-column radius. Their stated inboard nuclear protection
-included approximately $60\,\mathrm{cm}$ of water-cooled tungsten-carbide shielding;
-the corresponding radial picture also includes a $2\,\mathrm{cm}$ first wall.
-Their magnet assessment used a $70\,\mathrm{MA\,m^{-2}}$ winding-pack current-density
-assumption and imposed both support-stress and superconducting-strain constraints.
-\footnote{Menard \emph{et al.}, cited on page 105, Secs.~2.1 and 5.1,
-especially their Figs.~46--47. The numbers in this paragraph are inputs and results
-of that particular FNSF study, not universal requirements.}
+A published allocation gives the radial budget a concrete scale. Menard \emph{et al.}
+examined an illustrative FNSF configuration with $A=2$, $R_0=1.87\,\mathrm m$,
+and a $30\,\mathrm{cm}$ centre-column radius. Their stated inboard nuclear
+protection included approximately $60\,\mathrm{cm}$ of water-cooled tungsten-carbide
+shielding; the corresponding radial picture also includes a $2\,\mathrm{cm}$
+first wall. Their magnet assessment used a $70\,\mathrm{MA\,m^{-2}}$
+winding-pack current-density assumption and imposed both support-stress and
+superconducting-strain constraints.\footnote{Menard \emph{et al.}, cited in \S105,
+Secs.~2.1 and 5.1, especially their Figs.~46--47. The numbers in this paragraph
+are inputs and results of that particular FNSF study, not universal requirements.}
 
 The first calculation needs no plasma model. At $A=2$,
 \[
@@ -4045,79 +3849,40 @@ Temporarily subtract only the stated shield and first-wall thickness:
  0.935-0.600-0.020=0.315\,\mathrm m.
  \label{eq:menard-geometry-check}
 \end{equation}
-This rough geometry check is close to the study's $0.30\,\mathrm m$ centre-column
-radius. It is not an argument that $15\,\mathrm{mm}$ is spare room: it says that
-even before every cable, support, coolant channel, tolerance, and current-initiation
-function is drawn, the low-$A$ inboard budget is already measured in centimetres.
+This is close to the study's $0.30\,\mathrm m$ column radius. The subtraction is a
+rounded envelope check; it does not resolve the internal allocations or establish usable clearance.
 
-\designconsequence{The centre stack is not an abstract penalty applied after plasma
-optimization. A realistic neutron shield can consume most of the inboard radius in
-an $A\simeq2$ machine. A claimed compact ST must display its own radial ledger with
-the same honesty.}
+\designconsequence{The shield and first wall consume most of this example's inboard
+radius. Their mission-dependent thickness must be reserved before sizing the column.}
 
-% ============================= PAGE 122 ==============================
-\newpage
-\section*{122. Why a D--T centre stack begins with shielding, not conductor}
+\section*{122. Nuclear functions set the space available to the column}
+D--T neutrons carry $14.1\,\mathrm{MeV}$ and are uncharged, so magnetic confinement
+leaves their paths essentially unaffected. They deposit heat and cause damage in the
+first wall, nuclear region and magnets. A D--T plant must also breed replacement
+tritium from lithium. These functions determine the inboard build $b$.
 
-The inboard build $b$ in Eq.~\eqref{eq:centre-stack-radius} is not a decorative
-engineering margin. D--T fusion emits $14.1\,\mathrm{MeV}$ neutrons, which are
-uncharged. Magnetic confinement does not bend them. They stream into the first wall,
-blanket, shield, structural material, and magnets; a reactor must absorb their heat,
-breed tritium from lithium, and keep radiation damage to components within their
-allowed lifetime.
+The $60\,\mathrm{cm}$ shield in \S121 is a protection choice for that study's mission
+and materials. Changing it demands a new neutronics, heating, lifetime, and
+tritium-breeding calculation. The same study found that at low aspect ratio the
+inboard side can also be important to a tritium-breeding solution.\footnote{Menard
+\emph{et al.}, cited in \S105, discuss the inboard shielding and breeding allocation
+in their Sec.~5.3. Their conclusion is configuration-specific; the general point
+here is only that breeding and shielding claim radial space before the magnet is sized.}
 
-That is why the $60\,\mathrm{cm}$ shield in the illustrative calculation on page 121
-cannot simply be traded for a better magnet. It was a neutron-protection choice for
-the study's mission and material assumptions. Changing it demands a new neutronics,
-heating, lifetime, and tritium-breeding calculation. The same study found that at
-low aspect ratio the inboard side can also be important to a tritium-breeding
-solution.\footnote{Menard \emph{et al.}, cited on page 105, discuss the inboard
-shielding and breeding allocation in their Sec.~5.3. Their conclusion is
-configuration-specific; the general point here is only that breeding and shielding
-claim radial space before the magnet is sized.}
+The design sequence follows the energy flow: specify the plasma mission, calculate
+neutron protection and breeding requirements, then allocate the remaining column to
+TF winding, support and start-up.
 
-This gives the radial order of operations:
-\[
-\boxed{\text{plasma mission}}
-\ \longrightarrow\
-\boxed{\text{neutron, heat, and tritium functions}}
-\ \longrightarrow\
-\boxed{\text{space left for TF conductor, support, and start-up}}.
-\]
-Reversing that order---choosing a desired tiny centre column first and assigning
-the nuclear functions whatever space survives---would be the same category error
-as assuming a finished tokamak at page 1. The nuclear build is a design demand that
-helps reveal the permitted machine shape.
+\samplefigure{\includegraphics[width=.98\linewidth]{figures/final/figS_st_radial_ledger.pdf}}{Illustrative $A=2$ radial allocation from Menard \emph{et al.} Shield and first wall leave about $0.3\,\mathrm m$ for the column. Its internal winding, support and start-up allocations require a separate design.\label{fig:figS_st_radial_ledger}}
 
-\imagebrief{Cumulative ST radial ledger: a neutron first, magnet second construction}
-{Draw one clean outboard-midplane to inboard-midplane cross-section for the illustrative
-$A=2$, $R_0=1.87\,\mathrm m$ state. On the inboard side add components in causal
-order: plasma edge, first wall, approximately $0.60\,\mathrm m$ shielding as a
-study-specific allocation, then the approximately $0.30\,\mathrm m$ central-column
-envelope. Inside that envelope use unfilled subdivisions for TF winding, support,
-insulation/cooling, and optional solenoid--do not assert their final sizes. Include
-the arithmetic of Eq.~(\ref{eq:menard-geometry-check}) and a clear illustrative
-published-allocation, not-universal-reactor-template note.}
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=1.0\textwidth]{figures/final/figS_st_radial_ledger.pdf}
-  \caption{The published illustrative allocation, laid out in the order the physics forces: shield first, magnet into what is left. The arithmetic is Eq.~\eqref{eq:menard-geometry-check} evaluated. The $15$ mm difference from the study's stated column radius is not spare room --- it is the residue of a check that has not yet paid for one cable, support, coolant channel or tolerance.}
-  \label{fig:figS_st_radial_ledger}
-\end{figure}
-
-
-% ============================= PAGE 123 ==============================
-\newpage
 \section*{123. What HTS changes in this ledger}
-
 HTS changes a specific term: the credible current density and operating field margin
 of the TF winding pack. In the necessary bound,
 \[
- A_{\rm wp,cs}\ge
-\frac{2\pi R_0B_0}{\mu_0J_{\rm wp,cs}},
+ A_{\rm wp,cs}\ge\frac{2\pi R_0B_0}{\mu_0J_{\rm wp,cs}},
 \]
-raising a credibly usable $J_{\rm wp,cs}$ reduces the \emph{minimum} current-carrying
-area for a prescribed $R_0B_0$. It can therefore create room that a conventional
+raising a credibly usable $J_{\rm wp,cs}$ reduces the minimum current-carrying area
+for a prescribed $R_0B_0$. It can therefore create room that a conventional
 conductor cannot. In the field relation
 \[
  B_{\rm cs}=\frac{B_0R_0}{R_{\rm cs}},
@@ -4125,52 +3890,29 @@ conductor cannot. In the field relation
 HTS can also make a larger central field technically plausible without immediately
 crossing the conductor's critical surface.
 
-Those are real levers, but neither equation says that the whole right side of
-Eq.~\eqref{eq:centre-stack-area-ledger} scales down as $1/J_{\rm wp,cs}$. The support,
-insulation, cooling, protection, radiation, and manufacturing terms remain. Moreover,
-raising $B_{\rm cs}$ raises $p_{B,\rm cs}\propto B_{\rm cs}^2$, which can enlarge the
-structural term. A good HTS design may close the equation; HTS alone is not the
-missing calculation.
+Increasing usable $J_{\rm wp,cs}$ reduces the required winding area. Support,
+services and start-up retain their own allocations, and higher $B_{\rm cs}$
+increases the magnetic-pressure load as $B_{\rm cs}^2$.
 
 The published low-$A$ work gives a concrete architectural direction rather than a
 shortcut. A later $A=2$, $R_0=3\,\mathrm m$ HTS pilot-plant concept places all
 superconducting poloidal-field coils outside the TF system, uses continuous HTS TF
 coils, retains only a small central solenoid, and keeps inboard blanket/shield
-functions in the radial build.\footnote{Menard \emph{et al.}, cited on page 105,
+functions in the radial build.\footnote{Menard \emph{et al.}, cited in \S105,
 Sec.~5.4 and Fig.~53. It is a conditional systems study, not a demonstration that
-every one of its performance targets has been experimentally achieved.} Each choice
-answers one item in the ledger: outside PF coils avoid consuming central volume;
-a small solenoid makes non-inductive start-up more important; HTS improves the TF
-field option; blanket and shield remain non-negotiable.
+every one of its performance targets has been experimentally achieved.}
+Each choice answers one item in the ledger: outside PF coils avoid consuming
+central volume; a small solenoid makes non-inductive start-up more important; HTS
+improves the TF field option; blanket and shield remain non-negotiable.
 
-\designconsequence{HTS is the enabling material in a co-design, not an exemption
-from the co-design. Its success must be reported as a closed area, stress, radiation,
-and start-up ledger at the chosen $R_0$, $A$, and $B_0$.}
+\designconsequence{HTS can reduce winding area or permit higher field. Its benefit
+must be evaluated with the column's stress, nuclear protection and start-up allocations.}
 
-% ============================= PAGE 124 ==============================
-\newpage
 \section*{124. What remains after the Freidberg answer}
-
-The causal argument has reached a useful, deliberately narrow conclusion. The
-finite-$A$ calculation on pages 106--111 answered Freidberg's two current questions.
-The earlier first-principles geometry explains why that answer was possible:
-\begin{enumerate}
-\item Eq.~\eqref{eq:aspect-ratio-q-beta} changes the current--safety-factor geometry
-in the favorable direction for the kink/current coupling.
-\item Eq.~\eqref{eq:aspect-ratio-trapped-fraction} strengthens the trapping physics
-that underlies a route to bootstrap current.
-\end{enumerate}
-HTS then supplies a plausible material lever for the adverse inboard field and
-winding-area problem created by the same geometry. Published integrated ST studies
-show that these ingredients can be put into a serious systems calculation.
-
-That establishes the result relevant here: a specified finite-$A$ ST model closes the
-kink constraint that failed in Freidberg's conventional baseline and reduces the
-bootstrap constraint to an explicit, quantified current-drive condition
-($I_{\rm CD,allow}\ge2.6$--$2.9\,\mathrm{MA}$, page 111), whereas merely raising
-$H$ in that baseline did neither. It does not establish a theorem
-that every ST or every other reactor constraint is closed; exhaust, blanket, tritium,
-radiation, maintenance, and cost remain their own questions.
+The finite-$A$ case passes the adopted kink screen and specifies about
+$2.6$--$2.9\,\mathrm{MA}$ of external drive for bootstrap closure. Its geometry
+also increases the pressure on inboard space. These results connect the plasma
+and column calculations without settling the outstanding affordability condition.
 
 The next calculation must therefore have two ledgers, evaluated together:
 \[
@@ -4184,31 +3926,25 @@ b,\ R_{\rm cs},\ A_{\rm wp},\ A_{\rm str}\\
 \text{HTS margin, protection, maintenance}
 \end{array}
 \]
-The next section makes the centre-stack ledger into an explicit, auditable parameter
-scan. It does not relabel that separate engineering question as a failed Freidberg
-plasma constraint.
+The final teaching scan makes the column's current-area requirement explicit.
 
-% ============================= PAGE 125 ==============================
-\newpage
 \section*{125. A dimensionless necessary test for a central TF winding}
-
-For a first scan, reserve the inboard nuclear build $b$ before allocating the central
-column. The outer radius of the column envelope is then
+For a first scan, reserve the inboard nuclear build $b$ before allocating the
+central column. The outer radius of the column envelope is then
 \begin{equation}
  R_{\rm env}=R_0\left(1-\frac1A\right)-b.
  \label{eq:centre-stack-envelope}
 \end{equation}
-This is deliberately more generous than a finished design: it gives every remaining
-square millimetre to the central column before deciding how much is conductor,
-structure, cooling, or solenoid.
+This is the same outer-envelope radius denoted by $R_{\rm cs}$ in \S\S113--120.
+Require $R_{\rm env}>0$ before evaluating an area. The allocation within that
+circle is specified separately.
 
-Let $f_{\rm wp}$ be the fraction of the envelope's circular cross-sectional area that
-the designer has explicitly allocated to the TF winding pack. It is an accounting
-input, not a material constant. Equation~\eqref{eq:centre-stack-winding-area} then
-requires
+Let $f_{\rm wp}$ be the fraction of the envelope's circular cross-sectional area
+that the designer has explicitly allocated to the TF winding pack. It records the
+area assigned to winding after reserving the other functions.
+Equation~\eqref{eq:centre-stack-winding-area} then requires
 \[
- \frac{2\pi R_0B_0}{\mu_0J_{\rm wp,cs}}
-\le f_{\rm wp}\pi R_{\rm env}^2.
+ \frac{2\pi R_0B_0}{\mu_0J_{\rm wp,cs}}\le f_{\rm wp}\pi R_{\rm env}^2.
 \]
 After cancelling $\pi$, define the dimensionless winding occupancy
 \begin{equation}
@@ -4224,25 +3960,18 @@ The necessary test is simply
 \end{equation}
 If $\eta_{\rm wp}>1$, even a column made entirely of winding pack cannot carry the
 required TF current. If $f_{\rm wp}<\eta_{\rm wp}<1$, a central column exists only
-on paper because the current pack has consumed space explicitly promised to the
-other functions.
+on paper because the current pack has consumed space explicitly promised to the other functions.
 
-\model{This is a necessary electromagnetic-area test. It treats the winding pack as
-uniformly current carrying and does not certify field quality, stress, strain,
-quench protection, neutron lifetime, joints, penetrations, or manufacturability.
-Those omissions make passing the test easier, never harder.}
+\samplemodel{The pack is represented by an effective uniform current density.
+This is a necessary current-area screen; field distribution, stress, strain,
+protection, nuclear lifetime and manufacturability require additional checks.}
 
-% ============================= PAGE 126 ==============================
-\newpage
 \section*{126. Solving the test exposes a lower-aspect-ratio boundary}
-
-The test can be solved for the smallest aspect ratio permitted by the chosen
-area allocation. Take the positive square root of
-Eq.~\eqref{eq:centre-stack-winding-test}:
+The test can be solved for the smallest aspect ratio permitted by the chosen area
+allocation. Take the positive square root of Eq.~\eqref{eq:centre-stack-winding-test}:
 \[
- R_0\left(1-\frac1A\right)-b
-\ge
-\left(\frac{2R_0B_0}{\mu_0J_{\rm wp,cs}f_{\rm wp}}\right)^{1/2}.
+ R_0\left(1-\frac1A\right)-b\ge
+ \left(\frac{2R_0B_0}{\mu_0J_{\rm wp,cs}f_{\rm wp}}\right)^{1/2}.
 \]
 Divide by $R_0$ and rearrange:
 \begin{equation}
@@ -4255,61 +3984,64 @@ Divide by $R_0$ and rearrange:
 \label{eq:centre-stack-aspect-bound}
 \end{equation}
 The bracket must be positive. If it is zero or negative, the stated $R_0$, $B_0$,
-nuclear build, winding-pack current density, and allocation cannot coexist at
-\emph{any} aspect ratio in this simplified central-column arrangement.
+nuclear build, winding-pack current density, and allocation cannot coexist at any
+aspect ratio in this simplified central-column arrangement.
 
 Every trend in this equation has a physical reading:
 \begin{itemize}
-\item Increasing $B_0$ increases the required ampere-turns and raises the minimum
-allowed $A$.
-\item Increasing $b/R_0$ claims the inboard radius for nuclear function and raises
-the minimum allowed $A$.
-\item Increasing credible $J_{\rm wp,cs}$ or giving the winding pack a larger
-honest fraction $f_{\rm wp}$ lowers the electromagnetic area demand.
+\item Increasing $B_0$ increases the required ampere-turns and raises the minimum allowed $A$.
+\item Increasing $b/R_0$ claims the inboard radius for nuclear function and raises the minimum allowed $A$.
+\item Increasing credible $J_{\rm wp,cs}$ or giving the winding pack a larger allocated
+fraction $f_{\rm wp}$ lowers the electromagnetic area demand.
 \item Increasing $R_0$ helps twice: the nuclear build occupies a smaller fraction
 of the radius and the required winding area is less crowded into the column.
 \end{itemize}
-The last two points identify exactly what HTS and a less compact plant can improve.
-They also show why neither word automatically guarantees a viable ST.
+HTS can improve the usable pack current density; a larger machine can reduce
+crowding. Each improvement must retain credible allowances for the other functions.
 
-% ============================= PAGE 127 ==============================
-\newpage
 \section*{127. A transparent teaching scan: field makes the low-$A$ limit move}
-
 Use the deliberately declared teaching inputs
 \[
  R_0=3.0\,\mathrm m,\quad b=0.65\,\mathrm m,\quad
  J_{\rm wp,cs}=70\,\mathrm{MA\,m^{-2}},\quad f_{\rm wp}=0.40.
 \]
 The current-density scale is comparable to an assumption used in the illustrative
-Menard study on page 121; the radius, nuclear build, and $40\%$ allocation here are
-\emph{not} a proposed reactor. They merely make the algebra visible. Substitution in
-Eq.~\eqref{eq:centre-stack-aspect-bound} gives:
-\[
-\begin{array}{c|c|c}
-B_0\;(\mathrm T) & A_{\min,\rm wp} & \eta_{\rm wp}\ \text{at }A=2\\ \hline
+Menard study in \S121; the radius, nuclear build, and $40\%$ allocation here are
+not a proposed reactor. They merely make the algebra visible.
+Substitution in Eq.~\eqref{eq:centre-stack-aspect-bound} gives:
+\begin{center}
+\begin{tabular}{c c c}
+$B_0\;(\mathrm T)$ & $A_{\min,\rm wp}$ & $\eta_{\rm wp}$ at $A=2$\\ \hline
 4 & 1.97 & 0.378\\
-6 & 2.24 & 0.567\\
-8 & 2.54 & 0.756
-\end{array}
-\]
+6 & 2.24 & 0.566\\
+8 & 2.54 & 0.755
+\end{tabular}
+\tablecaption{Necessary winding-area test for the declared teaching inputs.\label{tab:centre-stack-scan}}
+\end{center}
 At $A=2$, the available envelope radius is
 $R_{\rm env}=3(1-1/2)-0.65=0.85\,\mathrm m$. The first row barely clears the
-assigned $40\%$ winding allocation. The latter two do not: they require more winding
-area than has been allocated even before support, insulation, cooling, or a solenoid
-are tested. The table is reproducible from
+assigned $40\%$ winding allocation. The latter two do not: they require more
+winding area than has been allocated even before support, insulation, cooling, or
+a solenoid are tested. The table is reproducible from
 \texttt{centre\_stack\_ledger.py}; every input is displayed at the top of that file.
 
-This is the exact sense in which HTS is a boost mechanism. If it raises the
-\emph{credible system-level} $J_{\rm wp,cs}$ at the relevant field, temperature,
-strain, radiation, and protection margin, it can lower $A_{\min,\rm wp}$. If the
-design instead spends the HTS benefit to raise $B_0$, the square-root field penalty
-pushes $A_{\min,\rm wp}$ upward. The net result is a co-design decision, not a
-one-directional law.
+The $4\,\mathrm T$ case requires about $38\%$ of the envelope for winding, close
+to the assigned $40\%$. At $6$ and $8\,\mathrm T$, the required fractions rise to
+about $57\%$ and $76\%$. The current-area requirement alone then exceeds the allocation.
 
-\auditnote{Passing the $4\,\mathrm T$ row does not make it a reactor. The table omits
-the structure term that grows with central field, the non-winding allocations, the
-neutron and tritium calculation behind $b$, and all plasma/stability/exhaust tests.
-It is intentionally a failure detector, not a feasibility certificate.}
+Raising usable winding-pack current density lowers the minimum aspect ratio.
+Spending that gain on higher plasma field increases required ampere-turns and
+moves the boundary back upward. HTS therefore changes the trade between field
+and space; its net benefit depends on the chosen operating point.
+
+\samplescope{The teaching scan reserves a winding fraction but does not size the
+remaining support and services or calculate the nuclear build, plasma stability
+and exhaust. A passing row meets the current-area requirement only.}
+
+\designconsequence{The reduced model now identifies a measurable requirement:
+enough column area to carry the TF current after nuclear protection is reserved.
+The next research stage must test that requirement alongside affordable current
+drive and an explicit start-up route.}
+
 
 \end{document}
